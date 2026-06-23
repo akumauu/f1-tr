@@ -11,7 +11,7 @@
   - Python：3.12.3 可用。
   - `go`：当前 shell 不可用。
   - `docker`：当前 shell 不可用。
-  - 当前目录不是 git 仓库。
+  - 当时未识别到 git 仓库；本轮 `git status` 可用，当前工作区按 git worktree 处理。
 - 当前验收策略：先完成可在本机验证的 Go/Python 测试；Docker/PostgreSQL 端到端测试若环境仍不可用，必须记录为未验收项，不能冒充完成。
 
 ### Step 2：P0/P1 代码修复
@@ -56,3 +56,123 @@
 - 已通过本地兼容模块测试：`go test -count=1 ./...` in `third_party/mimetype`。
 - 已再次确认 `docker` 不可用，因此本轮不能声明 PostgreSQL/Docker 端到端验收完成。
 - 阶段结论：P0 编译与关键单元测试可验收；数据库端到端验收仍需 Docker 或本地 PostgreSQL 环境。
+
+## 2026-06-23 16:00 CST
+
+### Step 7：需求边界收束与文档更新
+
+- 已根据最新产品决策调整技术主线：公网不部署常驻 Gin API，不引入 Cloudflare Workers，不把音频播放作为 v1 必需能力。
+- 已明确 v1 架构改为“官方数据离线获取 -> PostgreSQL 持久化与计算 -> Go exporter 导出静态 JSON -> GitHub Pages 前端 SPA 展示”。
+- 已明确动态能力边界：动态查询发生在浏览器内，前端读取静态 JSON 后完成年份/分站/session 切换、车手筛选、圈数筛选、TR 搜索和图表交互。
+- 已更新 `README.md`，把项目描述从“Go 后端/API 闭环”改为“离线数据生产 + 静态前端展示”。
+- 已更新 `docs/technical-overview.md`，新增静态数据合同、exporter 主线、前端动态查询边界和 GitHub Pages 发布方向。
+- 已更新 `docs/test-strategy.md`，把后续验收从 API 查询改为 exporter JSON、前端静态读取和浏览器内动态查询。
+- 已更新 `tests/test_project_contract.py`，静态契约测试不再要求公网 API 列表，改为校验静态数据合同。
+- 已通过 Python 契约测试：`PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests`，结果 `Ran 5 tests ... OK`。
+- 已通过后端 Go 全量测试且禁用缓存：`GOTOOLCHAIN=local GOSUMDB=off go test -count=1 ./...`。
+- 已通过本地兼容模块测试：`go test -count=1 ./...` in `third_party/mimetype`。
+- 未完成验收：当前 shell 无 `docker`，PostgreSQL migration、真实 ingest、`cmd/exporter`、前端构建和静态发布端到端测试尚未执行。
+
+## 2026-06-23 14:28 CST
+
+### Step 8：按静态发布主线实现 exporter
+
+- 已新增 `backend/cmd/exporter`，默认导出到 `../public/data`，支持 `-version` 和可选 `-migrate`。
+- 已新增 `backend/internal/exporter`，把数据库读取和静态文件编排拆开：
+  - `PostgresStore` 查询 meetings、sessions、drivers、laps、stints、pit_stops、positions、race_control 和三个分析视图。
+  - `Exporter` 生成 `manifest.json`、年份 meeting 索引、meeting session 索引和 session 分片文件。
+  - manifest 包含版本、生成时间、年份、分站、session、默认 session、文件路径和记录数。
+- 已新增 exporter 单元测试，覆盖 manifest 写入、session 分片文件清单和默认 race session 选择。
+
+### Step 9：修复幂等抓取与 migration runner
+
+- 已新增 `backend/migrations/003_add_idempotency_indexes.up.sql` / `.down.sql`：
+  - 建唯一索引前会先用 `ROW_NUMBER()` 清理历史重复行，避免已有重复数据导致迁移失败。
+  - `positions` 增加 `(session_key, driver_number, date)` 唯一索引。
+  - `race_control` 增加基于 session、时间、消息、可选车手和圈数的唯一表达式索引。
+- 已将 migration runner 从硬编码两个 `.up.sql` 改为按文件名排序执行所有 `*.up.sql`。
+- 已新增 `backend/internal/database/postgres_test.go`，验证 migration 文件发现顺序。
+- 已将 race control 写入改为 `ON CONFLICT DO NOTHING`，不再靠吞插入错误处理重复消息。
+
+### Step 10：实现前端静态 SPA
+
+- 已新增 `frontend`：
+  - 零外部依赖构建脚本：`npm run build`。
+  - 构建合同检查：`npm test`。
+  - 本地静态服务器：`npm run dev`。
+  - `frontend/src` 实现静态 SPA，读取 `data/manifest.json` 和 session 分片。
+  - `frontend/public/data` 提供 sample 数据，用于无数据库环境下验证页面。
+- 前端已实现：
+  - 年份、分站、session 选择。
+  - 车手筛选、圈数范围筛选、TR 文本搜索。
+  - 圈速 canvas 图、指标卡、Team Radio、stint、lap、pit stop、race control 表格。
+  - 缺少可选文件时记录 partial 状态，不阻断页面渲染。
+
+### Step 11：验证结果
+
+- 已通过 Python 契约测试：`PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests`。
+- 已通过 Go 全量测试：`GOTOOLCHAIN=local GOSUMDB=off go test -count=1 ./...`。
+- 已通过前端构建：`npm run build` in `frontend`。
+- 已通过前端构建合同检查：`npm test` in `frontend`。
+- 已用 Playwright 打开 `http://localhost:5173` 验证：
+  - 页面标题为 `F1 TR Review`。
+  - sample manifest 和 session 分片加载成功，状态为 `Ready`。
+  - TR 搜索 `brake` 后 Team Radio 计数从 3 变为 1。
+  - canvas 非空：检测到非白像素。
+  - 390px 移动端下 `body.scrollWidth === window.innerWidth`，未出现横向溢出。
+  - 控制台 warning/error 为 0。
+
+### Step 12：已记录但跳过的阻塞项
+
+- 当前 shell 仍无 `docker`，所以 PostgreSQL migration、真实 OpenF1 ingest、真实 translator、真实数据库 exporter 导出和完整端到端链路仍未验收。
+- 后台方式启动前端 dev server 会被当前执行环境回收；改用前台会话运行 `node scripts/serve.js 5173` 后验证通过。
+- `go doc github.com/jackc/pgx.Rows` 曾长时间无输出，已停止依赖该辅助命令，改由 `go test ./...` 验证真实 pgx 调用面。
+
+## 2026-06-23 17:04 CST
+
+### Step 13：切换优先数据源到 FastF1 + OpenF1
+
+- 已确认最近一次 Catalunya 相关 F1 赛事为 2026 Barcelona-Catalunya Race：
+  - OpenF1 `meeting_key=1287`。
+  - OpenF1 Race `session_key=11307`。
+  - Race 时间为 `2026-06-14T13:00:00+00:00` 到 `2026-06-14T15:00:00+00:00`。
+- 已新增 `requirements.txt`，声明 `fastf1>=3.8,<4`。
+- 已新增 `tools/export_catalunya_static.py`：
+  - 默认从 2026 Barcelona-Catalunya Race 开始导出静态 JSON。
+  - FastF1 作为 laps/stints 主路径。
+  - OpenF1 作为 meetings/sessions/drivers/team_radio/pit/position/race_control 主路径。
+  - FastF1 不可用时，可通过 `--openf1-only` 使用 OpenF1 laps/stints 降级路径。
+  - OpenF1 全量 laps/stints 超时时，会按 driver_number 分片重试。
+  - OpenF1 drivers 超时时，会从 TR URL 和事件数据中推导 driver_number/name_acronym 占位信息。
+  - Team Radio 当前只有 audio URL，导出为 `translation_status=audio_only`。
+
+### Step 14：生成 Catalunya sample 数据并验证前端
+
+- 已用 OpenF1 降级路径生成并替换 `frontend/public/data` sample：
+  - 22 位车手。
+  - 358 条 lap 原始记录。
+  - 355 条有效 lap delta 记录。
+  - 70 条 stint 记录。
+  - 18 条 degradation 记录。
+  - 40 条 Race Team Radio 音频记录。
+  - 230 条 position 采样记录。
+- 已发现 OpenF1 存在 `lap_duration=0` 异常圈，导致前端 Best Lap 显示 `0.000s`。
+- 已修复：
+  - Python delta/degradation 计算跳过非正 `lap_duration`。
+  - 前端 Best Lap 和 chart 跳过非正 `lap_duration`。
+  - `formatLapTime` 对非正值显示 `--`。
+- 已通过 Playwright 验证：
+  - 页面显示 `Barcelona Grand Prix / Race`。
+  - 状态为 `Ready`。
+  - Best Lap 显示 `1:20.232`，车手 `NOR`。
+  - chart 显示 `355 laps`。
+  - Team Radio 显示 `40 messages`。
+  - 控制台 warning/error 为 0。
+
+### Step 15：本轮新增阻塞记录
+
+- 尝试将 FastF1 安装到 `/tmp/f1tr-pydeps` 时，PyPI/files.pythonhosted.org 多次连接超时；后续安装进程卡在本地 I/O，已终止。因此 FastF1 真实 session 拉取尚未验收。
+- OpenF1 endpoint 有波动：
+  - `team_radio?session_key=11307` 单独重试第 2 次成功，返回 40 条。
+  - 全量 `laps` 多次超时，按 driver_number fallback 后成功拿到 358 条 lap 原始记录。
+  - `pit` 和 `race_control` 在生成 sample 的本轮超时，因此当前 sample 中这两类记录为 0；脚本保留重试与降级能力，API 稳定后可重新生成。

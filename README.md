@@ -4,7 +4,7 @@ F1 TR 是一个用于 F1 赛后复盘的非严肃专业平台。它聚合全场�
 
 它的用途是帮助用户在赛后快速理解“比赛过程中发生了什么、车手和车队说了什么、圈速表现如何变化”。它不是官方技术分析工具，也不用于车队工程决策、判罚判断或高精度专业建模。
 
-当前项目是早期 Go 后端。重点是先让数据采集、PostgreSQL 计算、API 查询和翻译链路形成可验证闭环。
+当前项目是早期“离线数据生产 + 静态前端展示”系统。当前优先数据源是 Python FastF1 + 免认证 OpenF1 HTTP API，先从 2026 Barcelona-Catalunya Race 开始生成静态 JSON；Go/PostgreSQL 链路保留为后续数据库生产路径。
 
 开发交接与后续计划以以下文档为准：
 
@@ -15,5 +15,11 @@ F1 TR 是一个用于 F1 赛后复盘的非严肃专业平台。它聚合全场�
 
 - 后端架构骨架存在，P0 编译阻断已修复。
 - 本机 shell 已安装 Go 1.22.2，`go test ./...` 已通过。
+- `cmd/exporter` 已实现基础静态 JSON 导出能力，Go 单元测试覆盖 manifest 和 session 文件合同。
+- `tools/export_catalunya_static.py` 已实现 Catalunya 默认采集器，目标为 `meeting_key=1287`、`session_key=11307`。
+- 前端 sample 数据已替换为 OpenF1 Catalunya Race：22 位车手、358 圈、70 段 stint、40 条 TR 音频记录。
+- `frontend` 已实现基础静态 SPA，`npm run build`、`npm test` 和本地浏览器 smoke test 已通过。
 - 本机 shell 仍缺少 `docker`，PostgreSQL 端到端运行尚未验收。
-- v1 先收束为 Go + PostgreSQL 后端；前端、Cloudflare Workers、STT 音频转文字延后。
+- v1 先收束为 Python/Go CLI + 静态 JSON + 前端 SPA；公网不部署常驻 API 服务。
+- 前端部署目标是 GitHub Pages，读取导出的 JSON 后在浏览器内完成分站/session 切换、车手筛选、圈数筛选、TR 搜索和图表交互。
+- Cloudflare Workers、音频代理、音频播放、STT 音频转文字延后。

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>F1 TR Review</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brandMark" aria-hidden="true"></span>
+        <div class="brandText">
+          <h1>F1 <span>TR Review</span></h1>
+          <p id="sessionMeta">Loading data…</p>
+        </div>
+      </div>
+      <div class="topbarRight">
+        <div class="status" id="loadStatus">Starting</div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="hero" id="heroStats" aria-label="Race headline stats"></section>
+
+      <section class="controls" aria-label="Session controls">
+        <label>
+          <span>Year</span>
+          <select id="yearSelect"></select>
+        </label>
+        <label>
+          <span>Meeting</span>
+          <select id="meetingSelect"></select>
+        </label>
+        <label>
+          <span>Session</span>
+          <select id="sessionSelect"></select>
+        </label>
+        <label class="searchBox">
+          <span>Radio search</span>
+          <input id="searchInput" type="search" placeholder="transcript · intent · driver">
+        </label>
+        <label>
+          <span>Lap from</span>
+          <input id="lapMin" type="number" min="1" step="1">
+        </label>
+        <label>
+          <span>Lap to</span>
+          <input id="lapMax" type="number" min="1" step="1">
+        </label>
+        <button id="resetFilters" type="button" class="ghostBtn">Reset</button>
+      </section>
+
+      <section class="panel selectorPanel" aria-label="Driver selection">
+        <div class="panelHeader">
+          <h2>Drivers</h2>
+          <div class="selectorActions">
+            <span id="driverCount" class="muted"></span>
+            <div class="quickBtns">
+              <button type="button" data-pick="all">All</button>
+              <button type="button" data-pick="none">None</button>
+              <button type="button" data-pick="podium">Podium</button>
+              <button type="button" data-pick="points">Points</button>
+            </div>
+          </div>
+        </div>
+        <div class="driverGrid" id="driverGrid"></div>
+      </section>
+
+      <section class="panel analysisPanel" aria-label="Analysis charts">
+        <div class="panelHeader analysisHeader">
+          <div class="tabs" id="chartTabs" role="tablist">
+            <button type="button" class="tab" data-chart="positions" role="tab">Race positions</button>
+            <button type="button" class="tab" data-chart="pace" role="tab">Lap pace</button>
+            <button type="button" class="tab" data-chart="strategy" role="tab">Tyre strategy</button>
+            <button type="button" class="tab" data-chart="degradation" role="tab">Degradation</button>
+          </div>
+          <span id="chartCaption" class="muted"></span>
+        </div>
+        <p class="chartHint" id="chartHint"></p>
+        <div class="chartStage" id="chartStage">
+          <canvas id="chart"></canvas>
+          <div class="chartTip" id="chartTip" hidden></div>
+        </div>
+        <div class="legend" id="chartLegend"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h2>Lap timing</h2>
+          <span id="lapCount" class="muted"></span>
+        </div>
+        <div class="tableWrap">
+          <table class="dataTable">
+            <thead>
+              <tr>
+                <th class="number">Lap</th>
+                <th>Driver</th>
+                <th>Tyre</th>
+                <th class="number">Lap time</th>
+                <th class="number">S1</th>
+                <th class="number">S2</th>
+                <th class="number">S3</th>
+                <th class="number">Δ prev</th>
+                <th>Pit</th>
+              </tr>
+            </thead>
+            <tbody id="lapRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="split">
+        <div class="panel">
+          <div class="panelHeader">
+            <h2>Stints &amp; degradation</h2>
+            <span id="stintCount" class="muted"></span>
+          </div>
+          <div class="tableWrap">
+            <table class="dataTable">
+              <thead>
+                <tr>
+                  <th>Driver</th>
+                  <th class="number">Stint</th>
+                  <th>Compound</th>
+                  <th>Laps</th>
+                  <th class="number">Deg/lap</th>
+                  <th class="number">Best</th>
+                </tr>
+              </thead>
+              <tbody id="stintRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panelHeader">
+            <h2>Team radio</h2>
+            <span id="radioCount" class="muted"></span>
+          </div>
+          <div class="tableWrap" id="radioList"></div>
+        </div>
+      </section>
+
+      <section class="split" id="extraPanels"></section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

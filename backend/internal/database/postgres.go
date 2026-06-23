@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
+	"sort"
 	"time"
 
 	"github.com/jackc/pgx"
@@ -71,9 +73,9 @@ func (db *DB) Close() {
 
 // RunMigrations executes all SQL migration files in order.
 func (db *DB) RunMigrations(ctx context.Context, migrationsDir string) error {
-	files := []string{
-		migrationsDir + "/001_create_tables.up.sql",
-		migrationsDir + "/002_create_views.up.sql",
+	files, err := migrationFiles(migrationsDir)
+	if err != nil {
+		return err
 	}
 
 	for _, file := range files {
@@ -88,4 +90,16 @@ func (db *DB) RunMigrations(ctx context.Context, migrationsDir string) error {
 	}
 
 	return nil
+}
+
+func migrationFiles(migrationsDir string) ([]string, error) {
+	files, err := filepath.Glob(filepath.Join(migrationsDir, "*.up.sql"))
+	if err != nil {
+		return nil, fmt.Errorf("find migration files: %w", err)
+	}
+	if len(files) == 0 {
+		return nil, fmt.Errorf("no migration files found in %s", migrationsDir)
+	}
+	sort.Strings(files)
+	return files, nil
 }

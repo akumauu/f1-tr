@@ -1,3 +1,4 @@
+import json
 import re
 import unittest
 from pathlib import Path
@@ -11,16 +12,24 @@ def read(relative_path: str) -> str:
 
 
 class ProjectContractTests(unittest.TestCase):
-    def test_router_endpoints_are_documented(self):
-        router = read("backend/internal/api/router.go")
+    def test_static_data_contract_is_documented(self):
         docs = read("docs/technical-overview.md")
 
-        endpoints = {"/health"}
-        for path in re.findall(r"v1\.(?:GET|POST)\(\"([^\"]+)\"", router):
-            endpoints.add("/api/v1" + path)
+        required_contract_terms = [
+            "public/data/",
+            "manifest.json",
+            "seasons/{year}/meetings.json",
+            "meetings/{meeting_key}/sessions.json",
+            "sessions/{session_key}/laps.json",
+            "sessions/{session_key}/lap-deltas.json",
+            "sessions/{session_key}/degradation.json",
+            "sessions/{session_key}/radio.json",
+            "前端动态查询边界",
+            "旧版 Gin API 合同只保留为本地调试参考",
+        ]
 
-        for endpoint in sorted(endpoints):
-            self.assertIn(endpoint, docs)
+        for term in required_contract_terms:
+            self.assertIn(term, docs)
 
     def test_migration_tables_and_views_are_documented(self):
         migrations = "\n".join(
@@ -44,6 +53,7 @@ class ProjectContractTests(unittest.TestCase):
         handlers = read("backend/internal/api/handlers.go")
         go_mod = read("backend/go.mod")
         deepseek = read("backend/internal/translator/deepseek_client.go")
+        database = read("backend/internal/database/postgres.go")
         docs = read("docs/technical-overview.md")
 
         if "json.Unmarshal" in handlers and '"encoding/json"' not in handlers:
@@ -69,15 +79,62 @@ class ProjectContractTests(unittest.TestCase):
         if "http.Get(audioURL)" in handlers:
             self.assertIn("P2-01", docs)
 
+        if "*.up.sql" not in database or "filepath.Glob" not in database:
+            self.assertIn("P2-03", docs)
+
+    def test_exporter_and_frontend_mainline_exists(self):
+        expected_paths = [
+            "backend/cmd/exporter/main.go",
+            "backend/internal/exporter/exporter.go",
+            "backend/internal/exporter/store.go",
+            "backend/internal/exporter/exporter_test.go",
+            "backend/migrations/003_add_idempotency_indexes.up.sql",
+            "frontend/package.json",
+            "requirements.txt",
+            "tools/export_catalunya_static.py",
+            "frontend/src/index.html",
+            "frontend/src/app.js",
+            "frontend/src/styles.css",
+            "frontend/scripts/build.js",
+            "frontend/scripts/check-build.js",
+            "frontend/public/data/manifest.json",
+        ]
+        for relative_path in expected_paths:
+            self.assertTrue((ROOT / relative_path).exists(), relative_path)
+
+        exporter_main = read("backend/cmd/exporter/main.go")
+        frontend_app = read("frontend/src/app.js")
+        package_json = read("frontend/package.json")
+        catalunya_exporter = read("tools/export_catalunya_static.py")
+        requirements = read("requirements.txt")
+
+        self.assertIn('flag.String("out"', exporter_main)
+        self.assertIn("manifest.json", frontend_app)
+        self.assertIn("lap_deltas", frontend_app)
+        self.assertIn('"build"', package_json)
+        self.assertIn('"test"', package_json)
+        self.assertIn("DEFAULT_MEETING_KEY = 1287", catalunya_exporter)
+        self.assertIn("DEFAULT_SESSION_KEY = 11307", catalunya_exporter)
+        self.assertIn("fastf1", requirements)
+
+    def test_catalunya_sample_data_is_current_default(self):
+        manifest = json.loads(read("frontend/public/data/manifest.json"))
+
+        self.assertEqual(manifest["default_session_key"], 11307)
+        self.assertEqual(manifest["meetings"][0]["meeting_key"], 1287)
+        self.assertEqual(manifest["meetings"][0]["meeting_name"], "Barcelona Grand Prix")
+        self.assertGreaterEqual(manifest["sessions"][0]["record_counts"]["laps"], 300)
+        self.assertGreaterEqual(manifest["sessions"][0]["record_counts"]["radio"], 40)
+
     def test_scope_boundaries_are_explicit(self):
         docs = read("docs/technical-overview.md")
 
         required_phrases = [
             "v1 主线",
             "v1 不做",
-            "不引入 Rust 主 API",
+            "不提供常驻 Gin API 服务器给公网用户访问",
             "不实现 Cloudflare Workers",
-            "不实现前端 Dashboard",
+            "前端 SPA",
             "不实现 STT / ASR 音频转文字",
         ]
         for phrase in required_phrases:

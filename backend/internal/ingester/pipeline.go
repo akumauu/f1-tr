@@ -214,21 +214,24 @@ func (p *Pipeline) StorePositions(ctx context.Context, positions []RawPosition) 
 func (p *Pipeline) StoreRaceControl(ctx context.Context, msgs []RawRaceControl) error {
 	const query = `
 		INSERT INTO race_control (session_key, date, category, flag, message, driver_number, lap_number)
-		VALUES ($1, $2, $3, $4, $5, $6, $7)`
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
+		ON CONFLICT DO NOTHING`
 
+	count := 0
 	for _, m := range msgs {
 		ts, err := ParseTime(m.Date)
 		if err != nil || ts == nil {
 			continue
 		}
-		if _, err := p.pool.Exec(ctx, query,
+		tag, err := p.pool.Exec(ctx, query,
 			m.SessionKey, ts, m.Category, m.Flag, m.Message, m.DriverNumber, m.LapNumber,
-		); err != nil {
-			// Race control may have duplicates; skip
-			continue
+		)
+		if err != nil {
+			return fmt.Errorf("insert race control: %w", err)
 		}
+		count += int(tag.RowsAffected())
 	}
-	log.Printf("[Pipeline] Stored %d race control messages", len(msgs))
+	log.Printf("[Pipeline] Stored %d race control messages", count)
 	return nil
 }
 
