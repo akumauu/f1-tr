@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>F1 TR Timeline</title>
+    <link rel="stylesheet" href="live-review.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brandMark" aria-hidden="true"></span>
+        <div>
+          <h1>F1 TR Timeline</h1>
+          <p id="meta">Loading</p>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </header>
+
+    <main class="shell">
+      <aside class="rail">
+        <section class="panel">
+          <div class="panelHead">
+            <h2>Drivers</h2>
+            <span id="driverCount"></span>
+          </div>
+          <div class="actions">
+            <button type="button" id="allDrivers">All</button>
+            <button type="button" id="clearDrivers">None</button>
+          </div>
+          <div class="driverList" id="driverList"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panelHead">
+            <h2>Filters</h2>
+          </div>
+          <label>
+            <span>Search TR</span>
+            <input id="search" type="search" placeholder="driver / radio text">
+          </label>
+          <div class="lapInputs">
+            <label>
+              <span>Lap from</span>
+              <input id="lapFrom" type="number" min="1" step="1">
+            </label>
+            <label>
+              <span>Lap to</span>
+              <input id="lapTo" type="number" min="1" step="1">
+            </label>
+          </div>
+          <label class="check">
+            <input id="onlyRadioLaps" type="checkbox">
+            <span>TR laps only</span>
+          </label>
+          <label class="check">
+            <input id="showUnmapped" type="checkbox" checked>
+            <span>Unmapped TR</span>
+          </label>
+        </section>
+      </aside>
+
+      <section class="timeline" id="timeline"></section>
+    </main>
+
+    <script type="module" src="live-review.js"></script>
+  </body>
+</html>
