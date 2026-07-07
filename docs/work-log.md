@@ -198,8 +198,7 @@
   - `timeline.json` 静态时间线数据更新。
   - MultiViewer API 采集脚本与启动脚本。
   - Live Timing 文本解析兼容两段式倒计时。
-- 待本轮继续完成：
-  - GitHub 推送。
+- GitHub 推送结果见 Step 17。
 
 ### Step 17：本地仓库瘦身结果
 
@@ -215,5 +214,8 @@
   - `npm run build` in `frontend`。
   - `npm test` in `frontend`。
   - `python -m unittest discover -s tests`。
-- 待本轮继续完成：
-  - 推送到 GitHub。
+- 已推送到 GitHub：
+  - 远端：`https://github.com/akumauu/f1-tr.git`
+  - 分支：`main`
+  - 提交：`0bca725`
+- 后续待办：确认 GitHub Pages 发布配置和线上页面加载结果。

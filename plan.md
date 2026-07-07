@@ -13,10 +13,10 @@
 - 本地仓库瘦身策略已确定：原始采集数据、运行日志、Playwright 临时截图和下载版 MultiViewer 不进入 Git。
 - `.gitignore` 已补充 `data/raw/`、`data/logs/`、`.playwright-mcp/` 和 `MultiViewer/` 等本地产物规则。
 - 本地 Git 检查点引用和不可达对象已清理，`.git` 从约 1.2GB 降到约 0.37MB。
+- GitHub `origin/main` 已推送到提交 `0bca725`。
 
 ### 进行中
 
-- GitHub 上传：本轮提交完成后推送到 `origin/main`，远端地址为 `https://github.com/akumauu/f1-tr.git`。
 - GitHub Pages 发布检查：推送后继续确认 Pages 是否读取 `frontend/dist` 或配置的发布产物。
 
 ### 后续建议
