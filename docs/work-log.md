@@ -176,3 +176,44 @@
   - `team_radio?session_key=11307` 单独重试第 2 次成功，返回 40 条。
   - 全量 `laps` 多次超时，按 driver_number fallback 后成功拿到 358 条 lap 原始记录。
   - `pit` 和 `race_control` 在生成 sample 的本轮超时，因此当前 sample 中这两类记录为 0；脚本保留重试与降级能力，API 稳定后可重新生成。
+
+## 2026-07-07 20:20 CST
+
+### Step 16：仓库瘦身、进度同步与 GitHub 上传准备
+
+- 已排查仓库体积来源：
+  - `.git` 约 1.2GB，主要来自历史中的松散对象和曾提交过的原始采集数据。
+  - `MultiViewer` 约 399MB，为本地下载工具，已在 `.gitignore` 中排除。
+  - `data` 约 196MB，主要为临场采集原始快照、日志和分车手拆分结果，不适合进入 Git。
+- 已确认当前 Git 历史中包含过 `data/raw/**` 大对象；仅删除工作区文件不能降低远端仓库大小，必须重写历史并执行垃圾回收。
+- 已补充 `.gitignore`，明确忽略：
+  - `data/raw/`
+  - `data/logs/`
+  - `.playwright-mcp/`
+  - `MultiViewer/`
+- 已新增 `docs/multiviewer-api-capture.md`，记录 MultiViewer REST/GraphQL 采集路径、银石关键时间、启动命令和健康检查。
+- 已更新 `plan.md` 的任务清单与开发进度，加入仓库瘦身、GitHub 上传和后续大文件管理策略。
+- 本轮准备提交的功能进展包括：
+  - 前端 live review 中文化与洞察卡片。
+  - `timeline.json` 静态时间线数据更新。
+  - MultiViewer API 采集脚本与启动脚本。
+  - Live Timing 文本解析兼容两段式倒计时。
+- 待本轮继续完成：
+  - GitHub 推送。
+
+### Step 17：本地仓库瘦身结果
+
+- 已提交本轮源码与文档改动：`Prepare live review capture and slim repo`。
+- 已确认 `HEAD` 历史中的最大对象为前端精简 sample 数据，`data/raw/**`、`data/logs/**`、`MultiViewer/**` 和 `.playwright-mcp/**` 不在主分支源码历史中。
+- 已删除本地 `refs/codex/turn-diffs/checkpoints/**` 检查点引用，它们是 `.git` 体积异常增大的主要来源。
+- 已执行 `git reflog expire --expire=now --expire-unreachable=now --all` 和 `git gc --prune=now --aggressive`。
+- 瘦身结果：
+  - `.git` 从约 1.2GB 降到约 0.37MB。
+  - `git count-objects -vH` 显示 loose object 为 0，pack 大小约 346KB。
+  - 本地工作区只剩被忽略的 `.env`、`data/`、`MultiViewer/`、`frontend/dist/` 和缓存目录。
+- 已通过验证：
+  - `npm run build` in `frontend`。
+  - `npm test` in `frontend`。
+  - `python -m unittest discover -s tests`。
+- 待本轮继续完成：
+  - 推送到 GitHub。

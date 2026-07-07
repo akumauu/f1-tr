@@ -23,3 +23,10 @@ F1 TR 是一个用于 F1 赛后复盘的非严肃专业平台。它聚合全场�
 - v1 先收束为 Python/Go CLI + 静态 JSON + 前端 SPA；公网不部署常驻 API 服务。
 - 前端部署目标是 GitHub Pages，读取导出的 JSON 后在浏览器内完成分站/session 切换、车手筛选、圈数筛选、TR 搜索和图表交互。
 - Cloudflare Workers、音频代理、音频播放、STT 音频转文字延后。
+- 2026-07-07 进度：live review 前端已中文化并加入洞察卡片；MultiViewer 本地 API 采集脚本已补齐；本地仓库已瘦身，`.git` 从约 1.2GB 降到约 0.37MB，原始采集数据和运行日志只保留在本地，不进入 Git 历史。
+
+仓库体积约定：
+
+- Git 只保留源码、文档、构建脚本和可发布的精简 sample 数据。
+- `data/raw/`、`data/logs/`、`.playwright-mcp/` 和 `MultiViewer/` 都是本地产物，默认忽略。
+- 需要共享完整原始采集包时，优先使用 GitHub Release、外部对象存储或 Git LFS，避免直接提交到主分支历史。

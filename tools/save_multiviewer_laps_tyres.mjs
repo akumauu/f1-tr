@@ -137,7 +137,7 @@ function parseDriverBlock(block) {
 }
 
 function parseLiveTimingText(text, capturedAt = new Date()) {
-  const header = text.match(/(?<clock>\d+:\d{2}:\d{2})\s+Lap:\s*(?<lap>\d+)\/(?<total>\d+)/);
+  const header = text.match(/(?<clock>(?:\d+:)?\d{2}:\d{2})\s+Lap:\s*(?<lap>\d+)\/(?<total>\d+)/);
   const raceClock = header?.groups?.clock ?? null;
   const raceLap = header ? Number(header.groups.lap) : null;
   const totalLaps = header ? Number(header.groups.total) : null;

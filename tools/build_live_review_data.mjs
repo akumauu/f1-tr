@@ -102,9 +102,16 @@ function parseDriverBlock(block) {
   };
 }
 
+function capturedAtFromSnapshotKey(key) {
+  const match = String(key).match(/^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})$/);
+  if (!match) return null;
+  const [, y, mo, d, h, mi, s] = match;
+  return new Date(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi), Number(s)).toISOString();
+}
+
 function parseTimingSnapshot(file) {
   const text = fs.readFileSync(file, "utf8");
-  const header = text.match(/(?<clock>\d+:\d{2}:\d{2})\s+Lap:\s*(?<lap>\d+)\/(?<total>\d+)/);
+  const header = text.match(/(?<clock>(?:\d+:)?\d{2}:\d{2})\s+Lap:\s*(?<lap>\d+)\/(?<total>\d+)/);
   if (!header) return null;
   const lines = linesOf(text);
   const raceIndex = lines.indexOf("RACE");
@@ -123,6 +130,7 @@ function parseTimingSnapshot(file) {
   return {
     file: path.basename(file),
     snapshot_key: base,
+    captured_at: capturedAtFromSnapshotKey(base),
     race_clock: header.groups.clock,
     race_lap: Number(header.groups.lap),
     total_laps: Number(header.groups.total),
@@ -208,7 +216,8 @@ function main() {
   const cleanSnapshots = readJson(path.join(TIMING_DIR, "laps-tyres-live-clean.json"));
   const snapshots = buildSnapshotRows();
   const lapRows = buildLapRows(snapshots, cleanByLap);
-  const radios = buildRadios(cleanSnapshots);
+  const radioAnchors = snapshots.some((row) => row.captured_at) ? snapshots : cleanSnapshots;
+  const radios = buildRadios(radioAnchors);
   const drivers = [...new Set([
     ...lapRows.map((row) => row.driver),
     ...radios.map((row) => row.driver_tla).filter(Boolean),
@@ -219,7 +228,7 @@ function main() {
     generated_at: new Date().toISOString(),
     title: "2026 Austrian Grand Prix",
     session: "Race",
-    quality_note: "圈速/三段来自 MultiViewer Live Timing 文本快照重建；第 16 圈前和第 49 圈后缺少可靠圈号，未纳入逐圈主时间线。",
+    quality_note: "圈速/三段来自 MultiViewer Live Timing 文本快照重建；早段缺口通常来自采集启动时间，后段已兼容两段式倒计时。",
     drivers: drivers.map((tla) => ({ tla, color: TEAM_COLORS[tla] ?? "#7f8aa0" })),
     laps,
     lap_rows: lapRows,

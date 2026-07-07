@@ -205,6 +205,67 @@ p {
   font-weight: 600;
 }
 
+/* ---------- Race intelligence ---------- */
+.insightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  padding: 14px 16px;
+}
+
+.insightCard {
+  position: relative;
+  min-height: 104px;
+  padding: 13px 14px 13px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  overflow: hidden;
+}
+
+.insightCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent-bar, var(--accent));
+}
+
+.insightCard .label {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.insightCard strong {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.1;
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+}
+
+.insightCard p {
+  margin-top: 7px;
+  color: var(--ink-dim);
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 650;
+}
+
+.insightCard.good strong {
+  color: var(--good);
+}
+
+.insightCard.warn strong {
+  color: var(--warn);
+}
+
 /* ---------- Controls ---------- */
 .controls {
   display: grid;
@@ -727,13 +788,38 @@ input:focus {
 }
 
 @media (max-width: 720px) {
-  .topbar { padding: 12px 14px; }
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 12px 14px;
+  }
+  .topbarRight { width: 100%; }
+  .status {
+    min-width: 0;
+    width: fit-content;
+  }
   .workspace { padding: 12px; }
   .hero { grid-template-columns: repeat(2, 1fr); }
   .controls { grid-template-columns: 1fr 1fr; }
   .searchBox { grid-column: span 2; }
+  .insightsPanel .panelHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .insightGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .driverGrid { grid-template-columns: 1fr; }
   .tabs { width: 100%; overflow-x: auto; }
   #chart { height: 360px; }
   .analysisHeader { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .hero,
+  .controls {
+    grid-template-columns: 1fr;
+  }
+  .searchBox {
+    grid-column: auto;
+  }
+  .insightGrid { grid-template-columns: 1fr; }
 }

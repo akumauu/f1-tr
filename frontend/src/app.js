@@ -25,10 +25,10 @@ const COMPOUND_COLORS = {
 };
 
 const CHART_HINTS = {
-  positions: "Each line is a driver's track position, lap by lap — higher on the chart is a better position. Hover any point for detail.",
-  pace: "Lap time per lap (lower = faster). The dashed line marks the fastest lap currently in view; pit-out laps are dropped.",
-  strategy: "Every bar is a stint, coloured by tyre compound and drawn across the race distance. Hover for tyre age and stint length.",
-  degradation: "Modelled pace loss per lap inside each stint (lower = better tyre management). Bars are coloured by compound.",
+  positions: "每条线代表一位车手逐圈位置变化，图上越靠上名次越好；悬停可查看细节。",
+  pace: "逐圈单圈时间对比，数值越低越快；虚线标记当前筛选范围内的最快圈，并排除 pit-out 圈。",
+  strategy: "每个色块代表一个轮胎段，颜色对应轮胎配方；悬停可查看胎龄和段长。",
+  degradation: "基于每个轮胎段估算的圈速损失，数值越低代表轮胎管理越稳；柱形颜色对应轮胎配方。",
 };
 
 const INK = "#eef2f8";
@@ -57,11 +57,11 @@ let chartHits = { points: [], rects: [] };
 
 const $ = (id) => document.getElementById(id);
 const els = {};
+let booted = false;
 
 document.addEventListener("DOMContentLoaded", boot);
 if (document.readyState !== "loading") boot();
 
-let booted = false;
 function boot() {
   if (booted) return;
   booted = true;
@@ -75,6 +75,8 @@ function boot() {
     resetFilters: $("resetFilters"),
     driverGrid: $("driverGrid"),
     driverCount: $("driverCount"),
+    insightGrid: $("insightGrid"),
+    insightScope: $("insightScope"),
     hero: $("heroStats"),
     chart: $("chart"),
     chartStage: $("chartStage"),
@@ -95,14 +97,14 @@ function boot() {
   });
 
   init().catch((error) => {
-    setStatus("Load failed", "warn");
+    setStatus("加载失败", "warn");
     els.sessionMeta.textContent = error.message;
-    drawEmptyChart("Data could not be loaded");
+    drawEmptyChart("数据加载失败");
   });
 }
 
 async function init() {
-  setStatus("Loading", "");
+  setStatus("加载中", "");
   state.manifest = await fetchJSON("data/manifest.json");
   initializeSelection();
   bindEvents();
@@ -189,7 +191,7 @@ function initializeSelection() {
   const manifest = state.manifest;
   const defaultSession = manifest.sessions.find((s) => s.session_key === manifest.default_session_key)
     || manifest.sessions[0];
-  if (!defaultSession) throw new Error("No sessions are listed in manifest.json");
+  if (!defaultSession) throw new Error("manifest.json 中没有可用赛段");
   const meeting = manifest.meetings.find((m) => m.meeting_key === defaultSession.meeting_key);
   state.selectedSessionKey = defaultSession.session_key;
   state.selectedMeetingKey = defaultSession.meeting_key;
@@ -199,11 +201,11 @@ function initializeSelection() {
 async function loadSelectedSession() {
   const session = currentSession();
   if (!session) {
-    setStatus("No session", "warn");
+    setStatus("无赛段", "warn");
     return;
   }
 
-  setStatus("Loading", "");
+  setStatus("加载中", "");
   state.datasets = {};
   state.missingFiles = [];
 
@@ -368,14 +370,15 @@ function render() {
   const session = currentSession();
   const meeting = currentMeeting();
   const missing = state.missingFiles.length;
-  setStatus(missing ? `Partial · ${missing} missing` : "Ready", missing ? "warn" : "ready");
+  setStatus(missing ? `部分数据 · 缺失 ${missing} 项` : "就绪", missing ? "warn" : "ready");
   els.sessionMeta.textContent = session && meeting
-    ? `${meeting.meeting_name} · ${session.session_name} · ${formatDate(session.date_start)}`
-    : "No session selected";
+    ? `${meetingDisplayName(meeting)} · ${sessionDisplayName(session)} · ${formatDate(session.date_start)}`
+    : "未选择赛段";
 
   const total = dataset("drivers").length;
-  els.driverCount.textContent = `${state.selectedDrivers.size}/${total} selected`;
+  els.driverCount.textContent = `已选 ${state.selectedDrivers.size}/${total}`;
 
+  renderInsights();
   renderChart();
   renderLapTable();
   renderStintTable();
@@ -385,9 +388,9 @@ function render() {
 
 function renderControls() {
   fillSelect(els.yearSelect, state.manifest.years, (i) => i.year, (i) => String(i.year), state.selectedYear);
-  fillSelect(els.meetingSelect, meetingsForYear(state.selectedYear), (i) => i.meeting_key, (i) => i.meeting_name, state.selectedMeetingKey);
+  fillSelect(els.meetingSelect, meetingsForYear(state.selectedYear), (i) => i.meeting_key, meetingDisplayName, state.selectedMeetingKey);
   fillSelect(els.sessionSelect, sessionsForMeeting(state.selectedMeetingKey),
-    (i) => i.session_key, (i) => i.session_name || i.session_type || i.session_key, state.selectedSessionKey);
+    (i) => i.session_key, sessionDisplayName, state.selectedSessionKey);
 }
 
 function renderHero() {
@@ -395,23 +398,23 @@ function renderHero() {
   const cards = [];
 
   const winnerNum = [...d.finalPos.entries()].find(([, p]) => p === 1)?.[0];
-  cards.push(heroCard("Winner", winnerNum != null ? driverAcr(winnerNum) : "—",
-    winnerNum != null ? driverFull(winnerNum) : "No position data", teamColorOf(winnerNum)));
+  cards.push(heroCard("冠军", winnerNum != null ? driverAcr(winnerNum) : "—",
+    winnerNum != null ? driverFull(winnerNum) : "无位置数据", teamColorOf(winnerNum)));
 
   const poleNum = [...d.gridPos.entries()].find(([, p]) => p === 1)?.[0];
-  cards.push(heroCard("Started P1", poleNum != null ? driverAcr(poleNum) : "—",
+  cards.push(heroCard("P1 发车", poleNum != null ? driverAcr(poleNum) : "—",
     poleNum != null ? driverFull(poleNum) : "—", teamColorOf(poleNum)));
 
   const f = d.fastest;
-  cards.push(heroCard("Fastest lap", f ? formatLapTime(f.lap_duration) : "—",
-    f ? `${driverAcr(f.driver_number)} · Lap ${f.lap_number}` : "—",
+  cards.push(heroCard("最快圈", f ? formatLapTime(f.lap_duration) : "—",
+    f ? `${driverAcr(f.driver_number)} · 第 ${f.lap_number} 圈` : "—",
     f ? teamColorOf(f.driver_number) : MUTED));
 
-  cards.push(heroCard("Race distance", d.maxLap ? String(d.maxLap) : "—", "laps completed", "#3b66ff"));
+  cards.push(heroCard("比赛距离", d.maxLap ? String(d.maxLap) : "—", "完成圈数", "#3b66ff"));
 
   const m = d.biggestMover;
-  cards.push(heroCard("Biggest mover", m && m.gained > 0 ? `+${m.gained}` : "—",
-    m && m.gained > 0 ? `${driverAcr(m.n)} · P${m.grid}→P${m.fin}` : "Held position",
+  cards.push(heroCard("最大升位", m && m.gained > 0 ? `+${m.gained}` : "—",
+    m && m.gained > 0 ? `${driverAcr(m.n)} · P${m.grid}→P${m.fin}` : "名次稳定",
     m ? teamColorOf(m.n) : MUTED));
 
   els.hero.replaceChildren(...cards);
@@ -428,13 +431,128 @@ function heroCard(label, value, sub, color) {
   return node;
 }
 
+function renderInsights() {
+  const { scope, cards } = buildInsights();
+  els.insightScope.textContent = scope;
+  els.insightGrid.replaceChildren();
+
+  if (!cards.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "当前筛选条件下暂无洞察";
+    els.insightGrid.appendChild(empty);
+    return;
+  }
+
+  for (const item of cards) {
+    els.insightGrid.appendChild(insightCard(item));
+  }
+}
+
+function buildInsights() {
+  const lapBounds = selectedLapBounds();
+  const cleanLaps = filteredLaps().filter((l) => validLapDuration(l.lap_duration) && !l.is_pit_out_lap);
+  const radioRows = filteredRadioRows();
+  const controlRows = filteredRaceControlRows();
+  const scope = `${state.selectedDrivers.size} 位车手 · 第 ${lapBounds.min ?? "?"}-${lapBounds.max ?? "?"} 圈 · ${cleanLaps.length} 个有效圈`;
+  const cards = [];
+
+  const pace = fastestAveragePace(cleanLaps);
+  if (pace) {
+    cards.push({
+      label: "参考节奏",
+      value: formatLapTime(pace.avg),
+      detail: `${driverAcr(pace.n)} · ${pace.count} 圈 · 最佳 ${formatLapTime(pace.best)}`,
+      color: teamColorOf(pace.n),
+    });
+  }
+
+  const fastest = cleanLaps.reduce((best, lap) =>
+    (!best || Number(lap.lap_duration) < Number(best.lap_duration) ? lap : best), null);
+  if (fastest) {
+    cards.push({
+      label: "单圈峰值",
+      value: formatLapTime(fastest.lap_duration),
+      detail: `${driverAcr(fastest.driver_number)} · 第 ${fastest.lap_number} 圈`,
+      color: teamColorOf(fastest.driver_number),
+    });
+  }
+
+  const late = latePhaseTrend(cleanLaps);
+  if (late) {
+    cards.push({
+      label: late.delta <= 0 ? "后段冲刺" : "后段掉速控制",
+      value: formatSignedSeconds(late.delta),
+      detail: `${driverAcr(late.n)} · 后半程均速相对前半程`,
+      color: teamColorOf(late.n),
+      tone: late.delta <= 0 ? "good" : "",
+    });
+  }
+
+  const deg = bestDegradationStint(lapBounds);
+  if (deg) {
+    cards.push({
+      label: "轮胎管理",
+      value: formatSignedSeconds(deg.deg),
+      detail: `${driverAcr(deg.n)} · ${compoundLabel(deg.compound)} · 第 ${deg.stint} 段 · ${deg.len} 圈`,
+      color: COMPOUND_COLORS[deg.compound] || teamColorOf(deg.n),
+      tone: deg.deg <= 0.03 ? "good" : "",
+    });
+  }
+
+  const swing = biggestPositionSwing();
+  if (swing) {
+    cards.push({
+      label: "位置变化",
+      value: swing.gain > 0 ? `+${swing.gain}` : `${swing.gain}`,
+      detail: `${driverAcr(swing.n)} · P${swing.from} 到 P${swing.to}`,
+      color: teamColorOf(swing.n),
+      tone: swing.gain > 0 ? "good" : "",
+    });
+  }
+
+  const radio = radioFocus(radioRows);
+  if (radio) {
+    cards.push({
+      label: "TR 焦点",
+      value: `${driverAcr(radio.n)} · ${radio.count}`,
+      detail: `当前筛选命中 ${radioRows.length} 条 TR/音频`,
+      color: teamColorOf(radio.n),
+    });
+  }
+
+  const control = raceControlHotspot(controlRows);
+  if (control) {
+    cards.push({
+      label: "赛会控制热点",
+      value: `第 ${control.lap} 圈`,
+      detail: `${control.count} 条消息 · ${flagLabel(control.label)}`,
+      color: control.color,
+      tone: control.flag === "YELLOW" || control.flag === "RED" ? "warn" : "",
+    });
+  }
+
+  return { scope, cards };
+}
+
+function insightCard(item) {
+  const node = document.createElement("article");
+  node.className = `insightCard ${item.tone || ""}`.trim();
+  node.style.setProperty("--accent-bar", item.color || "var(--accent)");
+  node.innerHTML = `<span class="label"></span><strong></strong><p></p>`;
+  node.querySelector(".label").textContent = item.label;
+  node.querySelector("strong").textContent = item.value;
+  node.querySelector("p").textContent = item.detail;
+  return node;
+}
+
 function renderDriverSelector() {
   const groups = state.derived.teamGroups;
   els.driverGrid.replaceChildren();
   if (!groups.length) {
     const empty = document.createElement("div");
     empty.className = "empty";
-    empty.textContent = "No driver data";
+    empty.textContent = "暂无车手数据";
     els.driverGrid.appendChild(empty);
     return;
   }
@@ -448,7 +566,7 @@ function renderDriverSelector() {
     head.className = "teamName";
     head.innerHTML = `<span class="teamDot"></span><span class="teamLabel"></span>`;
     head.querySelector(".teamLabel").textContent = group.name;
-    head.title = `Toggle ${group.name}`;
+    head.title = `切换 ${group.name}`;
     head.addEventListener("click", () => {
       const nums = group.drivers.map((x) => Number(x.driver_number));
       const allOn = nums.every((n) => state.selectedDrivers.has(n));
@@ -564,7 +682,7 @@ function xLapTicks(ctx, pad, plotW, plotH, top, minLap, maxLap) {
     ctx.moveTo(x, top);
     ctx.lineTo(x, top + plotH);
     ctx.stroke();
-    ctx.fillText(`L${lap}`, x, top + plotH + 18);
+    ctx.fillText(`${lap}圈`, x, top + plotH + 18);
   }
 }
 
@@ -573,7 +691,7 @@ function drawPositions() {
   const d = state.derived;
   const nums = selectedDriverNumbers().filter((n) => d.positionByLap.has(n));
   if (!nums.length || !d.maxLap) {
-    drawEmptyChart("No position data for the current selection");
+    drawEmptyChart("当前筛选条件下暂无位置数据");
     return;
   }
   const pad = { left: 42, right: 58, top: 16, bottom: 30 };
@@ -618,7 +736,7 @@ function drawPositions() {
       if (idx === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
       chartHits.points.push({ x, y, r: 9, key: `positions:${n}`, color,
-        tip: tipHTML(color, driverAcr(n), [["Lap", p.lap], ["Position", `P${p.pos}`]]) });
+        tip: tipHTML(color, driverAcr(n), [["圈数", p.lap], ["位置", `P${p.pos}`]]) });
     });
     ctx.stroke();
 
@@ -633,7 +751,7 @@ function drawPositions() {
   }
   ctx.globalAlpha = 1;
   renderDriverLegend(nums);
-  els.chartCaption.textContent = `${nums.length} drivers · ${maxLap} laps`;
+  els.chartCaption.textContent = `${nums.length} 位车手 · ${maxLap} 圈`;
 }
 
 function drawPace() {
@@ -641,7 +759,7 @@ function drawPace() {
   const d = state.derived;
   const laps = filteredLaps().filter((l) => validLapDuration(l.lap_duration) && !l.is_pit_out_lap);
   if (!laps.length) {
-    drawEmptyChart("No lap data for the current filters");
+    drawEmptyChart("当前筛选条件下暂无圈速数据");
     return;
   }
   const pad = { left: 56, right: 52, top: 16, bottom: 30 };
@@ -685,7 +803,7 @@ function drawPace() {
   ctx.setLineDash([]);
   ctx.fillStyle = "#b478ff";
   ctx.textAlign = "left";
-  ctx.fillText(`Fastest ${formatLapTime(fastest.lap_duration)} (${driverAcr(fastest.driver_number)})`, pad.left + 6, fy - 6);
+  ctx.fillText(`最快 ${formatLapTime(fastest.lap_duration)} (${driverAcr(fastest.driver_number)})`, pad.left + 6, fy - 6);
 
   const hovered = state.hoverKey;
   const someHover = hovered && hovered.startsWith("pace:");
@@ -708,16 +826,16 @@ function drawPace() {
       const meta = d.lapMeta.get(`${n}:${Number(lap.lap_number)}`);
       chartHits.points.push({ x, y, r: 7, key: `pace:${n}`, color,
         tip: tipHTML(color, driverAcr(n), [
-          ["Lap", lap.lap_number],
-          ["Time", formatLapTime(lap.lap_duration)],
-          ["Tyre", meta?.compound || "—"],
+          ["圈数", lap.lap_number],
+          ["单圈", formatLapTime(lap.lap_duration)],
+          ["轮胎", compoundLabel(meta?.compound) || "—"],
         ]) });
     });
     ctx.stroke();
   }
   ctx.globalAlpha = 1;
   renderDriverLegend([...byDriver.keys()]);
-  els.chartCaption.textContent = `${laps.length} laps · ${byDriver.size} drivers`;
+  els.chartCaption.textContent = `${laps.length} 圈 · ${byDriver.size} 位车手`;
 }
 
 function drawStrategy() {
@@ -729,7 +847,7 @@ function drawStrategy() {
     .map((n) => ({ n, stints: stints.filter((s) => Number(s.driver_number) === n) }))
     .filter((r) => r.stints.length);
   if (!rows.length || !d.maxLap) {
-    drawEmptyChart("No stint data for the current selection");
+    drawEmptyChart("当前筛选条件下暂无轮胎段数据");
     return;
   }
   const pad = { left: 52, right: 18, top: 14, bottom: 30 };
@@ -770,15 +888,15 @@ function drawStrategy() {
       }
       chartHits.rects.push({ x: x0, y: yCenter - barH / 2, w: bw, h: barH, key: `strat:${row.n}:${s.stint_number}`,
         color: cColor,
-        tip: tipHTML(cColor, `${driverAcr(row.n)} · Stint ${s.stint_number}`, [
-          ["Compound", comp || "—"],
-          ["Laps", `${s.lap_start}–${s.lap_end} (${Number(s.lap_end) - Number(s.lap_start) + 1})`],
-          ["Tyre age start", `${s.tyre_age_at_start ?? "—"}`],
+        tip: tipHTML(cColor, `${driverAcr(row.n)} · 第 ${s.stint_number} 段`, [
+          ["配方", compoundLabel(comp) || "—"],
+          ["圈段", `${s.lap_start}–${s.lap_end}（${Number(s.lap_end) - Number(s.lap_start) + 1} 圈）`],
+          ["起始胎龄", `${s.tyre_age_at_start ?? "—"}`],
         ]) });
     }
   });
   renderCompoundLegend(rows.flatMap((r) => r.stints.map((s) => String(s.compound || "").toUpperCase())));
-  els.chartCaption.textContent = `${rows.length} drivers · ${maxLap} laps`;
+  els.chartCaption.textContent = `${rows.length} 位车手 · ${maxLap} 圈`;
 }
 
 function drawDegradation() {
@@ -800,7 +918,7 @@ function drawDegradation() {
     .filter((r) => Number.isFinite(r.deg))
     .sort((a, b) => a.deg - b.deg);
   if (!rows.length) {
-    drawEmptyChart("No degradation model for the current selection (needs longer stints)");
+    drawEmptyChart("当前筛选条件下暂无衰退模型（需要更长轮胎段）");
     return;
   }
   const pad = { left: 96, right: 70, top: 14, bottom: 30 };
@@ -842,7 +960,7 @@ function drawDegradation() {
     ctx.fillStyle = INK;
     ctx.textAlign = "right";
     ctx.font = "800 11px Inter, system-ui, sans-serif";
-    ctx.fillText(`${driverAcr(r.n)} S${r.stint}`, pad.left - 10, yCenter + 4);
+    ctx.fillText(`${driverAcr(r.n)} 第${r.stint}段`, pad.left - 10, yCenter + 4);
     ctx.textAlign = "left";
     ctx.fillStyle = cColor;
     ctx.fillText(`${r.deg.toFixed(3)}`, x1 + 8, yCenter + 4);
@@ -850,16 +968,16 @@ function drawDegradation() {
 
     chartHits.rects.push({ x: Math.min(x0, pad.left), y: yCenter - barH / 2, w: Math.max(bw, plotW), h: barH,
       key: `deg:${r.n}:${r.stint}`, color: cColor,
-      tip: tipHTML(cColor, `${driverAcr(r.n)} · Stint ${r.stint} · ${r.compound}`, [
-        ["Deg rate", `${r.deg.toFixed(3)} s/lap`],
-        ["Base pace", formatLapTime(r.base)],
-        ["Best lap", formatLapTime(r.best)],
-        ["Stint length", `${r.len} laps`],
-        ["Model R²", Number.isFinite(r.r2) ? r.r2.toFixed(2) : "—"],
+      tip: tipHTML(cColor, `${driverAcr(r.n)} · 第 ${r.stint} 段 · ${compoundLabel(r.compound)}`, [
+        ["衰退率", `${r.deg.toFixed(3)} 秒/圈`],
+        ["基础节奏", formatLapTime(r.base)],
+        ["最佳圈", formatLapTime(r.best)],
+        ["轮胎段长度", `${r.len} 圈`],
+        ["模型 R²", Number.isFinite(r.r2) ? r.r2.toFixed(2) : "—"],
       ]) });
   });
   renderCompoundLegend(rows.map((r) => r.compound));
-  els.chartCaption.textContent = `${rows.length} stints`;
+  els.chartCaption.textContent = `${rows.length} 个轮胎段`;
 }
 
 function drawEmptyChart(message) {
@@ -908,7 +1026,7 @@ function renderCompoundLegend(compounds) {
     sw.className = "swatch dot";
     sw.style.background = COMPOUND_COLORS[c] || MUTED;
     const txt = document.createElement("span");
-    txt.textContent = titleCase(c);
+    txt.textContent = compoundLabel(c);
     item.append(sw, txt);
     return item;
   });
@@ -975,7 +1093,7 @@ function renderLapTable() {
   const d = state.derived;
   const all = filteredLaps();
   const rows = all.slice(0, 400);
-  els.lapCount.textContent = all.length > rows.length ? `${rows.length}/${all.length} laps` : `${all.length} laps`;
+  els.lapCount.textContent = all.length > rows.length ? `显示 ${rows.length}/${all.length} 圈` : `${all.length} 圈`;
   const fastestId = d.fastest ? `${Number(d.fastest.driver_number)}:${Number(d.fastest.lap_number)}` : null;
 
   renderRows(els.lapRows, rows, 9, (tr, lap) => {
@@ -990,7 +1108,7 @@ function renderLapTable() {
     appendCell(tr, formatLapTime(lap.duration_sector_2), "number");
     appendCell(tr, formatLapTime(lap.duration_sector_3), "number");
     appendDeltaCell(tr, meta?.delta);
-    appendCell(tr, lap.is_pit_out_lap ? "OUT" : "");
+    appendCell(tr, lap.is_pit_out_lap ? "出站圈" : "");
   });
 }
 
@@ -1001,7 +1119,7 @@ function renderStintTable() {
     .filter((s) => state.selectedDrivers.has(Number(s.driver_number)))
     .sort((a, b) => (d.finalPos.get(Number(a.driver_number)) ?? 99) - (d.finalPos.get(Number(b.driver_number)) ?? 99)
       || Number(a.stint_number) - Number(b.stint_number));
-  els.stintCount.textContent = `${rows.length} stints`;
+  els.stintCount.textContent = `${rows.length} 个轮胎段`;
   renderRows(els.stintRows, rows, 6, (tr, s) => {
     const n = Number(s.driver_number);
     const deg = degByKey.get(`${n}:${Number(s.stint_number)}`);
@@ -1009,30 +1127,20 @@ function renderStintTable() {
     appendCell(tr, s.stint_number, "number");
     appendCompoundCell(tr, s.compound);
     appendCell(tr, `${s.lap_start}–${s.lap_end}`);
-    appendCell(tr, deg && Number.isFinite(Number(deg.deg_rate_sec_per_lap)) ? `${Number(deg.deg_rate_sec_per_lap).toFixed(3)}s` : "—", "number");
+    appendCell(tr, deg && Number.isFinite(Number(deg.deg_rate_sec_per_lap)) ? `${Number(deg.deg_rate_sec_per_lap).toFixed(3)} 秒` : "—", "number");
     appendCell(tr, deg && Number.isFinite(Number(deg.best_lap_time)) ? formatLapTime(deg.best_lap_time) : "—", "number");
   });
 }
 
 function renderRadio() {
-  const term = state.search;
-  const rows = dataset("radio")
-    .filter((r) => state.selectedDrivers.has(Number(r.driver_number)))
-    .filter((r) => !r.approx_lap_number || inLapRange(r.approx_lap_number))
-    .filter((r) => {
-      if (!term) return true;
-      const hay = [r.name_acronym, r.team_name, r.transcript_en, r.transcript_zh, r.intent, r.sentiment]
-        .join(" ").toLowerCase();
-      return hay.includes(term);
-    })
-    .sort((a, b) => String(a.radio_time || "").localeCompare(String(b.radio_time || "")));
+  const rows = filteredRadioRows();
 
-  els.radioCount.textContent = `${rows.length} messages`;
+  els.radioCount.textContent = `${rows.length} 条消息`;
   els.radioList.replaceChildren();
   if (!rows.length) {
     const empty = document.createElement("div");
     empty.className = "empty";
-    empty.textContent = "No radio messages";
+    empty.textContent = "暂无无线电消息";
     els.radioList.appendChild(empty);
     return;
   }
@@ -1051,10 +1159,10 @@ function renderRadio() {
     who.textContent = driverAcr(n);
     const lap = document.createElement("span");
     lap.className = "lapTag";
-    lap.textContent = r.approx_lap_number ? `Lap ${r.approx_lap_number} · ${formatClock(r.radio_time)}` : formatClock(r.radio_time);
+    lap.textContent = r.approx_lap_number ? `第 ${r.approx_lap_number} 圈 · ${formatClock(r.radio_time)}` : formatClock(r.radio_time);
     const status = document.createElement("span");
     status.className = "tag";
-    status.textContent = r.intent && r.intent !== "audio" ? r.intent : (r.translation_status || "audio");
+    status.textContent = radioStatusLabel(r.intent && r.intent !== "audio" ? r.intent : (r.translation_status || "audio"));
     meta.append(bar, who, lap, status);
     row.appendChild(meta);
 
@@ -1079,30 +1187,30 @@ function renderRadio() {
 
 function renderExtraPanels() {
   const pit = dataset("pit_stops").filter((r) => state.selectedDrivers.has(Number(r.driver_number)) && inLapRange(r.lap_number));
-  const control = dataset("race_control").filter((r) => !r.lap_number || inLapRange(r.lap_number));
+  const control = filteredRaceControlRows();
   els.extraPanels.replaceChildren();
   if (pit.length) els.extraPanels.appendChild(pitPanel(pit));
   if (control.length) els.extraPanels.appendChild(controlPanel(control));
 }
 
 function pitPanel(rows) {
-  const panel = makePanel("Pit stops", `${rows.length} stops`);
-  const table = makeTable(["Lap", "Driver", "Duration"]);
+  const panel = makePanel("进站", `${rows.length} 次`);
+  const table = makeTable(["圈数", "车手", "耗时"]);
   renderRows(table.tbody, rows, 3, (tr, r) => {
     appendCell(tr, r.lap_number, "number");
     appendDriverCell(tr, Number(r.driver_number));
-    appendCell(tr, Number.isFinite(Number(r.pit_duration)) ? `${Number(r.pit_duration).toFixed(2)}s` : "—", "number");
+    appendCell(tr, Number.isFinite(Number(r.pit_duration)) ? `${Number(r.pit_duration).toFixed(2)} 秒` : "—", "number");
   });
   panel.appendChild(table.wrap);
   return panel;
 }
 
 function controlPanel(rows) {
-  const panel = makePanel("Race control", `${rows.length} messages`);
-  const table = makeTable(["Lap", "Flag", "Message"]);
+  const panel = makePanel("赛会控制", `${rows.length} 条消息`);
+  const table = makeTable(["圈数", "旗语", "消息"]);
   renderRows(table.tbody, rows, 3, (tr, r) => {
     appendCell(tr, r.lap_number ?? "—", "number");
-    appendTagCell(tr, r.flag || r.category || "—");
+    appendTagCell(tr, flagLabel(r.flag || r.category || "—"));
     appendCell(tr, r.message || "—");
   });
   panel.appendChild(table.wrap);
@@ -1116,6 +1224,165 @@ function filteredLaps() {
     .filter((l) => state.selectedDrivers.has(Number(l.driver_number)))
     .filter((l) => inLapRange(l.lap_number))
     .sort((a, b) => Number(a.lap_number) - Number(b.lap_number) || Number(a.driver_number) - Number(b.driver_number));
+}
+
+function filteredRadioRows() {
+  const term = state.search;
+  return dataset("radio")
+    .filter((r) => state.selectedDrivers.has(Number(r.driver_number)))
+    .filter((r) => !r.approx_lap_number || inLapRange(r.approx_lap_number))
+    .filter((r) => {
+      if (!term) return true;
+      const hay = [r.name_acronym, r.team_name, r.transcript_en, r.transcript_zh, r.intent, r.sentiment]
+        .join(" ").toLowerCase();
+      return hay.includes(term);
+    })
+    .sort((a, b) => String(a.radio_time || "").localeCompare(String(b.radio_time || "")));
+}
+
+function filteredRaceControlRows() {
+  return dataset("race_control")
+    .filter((r) => !r.lap_number || inLapRange(r.lap_number))
+    .sort((a, b) => Number(a.lap_number ?? 0) - Number(b.lap_number ?? 0)
+      || String(a.date || "").localeCompare(String(b.date || "")));
+}
+
+function selectedLapBounds() {
+  const laps = dataset("laps").map((l) => Number(l.lap_number)).filter(Number.isFinite);
+  const dataMin = laps.length ? Math.min(...laps) : null;
+  const dataMax = laps.length ? Math.max(...laps) : null;
+  return {
+    min: state.lapMin ?? dataMin,
+    max: state.lapMax ?? dataMax,
+  };
+}
+
+function fastestAveragePace(laps) {
+  const rows = [...groupBy(laps, (l) => Number(l.driver_number)).entries()]
+    .map(([n, driverLaps]) => {
+      const times = driverLaps.map((l) => Number(l.lap_duration)).filter(Number.isFinite);
+      return {
+        n,
+        count: times.length,
+        avg: trimmedAverage(times),
+        best: times.length ? Math.min(...times) : null,
+      };
+    })
+    .filter((r) => r.count >= 3 && Number.isFinite(r.avg));
+  rows.sort((a, b) => a.avg - b.avg);
+  return rows[0] || null;
+}
+
+function latePhaseTrend(laps) {
+  const lapNums = laps.map((l) => Number(l.lap_number)).filter(Number.isFinite);
+  if (!lapNums.length) return null;
+  const minLap = Math.min(...lapNums);
+  const maxLap = Math.max(...lapNums);
+  if (maxLap - minLap < 6) return null;
+
+  const split = Math.floor((minLap + maxLap) / 2);
+  const rows = [];
+  for (const [n, driverLaps] of groupBy(laps, (l) => Number(l.driver_number))) {
+    const early = driverLaps
+      .filter((l) => Number(l.lap_number) <= split)
+      .map((l) => Number(l.lap_duration))
+      .filter(Number.isFinite);
+    const late = driverLaps
+      .filter((l) => Number(l.lap_number) > split)
+      .map((l) => Number(l.lap_duration))
+      .filter(Number.isFinite);
+    if (early.length < 3 || late.length < 3) continue;
+    rows.push({
+      n,
+      delta: trimmedAverage(late) - trimmedAverage(early),
+      early: early.length,
+      late: late.length,
+    });
+  }
+  rows.sort((a, b) => a.delta - b.delta);
+  return rows[0] || null;
+}
+
+function bestDegradationStint(bounds) {
+  const rows = dataset("degradation")
+    .filter((r) => state.selectedDrivers.has(Number(r.driver_number)))
+    .map((r) => ({
+      n: Number(r.driver_number),
+      stint: Number(r.stint_number),
+      compound: String(r.compound || "").toUpperCase(),
+      start: Number(r.lap_start),
+      end: Number(r.lap_end),
+      len: Number(r.stint_length),
+      deg: Number(r.deg_rate_sec_per_lap),
+    }))
+    .filter((r) => Number.isFinite(r.deg) && r.len >= 5)
+    .filter((r) => rangesOverlap(r.start, r.end, bounds.min, bounds.max));
+  rows.sort((a, b) => a.deg - b.deg);
+  return rows[0] || null;
+}
+
+function biggestPositionSwing() {
+  const rows = [];
+  for (const n of state.selectedDrivers) {
+    const pts = (state.derived.positionByLap.get(n) || [])
+      .filter((p) => inLapRange(p.lap))
+      .sort((a, b) => a.lap - b.lap);
+    if (pts.length < 2) continue;
+    const first = pts[0];
+    const last = pts[pts.length - 1];
+    rows.push({
+      n,
+      from: first.pos,
+      to: last.pos,
+      gain: first.pos - last.pos,
+    });
+  }
+  rows.sort((a, b) => b.gain - a.gain || a.to - b.to);
+  return rows[0] || null;
+}
+
+function radioFocus(rows) {
+  const counts = new Map();
+  for (const row of rows) {
+    const n = Number(row.driver_number);
+    if (!Number.isFinite(n)) continue;
+    counts.set(n, (counts.get(n) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([n, count]) => ({ n, count }))
+    .sort((a, b) => b.count - a.count)[0] || null;
+}
+
+function raceControlHotspot(rows) {
+  const sessionStart = Date.parse(currentSession()?.date_start);
+  const inSessionRows = Number.isFinite(sessionStart)
+    ? rows.filter((r) => {
+      const t = Date.parse(r.date);
+      return !Number.isFinite(t) || t >= sessionStart;
+    })
+    : rows;
+  const relevant = inSessionRows.filter((r) => r.flag || r.category !== "Other");
+  const source = relevant.length ? relevant : inSessionRows;
+  const byLap = new Map();
+  for (const row of source) {
+    const lap = Number(row.lap_number);
+    if (!Number.isFinite(lap)) continue;
+    const bucket = getBucket(byLap, lap);
+    bucket.push(row);
+  }
+  let best = null;
+  for (const [lap, bucket] of byLap) {
+    if (!best || bucket.length > best.rows.length) best = { lap, rows: bucket };
+  }
+  if (!best) return null;
+  const lead = best.rows.find((r) => r.flag) || best.rows[0];
+  return {
+    lap: best.lap,
+    count: best.rows.length,
+    flag: lead.flag || "",
+    label: lead.flag || lead.category || "message cluster",
+    color: flagColor(lead.flag || lead.category),
+  };
 }
 
 function inLapRange(value) {
@@ -1138,6 +1405,27 @@ function currentSession() {
 }
 function currentMeeting() {
   return state.manifest.meetings.find((m) => Number(m.meeting_key) === Number(state.selectedMeetingKey));
+}
+function meetingDisplayName(meeting) {
+  const name = String(meeting?.meeting_name || "");
+  return name
+    .replace("Barcelona Grand Prix", "巴塞罗那大奖赛")
+    .replace("Barcelona", "巴塞罗那")
+    .replace("Grand Prix", "大奖赛")
+    .replace("GP", "大奖赛");
+}
+function sessionDisplayName(session) {
+  const raw = String(session?.session_name || session?.session_type || session?.session_key || "");
+  const key = raw.toLowerCase();
+  if (key === "race") return "正赛";
+  if (key.includes("qualifying")) return "排位赛";
+  if (key.includes("sprint shootout") || key.includes("sprint qualifying")) return "冲刺排位";
+  if (key.includes("sprint")) return "冲刺赛";
+  if (key.includes("practice 1") || key === "fp1") return "一练";
+  if (key.includes("practice 2") || key === "fp2") return "二练";
+  if (key.includes("practice 3") || key === "fp3") return "三练";
+  if (key.includes("practice")) return "练习赛";
+  return raw;
 }
 function meetingsForYear(year) {
   return state.manifest.meetings.filter((m) => Number(m.year) === Number(year));
@@ -1170,6 +1458,54 @@ function teamColor(driver) {
   const fallback = ["#e10600", "#00a19c", "#3b66ff", "#f7a600", "#7c3aed"];
   return fallback[Math.abs(Number(driver?.driver_number || 0)) % fallback.length];
 }
+function flagColor(value) {
+  const v = String(value || "").toUpperCase();
+  if (v.includes("GREEN")) return "#36d399";
+  if (v.includes("YELLOW")) return "#fbbf24";
+  if (v.includes("RED")) return "#ff4d4d";
+  if (v.includes("BLUE")) return "#4aa8ff";
+  if (v.includes("BLACK")) return "#d7dce6";
+  return "#7f8aa0";
+}
+function compoundLabel(value) {
+  const c = String(value || "").toUpperCase();
+  const labels = {
+    SOFT: "软胎",
+    MEDIUM: "中性胎",
+    HARD: "硬胎",
+    INTERMEDIATE: "半雨胎",
+    WET: "全雨胎",
+    UNKNOWN: "未知",
+  };
+  return labels[c] || titleCase(c);
+}
+function flagLabel(value) {
+  const v = String(value || "");
+  const key = v.toUpperCase();
+  const labels = {
+    GREEN: "绿旗",
+    YELLOW: "黄旗",
+    RED: "红旗",
+    BLUE: "蓝旗",
+    BLACK: "黑旗",
+    CLEAR: "解除",
+    FLAG: "旗语",
+    OTHER: "其他",
+    SESSIONSTATUS: "赛段状态",
+  };
+  return labels[key.replace(/\s+/g, "")] || v;
+}
+function radioStatusLabel(value) {
+  const key = String(value || "").toLowerCase();
+  const labels = {
+    audio: "音频",
+    audio_only: "仅音频",
+    pending: "待翻译",
+    translated: "已翻译",
+    failed: "翻译失败",
+  };
+  return labels[key] || value || "音频";
+}
 
 // ---------- Small DOM helpers ----------
 
@@ -1191,7 +1527,7 @@ function renderRows(tbody, rows, colspan, renderRow) {
     const td = document.createElement("td");
     td.colSpan = colspan;
     td.className = "empty";
-    td.textContent = "No data";
+    td.textContent = "暂无数据";
     tr.appendChild(td);
     tbody.appendChild(tr);
     return;
@@ -1231,7 +1567,7 @@ function appendCompoundCell(tr, compound) {
     const pill = document.createElement("span");
     pill.className = `compound ${c.toLowerCase()}`;
     pill.textContent = c.slice(0, 1);
-    pill.title = titleCase(c);
+    pill.title = compoundLabel(c);
     td.appendChild(pill);
   } else {
     td.textContent = "—";
@@ -1284,7 +1620,7 @@ function makeTable(headers) {
   const tr = document.createElement("tr");
   for (const h of headers) {
     const th = document.createElement("th");
-    if (h === "Lap" || h === "Duration") th.className = "number";
+    if (["圈数", "耗时"].includes(h)) th.className = "number";
     th.textContent = h;
     tr.appendChild(th);
   }
@@ -1328,6 +1664,12 @@ function validLapDuration(value) {
   return Number.isFinite(s) && s > 0;
 }
 
+function formatSignedSeconds(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "—";
+  return `${n > 0 ? "+" : ""}${n.toFixed(3)}s`;
+}
+
 function titleCase(str) {
   const s = String(str || "").toLowerCase();
   return s ? s[0].toUpperCase() + s.slice(1) : "";
@@ -1353,9 +1695,36 @@ function groupBy(rows, keyFn) {
   return map;
 }
 
+function getBucket(map, key) {
+  if (!map.has(key)) map.set(key, []);
+  return map.get(key);
+}
+
 function numberOrNull(value) {
   const n = Number(value);
   return Number.isFinite(n) ? n : null;
+}
+
+function average(values) {
+  const nums = values.filter(Number.isFinite);
+  return nums.length ? nums.reduce((sum, value) => sum + value, 0) / nums.length : null;
+}
+
+function trimmedAverage(values) {
+  const nums = values.filter(Number.isFinite).sort((a, b) => a - b);
+  if (!nums.length) return null;
+  const trim = nums.length >= 8 ? Math.floor(nums.length * 0.1) : 0;
+  const kept = nums.slice(trim, nums.length - trim || nums.length);
+  return average(kept);
+}
+
+function rangesOverlap(start, end, min, max) {
+  const a = Number(start);
+  const b = Number(end);
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return true;
+  if (min != null && b < min) return false;
+  if (max != null && a > max) return false;
+  return true;
 }
 
 function escapeHTML(value) {

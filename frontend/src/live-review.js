@@ -1,5 +1,6 @@
 const state = {
   data: null,
+  indexes: null,
   selectedDrivers: new Set(),
   search: "",
   lapFrom: null,
@@ -10,11 +11,11 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 const els = {};
+let booted = false;
 
 document.addEventListener("DOMContentLoaded", boot);
 if (document.readyState !== "loading") boot();
 
-let booted = false;
 async function boot() {
   if (booted) return;
   booted = true;
@@ -42,9 +43,57 @@ async function boot() {
   state.lapTo = state.data.stats.lap_max;
   els.lapFrom.value = state.lapFrom ?? "";
   els.lapTo.value = state.lapTo ?? "";
+  state.indexes = buildIndexes(state.data);
 
   bind();
   render();
+}
+
+function buildIndexes(data) {
+  const lapRowsByLap = new Map();
+  for (const row of data.lap_rows) {
+    const bucket = getBucket(lapRowsByLap, row.race_lap);
+    bucket.push(row);
+  }
+  for (const rows of lapRowsByLap.values()) {
+    rows.sort((a, b) => a.position - b.position);
+  }
+
+  const radios = data.radios.map((row) => ({
+    ...row,
+    search_blob: [row.driver, row.driver_tla, row.message, row.timestamp_text]
+      .join(" ")
+      .toLowerCase(),
+  }));
+  const radioRowsByLap = new Map();
+  const radioCountByDriver = new Map();
+  const unmappedRadioRows = [];
+  for (const row of radios) {
+    if (row.driver_tla) {
+      radioCountByDriver.set(row.driver_tla, (radioCountByDriver.get(row.driver_tla) ?? 0) + 1);
+    }
+    if (row.race_lap == null) {
+      unmappedRadioRows.push(row);
+    } else {
+      getBucket(radioRowsByLap, row.race_lap).push(row);
+    }
+  }
+  const byTime = (a, b) => (a.timestamp_ms ?? 0) - (b.timestamp_ms ?? 0);
+  for (const rows of radioRowsByLap.values()) rows.sort(byTime);
+  unmappedRadioRows.sort(byTime);
+
+  return {
+    lapRowsByLap,
+    radioRowsByLap,
+    radioCountByDriver,
+    unmappedRadioRows,
+    driverByTla: new Map(data.drivers.map((driver) => [driver.tla, driver])),
+  };
+}
+
+function getBucket(map, key) {
+  if (!map.has(key)) map.set(key, []);
+  return map.get(key);
 }
 
 function bind() {
@@ -115,15 +164,16 @@ function renderDrivers() {
 
 function renderTimeline() {
   const laps = visibleLaps();
-  els.timeline.replaceChildren();
   if (!laps.length) {
     const empty = document.createElement("div");
     empty.className = "empty";
     empty.textContent = "No timeline rows";
-    els.timeline.appendChild(empty);
+    els.timeline.replaceChildren(empty);
     return;
   }
 
+  const fragment = document.createDocumentFragment();
+  let rendered = 0;
   for (const lap of laps) {
     const rows = timingRowsForLap(lap);
     const radios = radioRowsForLap(lap);
@@ -132,13 +182,26 @@ function renderTimeline() {
     const section = document.createElement("article");
     section.className = `lapBlock ${radios.length ? "hasRadio" : ""}`;
     section.append(lapHeader(lap, rows, radios), lapBody(rows, radios));
-    els.timeline.appendChild(section);
+    fragment.appendChild(section);
+    rendered += 1;
   }
 
   if (state.showUnmapped) {
     const rows = unmappedRadios();
-    if (rows.length) els.timeline.appendChild(unmappedBlock(rows));
+    if (rows.length) {
+      fragment.appendChild(unmappedBlock(rows));
+      rendered += 1;
+    }
   }
+
+  if (!rendered) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No timeline rows";
+    fragment.appendChild(empty);
+  }
+
+  els.timeline.replaceChildren(fragment);
 }
 
 function lapHeader(lap, rows, radios) {
@@ -264,40 +327,33 @@ function visibleLaps() {
 }
 
 function timingRowsForLap(lap) {
-  return state.data.lap_rows
-    .filter((row) => row.race_lap === lap && state.selectedDrivers.has(row.driver))
-    .sort((a, b) => a.position - b.position);
+  return (state.indexes.lapRowsByLap.get(lap) ?? [])
+    .filter((row) => state.selectedDrivers.has(row.driver));
 }
 
 function radioRowsForLap(lap) {
-  return state.data.radios
-    .filter((row) => row.race_lap === lap)
+  return (state.indexes.radioRowsByLap.get(lap) ?? [])
     .filter((row) => !row.driver_tla || state.selectedDrivers.has(row.driver_tla))
-    .filter(matchesSearch)
-    .sort((a, b) => (a.timestamp_ms ?? 0) - (b.timestamp_ms ?? 0));
+    .filter(matchesSearch);
 }
 
 function unmappedRadios() {
-  return state.data.unmapped_radios
+  return state.indexes.unmappedRadioRows
     .filter((row) => !row.driver_tla || state.selectedDrivers.has(row.driver_tla))
-    .filter(matchesSearch)
-    .sort((a, b) => (a.timestamp_ms ?? 0) - (b.timestamp_ms ?? 0));
+    .filter(matchesSearch);
 }
 
 function matchesSearch(row) {
   if (!state.search) return true;
-  return [row.driver, row.driver_tla, row.message, row.timestamp_text]
-    .join(" ")
-    .toLowerCase()
-    .includes(state.search);
+  return row.search_blob.includes(state.search);
 }
 
 function radioCountFor(tla) {
-  return state.data.radios.filter((row) => row.driver_tla === tla).length;
+  return state.indexes.radioCountByDriver.get(tla) ?? 0;
 }
 
 function colorOf(tla) {
-  return state.data.drivers.find((driver) => driver.tla === tla)?.color ?? "#7f8aa0";
+  return state.indexes.driverByTla.get(tla)?.color ?? "#7f8aa0";
 }
 
 function stat(label, text) {
