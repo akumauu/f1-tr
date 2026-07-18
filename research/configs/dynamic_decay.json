@@ -1,0 +1,12 @@
+{
+  "experiment_name": "f1_interseason_decay_2023_2024_2025_v1",
+  "tuning_transition": "2023 train -> 2024 tune",
+  "final_transition": "2024 train -> 2025 exploratory validation",
+  "model": "driver_team_ridge_with_separate_driver_and_team_carryover",
+  "coarse_decay_grid": [0.0, 0.25, 0.5, 0.75, 1.0],
+  "refinement_half_width": 0.25,
+  "refinement_step": 0.05,
+  "max_attempts": 3,
+  "validation_status": "exploratory_but_decay_hyperparameters_are_selected_only_on_2023_to_2024",
+  "note": "2025 outcomes never select decay factors. Team identities are canonicalized using metadata aliases."
+}

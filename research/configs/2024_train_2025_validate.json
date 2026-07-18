@@ -1,0 +1,21 @@
+{
+  "experiment_name": "f1_driver_car_2024_train_2025_validate_v1",
+  "train_year": 2024,
+  "validation_year": 2025,
+  "session_names": ["Race", "Sprint"],
+  "dry_compounds": ["SOFT", "MEDIUM", "HARD"],
+  "max_attempts": 3,
+  "statement_timeout_ms": 60000,
+  "random_seed": 202407,
+  "group_cv_splits": 6,
+  "ridge_alphas": [0.1, 1.0, 10.0, 100.0, 1000.0],
+  "cleaning": {
+    "minimum_lap_number": 2,
+    "minimum_lap_duration_seconds": 40.0,
+    "maximum_lap_duration_seconds": 240.0,
+    "robust_mad_multiplier": 6.0,
+    "minimum_clean_laps_per_session": 30
+  },
+  "frozen_validation_policy": "2025 validation data is never used for feature selection, cleaning threshold selection, or hyperparameter selection",
+  "scope_note": "Race and Sprint are an explicit first-stage modeling scope. The canonical v4 layer contains Qualifying and Sprint Qualifying, which remain reserved for a separately specified model."
+}

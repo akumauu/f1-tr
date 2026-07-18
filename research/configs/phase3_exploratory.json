@@ -1,0 +1,20 @@
+{
+  "experiment_name": "f1_driver_car_phase3_exploratory_v1",
+  "parent_run_id": "f1_driver_car_2024_train_2025_validate_v1-20260717T000905",
+  "parent_config": "research/configs/2024_train_2025_validate.json",
+  "development_year": 2024,
+  "exploratory_validation_year": 2025,
+  "validation_status": "exploratory_after_primary_v1_results_were_inspected",
+  "final_confirmation_dataset": "2026 completed Race and Sprint sessions, frozen in a future phase",
+  "max_attempts": 3,
+  "models": [
+    "session_head_ridge",
+    "team_track_ridge",
+    "bayesian_driver_team"
+  ],
+  "rationale": {
+    "session_head_ridge": "Race and Sprint share base effects but receive separate driver/team heads.",
+    "team_track_ridge": "Tests a strongly regularized team-by-circuit track-fit component.",
+    "bayesian_driver_team": "Adds coefficient and predictive uncertainty using evidence-optimized Bayesian ridge."
+  }
+}

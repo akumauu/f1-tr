@@ -10,6 +10,8 @@ F1 TR 是一个用于 F1 赛后复盘的非严肃专业平台。它聚合全场�
 
 - [开发技术统一文档](docs/technical-overview.md)
 - [测试策略](docs/test-strategy.md)
+- [本地数据采集与代理调用说明](docs/local-data-pipeline.md)
+- [2026-07-18 本地存储瘦身报告](docs/storage-cleanup-20260718.md)
 
 当前已知状态：
 

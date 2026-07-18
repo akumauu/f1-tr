@@ -1,0 +1,96 @@
+{
+  "created_at": "2026-07-18T10:28:37+08:00",
+  "config_hash": "18ba6389b78cf891725516b69930ac41004856c3e853f173b0f9100355dfef7b",
+  "query_version": "tracinginsights_expanded_v4_lap_freeze_v1",
+  "data_source": "canonical_parquet",
+  "degraded": false,
+  "repository_commit": "539907e7e7fc614ab0b2d33e7e30d9026feb7539",
+  "source_provenance": {
+    "schema_version": "tracinginsights-expanded-v4",
+    "catalogs": [
+      {
+        "year": 2023,
+        "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2023/commit=e4b7468f2cdc/manifest.json",
+        "manifest_sha256": "553850038060f623dc1b2e48687283a8d2920e88158f705febbc414bbd54b399",
+        "source_repository": "https://github.com/TracingInsights-Archive/2023.git",
+        "source_commit": "e4b7468f2cdc1a2f86ba94a1eb8f1477719ea582",
+        "selected_partitions": 28,
+        "selected_rows": 19445619,
+        "selected_parquet_bytes": 1322535009
+      },
+      {
+        "year": 2024,
+        "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2024/commit=869496da863e/manifest.json",
+        "manifest_sha256": "85b8254460910da772cc7c48a198c751de7c4f1619d402088ae7662839432a8e",
+        "source_repository": "https://github.com/TracingInsights-Archive/2024.git",
+        "source_commit": "869496da863e00e4b060e98d52b9826d0ac4005c",
+        "selected_partitions": 30,
+        "selected_rows": 20621098,
+        "selected_parquet_bytes": 1421132025
+      }
+    ],
+    "selected_file_count": 58,
+    "selected_file_set_sha256": "bd32a0538aae2d83770d938c948661308afeb3e96b32726556fb636e8abd7f03",
+    "acceptance_report": {
+      "path": "data/logs/parquet-acceptance-report.json",
+      "sha256": "1ab5e0c0d962b0fa46d14f4f95698380389f8182fbec5e6ed4d646740aaf1f3e"
+    }
+  },
+  "raw_rows": 55622,
+  "candidate_rows_before_robust_filter": 44090,
+  "clean_rows": 43871,
+  "train_rows": 20706,
+  "validation_rows": 23165,
+  "train_sessions": 27,
+  "validation_sessions": 29,
+  "train_meetings": 22,
+  "validation_meetings": 24,
+  "summary_by_year_session": [
+    {
+      "year": 2023,
+      "session_name": "Race",
+      "rows": 19509,
+      "sessions": 22
+    },
+    {
+      "year": 2023,
+      "session_name": "Sprint",
+      "rows": 1197,
+      "sessions": 5
+    },
+    {
+      "year": 2024,
+      "session_name": "Race",
+      "rows": 21047,
+      "sessions": 23
+    },
+    {
+      "year": 2024,
+      "session_name": "Sprint",
+      "rows": 2118,
+      "sessions": 6
+    }
+  ],
+  "independent_exclusion_counts": {
+    "candidate_rows_before_robust_filter": 44090,
+    "duration_out_of_bounds": 592,
+    "lap_before_minimum": 1155,
+    "non_dry_compound": 3646,
+    "missing_tyre_age": 47,
+    "inaccurate_including_pit_or_sc": 6842,
+    "deleted": 807,
+    "non_green_track_status": 4927,
+    "multiple_source_commits_in_lap": 0,
+    "robust_mad_outlier": 219
+  },
+  "files": {
+    "train": {
+      "path": "research/artifacts/data/dynamic_tune_train_2023.csv.gz",
+      "sha256": "40af0ea13425349fade09c3e02ecbcb4ed1edcf6cc1b9b8978e9bc860b3ff13b"
+    },
+    "validation": {
+      "path": "research/artifacts/data/dynamic_tune_validation_2024.csv.gz",
+      "sha256": "82078a356dcd1f031a8df6ee22b3fc4119e1f361dea349cef00c4f6312391111"
+    }
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "run_id": "f1_driver_car_2024_train_2025_validate_v1-20260718T102902",
+  "created_at": "2026-07-18T10:30:17+08:00",
+  "git_head": "539907e7e7fc614ab0b2d33e7e30d9026feb7539",
+  "config": {
+    "experiment_name": "f1_driver_car_2024_train_2025_validate_v1",
+    "train_year": 2024,
+    "validation_year": 2025,
+    "session_names": [
+      "Race",
+      "Sprint"
+    ],
+    "dry_compounds": [
+      "SOFT",
+      "MEDIUM",
+      "HARD"
+    ],
+    "max_attempts": 3,
+    "statement_timeout_ms": 60000,
+    "random_seed": 202407,
+    "group_cv_splits": 6,
+    "ridge_alphas": [
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "cleaning": {
+      "minimum_lap_number": 2,
+      "minimum_lap_duration_seconds": 40.0,
+      "maximum_lap_duration_seconds": 240.0,
+      "robust_mad_multiplier": 6.0,
+      "minimum_clean_laps_per_session": 30
+    },
+    "frozen_validation_policy": "2025 validation data is never used for feature selection, cleaning threshold selection, or hyperparameter selection",
+    "scope_note": "Race and Sprint are an explicit first-stage modeling scope. The canonical v4 layer contains Qualifying and Sprint Qualifying, which remain reserved for a separately specified model."
+  },
+  "config_hash": "107c26764fd4825dc5fbdfe57ea1261bbab0de40c7c9758d9b74e6eafdf37a0a",
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.5.2",
+    "postgresql_client": "3.3.4"
+  },
+  "data_manifest": {
+    "created_at": "2026-07-18T10:28:37+08:00",
+    "config_hash": "107c26764fd4825dc5fbdfe57ea1261bbab0de40c7c9758d9b74e6eafdf37a0a",
+    "query_version": "tracinginsights_expanded_v4_lap_freeze_v1",
+    "data_source": "canonical_parquet",
+    "degraded": false,
+    "repository_commit": "539907e7e7fc614ab0b2d33e7e30d9026feb7539",
+    "source_provenance": {
+      "schema_version": "tracinginsights-expanded-v4",
+      "catalogs": [
+        {
+          "year": 2024,
+          "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2024/commit=869496da863e/manifest.json",
+          "manifest_sha256": "85b8254460910da772cc7c48a198c751de7c4f1619d402088ae7662839432a8e",
+          "source_repository": "https://github.com/TracingInsights-Archive/2024.git",
+          "source_commit": "869496da863e00e4b060e98d52b9826d0ac4005c",
+          "selected_partitions": 30,
+          "selected_rows": 20621098,
+          "selected_parquet_bytes": 1421132025
+        },
+        {
+          "year": 2025,
+          "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/manifest.json",
+          "manifest_sha256": "0f908284d0ca5194093557415dce4274a49f78ccd20da5d737d72f1f5d7e3c31",
+          "source_repository": "https://github.com/TracingInsights-Archive/2025.git",
+          "source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6",
+          "selected_partitions": 30,
+          "selected_rows": 20080178,
+          "selected_parquet_bytes": 1404469691
+        }
+      ],
+      "selected_file_count": 60,
+      "selected_file_set_sha256": "77f20d9b04db831b4317cc0a9c73eec519bb02dd7ec8bd9e38daeacdc5e0fb61",
+      "acceptance_report": {
+        "path": "data/logs/parquet-acceptance-report.json",
+        "sha256": "1ab5e0c0d962b0fa46d14f4f95698380389f8182fbec5e6ed4d646740aaf1f3e"
+      }
+    },
+    "raw_rows": 57868,
+    "candidate_rows_before_robust_filter": 45546,
+    "clean_rows": 45410,
+    "train_rows": 23165,
+    "validation_rows": 22245,
+    "train_sessions": 29,
+    "validation_sessions": 29,
+    "train_meetings": 24,
+    "validation_meetings": 24,
+    "summary_by_year_session": [
+      {
+        "year": 2024,
+        "session_name": "Race",
+        "rows": 21047,
+        "sessions": 23
+      },
+      {
+        "year": 2024,
+        "session_name": "Sprint",
+        "rows": 2118,
+        "sessions": 6
+      },
+      {
+        "year": 2025,
+        "session_name": "Race",
+        "rows": 20795,
+        "sessions": 24
+      },
+      {
+        "year": 2025,
+        "session_name": "Sprint",
+        "rows": 1450,
+        "sessions": 5
+      }
+    ],
+    "independent_exclusion_counts": {
+      "candidate_rows_before_robust_filter": 45546,
+      "duration_out_of_bounds": 475,
+      "lap_before_minimum": 1196,
+      "non_dry_compound": 4558,
+      "missing_tyre_age": 538,
+      "inaccurate_including_pit_or_sc": 7368,
+      "deleted": 713,
+      "non_green_track_status": 5316,
+      "multiple_source_commits_in_lap": 0,
+      "robust_mad_outlier": 133
+    },
+    "files": {
+      "train": {
+        "path": "research/artifacts/data/train_2024.csv.gz",
+        "sha256": "8a2b28213e01faa27552d82c87e229d55fb5d40039af31f192f171cdf41b5dce"
+      },
+      "validation": {
+        "path": "research/artifacts/data/validation_2025.csv.gz",
+        "sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671"
+      }
+    }
+  },
+  "zero_baseline": {
+    "validation_metrics": {
+      "mae": 1.0988270237567002,
+      "rmse": 1.3964107603005853,
+      "r2": -0.0001624365796619731,
+      "bias": -0.01779589501494095
+    }
+  },
+  "models": {
+    "context_ridge": {
+      "name": "context_ridge",
+      "phase": "phase_1",
+      "status": "success",
+      "solver": "lsqr",
+      "selected_alpha": 100.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.9361393745511079,
+        "1.0": 0.9361241997244595,
+        "10.0": 0.9359864585632613,
+        "100.0": 0.935822512665831,
+        "1000.0": 0.9462275299036916
+      },
+      "train_metrics": {
+        "mae": 0.8919322916744375,
+        "rmse": 1.1998437302662854,
+        "r2": 0.348342847798072,
+        "bias": -4.49667882850985e-15
+      },
+      "validation_metrics": {
+        "mae": 0.9060835417490791,
+        "rmse": 1.2141846492148372,
+        "r2": 0.24384010111084653,
+        "bias": 0.03803692579040021
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.896094715437443,
+          "rmse": 1.2061450897956736,
+          "r2": 0.27629591033979306,
+          "bias": 0.04962639524244453
+        },
+        "Sprint": {
+          "mae": 1.049337088749407,
+          "rmse": 1.3241240269952068,
+          "r2": -0.6224284935232702,
+          "bias": -0.12817205162702155
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.19119032495894653,
+        "ci95_low": -0.2858458083550711,
+        "ci95_high": -0.06514924745598162,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0
+      },
+      "ratings": {
+        "drivers": [],
+        "teams": []
+      },
+      "feature_count_after_encoding": 33,
+      "attempts": 1
+    },
+    "driver_only_ridge": {
+      "name": "driver_only_ridge",
+      "phase": "phase_1",
+      "status": "success",
+      "solver": "lsqr",
+      "selected_alpha": 10.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.7262149371446643,
+        "1.0": 0.7261801804932705,
+        "10.0": 0.7258761479157995,
+        "100.0": 0.7266227933480408,
+        "1000.0": 0.7938706042167077
+      },
+      "train_metrics": {
+        "mae": 0.6650111500700707,
+        "rmse": 0.9672578525981702,
+        "r2": 0.5764991155756528,
+        "bias": -5.022722770589959e-15
+      },
+      "validation_metrics": {
+        "mae": 0.8229630804841923,
+        "rmse": 1.1346096497954348,
+        "r2": 0.3397063632592272,
+        "bias": -0.028351293937475062
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.8112682261223647,
+          "rmse": 1.1248819526556393,
+          "r2": 0.370528866713733,
+          "bias": -0.015444803329130983
+        },
+        "Sprint": {
+          "mae": 0.990683422866401,
+          "rmse": 1.2659216228293197,
+          "r2": -0.48293415698122044,
+          "bias": -0.2134481713171409
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.27171707437558246,
+        "ci95_low": -0.3899892159860705,
+        "ci95_high": -0.10131806537430474,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "driver_id": 0.14951674533603057
+      },
+      "ratings": {
+        "drivers": [
+          {
+            "entity": "VER",
+            "pace_advantage_pct": 1.184246479670195
+          },
+          {
+            "entity": "NOR",
+            "pace_advantage_pct": 1.1817700344177662
+          },
+          {
+            "entity": "LEC",
+            "pace_advantage_pct": 0.9791487024314091
+          },
+          {
+            "entity": "SAI",
+            "pace_advantage_pct": 0.8869399634433176
+          },
+          {
+            "entity": "PIA",
+            "pace_advantage_pct": 0.8580065426103942
+          },
+          {
+            "entity": "RUS",
+            "pace_advantage_pct": 0.7268265741163646
+          },
+          {
+            "entity": "HAM",
+            "pace_advantage_pct": 0.709105419620789
+          },
+          {
+            "entity": "PER",
+            "pace_advantage_pct": 0.4988981931560404
+          },
+          {
+            "entity": "BEA",
+            "pace_advantage_pct": 0.11114310479537934
+          },
+          {
+            "entity": "ALO",
+            "pace_advantage_pct": -0.08727412095241645
+          },
+          {
+            "entity": "HUL",
+            "pace_advantage_pct": -0.1676924688414028
+          },
+          {
+            "entity": "COL",
+            "pace_advantage_pct": -0.20239821690356657
+          },
+          {
+            "entity": "STR",
+            "pace_advantage_pct": -0.2957371058884007
+          },
+          {
+            "entity": "GAS",
+            "pace_advantage_pct": -0.3440488893936725
+          },
+          {
+            "entity": "MAG",
+            "pace_advantage_pct": -0.40321770628775483
+          },
+          {
+            "entity": "LAW",
+            "pace_advantage_pct": -0.43449755223935144
+          },
+          {
+            "entity": "ALB",
+            "pace_advantage_pct": -0.47910112476988553
+          },
+          {
+            "entity": "RIC",
+            "pace_advantage_pct": -0.4835792383815617
+          },
+          {
+            "entity": "TSU",
+            "pace_advantage_pct": -0.4853795744353149
+          },
+          {
+            "entity": "OCO",
+            "pace_advantage_pct": -0.6032668511973094
+          },
+          {
+            "entity": "DOO",
+            "pace_advantage_pct": -0.6578855062466559
+          },
+          {
+            "entity": "ZHO",
+            "pace_advantage_pct": -0.8079126858935597
+          },
+          {
+            "entity": "BOT",
+            "pace_advantage_pct": -0.8365116696644685
+          },
+          {
+            "entity": "SAR",
+            "pace_advantage_pct": -0.8475823031663345
+          }
+        ],
+        "teams": []
+      },
+      "feature_count_after_encoding": 57,
+      "attempts": 1
+    },
+    "team_only_ridge": {
+      "name": "team_only_ridge",
+      "phase": "phase_1",
+      "status": "success",
+      "solver": "lsqr",
+      "selected_alpha": 10.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.7338616662366598,
+        "1.0": 0.7338465423630604,
+        "10.0": 0.7337216826416353,
+        "100.0": 0.7343790250656989,
+        "1000.0": 0.7711488437830223
+      },
+      "train_metrics": {
+        "mae": 0.6769074733077379,
+        "rmse": 0.9795459980669913,
+        "r2": 0.565670365416401,
+        "bias": -5.0159746850355785e-15
+      },
+      "validation_metrics": {
+        "mae": 0.8432087335268266,
+        "rmse": 1.1557207296915368,
+        "r2": 0.31490630224649774,
+        "bias": 0.003478769993682759
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.8325330649352876,
+          "rmse": 1.147714305233412,
+          "r2": 0.3447160813663862,
+          "bias": 0.0161791573159256
+        },
+        "Sprint": {
+          "mae": 0.9963125461896235,
+          "rmse": 1.2649814693533648,
+          "r2": -0.4807323334687408,
+          "bias": -0.17866230198289682
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.2541540728909405,
+        "ci95_low": -0.3662342060799349,
+        "ci95_high": -0.10411641445111498,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "team_name": 0.10213531130591144
+      },
+      "ratings": {
+        "drivers": [],
+        "teams": [
+          {
+            "entity": "McLaren",
+            "pace_advantage_pct": 0.9503567284522406
+          },
+          {
+            "entity": "Ferrari",
+            "pace_advantage_pct": 0.8559407455627471
+          },
+          {
+            "entity": "Red Bull Racing",
+            "pace_advantage_pct": 0.7913502851129448
+          },
+          {
+            "entity": "Mercedes",
+            "pace_advantage_pct": 0.6497340696257321
+          },
+          {
+            "entity": "Aston Martin",
+            "pace_advantage_pct": -0.2621175188807443
+          },
+          {
+            "entity": "Haas F1 Team",
+            "pace_advantage_pct": -0.3508470155912709
+          },
+          {
+            "entity": "RB",
+            "pace_advantage_pct": -0.5533190414013955
+          },
+          {
+            "entity": "Alpine",
+            "pace_advantage_pct": -0.5553193112029685
+          },
+          {
+            "entity": "Williams",
+            "pace_advantage_pct": -0.6278489803336664
+          },
+          {
+            "entity": "Kick Sauber",
+            "pace_advantage_pct": -0.8979299613436187
+          }
+        ]
+      },
+      "feature_count_after_encoding": 43,
+      "attempts": 1
+    },
+    "driver_team_ridge": {
+      "name": "driver_team_ridge",
+      "phase": "phase_2",
+      "status": "success",
+      "solver": "lsqr",
+      "selected_alpha": 10.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.7258562960513465,
+        "1.0": 0.7258386668988658,
+        "10.0": 0.7256105442534535,
+        "100.0": 0.7259244643417676,
+        "1000.0": 0.7547560714279302
+      },
+      "train_metrics": {
+        "mae": 0.6652000843548178,
+        "rmse": 0.9670828922754237,
+        "r2": 0.5766523097831544,
+        "bias": -5.02394969523621e-15
+      },
+      "validation_metrics": {
+        "mae": 0.8056186898961752,
+        "rmse": 1.1187227037864576,
+        "r2": 0.358067934339275,
+        "bias": -0.03330543601026425
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.7936351085770369,
+          "rmse": 1.1096947139484241,
+          "r2": 0.38741133719897103,
+          "bias": -0.02074185838513076
+        },
+        "Sprint": {
+          "mae": 0.9774797750903004,
+          "rmse": 1.2409924328840567,
+          "r2": -0.4251038038033814,
+          "bias": -0.21348446822726494
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.2968028955222526,
+        "ci95_low": -0.4180034363080669,
+        "ci95_high": -0.13970779144033743,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "driver_id": 0.14951674533603057,
+        "team_name": 0.10213531130591144
+      },
+      "ratings": {
+        "drivers": [
+          {
+            "entity": "VER",
+            "pace_advantage_pct": 0.6101323008789216
+          },
+          {
+            "entity": "NOR",
+            "pace_advantage_pct": 0.4892405590624469
+          },
+          {
+            "entity": "LEC",
+            "pace_advantage_pct": 0.4068010977194553
+          },
+          {
+            "entity": "SAI",
+            "pace_advantage_pct": 0.31555897261315835
+          },
+          {
+            "entity": "RUS",
+            "pace_advantage_pct": 0.23545035328481417
+          },
+          {
+            "entity": "HAM",
+            "pace_advantage_pct": 0.21788978103931017
+          },
+          {
+            "entity": "PIA",
+            "pace_advantage_pct": 0.1660735926959714
+          },
+          {
+            "entity": "COL",
+            "pace_advantage_pct": 0.15827708085128028
+          },
+          {
+            "entity": "GAS",
+            "pace_advantage_pct": 0.06601499850222589
+          },
+          {
+            "entity": "ALO",
+            "pace_advantage_pct": 0.026835664421580436
+          },
+          {
+            "entity": "HUL",
+            "pace_advantage_pct": -0.03565449956328626
+          },
+          {
+            "entity": "BEA",
+            "pace_advantage_pct": -0.05774965325480153
+          },
+          {
+            "entity": "PER",
+            "pace_advantage_pct": -0.07410666793309999
+          },
+          {
+            "entity": "ALB",
+            "pace_advantage_pct": -0.10468740680229688
+          },
+          {
+            "entity": "LAW",
+            "pace_advantage_pct": -0.10821336602028829
+          },
+          {
+            "entity": "RIC",
+            "pace_advantage_pct": -0.13999823745636042
+          },
+          {
+            "entity": "TSU",
+            "pace_advantage_pct": -0.1405198654138709
+          },
+          {
+            "entity": "STR",
+            "pace_advantage_pct": -0.18354903352001567
+          },
+          {
+            "entity": "OCO",
+            "pace_advantage_pct": -0.19090358422463619
+          },
+          {
+            "entity": "MAG",
+            "pace_advantage_pct": -0.27061945562908946
+          },
+          {
+            "entity": "ZHO",
+            "pace_advantage_pct": -0.27633928605655494
+          },
+          {
+            "entity": "BOT",
+            "pace_advantage_pct": -0.30324308049624943
+          },
+          {
+            "entity": "DOO",
+            "pace_advantage_pct": -0.3335786724146211
+          },
+          {
+            "entity": "SAR",
+            "pace_advantage_pct": -0.473111592283993
+          }
+        ],
+        "teams": [
+          {
+            "entity": "McLaren",
+            "pace_advantage_pct": 0.6553141517585275
+          },
+          {
+            "entity": "Red Bull Racing",
+            "pace_advantage_pct": 0.536025632945778
+          },
+          {
+            "entity": "Ferrari",
+            "pace_advantage_pct": 0.5332272730988938
+          },
+          {
+            "entity": "Mercedes",
+            "pace_advantage_pct": 0.453340134324142
+          },
+          {
+            "entity": "Aston Martin",
+            "pace_advantage_pct": -0.15671336909843278
+          },
+          {
+            "entity": "Haas F1 Team",
+            "pace_advantage_pct": -0.17489081121353994
+          },
+          {
+            "entity": "RB",
+            "pace_advantage_pct": -0.38873146889051174
+          },
+          {
+            "entity": "Williams",
+            "pace_advantage_pct": -0.41952191823501145
+          },
+          {
+            "entity": "Alpine",
+            "pace_advantage_pct": -0.4584672581370378
+          },
+          {
+            "entity": "Kick Sauber",
+            "pace_advantage_pct": -0.5795823665528077
+          }
+        ]
+      },
+      "feature_count_after_encoding": 67,
+      "attempts": 1
+    }
+  }
+}

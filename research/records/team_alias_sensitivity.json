@@ -1,0 +1,143 @@
+{
+  "run_id": "team_alias_sensitivity-20260717T001858",
+  "created_at": "2026-07-17T00:19:11+08:00",
+  "methodological_status": "post_hoc_metadata_sensitivity_after_primary_2025_validation",
+  "alias_version": "2026-07-17-v1",
+  "aliases": {
+    "Alpine F1 Team": "Alpine",
+    "RB F1 Team": "RB",
+    "Racing Bulls": "RB",
+    "Red Bull": "Red Bull Racing",
+    "Sauber": "Kick Sauber"
+  },
+  "locked_parent_run_id": "f1_driver_car_2024_train_2025_validate_v1-20260717T000905",
+  "data_manifest_hash": "3e2bc5b1e33c4c4aa7ce2e6054693eba15528c32fce8192c7d76a3dc845bb2b6",
+  "variants": {
+    "original": {
+      "context_ridge": {
+        "validation_metrics": {
+          "mae": 0.9192966082376535,
+          "rmse": 1.2560432071662757,
+          "r2": 0.2464574741822666,
+          "bias": 0.0733396479200622
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0
+        }
+      },
+      "driver_only_ridge": {
+        "validation_metrics": {
+          "mae": 0.8381398285650947,
+          "rmse": 1.1771526530188696,
+          "r2": 0.3381429796925127,
+          "bias": 0.011908381203752086
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "driver_id": 0.1508535489667565
+        }
+      },
+      "team_only_ridge": {
+        "validation_metrics": {
+          "mae": 0.827276885793874,
+          "rmse": 1.150376585682585,
+          "r2": 0.3679103551398366,
+          "bias": 0.022463647830324514
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "team_name": 0.13324348607367476
+        }
+      },
+      "driver_team_ridge": {
+        "validation_metrics": {
+          "mae": 0.7905907641634926,
+          "rmse": 1.1158726682525404,
+          "r2": 0.40525898620027545,
+          "bias": -0.013890605971503382
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "driver_id": 0.1508535489667565,
+          "team_name": 0.13324348607367476
+        }
+      }
+    },
+    "canonical": {
+      "context_ridge": {
+        "validation_metrics": {
+          "mae": 0.9192966082376535,
+          "rmse": 1.2560432071662757,
+          "r2": 0.2464574741822666,
+          "bias": 0.0733396479200622
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0
+        }
+      },
+      "driver_only_ridge": {
+        "validation_metrics": {
+          "mae": 0.8381398285650947,
+          "rmse": 1.1771526530188696,
+          "r2": 0.3381429796925127,
+          "bias": 0.011908381203752086
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "driver_id": 0.1508535489667565
+        }
+      },
+      "team_only_ridge": {
+        "validation_metrics": {
+          "mae": 0.8367733312640808,
+          "rmse": 1.15323479857572,
+          "r2": 0.3647654873072911,
+          "bias": 0.08471511728976443
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "team_name": 0.0
+        }
+      },
+      "driver_team_ridge": {
+        "validation_metrics": {
+          "mae": 0.7973309386184867,
+          "rmse": 1.1174924732289282,
+          "r2": 0.4035310763894494,
+          "bias": 0.030758804785906497
+        },
+        "unseen_category_rates": {
+          "compound": 0.0,
+          "circuit_name": 0.0,
+          "session_name": 0.0,
+          "driver_id": 0.1508535489667565,
+          "team_name": 0.0
+        }
+      }
+    }
+  },
+  "joint_model_canonical_vs_original": {
+    "observed_mae_delta": 0.006740174454994086,
+    "bootstrap_mean": 0.006817261478747388,
+    "ci95_low": 0.001110872761139925,
+    "ci95_high": 0.012765465467800635,
+    "probability_first_better": 0.0096,
+    "interpretation": "negative delta favors first_model",
+    "bootstrap_unit": "meeting",
+    "repetitions": 5000
+  }
+}

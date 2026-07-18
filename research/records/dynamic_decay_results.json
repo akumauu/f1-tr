@@ -1,0 +1,299 @@
+{
+  "run_id": "f1_interseason_decay_2023_2024_2025_v1-20260718T103029",
+  "created_at": "2026-07-18T10:31:52+08:00",
+  "decay_config": {
+    "experiment_name": "f1_interseason_decay_2023_2024_2025_v1",
+    "tuning_transition": "2023 train -> 2024 tune",
+    "final_transition": "2024 train -> 2025 exploratory validation",
+    "model": "driver_team_ridge_with_separate_driver_and_team_carryover",
+    "coarse_decay_grid": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "refinement_half_width": 0.25,
+    "refinement_step": 0.05,
+    "max_attempts": 3,
+    "validation_status": "exploratory_but_decay_hyperparameters_are_selected_only_on_2023_to_2024",
+    "note": "2025 outcomes never select decay factors. Team identities are canonicalized using metadata aliases."
+  },
+  "alias_version": "2026-07-17-v1",
+  "primary_manifest_hash": "353cc15fd4084e2400ad1157fa65508ca3a7d2d64a144d1abcb649207b5b865c",
+  "tuning_manifest": {
+    "created_at": "2026-07-18T10:28:37+08:00",
+    "config_hash": "18ba6389b78cf891725516b69930ac41004856c3e853f173b0f9100355dfef7b",
+    "query_version": "tracinginsights_expanded_v4_lap_freeze_v1",
+    "data_source": "canonical_parquet",
+    "degraded": false,
+    "repository_commit": "539907e7e7fc614ab0b2d33e7e30d9026feb7539",
+    "source_provenance": {
+      "schema_version": "tracinginsights-expanded-v4",
+      "catalogs": [
+        {
+          "year": 2023,
+          "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2023/commit=e4b7468f2cdc/manifest.json",
+          "manifest_sha256": "553850038060f623dc1b2e48687283a8d2920e88158f705febbc414bbd54b399",
+          "source_repository": "https://github.com/TracingInsights-Archive/2023.git",
+          "source_commit": "e4b7468f2cdc1a2f86ba94a1eb8f1477719ea582",
+          "selected_partitions": 28,
+          "selected_rows": 19445619,
+          "selected_parquet_bytes": 1322535009
+        },
+        {
+          "year": 2024,
+          "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2024/commit=869496da863e/manifest.json",
+          "manifest_sha256": "85b8254460910da772cc7c48a198c751de7c4f1619d402088ae7662839432a8e",
+          "source_repository": "https://github.com/TracingInsights-Archive/2024.git",
+          "source_commit": "869496da863e00e4b060e98d52b9826d0ac4005c",
+          "selected_partitions": 30,
+          "selected_rows": 20621098,
+          "selected_parquet_bytes": 1421132025
+        }
+      ],
+      "selected_file_count": 58,
+      "selected_file_set_sha256": "bd32a0538aae2d83770d938c948661308afeb3e96b32726556fb636e8abd7f03",
+      "acceptance_report": {
+        "path": "data/logs/parquet-acceptance-report.json",
+        "sha256": "1ab5e0c0d962b0fa46d14f4f95698380389f8182fbec5e6ed4d646740aaf1f3e"
+      }
+    },
+    "raw_rows": 55622,
+    "candidate_rows_before_robust_filter": 44090,
+    "clean_rows": 43871,
+    "train_rows": 20706,
+    "validation_rows": 23165,
+    "train_sessions": 27,
+    "validation_sessions": 29,
+    "train_meetings": 22,
+    "validation_meetings": 24,
+    "summary_by_year_session": [
+      {
+        "year": 2023,
+        "session_name": "Race",
+        "rows": 19509,
+        "sessions": 22
+      },
+      {
+        "year": 2023,
+        "session_name": "Sprint",
+        "rows": 1197,
+        "sessions": 5
+      },
+      {
+        "year": 2024,
+        "session_name": "Race",
+        "rows": 21047,
+        "sessions": 23
+      },
+      {
+        "year": 2024,
+        "session_name": "Sprint",
+        "rows": 2118,
+        "sessions": 6
+      }
+    ],
+    "independent_exclusion_counts": {
+      "candidate_rows_before_robust_filter": 44090,
+      "duration_out_of_bounds": 592,
+      "lap_before_minimum": 1155,
+      "non_dry_compound": 3646,
+      "missing_tyre_age": 47,
+      "inaccurate_including_pit_or_sc": 6842,
+      "deleted": 807,
+      "non_green_track_status": 4927,
+      "multiple_source_commits_in_lap": 0,
+      "robust_mad_outlier": 219
+    },
+    "files": {
+      "train": {
+        "path": "research/artifacts/data/dynamic_tune_train_2023.csv.gz",
+        "sha256": "40af0ea13425349fade09c3e02ecbcb4ed1edcf6cc1b9b8978e9bc860b3ff13b"
+      },
+      "validation": {
+        "path": "research/artifacts/data/dynamic_tune_validation_2024.csv.gz",
+        "sha256": "82078a356dcd1f031a8df6ee22b3fc4119e1f361dea349cef00c4f6312391111"
+      }
+    }
+  },
+  "model": {
+    "status": "success",
+    "attempt": 1,
+    "solver": "lsqr",
+    "selected_alpha_2023_group_cv": 100.0,
+    "alpha_2023_cv_scores": {
+      "0.1": 0.6869641231183938,
+      "1.0": 0.6869146955683393,
+      "10.0": 0.6864932306488988,
+      "100.0": 0.6847103666645425,
+      "1000.0": 0.7025467528583663
+    },
+    "final_alpha_2024_locked": 10.0,
+    "selected_decay_on_2023_to_2024": {
+      "driver_decay": 1.0,
+      "team_decay": 1.0,
+      "mae": 0.782039817317222
+    },
+    "decay_search_top_20": [
+      {
+        "driver_decay": 1.0,
+        "team_decay": 1.0,
+        "mae": 0.782039817317222
+      },
+      {
+        "driver_decay": 0.95,
+        "team_decay": 1.0,
+        "mae": 0.7825810441716445
+      },
+      {
+        "driver_decay": 1.0,
+        "team_decay": 0.95,
+        "mae": 0.7830898371667454
+      },
+      {
+        "driver_decay": 0.9,
+        "team_decay": 1.0,
+        "mae": 0.7832221095813706
+      },
+      {
+        "driver_decay": 0.95,
+        "team_decay": 0.95,
+        "mae": 0.7837446714009272
+      },
+      {
+        "driver_decay": 0.85,
+        "team_decay": 1.0,
+        "mae": 0.7839759071901299
+      },
+      {
+        "driver_decay": 1.0,
+        "team_decay": 0.9,
+        "mae": 0.7844362393898571
+      },
+      {
+        "driver_decay": 0.9,
+        "team_decay": 0.95,
+        "mae": 0.7845135512799591
+      },
+      {
+        "driver_decay": 0.8,
+        "team_decay": 1.0,
+        "mae": 0.7848382655379722
+      },
+      {
+        "driver_decay": 0.95,
+        "team_decay": 0.9,
+        "mae": 0.7852204017234953
+      },
+      {
+        "driver_decay": 0.85,
+        "team_decay": 0.95,
+        "mae": 0.78538907138937
+      },
+      {
+        "driver_decay": 0.75,
+        "team_decay": 1.0,
+        "mae": 0.7858118407890922
+      },
+      {
+        "driver_decay": 1.0,
+        "team_decay": 0.85,
+        "mae": 0.7860723018611654
+      },
+      {
+        "driver_decay": 0.9,
+        "team_decay": 0.9,
+        "mae": 0.7861102365861125
+      },
+      {
+        "driver_decay": 0.8,
+        "team_decay": 0.95,
+        "mae": 0.7863654889704542
+      },
+      {
+        "driver_decay": 0.95,
+        "team_decay": 0.85,
+        "mae": 0.7869753595395441
+      },
+      {
+        "driver_decay": 0.85,
+        "team_decay": 0.9,
+        "mae": 0.7870964775337059
+      },
+      {
+        "driver_decay": 0.75,
+        "team_decay": 0.95,
+        "mae": 0.7874429321913885
+      },
+      {
+        "driver_decay": 0.9,
+        "team_decay": 0.85,
+        "mae": 0.787974830461333
+      },
+      {
+        "driver_decay": 1.0,
+        "team_decay": 0.8,
+        "mae": 0.787991889090853
+      }
+    ],
+    "validation_2025": {
+      "dynamic_decay": {
+        "mae": 0.811076514383216,
+        "rmse": 1.120816251237517,
+        "r2": 0.3556630976114519,
+        "bias": 0.006397773579271372
+      },
+      "full_carryover": {
+        "mae": 0.811076514383216,
+        "rmse": 1.120816251237517,
+        "r2": 0.3556630976114519,
+        "bias": 0.006397773579271372
+      },
+      "zero_driver_team_carryover": {
+        "mae": 0.9250197049143557,
+        "rmse": 1.2438779031079081,
+        "r2": 0.20640363133058826,
+        "bias": 0.11002156194806724
+      }
+    },
+    "validation_2025_by_session": {
+      "Race": {
+        "mae": 0.7998856180344449,
+        "rmse": 1.112350924469912,
+        "r2": 0.3844751929521023,
+        "bias": 0.01894445603922774
+      },
+      "Sprint": {
+        "mae": 0.9715694037436954,
+        "rmse": 1.2358582155404374,
+        "r2": -0.41333635542264435,
+        "bias": -0.17353895866541338
+      }
+    },
+    "predictions": {
+      "dynamic": {
+        "sha256": "e191edd139ad479c644e4ed1c8a6ef4dd8eb580cc8330a498ab6bfcbf9853728",
+        "rows": 22245
+      },
+      "full": {
+        "sha256": "e191edd139ad479c644e4ed1c8a6ef4dd8eb580cc8330a498ab6bfcbf9853728",
+        "rows": 22245
+      },
+      "zero": {
+        "sha256": "a3aefd5e2315bc359a320648a61e937e649f9e99ca3540f31439236faf1fbba1",
+        "rows": 22245
+      }
+    }
+  },
+  "dynamic_vs_primary_raw_joint": {
+    "observed_mae_delta": 0.005457824487040797,
+    "bootstrap_mean": 0.0054590008964306965,
+    "ci95_low": -0.0009259507589006149,
+    "ci95_high": 0.011815803018774634,
+    "probability_first_better": 0.0484,
+    "interpretation": "negative delta favors first_model",
+    "bootstrap_unit": "meeting",
+    "repetitions": 5000
+  }
+}

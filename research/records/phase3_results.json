@@ -1,0 +1,709 @@
+{
+  "run_id": "f1_driver_car_phase3_exploratory_v1-20260717T001301",
+  "created_at": "2026-07-17T00:13:01+08:00",
+  "phase3_config": {
+    "experiment_name": "f1_driver_car_phase3_exploratory_v1",
+    "parent_run_id": "f1_driver_car_2024_train_2025_validate_v1-20260717T000905",
+    "parent_config": "research/configs/2024_train_2025_validate.json",
+    "development_year": 2024,
+    "exploratory_validation_year": 2025,
+    "validation_status": "exploratory_after_primary_v1_results_were_inspected",
+    "final_confirmation_dataset": "2026 completed Race and Sprint sessions, frozen in a future phase",
+    "max_attempts": 3,
+    "models": [
+      "session_head_ridge",
+      "team_track_ridge",
+      "bayesian_driver_team"
+    ],
+    "rationale": {
+      "session_head_ridge": "Race and Sprint share base effects but receive separate driver/team heads.",
+      "team_track_ridge": "Tests a strongly regularized team-by-circuit track-fit component.",
+      "bayesian_driver_team": "Adds coefficient and predictive uncertainty using evidence-optimized Bayesian ridge."
+    }
+  },
+  "data_manifest_hash": "3e2bc5b1e33c4c4aa7ce2e6054693eba15528c32fce8192c7d76a3dc845bb2b6",
+  "models": {
+    "session_head_ridge": {
+      "name": "session_head_ridge",
+      "status": "success",
+      "attempt": 1,
+      "solver": "lsqr",
+      "selected_alpha": 100.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.7313579122247497,
+        "1.0": 0.7313055639133665,
+        "10.0": 0.7308716770734307,
+        "100.0": 0.7301513304824235,
+        "1000.0": 0.751996546120887
+      },
+      "validation_metrics": {
+        "mae": 0.7909011209090357,
+        "rmse": 1.1160541832603437,
+        "r2": 0.40506548168473033,
+        "bias": -0.016774771599299527
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.7781984418381898,
+          "rmse": 1.107131008029176,
+          "r2": 0.43264098088939595,
+          "bias": -0.0012054043210596177
+        },
+        "Sprint": {
+          "mae": 0.9917646322589082,
+          "rmse": 1.2487061389723222,
+          "r2": -0.5044557087749144,
+          "bias": -0.26296833152167953
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.3284836414291796,
+        "ci95_low": -0.42640472882317276,
+        "ci95_high": -0.21373223173410147,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "driver_id": 0.1508535489667565,
+        "team_name": 0.13324348607367476,
+        "driver_session_head": 0.15197663971248876,
+        "team_session_head": 0.13324348607367476
+      },
+      "ratings": {
+        "drivers": [
+          {
+            "entity": "VER",
+            "pace_advantage_pct": 0.3769698526715104
+          },
+          {
+            "entity": "NOR",
+            "pace_advantage_pct": 0.2868706572788295
+          },
+          {
+            "entity": "LEC",
+            "pace_advantage_pct": 0.24130081037053144
+          },
+          {
+            "entity": "SAI",
+            "pace_advantage_pct": 0.16928125165255334
+          },
+          {
+            "entity": "RUS",
+            "pace_advantage_pct": 0.14435992729383934
+          },
+          {
+            "entity": "HAM",
+            "pace_advantage_pct": 0.11477934302321072
+          },
+          {
+            "entity": "PIA",
+            "pace_advantage_pct": 0.10043807362400463
+          },
+          {
+            "entity": "COL",
+            "pace_advantage_pct": 0.0597413970237017
+          },
+          {
+            "entity": "GAS",
+            "pace_advantage_pct": 1.4977557292086323e-05
+          },
+          {
+            "entity": "ALO",
+            "pace_advantage_pct": -0.015714441687957763
+          },
+          {
+            "entity": "BEA",
+            "pace_advantage_pct": -0.0207127800863265
+          },
+          {
+            "entity": "HUL",
+            "pace_advantage_pct": -0.025864406161059096
+          },
+          {
+            "entity": "PER",
+            "pace_advantage_pct": -0.02672024670077393
+          },
+          {
+            "entity": "RIC",
+            "pace_advantage_pct": -0.05068177223875257
+          },
+          {
+            "entity": "LAW",
+            "pace_advantage_pct": -0.06306909073253056
+          },
+          {
+            "entity": "ALB",
+            "pace_advantage_pct": -0.07605654947789531
+          },
+          {
+            "entity": "DOO",
+            "pace_advantage_pct": -0.09310260472512982
+          },
+          {
+            "entity": "MAG",
+            "pace_advantage_pct": -0.11285073610854748
+          },
+          {
+            "entity": "TSU",
+            "pace_advantage_pct": -0.12004924447151798
+          },
+          {
+            "entity": "STR",
+            "pace_advantage_pct": -0.12614185032882932
+          },
+          {
+            "entity": "OCO",
+            "pace_advantage_pct": -0.1395031503633921
+          },
+          {
+            "entity": "BOT",
+            "pace_advantage_pct": -0.16418626831644903
+          },
+          {
+            "entity": "ZHO",
+            "pace_advantage_pct": -0.20087383082749222
+          },
+          {
+            "entity": "SAR",
+            "pace_advantage_pct": -0.2582293182688195
+          }
+        ],
+        "teams": [
+          {
+            "entity": "McLaren",
+            "pace_advantage_pct": 0.38730873090283857
+          },
+          {
+            "entity": "Red Bull Racing",
+            "pace_advantage_pct": 0.35024960597073634
+          },
+          {
+            "entity": "Ferrari",
+            "pace_advantage_pct": 0.34832861049990804
+          },
+          {
+            "entity": "Mercedes",
+            "pace_advantage_pct": 0.2591392703170477
+          },
+          {
+            "entity": "Haas F1 Team",
+            "pace_advantage_pct": -0.09717447083276598
+          },
+          {
+            "entity": "Aston Martin",
+            "pace_advantage_pct": -0.14185629201678968
+          },
+          {
+            "entity": "Alpine",
+            "pace_advantage_pct": -0.23259077753123347
+          },
+          {
+            "entity": "RB",
+            "pace_advantage_pct": -0.2338001074428036
+          },
+          {
+            "entity": "Williams",
+            "pace_advantage_pct": -0.27454447072302834
+          },
+          {
+            "entity": "Kick Sauber",
+            "pace_advantage_pct": -0.36506009914390963
+          }
+        ]
+      },
+      "feature_count_after_encoding": 134
+    },
+    "team_track_ridge": {
+      "name": "team_track_ridge",
+      "status": "success",
+      "attempt": 1,
+      "solver": "lsqr",
+      "selected_alpha": 100.0,
+      "group_cv_mae_by_alpha": {
+        "0.1": 0.7355230510033294,
+        "1.0": 0.7347542584641972,
+        "10.0": 0.7308648101938914,
+        "100.0": 0.7297835503554794,
+        "1000.0": 0.7617619159690387
+      },
+      "validation_metrics": {
+        "mae": 0.7962518656301096,
+        "rmse": 1.122549416524044,
+        "r2": 0.3981205087339137,
+        "bias": -0.010961544912733637
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.7829816496575845,
+          "rmse": 1.1127947773977394,
+          "r2": 0.426821235964449,
+          "bias": 0.007348291833868342
+        },
+        "Sprint": {
+          "mae": 1.0060896614010952,
+          "rmse": 1.2668514087141627,
+          "r2": -0.5484966506764557,
+          "bias": -0.3004892957638353
+        }
+      },
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.32310135305486565,
+        "ci95_low": -0.42687895464429665,
+        "ci95_high": -0.20841518673439113,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      },
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "driver_id": 0.1508535489667565,
+        "team_name": 0.13324348607367476,
+        "team_circuit_head": 0.13921832884097035
+      },
+      "ratings": {
+        "drivers": [
+          {
+            "entity": "VER",
+            "pace_advantage_pct": 0.564148157363945
+          },
+          {
+            "entity": "NOR",
+            "pace_advantage_pct": 0.4522084001400998
+          },
+          {
+            "entity": "LEC",
+            "pace_advantage_pct": 0.3469035675068552
+          },
+          {
+            "entity": "SAI",
+            "pace_advantage_pct": 0.25954368701828817
+          },
+          {
+            "entity": "RUS",
+            "pace_advantage_pct": 0.22433455570988123
+          },
+          {
+            "entity": "HAM",
+            "pace_advantage_pct": 0.20098474826241725
+          },
+          {
+            "entity": "PIA",
+            "pace_advantage_pct": 0.1595879079138113
+          },
+          {
+            "entity": "COL",
+            "pace_advantage_pct": 0.09490971156149311
+          },
+          {
+            "entity": "ALO",
+            "pace_advantage_pct": 0.014059547622783422
+          },
+          {
+            "entity": "HUL",
+            "pace_advantage_pct": -0.010684204079815796
+          },
+          {
+            "entity": "GAS",
+            "pace_advantage_pct": -0.02281251141381127
+          },
+          {
+            "entity": "BEA",
+            "pace_advantage_pct": -0.031216586641643767
+          },
+          {
+            "entity": "PER",
+            "pace_advantage_pct": -0.05979379989864683
+          },
+          {
+            "entity": "LAW",
+            "pace_advantage_pct": -0.06415682322869243
+          },
+          {
+            "entity": "ALB",
+            "pace_advantage_pct": -0.08141437390937108
+          },
+          {
+            "entity": "DOO",
+            "pace_advantage_pct": -0.1375571157610548
+          },
+          {
+            "entity": "TSU",
+            "pace_advantage_pct": -0.15262615204216032
+          },
+          {
+            "entity": "RIC",
+            "pace_advantage_pct": -0.15308062395711272
+          },
+          {
+            "entity": "STR",
+            "pace_advantage_pct": -0.16290775716250672
+          },
+          {
+            "entity": "OCO",
+            "pace_advantage_pct": -0.23830248883098024
+          },
+          {
+            "entity": "MAG",
+            "pace_advantage_pct": -0.24146776880378057
+          },
+          {
+            "entity": "ZHO",
+            "pace_advantage_pct": -0.25704494920395876
+          },
+          {
+            "entity": "BOT",
+            "pace_advantage_pct": -0.28623894032063735
+          },
+          {
+            "entity": "SAR",
+            "pace_advantage_pct": -0.4173761878454018
+          }
+        ],
+        "teams": [
+          {
+            "entity": "McLaren",
+            "pace_advantage_pct": 0.6117963080538832
+          },
+          {
+            "entity": "Ferrari",
+            "pace_advantage_pct": 0.5364648014574204
+          },
+          {
+            "entity": "Red Bull Racing",
+            "pace_advantage_pct": 0.5043543574653064
+          },
+          {
+            "entity": "Mercedes",
+            "pace_advantage_pct": 0.42531930397229867
+          },
+          {
+            "entity": "Aston Martin",
+            "pace_advantage_pct": -0.14884820953972405
+          },
+          {
+            "entity": "Haas F1 Team",
+            "pace_advantage_pct": -0.2133861064575208
+          },
+          {
+            "entity": "RB",
+            "pace_advantage_pct": -0.36986359922794726
+          },
+          {
+            "entity": "Alpine",
+            "pace_advantage_pct": -0.3986721160058587
+          },
+          {
+            "entity": "Williams",
+            "pace_advantage_pct": -0.40388085019328845
+          },
+          {
+            "entity": "Kick Sauber",
+            "pace_advantage_pct": -0.5432838895245694
+          }
+        ]
+      },
+      "feature_count_after_encoding": 306
+    },
+    "bayesian_driver_team": {
+      "name": "bayesian_driver_team",
+      "status": "success",
+      "attempt": 1,
+      "settings": {
+        "max_iter": 300,
+        "tol": 0.001
+      },
+      "validation_metrics": {
+        "mae": 0.8175113490361635,
+        "rmse": 1.1636438532894153,
+        "r2": 0.3532465294994622,
+        "bias": -0.0010066428099920737
+      },
+      "validation_metrics_by_session": {
+        "Race": {
+          "mae": 0.8063490728648779,
+          "rmse": 1.157857103401824,
+          "r2": 0.37945988348296733,
+          "bias": 0.017941914680039445
+        },
+        "Sprint": {
+          "mae": 0.9940169486751618,
+          "rmse": 1.2515965066904113,
+          "r2": -0.5114284667556996,
+          "bias": -0.3006342860209434
+        }
+      },
+      "predictive_interval_coverage": {
+        "80": 0.827403414195867,
+        "95": 0.9231805929919138
+      },
+      "mean_normal_negative_log_likelihood": 1.5729208726499118,
+      "mean_predictive_std": 1.0973400577508545,
+      "alpha_noise_precision": 1.0513135952516823,
+      "lambda_weight_precision": 4.71074893578324,
+      "effective_iterations": 4,
+      "unseen_category_rates": {
+        "compound": 0.0,
+        "circuit_name": 0.0,
+        "session_name": 0.0,
+        "driver_id": 0.1508535489667565,
+        "team_name": 0.13324348607367476
+      },
+      "ratings": {
+        "drivers": [
+          {
+            "entity": "VER",
+            "pace_advantage_pct": 0.6099748945788793,
+            "coefficient_sd": 0.2730837322161439,
+            "ci95_low": 0.07473077943523734,
+            "ci95_high": 1.1452190097225214
+          },
+          {
+            "entity": "LEC",
+            "pace_advantage_pct": 0.49625878854013844,
+            "coefficient_sd": 0.20362226325147983,
+            "ci95_low": 0.09715915256723792,
+            "ci95_high": 0.8953584245130389
+          },
+          {
+            "entity": "NOR",
+            "pace_advantage_pct": 0.484036071763453,
+            "coefficient_sd": 0.2730417165919132,
+            "ci95_low": -0.05112569275669689,
+            "ci95_high": 1.019197836283603
+          },
+          {
+            "entity": "SAI",
+            "pace_advantage_pct": 0.40448975942674903,
+            "coefficient_sd": 0.20376544179076003,
+            "ci95_low": 0.00510949351685933,
+            "ci95_high": 0.8038700253366386
+          },
+          {
+            "entity": "RUS",
+            "pace_advantage_pct": 0.23575078096482127,
+            "coefficient_sd": 0.2730537097778367,
+            "ci95_low": -0.2994344901997386,
+            "ci95_high": 0.7709360521293812
+          },
+          {
+            "entity": "HAM",
+            "pace_advantage_pct": 0.2250056560166534,
+            "coefficient_sd": 0.2730849416512841,
+            "ci95_low": -0.3102408296198635,
+            "ci95_high": 0.7602521416531702
+          },
+          {
+            "entity": "COL",
+            "pace_advantage_pct": 0.1785945134932872,
+            "coefficient_sd": 0.2378127152968274,
+            "ci95_low": -0.28751840848849447,
+            "ci95_high": 0.6447074354750689
+          },
+          {
+            "entity": "PIA",
+            "pace_advantage_pct": 0.16856231715424133,
+            "coefficient_sd": 0.27303487158093265,
+            "ci95_low": -0.36658603114438665,
+            "ci95_high": 0.7037106654528693
+          },
+          {
+            "entity": "GAS",
+            "pace_advantage_pct": 0.057533861112829106,
+            "coefficient_sd": 0.23817127193999288,
+            "ci95_low": -0.40928183188955686,
+            "ci95_high": 0.5243495541152151
+          },
+          {
+            "entity": "ALO",
+            "pace_advantage_pct": 0.022054293184602926,
+            "coefficient_sd": 0.2730848012883337,
+            "ci95_low": -0.513191917340531,
+            "ci95_high": 0.5573005037097369
+          },
+          {
+            "entity": "BEA",
+            "pace_advantage_pct": -0.040371284678395306,
+            "coefficient_sd": 0.19841437092380507,
+            "ci95_low": -0.4292634516890532,
+            "ci95_high": 0.34852088233226264
+          },
+          {
+            "entity": "PER",
+            "pace_advantage_pct": -0.06825290596773545,
+            "coefficient_sd": 0.2731344907746647,
+            "ci95_low": -0.6035965078860782,
+            "ci95_high": 0.4670906959506073
+          },
+          {
+            "entity": "ALB",
+            "pace_advantage_pct": -0.10996978008889616,
+            "coefficient_sd": 0.23607585189016486,
+            "ci95_low": -0.5726784497936194,
+            "ci95_high": 0.352738889615827
+          },
+          {
+            "entity": "LAW",
+            "pace_advantage_pct": -0.11340527876295611,
+            "coefficient_sd": 0.23867946945585164,
+            "ci95_low": -0.5812170388964254,
+            "ci95_high": 0.3544064813705131
+          },
+          {
+            "entity": "HUL",
+            "pace_advantage_pct": -0.12105826526413276,
+            "coefficient_sd": 0.201779962322173,
+            "ci95_low": -0.5165469914155919,
+            "ci95_high": 0.27443046088732637
+          },
+          {
+            "entity": "RIC",
+            "pace_advantage_pct": -0.13669463859064174,
+            "coefficient_sd": 0.23636420691730453,
+            "ci95_low": -0.5999684841485586,
+            "ci95_high": 0.3265792069672752
+          },
+          {
+            "entity": "TSU",
+            "pace_advantage_pct": -0.14431580508412067,
+            "coefficient_sd": 0.23609903018836814,
+            "ci95_low": -0.6070699042533223,
+            "ci95_high": 0.3184382940850809
+          },
+          {
+            "entity": "OCO",
+            "pace_advantage_pct": -0.1780998801280423,
+            "coefficient_sd": 0.2382455572885623,
+            "ci95_low": -0.6450611724136245,
+            "ci95_high": 0.28886141215753985
+          },
+          {
+            "entity": "STR",
+            "pace_advantage_pct": -0.18083681574984367,
+            "coefficient_sd": 0.2731054167678907,
+            "ci95_low": -0.7161234326149094,
+            "ci95_high": 0.3544498011152221
+          },
+          {
+            "entity": "ZHO",
+            "pace_advantage_pct": -0.2731162431840122,
+            "coefficient_sd": 0.2730957938693678,
+            "ci95_low": -0.808383999167973,
+            "ci95_high": 0.26215151279994864
+          },
+          {
+            "entity": "BOT",
+            "pace_advantage_pct": -0.3024280078304247,
+            "coefficient_sd": 0.27308066285801985,
+            "ci95_low": -0.8376661070321437,
+            "ci95_high": 0.2328100913712942
+          },
+          {
+            "entity": "DOO",
+            "pace_advantage_pct": -0.3452426012837733,
+            "coefficient_sd": 0.25539023769292374,
+            "ci95_low": -0.8458074671619039,
+            "ci95_high": 0.1553222645943572
+          },
+          {
+            "entity": "MAG",
+            "pace_advantage_pct": -0.3752526831490991,
+            "coefficient_sd": 0.20194253494817538,
+            "ci95_low": -0.7710600516475229,
+            "ci95_high": 0.020554685349324617
+          },
+          {
+            "entity": "SAR",
+            "pace_advantage_pct": -0.49321674647358155,
+            "coefficient_sd": 0.2365896029744313,
+            "ci95_low": -0.956932368303467,
+            "ci95_high": -0.02950112464369622
+          }
+        ],
+        "teams": [
+          {
+            "entity": "McLaren",
+            "pace_advantage_pct": 0.6525983889146337,
+            "coefficient_sd": 0.2904961527090786,
+            "ci95_low": 0.0832259296048398,
+            "ci95_high": 1.2219708482244278
+          },
+          {
+            "entity": "Red Bull Racing",
+            "pace_advantage_pct": 0.5417219886131525,
+            "coefficient_sd": 0.2905192073624621,
+            "ci95_low": -0.027695657817273206,
+            "ci95_high": 1.1111396350435783
+          },
+          {
+            "entity": "Mercedes",
+            "pace_advantage_pct": 0.4607564369793402,
+            "coefficient_sd": 0.2905049537687461,
+            "ci95_low": -0.10863327240740203,
+            "ci95_high": 1.0301461463660826
+          },
+          {
+            "entity": "Ferrari",
+            "pace_advantage_pct": 0.455122635456794,
+            "coefficient_sd": 0.23185092853221714,
+            "ci95_low": 0.0006948155336483908,
+            "ci95_high": 0.9095504553799395
+          },
+          {
+            "entity": "Haas F1 Team",
+            "pace_advantage_pct": -0.09105632057697169,
+            "coefficient_sd": 0.23057725293910405,
+            "ci95_low": -0.5429877363376157,
+            "ci95_high": 0.3608750951836722
+          },
+          {
+            "entity": "Aston Martin",
+            "pace_advantage_pct": -0.15878252256562947,
+            "coefficient_sd": 0.2905140627201092,
+            "ci95_low": -0.7281900854970436,
+            "ci95_high": 0.4106250403657845
+          },
+          {
+            "entity": "RB",
+            "pace_advantage_pct": -0.3944157224383633,
+            "coefficient_sd": 0.26533302394635944,
+            "ci95_low": -0.9144684493732279,
+            "ci95_high": 0.12563700449650114
+          },
+          {
+            "entity": "Williams",
+            "pace_advantage_pct": -0.4245920130697247,
+            "coefficient_sd": 0.26528886098486604,
+            "ci95_low": -0.9445581806000621,
+            "ci95_high": 0.09537415446061273
+          },
+          {
+            "entity": "Alpine",
+            "pace_advantage_pct": -0.4658086202972246,
+            "coefficient_sd": 0.26671490102016365,
+            "ci95_low": -0.9885698262967454,
+            "ci95_high": 0.05695258570229608
+          },
+          {
+            "entity": "Kick Sauber",
+            "pace_advantage_pct": -0.5755442510160067,
+            "coefficient_sd": 0.29051209621316637,
+            "ci95_low": -1.1449479595938126,
+            "ci95_high": -0.006140542438200586
+          }
+        ]
+      },
+      "feature_count_after_encoding": 67,
+      "bootstrap_mae_delta_vs_zero": {
+        "mean_mae_delta": -0.30301646082022116,
+        "ci95_low": -0.42105996053134526,
+        "ci95_high": -0.12708649912017014,
+        "unit": "target_log_pct",
+        "negative_is_better_than_zero_baseline": true
+      }
+    }
+  }
+}
