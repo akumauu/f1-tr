@@ -1,0 +1,101 @@
+{
+  "created_at": "2026-07-19T10:30:47+08:00",
+  "experiment_name": "four_team_event_stint_attribution_2023_2025_v4",
+  "schema_version": "tracinginsights-expanded-v4",
+  "query_version": "tracinginsights_expanded_v4_qualifying_push_freeze_v1",
+  "config_path": "research/configs/four_team_2023_2025_event_stint_v4.json",
+  "config_hash": "395cd12a4a5430f10c23e29d0d3b89aa186963c2bad60797acc217ce2d61c3f5",
+  "source_provenance": {
+    "schema_version": "tracinginsights-expanded-v4",
+    "catalogs": [
+      {
+        "year": 2023,
+        "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2023/commit=e4b7468f2cdc/manifest.json",
+        "manifest_sha256": "553850038060f623dc1b2e48687283a8d2920e88158f705febbc414bbd54b399",
+        "source_repository": "https://github.com/TracingInsights-Archive/2023.git",
+        "source_commit": "e4b7468f2cdc1a2f86ba94a1eb8f1477719ea582",
+        "selected_partitions": 22,
+        "selected_rows": 9958759,
+        "selected_parquet_bytes": 479449669
+      },
+      {
+        "year": 2024,
+        "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2024/commit=869496da863e/manifest.json",
+        "manifest_sha256": "85b8254460910da772cc7c48a198c751de7c4f1619d402088ae7662839432a8e",
+        "source_repository": "https://github.com/TracingInsights-Archive/2024.git",
+        "source_commit": "869496da863e00e4b060e98d52b9826d0ac4005c",
+        "selected_partitions": 24,
+        "selected_rows": 10202438,
+        "selected_parquet_bytes": 493118374
+      },
+      {
+        "year": 2025,
+        "manifest": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/manifest.json",
+        "manifest_sha256": "0f908284d0ca5194093557415dce4274a49f78ccd20da5d737d72f1f5d7e3c31",
+        "source_repository": "https://github.com/TracingInsights-Archive/2025.git",
+        "source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6",
+        "selected_partitions": 24,
+        "selected_rows": 10434504,
+        "selected_parquet_bytes": 492387110
+      }
+    ],
+    "selected_file_count": 70,
+    "selected_file_set_sha256": "1c5b6bd758e07d3b14d9cb1ddb2d2c034f0527697cfaba5c2baff5e05e71cb3b",
+    "acceptance_report": {
+      "path": "data/logs/parquet-acceptance-report.json",
+      "sha256": "1ab5e0c0d962b0fa46d14f4f95698380389f8182fbec5e6ed4d646740aaf1f3e"
+    }
+  },
+  "coverage": {
+    "rows": 7401,
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "meetings": 67,
+    "sessions": 67,
+    "drivers": 28,
+    "summary_by_year": [
+      {
+        "year": 2023,
+        "rows": 2522,
+        "meetings": 22,
+        "drivers": 22
+      },
+      {
+        "year": 2024,
+        "rows": 2515,
+        "meetings": 22,
+        "drivers": 24
+      },
+      {
+        "year": 2025,
+        "rows": 2364,
+        "meetings": 23,
+        "drivers": 21
+      }
+    ]
+  },
+  "cleaning_audit": {
+    "raw_laps": 22449,
+    "duration_out_of_bounds": 7258,
+    "non_dry_compound": 2230,
+    "not_accurate": 13189,
+    "deleted": 386,
+    "non_green_track_status": 2410,
+    "multiple_source_commits_in_lap": 0,
+    "below_session_minimum": 0,
+    "clean_accurate_push_laps": 7401
+  },
+  "file": {
+    "path": "research/artifacts/data/qualifying_2023_2025_v4.csv.gz",
+    "sha256": "b73dbe6d2713983606056f38c55b5bc0b50145bc40e4d6cc354508f482a1d7a5",
+    "bytes": 339148
+  },
+  "boundaries": {
+    "accurate_flag_role": "FastF1 accurate lap proxy for push-lap eligibility",
+    "q1_q2_q3_phase": "not_available_in_current_freeze",
+    "setup_identity": "not_observed"
+  }
+}

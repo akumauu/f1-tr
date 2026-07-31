@@ -1,0 +1,43 @@
+{
+  "experiment_name": "f1_car_driver_envelope_spain_2025_v1",
+  "max_attempts": 3,
+  "parent_config": "research/configs/2024_train_2025_validate.json",
+  "validation_status": "exploratory_descriptive_single_race",
+  "scope_note": "单站四大车队机理级车辆能力包络与车手发挥定位原型；描述性条件关联，非因果真值；单站=赛道特定，未跨赛道归一；不进入 2026。",
+  "year": 2025,
+  "meeting_manifest": "Spanish Grand Prix",
+  "meeting_dir": "Spanish_Grand_Prix",
+  "session": "Race",
+  "parquet_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+  "teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "dry_compounds": ["SOFT", "MEDIUM", "HARD"],
+  "grid_points": 1000,
+  "mini_sectors": 30,
+  "bootstrap_n": 400,
+  "random_seed": 202507,
+  "ceiling_methods": ["frontier_p90", "ideal_lap_splice"],
+  "ceiling_sector_quantile": 0.10,
+  "floor_sector_quantile": 0.60,
+  "cleaning": {
+    "minimum_lap_number": 3,
+    "minimum_lap_duration_seconds": 74.0,
+    "maximum_lap_duration_seconds": 95.0,
+    "robust_mad_multiplier": 6.0,
+    "minimum_clean_laps_per_driver": 10,
+    "full_throttle_threshold_pct": 95.0,
+    "traffic_min_median_gap_m": 120.0,
+    "traffic_exclude": false
+  },
+  "corner_speed_bins_kmh": {
+    "low_max": 130.0,
+    "medium_max": 210.0
+  },
+  "notes": {
+    "ceiling_frontier_p90": "两名车手全部 clean 圈池化，逐 mini-sector 取 ceiling_sector_quantile 分位（P10 最快）作为车辆展示上限。",
+    "ceiling_ideal_lap_splice": "逐车手 mini-sector 稳健最优（P10），再对两车手取 min 拼接理论最优圈。",
+    "floor": "池化 clean 圈逐 mini-sector 的 floor_sector_quantile 分位作为参考下限；上下限构成能力包络。",
+    "driver_extraction": "车手 mini-sector 中位实现落在同队车包络 [下限->上限] 的位置百分比，分母为同车能力，故排除车辆。",
+    "identity": "逐点 dt=ds/v，总圈时差可加分解到每段；恒等式在测试中校验。",
+    "identification": "同队前沿+队友仅部分识别车辆上限；两名车手都不发挥会低估上限；跨队转会锚定留待下一阶段。"
+  }
+}

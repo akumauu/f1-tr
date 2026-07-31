@@ -1,0 +1,6147 @@
+{
+  "report_id": "race_dossier_2023_Belgian Grand Prix_v11",
+  "scope": {
+    "year": 2023,
+    "meeting": "Belgian Grand Prix",
+    "session": "Race",
+    "team": "McLaren / Red Bull Racing / Ferrari / Mercedes"
+  },
+  "schema_version": "race-dossier-v11",
+  "release_status": "audit_only",
+  "analysis_unit": "complete_race",
+  "coverage": {
+    "analysis_unit": "complete_race",
+    "observed_field_laps": 816,
+    "observed_reporting_team_laps": 288,
+    "race_lap_span": 44,
+    "reporting_driver_lap_continuity_proxy": 1.0,
+    "modelable_reporting_laps": 92,
+    "modelable_reporting_lap_fraction": 0.3194444444444444,
+    "pace_adjusted_reporting_laps": 90,
+    "pace_adjusted_reporting_lap_fraction": 0.3125,
+    "baseline_available_reporting_laps": 42,
+    "stint_assignment_coverage": 1.0,
+    "track_state_coverage": 1.0,
+    "position_gap_state_coverage": 1.0,
+    "teams": [
+      {
+        "team": "McLaren",
+        "drivers": 2,
+        "modelable_laps": 9,
+        "pace_adjusted_laps": 9,
+        "baseline_laps": 0,
+        "valid_stints": 0
+      },
+      {
+        "team": "Red Bull Racing",
+        "drivers": 2,
+        "modelable_laps": 52,
+        "pace_adjusted_laps": 52,
+        "baseline_laps": 18,
+        "valid_stints": 4
+      },
+      {
+        "team": "Ferrari",
+        "drivers": 2,
+        "modelable_laps": 22,
+        "pace_adjusted_laps": 20,
+        "baseline_laps": 10,
+        "valid_stints": 0
+      },
+      {
+        "team": "Mercedes",
+        "drivers": 2,
+        "modelable_laps": 9,
+        "pace_adjusted_laps": 9,
+        "baseline_laps": 0,
+        "valid_stints": 0
+      }
+    ],
+    "lap_disposition_closure": {
+      "accounted_laps": 288,
+      "observed_laps": 288,
+      "passed": true
+    }
+  },
+  "publication_gate": {
+    "passed": false,
+    "status": "audit_only",
+    "reasons": [
+      "pace_adjusted_lap_fraction_below_gate",
+      "McLaren:pace_adjusted_laps_below_gate",
+      "McLaren:valid_stints_below_gate",
+      "McLaren:baseline_laps_below_gate",
+      "Ferrari:pace_adjusted_laps_below_gate",
+      "Ferrari:valid_stints_below_gate",
+      "Ferrari:baseline_laps_below_gate",
+      "Mercedes:pace_adjusted_laps_below_gate",
+      "Mercedes:valid_stints_below_gate",
+      "Mercedes:baseline_laps_below_gate"
+    ],
+    "whole_race_conclusion_allowed": false,
+    "partial_team_conclusion_allowed": false,
+    "publishable_teams": [
+      "Red Bull Racing"
+    ],
+    "module_gates": {
+      "whole_race_context": {
+        "passed": true,
+        "reasons": [],
+        "analysis_unit": "complete_race"
+      },
+      "teams": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 9,
+          "baseline_laps": 0,
+          "valid_stints": 0
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": true,
+          "reasons": [],
+          "drivers": 2,
+          "pace_adjusted_laps": 52,
+          "baseline_laps": 18,
+          "valid_stints": 4
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 20,
+          "baseline_laps": 10,
+          "valid_stints": 0
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 9,
+          "baseline_laps": 0,
+          "valid_stints": 0
+        }
+      ],
+      "driver_pairs": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "NOR:valid_stints_below_gate",
+            "PIA:pace_laps_below_gate",
+            "PIA:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "NOR",
+              "pace_adjusted_laps": 9,
+              "valid_stints": 0
+            },
+            {
+              "driver": "PIA",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": true,
+          "reasons": [],
+          "drivers": [
+            {
+              "driver": "PER",
+              "pace_adjusted_laps": 28,
+              "valid_stints": 2
+            },
+            {
+              "driver": "VER",
+              "pace_adjusted_laps": 24,
+              "valid_stints": 2
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "LEC:valid_stints_below_gate",
+            "SAI:pace_laps_below_gate",
+            "SAI:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "LEC",
+              "pace_adjusted_laps": 14,
+              "valid_stints": 0
+            },
+            {
+              "driver": "SAI",
+              "pace_adjusted_laps": 6,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "HAM:pace_laps_below_gate",
+            "HAM:valid_stints_below_gate",
+            "RUS:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "HAM",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            },
+            {
+              "driver": "RUS",
+              "pace_adjusted_laps": 9,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        }
+      ],
+      "full_reporting_field": {
+        "passed": false,
+        "reasons": [
+          "pace_adjusted_lap_fraction_below_gate",
+          "McLaren:pace_adjusted_laps_below_gate",
+          "McLaren:valid_stints_below_gate",
+          "McLaren:baseline_laps_below_gate",
+          "Ferrari:pace_adjusted_laps_below_gate",
+          "Ferrari:valid_stints_below_gate",
+          "Ferrari:baseline_laps_below_gate",
+          "Mercedes:pace_adjusted_laps_below_gate",
+          "Mercedes:valid_stints_below_gate",
+          "Mercedes:baseline_laps_below_gate"
+        ]
+      }
+    },
+    "legacy_clean_four_team_gate": {
+      "passed": false,
+      "reasons": [
+        "McLaren:modelable_laps_below_gate",
+        "McLaren:valid_stints_below_gate",
+        "Ferrari:modelable_laps_below_gate",
+        "Ferrari:valid_stints_below_gate",
+        "Mercedes:modelable_laps_below_gate",
+        "Mercedes:valid_stints_below_gate",
+        "modelable_lap_fraction_below_gate"
+      ],
+      "thresholds_unchanged": true
+    }
+  },
+  "event_ledger": {
+    "observed_laps": 816,
+    "primary_disposition_counts": {
+      "model_eligible": 173,
+      "event_excluded": 55,
+      "traffic_separate": 473,
+      "pit_excluded": 0,
+      "quality_missing": 108,
+      "unknown_unaccounted": 7
+    },
+    "primary_disposition_closure": {
+      "accounted_laps": 816,
+      "unaccounted_laps": 0,
+      "passed": true
+    },
+    "lap_category_counts": {
+      "non_green": 55,
+      "pit_in_boundary_proxy": 37,
+      "pit_out_boundary_proxy": 37,
+      "traffic_dirty_air": 452,
+      "traffic_gap_unknown": 0,
+      "inaccurate_or_deleted": 108,
+      "incomplete_distance": 2,
+      "unexplained_slow_lap_proxy": 7
+    },
+    "entries": [
+      {
+        "event_type": "non_green",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "RIC",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "non_green",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            2,
+            3
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            7,
+            7
+          ],
+          [
+            23,
+            23
+          ],
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            10,
+            10
+          ],
+          [
+            29,
+            29
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ],
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            12,
+            12
+          ],
+          [
+            27,
+            27
+          ],
+          [
+            42,
+            42
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            12,
+            12
+          ],
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            13,
+            13
+          ],
+          [
+            28,
+            28
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            5,
+            5
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            5,
+            5
+          ],
+          [
+            17,
+            17
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            13,
+            13
+          ],
+          [
+            29,
+            29
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "RIC",
+        "lap_ranges": [
+          [
+            5,
+            5
+          ],
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            7,
+            7
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            8,
+            8
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            20,
+            20
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            9,
+            9
+          ],
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            14,
+            14
+          ],
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            7,
+            7
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            8,
+            8
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            11,
+            11
+          ],
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            7,
+            7
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            13,
+            13
+          ],
+          [
+            28,
+            28
+          ],
+          [
+            43,
+            43
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            13,
+            13
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            14,
+            14
+          ],
+          [
+            29,
+            29
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ],
+          [
+            26,
+            26
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ],
+          [
+            18,
+            18
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            7,
+            7
+          ],
+          [
+            26,
+            26
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            14,
+            14
+          ],
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "RIC",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ],
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            8,
+            8
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            9,
+            9
+          ],
+          [
+            25,
+            25
+          ],
+          [
+            35,
+            35
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            10,
+            10
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ],
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            8,
+            8
+          ],
+          [
+            26,
+            26
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            11,
+            14
+          ],
+          [
+            17,
+            21
+          ],
+          [
+            23,
+            23
+          ],
+          [
+            25,
+            33
+          ],
+          [
+            38,
+            44
+          ]
+        ],
+        "affected_laps": 33,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            3
+          ],
+          [
+            11,
+            11
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            29,
+            29
+          ]
+        ],
+        "affected_laps": 7,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            1,
+            24
+          ],
+          [
+            26,
+            27
+          ],
+          [
+            29,
+            36
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 35,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            8
+          ],
+          [
+            13,
+            18
+          ],
+          [
+            23,
+            32
+          ],
+          [
+            40,
+            44
+          ]
+        ],
+        "affected_laps": 29,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            8
+          ],
+          [
+            14,
+            14
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            29,
+            30
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            38,
+            38
+          ]
+        ],
+        "affected_laps": 18,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            2,
+            8
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            14,
+            17
+          ],
+          [
+            21,
+            43
+          ]
+        ],
+        "affected_laps": 35,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            6
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 10,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            1,
+            6
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            26,
+            26
+          ],
+          [
+            42,
+            43
+          ]
+        ],
+        "affected_laps": 13,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            5
+          ],
+          [
+            7,
+            17
+          ],
+          [
+            21,
+            30
+          ]
+        ],
+        "affected_laps": 26,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            16
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            28,
+            44
+          ]
+        ],
+        "affected_laps": 35,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            15,
+            15
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "RIC",
+        "lap_ranges": [
+          [
+            1,
+            23
+          ],
+          [
+            25,
+            41
+          ],
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 41,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            17
+          ],
+          [
+            23,
+            25
+          ],
+          [
+            30,
+            38
+          ]
+        ],
+        "affected_laps": 29,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "affected_laps": 11,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            1,
+            7
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            18,
+            19
+          ],
+          [
+            22,
+            24
+          ],
+          [
+            27,
+            29
+          ],
+          [
+            33,
+            34
+          ],
+          [
+            42,
+            44
+          ]
+        ],
+        "affected_laps": 27,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            7
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            16,
+            20
+          ],
+          [
+            24,
+            25
+          ],
+          [
+            41,
+            42
+          ]
+        ],
+        "affected_laps": 17,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            16,
+            22
+          ],
+          [
+            25,
+            30
+          ],
+          [
+            34,
+            34
+          ],
+          [
+            37,
+            44
+          ]
+        ],
+        "affected_laps": 30,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            9
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            16,
+            17
+          ]
+        ],
+        "affected_laps": 12,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            1,
+            24
+          ],
+          [
+            27,
+            41
+          ]
+        ],
+        "affected_laps": 39,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            23,
+            24
+          ],
+          [
+            28,
+            28
+          ],
+          [
+            33,
+            34
+          ]
+        ],
+        "affected_laps": 8,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            29,
+            30
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            23,
+            24
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            27,
+            28
+          ],
+          [
+            37,
+            37
+          ],
+          [
+            42,
+            43
+          ]
+        ],
+        "affected_laps": 8,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            28,
+            29
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            25,
+            26
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            17,
+            18
+          ],
+          [
+            36,
+            36
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            25,
+            26
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            29,
+            30
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "RIC",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            37,
+            37
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            23
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            24,
+            25
+          ],
+          [
+            33,
+            36
+          ]
+        ],
+        "affected_laps": 9,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            20,
+            21
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 7,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            30,
+            31
+          ]
+        ],
+        "affected_laps": 6,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            25,
+            26
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "incomplete_distance",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "incomplete_distance",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            20,
+            22
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            20,
+            22
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      }
+    ],
+    "not_identified_categories": [
+      "accident_or_damage",
+      "penalty",
+      "abnormal_pit_stop",
+      "defending_or_team_order",
+      "reliability_state"
+    ],
+    "track_status_limit": "track_status 组合编码只支持 non-green 排除，未核对 race-control 来源时不得细分为官方 SC、VSC 或黄旗。"
+  },
+  "simulation_proxy_audit": {
+    "status": "conditional_simulation_proxy",
+    "model_registry": {
+      "acceptance_rule": "value_then_data_then_identifiability_then_synthetic_recovery_then_holdout_or_sensitivity_then_product",
+      "accepted_for_v11": [
+        {
+          "id": "linear_fuel_mass_sensitivity",
+          "source": "data/raw/tracinginsights/2025/README.md#fuel-correction",
+          "role": "base_and_sensitivity_scenarios",
+          "direct_truth_available": false
+        },
+        {
+          "id": "robust_additive_track_evolution",
+          "source": "project_method_using_driver_fixed_centers_and_conditional_medians",
+          "role": "field_common_stage_proxy",
+          "direct_truth_available": false
+        },
+        {
+          "id": "empirical_gap_band_fixed_effects",
+          "source": "project_method_with_two_fold_non_worsening_holdout_gate",
+          "role": "traffic_condition_adjustment",
+          "direct_truth_available": false
+        },
+        {
+          "id": "theil_sen_stint_slope",
+          "source": "Theil_1950_and_Sen_1968_robust_slope_family",
+          "role": "outlier_resistant_stint_degradation_proxy",
+          "direct_truth_available": false
+        }
+      ],
+      "deferred_until_extra_validation": [
+        {
+          "id": "bayesian_state_space_tyre_degradation",
+          "source": "https://arxiv.org/abs/2512.00640",
+          "reason": "需要先验证多车手多分站的后验校准、状态重置和计算成本"
+        },
+        {
+          "id": "multi_agent_monte_carlo_strategy_simulation",
+          "source": "https://github.com/TUMFTM/race-simulation",
+          "reason": "当前缺少已校准超车、进站损失、故障和安全车概率输入"
+        },
+        {
+          "id": "learning_based_energy_and_strategy_optimization",
+          "source": "https://arxiv.org/abs/2512.21570",
+          "reason": "公开逐圈数据不能识别能量分配控制量"
+        }
+      ]
+    },
+    "fuel": {
+      "model": "linear_remaining_mass_sensitivity_v1",
+      "enabled": true,
+      "burn_rule": "linear_by_scheduled_race_fraction",
+      "assumptions": {
+        "initial_fuel_kg": {
+          "low": 90.0,
+          "base": 100.0,
+          "high": 110.0
+        },
+        "lap_time_s_per_kg": {
+          "low": 0.02,
+          "base": 0.03,
+          "high": 0.04
+        }
+      },
+      "base_correction_range_s": [
+        0.0,
+        2.931818181818182
+      ],
+      "sensitivity_correction_range_s": [
+        0.0,
+        4.3
+      ],
+      "real_fuel_load_identified": false
+    },
+    "track_evolution": {
+      "model": "robust_additive_field_median_v1",
+      "enabled": true,
+      "available_laps": 816,
+      "direct_support_laps": 330,
+      "correction_range_s": [
+        -0.13987445831298473,
+        0.2961263656615962
+      ],
+      "physical_track_state_identified": false
+    },
+    "traffic": {
+      "model": "empirical_gap_band_fixed_effects_v1",
+      "enabled": true,
+      "states": [
+        {
+          "state": "clean_air",
+          "observed_laps": 229,
+          "supported_laps": 180,
+          "penalty_proxy_s": 0.0,
+          "support_drivers": 17,
+          "holdout_validation": {
+            "status": "not_tested",
+            "holdout_laps": 0,
+            "mae_before_s": null,
+            "mae_after_s": null
+          }
+        },
+        {
+          "state": "intermediate_gap",
+          "observed_laps": 135,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 120,
+            "mae_before_s": 0.24321849779649796,
+            "mae_after_s": 0.24321849779649796
+          }
+        },
+        {
+          "state": "dirty_air",
+          "observed_laps": 452,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 353,
+            "mae_before_s": 0.3529094782742632,
+            "mae_after_s": 0.3807225009613006
+          }
+        }
+      ],
+      "causal_aerodynamic_loss_identified": false
+    },
+    "ablation": {
+      "clean_air_modelable_laps": 173,
+      "conditional_proxy_eligible_laps": 170,
+      "eligible_lap_change": -3
+    },
+    "validation_boundary": "合成恢复测试验证实现；真实比赛只报告支持度、敏感性和消融，没有真实油量、真实胎态或风洞真值可作直接监督。"
+  },
+  "qualifying_analysis": {
+    "status": "descriptive_vehicle_potential_proxy",
+    "absolute_time_merged_with_race": false,
+    "team_order": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1,
+        "value": 106.60649871826172,
+        "rank_interval_80": [
+          1,
+          1
+        ],
+        "p_rank_1": 0.93
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2,
+        "value": 107.06999969482422,
+        "rank_interval_80": [
+          2,
+          2
+        ],
+        "p_rank_1": 0.07
+      },
+      {
+        "team": "Mercedes",
+        "rank": 3,
+        "value": 107.44599914550781,
+        "rank_interval_80": [
+          3,
+          4
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "McLaren",
+        "rank": 4,
+        "value": 107.51699829101562,
+        "rank_interval_80": [
+          3,
+          4
+        ],
+        "p_rank_1": 0.0
+      }
+    ],
+    "published_vehicle_ranking": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2
+      },
+      {
+        "team": "Mercedes",
+        "rank": 3
+      },
+      {
+        "team": "McLaren",
+        "rank": 4
+      }
+    ],
+    "interpretation": "以两位车手各自最佳准确推圈的车队中位数描述排位潜力；不与正赛绝对圈时加权融合。"
+  },
+  "race_analysis": {
+    "status": "audit_only",
+    "descriptive_team_order": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1,
+        "value": -0.11927483298560304,
+        "rank_interval_80": [
+          1,
+          1
+        ],
+        "p_rank_1": 1.0
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2,
+        "value": 0.43181436712092136,
+        "rank_interval_80": [
+          2,
+          2
+        ],
+        "p_rank_1": 0.0
+      }
+    ],
+    "published_vehicle_ranking": null,
+    "ranking_scope_teams": [
+      "Red Bull Racing"
+    ],
+    "ranking_scope_complete": false,
+    "pace_basis": "fuel_track_traffic_adjusted_conditional_proxy",
+    "ranking_uncertainty": "bootstrap rank interval over complete-event modelable laps",
+    "interpretation": "正赛次序来自同配方、相近胎龄与比赛阶段条件池的长距离基础配速代理；部分发布只覆盖独立通过车队模块的车队，不代表四队完整全序。"
+  },
+  "tyre_strategy_envelope": {
+    "label": "observed_data_strategy_proxy",
+    "timing_role": "post_race_audit_not_pre_race_forecast",
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "compounds": [
+      {
+        "compound": "MEDIUM",
+        "valid_stints": 2,
+        "status": "insufficient_stints",
+        "reasonable_stint_length_laps": null,
+        "observed_length_range_laps": [
+          10,
+          16
+        ],
+        "degradation_proxy_s_per_lap": null
+      },
+      {
+        "compound": "SOFT",
+        "valid_stints": 4,
+        "status": "usable_proxy",
+        "reasonable_stint_length_laps": [
+          13,
+          15
+        ],
+        "observed_length_range_laps": [
+          13,
+          15
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.043314624142335084,
+          "interval_80": [
+            -0.006962006123036445,
+            0.10585109537298217
+          ]
+        }
+      }
+    ],
+    "one_stop_window_laps": [
+      16,
+      23
+    ],
+    "two_stop_window_laps": [
+      [
+        5,
+        13
+      ],
+      [
+        24,
+        29
+      ]
+    ],
+    "observed_driver_patterns": {
+      "one_stop": 4,
+      "two_stop": 12
+    },
+    "limitations": [
+      "合理 stint 长度来自本场公开观测分布，不是轮胎物理寿命。",
+      "一停/两停窗口来自实际换胎圈分布，不含真实燃油、胎温胎压或车队内部模拟。",
+      "SC/VSC、异常慢停和损伤未被可靠识别时不得用于主要策略归因。"
+    ]
+  },
+  "stint_dossiers": [
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 7,
+      "observed_laps": 7,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 6.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.38854724925952955,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 3,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 8,
+      "lap_end": 23,
+      "observed_laps": 16,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.125,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.05864498832013,
+      "stable_pace_s": 111.05864498832013,
+      "variability_mad_s": 2.6748157851479424,
+      "degradation_s_per_tyre_lap": 0.515468151538406,
+      "raw_net_slope_s_per_tyre_lap": 0.44728633335658685,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.48819542426567913,
+        0.5472863333565873
+      ],
+      "late_drop_s": 1.8041385303844208,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.495731115931704,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 12,
+        "quality_missing": 2,
+        "model_eligible": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 24,
+      "lap_end": 33,
+      "observed_laps": 10,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 9.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.5300324257067732,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 4,
+      "compound": "SOFT",
+      "lap_start": 34,
+      "lap_end": 44,
+      "observed_laps": 11,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.18181818181818182,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 10.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 109.77020506425339,
+      "stable_pace_s": 109.77020506425339,
+      "variability_mad_s": 0.740505249803702,
+      "degradation_s_per_tyre_lap": 0.9989278966730097,
+      "raw_net_slope_s_per_tyre_lap": 0.9789962768554545,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.9716551694002931,
+        1.0307460784912053
+      ],
+      "late_drop_s": 0.49946394833649777,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.630639262139043,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "model_eligible": 2,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 10,
+      "observed_laps": 10,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.6,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 9.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 110.50619047338316,
+      "stable_pace_s": 110.69605523889717,
+      "variability_mad_s": 0.10182725642811455,
+      "degradation_s_per_tyre_lap": 0.068681543523617,
+      "raw_net_slope_s_per_tyre_lap": 0.0004997253418039804,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.04140881625089321,
+        0.1004997253418054
+      ],
+      "late_drop_s": 0.10786403309215586,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 6.920389214455195,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 6,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 11,
+      "lap_end": 29,
+      "observed_laps": 19,
+      "modelable_laps": 9,
+      "clean_modelable_laps": 10,
+      "pace_adjusted_laps": 9,
+      "modelable_fraction": 0.47368421052631576,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 110.58937549591067,
+      "stable_pace_s": 111.1992836865512,
+      "variability_mad_s": 0.5198470931312775,
+      "degradation_s_per_tyre_lap": 0.09658516537059009,
+      "raw_net_slope_s_per_tyre_lap": -0.017347676413399835,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.06931243809786228,
+        0.1284033471887714
+      ],
+      "late_drop_s": 0.23824691772458095,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 1,
+      "baseline_coverage": 0.1111111111111111,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 10.0355693359375,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 10,
+        "traffic_separate": 4,
+        "unknown_unaccounted": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 30,
+      "lap_end": 44,
+      "observed_laps": 15,
+      "modelable_laps": 12,
+      "clean_modelable_laps": 12,
+      "pace_adjusted_laps": 12,
+      "modelable_fraction": 0.8,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 111.11809947273949,
+      "stable_pace_s": 111.02803429690275,
+      "variability_mad_s": 0.1913409620631748,
+      "degradation_s_per_tyre_lap": -0.02334778959101058,
+      "raw_net_slope_s_per_tyre_lap": -0.08719991048177084,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.05062051686373732,
+        0.008470392227168944
+      ],
+      "late_drop_s": -0.016886104236945698,
+      "cumulative_delta_to_reasonable_baseline_s": 1.345442338423311,
+      "baseline_laps": 7,
+      "baseline_coverage": 0.5833333333333334,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 23.214542447855777,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 12,
+        "quality_missing": 1,
+        "traffic_separate": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "BOT",
+      "team": "Alfa Romeo",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 6,
+      "observed_laps": 6,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 5.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.47009994343825484,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "traffic_separate": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "BOT",
+      "team": "Alfa Romeo",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 7,
+      "lap_end": 24,
+      "observed_laps": 18,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 17.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5313275871272434,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 16,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "BOT",
+      "team": "Alfa Romeo",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 25,
+      "lap_end": 44,
+      "observed_laps": 20,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.4497268530348877,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 23,
+      "observed_laps": 23,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.043478260869565216,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 22.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 114.92150627483025,
+      "stable_pace_s": 114.92150627483025,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1370188037658284,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 24,
+      "lap_end": 44,
+      "observed_laps": 21,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.09523809523809523,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.64246741208163,
+      "stable_pace_s": 111.64246741208163,
+      "variability_mad_s": 0.051756580144712634,
+      "degradation_s_per_tyre_lap": -0.06981867009943699,
+      "raw_net_slope_s_per_tyre_lap": -0.13800048828125,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.09709139737215366,
+        -0.038000488281255684
+      ],
+      "late_drop_s": -0.03490933504971849,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.9479092232714816,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 17,
+        "model_eligible": 2,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 12,
+      "observed_laps": 12,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 11.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1423629198359735,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 8,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 13,
+      "lap_end": 27,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.1195780135523843,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 28,
+      "lap_end": 42,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.472327221489506,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 12,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 4,
+      "compound": "MEDIUM",
+      "lap_start": 43,
+      "lap_end": 44,
+      "observed_laps": 2,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 1.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 21.005283817183773,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HUL",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 12,
+      "observed_laps": 12,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.08333333333333333,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 11.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.71587467193606,
+      "stable_pace_s": 111.71587467193606,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.2058511663509484,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 6,
+        "quality_missing": 3,
+        "event_excluded": 2,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HUL",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "SOFT",
+      "lap_start": 13,
+      "lap_end": 24,
+      "observed_laps": 12,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.16666666666666666,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 11.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.30523360859269,
+      "stable_pace_s": 111.30523360859269,
+      "variability_mad_s": 0.6480308008367431,
+      "degradation_s_per_tyre_lap": 0.8741815740412022,
+      "raw_net_slope_s_per_tyre_lap": 0.8059997558593892,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.8469088467684855,
+        0.9059997558593835
+      ],
+      "late_drop_s": 0.437090787020594,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.8020057783686225,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 8,
+        "quality_missing": 2,
+        "model_eligible": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "HUL",
+      "team": "Haas F1 Team",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 25,
+      "lap_end": 44,
+      "observed_laps": 20,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.5863227046798745,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 13,
+      "observed_laps": 13,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 12.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.2487699004335022,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 9,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 14,
+      "lap_end": 28,
+      "observed_laps": 15,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 9,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.4666666666666667,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 109.98237323760989,
+      "stable_pace_s": 110.56142278151079,
+      "variability_mad_s": 0.3500543629386055,
+      "degradation_s_per_tyre_lap": 0.07759839838200833,
+      "raw_net_slope_s_per_tyre_lap": -0.033666822645400885,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.050325671109280594,
+        0.10941658020018963
+      ],
+      "late_drop_s": 0.1686436913230125,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 2,
+      "baseline_coverage": 0.2857142857142857,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 5.973627580915178,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 9,
+        "unknown_unaccounted": 3,
+        "quality_missing": 2,
+        "traffic_separate": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 29,
+      "lap_end": 44,
+      "observed_laps": 16,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 7,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.4375,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 110.69428452578458,
+      "stable_pace_s": 111.565149047158,
+      "variability_mad_s": 0.5774457234816022,
+      "degradation_s_per_tyre_lap": 0.13386396928267044,
+      "raw_net_slope_s_per_tyre_lap": 0.06918196244673296,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.10659124200994215,
+        0.16568215110085305
+      ],
+      "late_drop_s": 0.2679543928666419,
+      "cumulative_delta_to_reasonable_baseline_s": 2.8006213795055714,
+      "baseline_laps": 6,
+      "baseline_coverage": 0.8571428571428571,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 4.056995059922224,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "model_eligible": 7,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "MAG",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 5,
+      "observed_laps": 5,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 4.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5443288236050993,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "traffic_separate": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "MAG",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 6,
+      "lap_end": 25,
+      "observed_laps": 20,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 7,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.35,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 109.30473388325086,
+      "stable_pace_s": 112.55196753415197,
+      "variability_mad_s": 0.47915660289416845,
+      "degradation_s_per_tyre_lap": 0.2848817998712718,
+      "raw_net_slope_s_per_tyre_lap": 0.21669998168945312,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.25760907259854376,
+        0.3166999816894531
+      ],
+      "late_drop_s": 0.24076912619851498,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 2,
+      "baseline_coverage": 0.2857142857142857,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.4162773829440387,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 11,
+        "model_eligible": 7,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "MAG",
+      "team": "Haas F1 Team",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 26,
+      "lap_end": 44,
+      "observed_laps": 19,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.3157894736842105,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 112.90875946391712,
+      "stable_pace_s": 112.88962078094482,
+      "variability_mad_s": 0.2666189602765084,
+      "degradation_s_per_tyre_lap": 0.07886916940862321,
+      "raw_net_slope_s_per_tyre_lap": 0.00824928283691051,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.05159644213589232,
+        0.11068735122680451
+      ],
+      "late_drop_s": 0.39861835132944634,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.932755498927039,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 11,
+        "model_eligible": 6,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 5,
+      "observed_laps": 5,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 4.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5513316409883227,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "traffic_separate": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 6,
+      "lap_end": 17,
+      "observed_laps": 12,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 11.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.6643719055868205,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 10,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 18,
+      "lap_end": 44,
+      "observed_laps": 27,
+      "modelable_laps": 9,
+      "clean_modelable_laps": 9,
+      "pace_adjusted_laps": 9,
+      "modelable_fraction": 0.3333333333333333,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 26.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.87414715506813,
+      "stable_pace_s": 112.30812358856201,
+      "variability_mad_s": 0.1371178670362897,
+      "degradation_s_per_tyre_lap": 0.024775887980602228,
+      "raw_net_slope_s_per_tyre_lap": -0.03756189346313654,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.002496839292126296,
+        0.056594069798785895
+      ],
+      "late_drop_s": -0.07979150251908607,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.891983044995424,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "model_eligible": 9,
+        "quality_missing": 2,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "OCO",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 6,
+      "observed_laps": 6,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 5.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5194814337493985,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "traffic_separate": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "OCO",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 7,
+      "lap_end": 25,
+      "observed_laps": 19,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.3157894736842105,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 112.22355539148506,
+      "stable_pace_s": 114.24291844801472,
+      "variability_mad_s": 1.500728222413508,
+      "degradation_s_per_tyre_lap": 0.5441822861180157,
+      "raw_net_slope_s_per_tyre_lap": 0.47600046793619794,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.5169095588452896,
+        0.576000467936197
+      ],
+      "late_drop_s": -0.7404561476273983,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 3,
+      "baseline_coverage": 0.5,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.4310000596542705,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 11,
+        "model_eligible": 6,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "OCO",
+      "team": "Alpine",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 26,
+      "lap_end": 44,
+      "observed_laps": 19,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1533741928973333,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 17,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 13,
+      "observed_laps": 13,
+      "modelable_laps": 9,
+      "clean_modelable_laps": 9,
+      "pace_adjusted_laps": 9,
+      "modelable_fraction": 0.6923076923076923,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 12.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 109.46469038183041,
+      "stable_pace_s": 109.64005548303781,
+      "variability_mad_s": 0.21766720692028463,
+      "degradation_s_per_tyre_lap": 0.12749109639750295,
+      "raw_net_slope_s_per_tyre_lap": 0.05930927821568317,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.1002183691247741,
+        0.15930927821568291
+      ],
+      "late_drop_s": 0.46563755382190664,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.07437886358911275,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 9,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 14,
+      "lap_end": 29,
+      "observed_laps": 16,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.375,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 109.85151230205192,
+      "stable_pace_s": 110.6700109135021,
+      "variability_mad_s": 0.47390518460706077,
+      "degradation_s_per_tyre_lap": 0.16761905496770169,
+      "raw_net_slope_s_per_tyre_lap": 0.08749771118164062,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.14034632769497435,
+        0.19943723678588654
+      ],
+      "late_drop_s": 0.47711337696421197,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 2,
+      "baseline_coverage": 0.3333333333333333,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 5.098045316648077,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 6,
+        "model_eligible": 6,
+        "quality_missing": 3,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 30,
+      "lap_end": 44,
+      "observed_laps": 15,
+      "modelable_laps": 13,
+      "clean_modelable_laps": 13,
+      "pace_adjusted_laps": 13,
+      "modelable_fraction": 0.8666666666666667,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 109.93709971688011,
+      "stable_pace_s": 110.73337650299071,
+      "variability_mad_s": 0.3019436334436839,
+      "degradation_s_per_tyre_lap": 0.0553577596491003,
+      "raw_net_slope_s_per_tyre_lap": -0.006786237444193587,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.028085032376370833,
+        0.08717594146728161
+      ],
+      "late_drop_s": 0.21554704145954418,
+      "cumulative_delta_to_reasonable_baseline_s": 0.603437943892061,
+      "baseline_laps": 8,
+      "baseline_coverage": 0.6153846153846154,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 14.398668823242184,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 13,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "PIA",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 1,
+      "observed_laps": 1,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 0.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 22.211544709158417,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "RIC",
+      "team": "AlphaTauri",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 5,
+      "observed_laps": 5,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 4.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.4122827273901184,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "event_excluded": 2,
+        "traffic_separate": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "RIC",
+      "team": "AlphaTauri",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 6,
+      "lap_end": 22,
+      "observed_laps": 17,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 16.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8319891357421876,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "RIC",
+      "team": "AlphaTauri",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 23,
+      "lap_end": 44,
+      "observed_laps": 22,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.09090909090909091,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 112.80537700653076,
+      "stable_pace_s": 112.80537700653076,
+      "variability_mad_s": 3.425009326483991,
+      "degradation_s_per_tyre_lap": 0.2566819046482899,
+      "raw_net_slope_s_per_tyre_lap": 0.19599999321831676,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.22940917737556296,
+        0.28850008646647196
+      ],
+      "late_drop_s": 2.310137141834602,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.5151005678755283,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 17,
+        "quality_missing": 2,
+        "model_eligible": 2,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 22,
+      "observed_laps": 22,
+      "modelable_laps": 3,
+      "clean_modelable_laps": 3,
+      "pace_adjusted_laps": 3,
+      "modelable_fraction": 0.13636363636363635,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 113.78191991285846,
+      "stable_pace_s": 114.83851372111928,
+      "variability_mad_s": 1.2189635059703825,
+      "degradation_s_per_tyre_lap": 1.4676836187189366,
+      "raw_net_slope_s_per_tyre_lap": 1.3995018005371165,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        1.4404108914462057,
+        1.499501800537118
+      ],
+      "late_drop_s": 0.8221796209162164,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7168923962483342,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "model_eligible": 3,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "SOFT",
+      "lap_start": 23,
+      "lap_end": 44,
+      "observed_laps": 22,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.2727272727272727,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 110.42856805974787,
+      "stable_pace_s": 110.81230623071843,
+      "variability_mad_s": 0.5689302122809622,
+      "degradation_s_per_tyre_lap": 0.09835809309852384,
+      "raw_net_slope_s_per_tyre_lap": 0.038117352653952205,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.07108536582579544,
+        0.13017627491670514
+      ],
+      "late_drop_s": 1.1307978196577722,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.231264623588057,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 14,
+        "model_eligible": 6,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAI",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 7,
+      "observed_laps": 7,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 6.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1491747657506215,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 3,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAI",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 8,
+      "lap_end": 23,
+      "observed_laps": 16,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.375,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 113.14750801433219,
+      "stable_pace_s": 114.84623778950088,
+      "variability_mad_s": 1.4675723702170689,
+      "degradation_s_per_tyre_lap": 0.4326102021452637,
+      "raw_net_slope_s_per_tyre_lap": 0.3021425519670759,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.40533747487253485,
+        0.464428383963445
+      ],
+      "late_drop_s": 0.6949544386429949,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 2,
+      "baseline_coverage": 0.3333333333333333,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 4.216219193656366,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 6,
+        "model_eligible": 6,
+        "quality_missing": 4
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 8,
+      "observed_laps": 8,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 7.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.3126461256826273,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 4,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 9,
+      "lap_end": 24,
+      "observed_laps": 16,
+      "modelable_laps": 3,
+      "clean_modelable_laps": 3,
+      "pace_adjusted_laps": 3,
+      "modelable_fraction": 0.1875,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 112.19637393951419,
+      "stable_pace_s": 112.77596655758947,
+      "variability_mad_s": 1.6764187882856791,
+      "degradation_s_per_tyre_lap": 0.45798284357244085,
+      "raw_net_slope_s_per_tyre_lap": 0.38980102539062217,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.4307101162997128,
+        0.48980102539062215
+      ],
+      "late_drop_s": 1.1307289817116413,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 1,
+      "baseline_coverage": 0.3333333333333333,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.4624048877790399,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 11,
+        "model_eligible": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 25,
+      "lap_end": 34,
+      "observed_laps": 10,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 9.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.536305958257061,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 4,
+      "compound": "SOFT",
+      "lap_start": 35,
+      "lap_end": 44,
+      "observed_laps": 10,
+      "modelable_laps": 5,
+      "clean_modelable_laps": 5,
+      "pace_adjusted_laps": 5,
+      "modelable_fraction": 0.5,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 9.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 110.2039424722845,
+      "stable_pace_s": 111.16721526059236,
+      "variability_mad_s": 0.9591448463787077,
+      "degradation_s_per_tyre_lap": 0.49093229120428816,
+      "raw_net_slope_s_per_tyre_lap": 0.4227504730224645,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.46365956393155017,
+        0.5227504730224695
+      ],
+      "late_drop_s": 0.4305255196311464,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 7.660446050228341,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 5,
+        "quality_missing": 2,
+        "traffic_separate": 2,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 20,
+      "observed_laps": 20,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 7,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.35,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.15641637281941,
+      "stable_pace_s": 111.32287693023684,
+      "variability_mad_s": 0.248142014382108,
+      "degradation_s_per_tyre_lap": 0.16068059747869512,
+      "raw_net_slope_s_per_tyre_lap": 0.092498779296875,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.13340787020596423,
+        0.19249877929687642
+      ],
+      "late_drop_s": 0.9686320911754223,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.7977266235351563,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 9,
+        "model_eligible": 7,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "SOFT",
+      "lap_start": 21,
+      "lap_end": 44,
+      "observed_laps": 24,
+      "modelable_laps": 4,
+      "clean_modelable_laps": 4,
+      "pace_adjusted_laps": 4,
+      "modelable_fraction": 0.16666666666666666,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 112.63073791157115,
+      "stable_pace_s": 110.6395340832797,
+      "variability_mad_s": 0.3677724207271258,
+      "degradation_s_per_tyre_lap": -0.32908854340063104,
+      "raw_net_slope_s_per_tyre_lap": -0.39324951171875827,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.3563612706733525,
+        -0.29727036158244147
+      ],
+      "late_drop_s": 0.0661829168146113,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.6308304196152337,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "model_eligible": 4,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 9,
+      "observed_laps": 9,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 8.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.230440977671261,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 5,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 10,
+      "lap_end": 24,
+      "observed_laps": 15,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.06666666666666667,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 113.55605584924871,
+      "stable_pace_s": 113.55605584924871,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 1,
+      "baseline_coverage": 1.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.53468515874795,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 10,
+        "quality_missing": 4,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 25,
+      "lap_end": 44,
+      "observed_laps": 20,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.004918351972425,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 14,
+      "observed_laps": 14,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 13.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.9809188255896935,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 10,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 15,
+      "lap_end": 30,
+      "observed_laps": 16,
+      "modelable_laps": 11,
+      "clean_modelable_laps": 11,
+      "pace_adjusted_laps": 11,
+      "modelable_fraction": 0.6875,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 15.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 109.76173843037002,
+      "stable_pace_s": 110.95132784409957,
+      "variability_mad_s": 0.6732646015860875,
+      "degradation_s_per_tyre_lap": 0.05615050142461442,
+      "raw_net_slope_s_per_tyre_lap": -0.060666402180989586,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.028877774151885305,
+        0.08796868324279572
+      ],
+      "late_drop_s": -0.5406090129505543,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 1,
+      "baseline_coverage": 0.09090909090909091,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5488918319810637,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 11,
+        "quality_missing": 3,
+        "traffic_separate": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 31,
+      "lap_end": 44,
+      "observed_laps": 14,
+      "modelable_laps": 13,
+      "clean_modelable_laps": 13,
+      "pace_adjusted_laps": 13,
+      "modelable_fraction": 0.9285714285714286,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 13.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 109.01328095522794,
+      "stable_pace_s": 109.81166882948443,
+      "variability_mad_s": 0.11937808633282986,
+      "degradation_s_per_tyre_lap": 0.03127148863556986,
+      "raw_net_slope_s_per_tyre_lap": -0.03956270217895508,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.003998761362843035,
+        0.06308967045375219
+      ],
+      "late_drop_s": 0.23193342035466458,
+      "cumulative_delta_to_reasonable_baseline_s": -4.564384113658562,
+      "baseline_laps": 7,
+      "baseline_coverage": 0.5384615384615384,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": null,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 13,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ZHO",
+      "team": "Alfa Romeo",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 7,
+      "observed_laps": 7,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 6.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.5411147091366829,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 3,
+        "quality_missing": 2,
+        "event_excluded": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ZHO",
+      "team": "Alfa Romeo",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 8,
+      "lap_end": 25,
+      "observed_laps": 18,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 17.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.6324894674515682,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 16,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "driver": "ZHO",
+      "team": "Alfa Romeo",
+      "stint_number": 3,
+      "compound": "SOFT",
+      "lap_start": 26,
+      "lap_end": 44,
+      "observed_laps": 19,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.10526315789473684,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 111.75910594246604,
+      "stable_pace_s": 111.75910594246604,
+      "variability_mad_s": 0.297396217554283,
+      "degradation_s_per_tyre_lap": 0.4011820012873102,
+      "raw_net_slope_s_per_tyre_lap": 0.33300018310548296,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.3739092740145651,
+        0.4330001831054915
+      ],
+      "late_drop_s": 0.2005910006436551,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8469198588255572,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "model_eligible": 2,
+        "quality_missing": 1,
+        "event_excluded": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    }
+  ],
+  "vehicle_driver_decomposition": [
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "team": "Ferrari",
+      "driver": "LEC",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": 2.699442429976102,
+      "components": {
+        "vehicle_common_baseline_s": 3.454514936967371,
+        "driver_realization_deviation_s": -1.6996196400035615,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.9445471330122928
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "team": "Ferrari",
+      "driver": "SAI",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": 2.241815740411937,
+      "components": {
+        "vehicle_common_baseline_s": 0.8636287342418427,
+        "driver_realization_deviation_s": 1.3781870061700943,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.0
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "team": "Red Bull Racing",
+      "driver": "PER",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": 0.6182563088157309,
+      "components": {
+        "vehicle_common_baseline_s": -1.1927483298560304,
+        "driver_realization_deviation_s": 1.8073012612082096,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.0037033774635517602
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Belgian Grand Prix",
+      "team": "Red Bull Racing",
+      "driver": "VER",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -4.93738521229136,
+      "components": {
+        "vehicle_common_baseline_s": -0.9541986638848243,
+        "driver_realization_deviation_s": -4.036388050426297,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.05320150201976048
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    }
+  ],
+  "result_impact_audit": {
+    "major_factor_claims": [],
+    "classification_proxy_comparison": [
+      {
+        "team": "Ferrari",
+        "performance_proxy_rank": 2,
+        "classification_proxy_rank": 3,
+        "rank_difference": 1
+      },
+      {
+        "team": "McLaren",
+        "performance_proxy_rank": null,
+        "classification_proxy_rank": 4,
+        "rank_difference": null
+      },
+      {
+        "team": "Mercedes",
+        "performance_proxy_rank": null,
+        "classification_proxy_rank": 2,
+        "rank_difference": null
+      },
+      {
+        "team": "Red Bull Racing",
+        "performance_proxy_rank": 1,
+        "classification_proxy_rank": 1,
+        "rank_difference": 0
+      }
+    ],
+    "fia_final_classification_used": false,
+    "expected_points_interval": null,
+    "reason": "没有冻结且时间外校准的全场位置/积分反事实模拟；classification_proxy 仅用于赛后构念审计。"
+  },
+  "ratings": {
+    "PAC": null,
+    "OVR": null
+  },
+  "event_conclusion": null,
+  "boundaries": {
+    "data_proxy": true,
+    "unidentified": [
+      "真实燃油量",
+      "真实胎温胎压与磨损量",
+      "车辆损伤与具体故障",
+      "车队指令与驾驶意图",
+      "倍耐力或车队内部策略模拟"
+    ],
+    "forbidden_claims": [
+      "由少量圈直接形成整场结论",
+      "把公开数据包络称为倍耐力内部模拟",
+      "把单场保胎差异直接归因为纯车手能力",
+      "把 classification_proxy 称为 FIA 最终分类",
+      "输出伪精确贡献百分比"
+    ]
+  },
+  "run_id": "20260725T134848+0800-a9f5c3364ee6",
+  "created_at": "2026-07-25T13:49:28+08:00",
+  "config_hash": "a9f5c3364ee67f321b367eaa89cfbd2b3617b46b766fd44b2bea05981ed73ccd",
+  "round": 12,
+  "event_order": 202312,
+  "source_identity": {
+    "lap_universe_manifest": "research/artifacts/race_dossier_v11/run=20260725T134848+0800-a9f5c3364ee6/manifest.json",
+    "qualifying_manifest_sha256": "b4af9a995f9cb1465a6c8d43339bd684e937e4c4cf87213f3ab4cb20d3ffb0c6",
+    "v5_result_sha256": "40937855648ffa1cf45094d6e39c5d82fac010242302973efd205a1394f5accd"
+  },
+  "pre_race_tyre_envelope": {
+    "label": "historical_pre_race_data_proxy",
+    "target_event_id": "2023|Belgian Grand Prix",
+    "target_event_order": 202312,
+    "history_cutoff_rule": "event_order_strictly_less_than_target",
+    "visible_valid_stints": 85,
+    "compounds": [
+      {
+        "compound": "HARD",
+        "historical_stints": 42,
+        "historical_events": 10,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          20,
+          47
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.04766988544329892,
+          "interval_80": [
+            0.01064201473112437,
+            0.09709662864794069
+          ]
+        }
+      },
+      {
+        "compound": "MEDIUM",
+        "historical_stints": 31,
+        "historical_events": 9,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          16,
+          33
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.034104676680131736,
+          "interval_80": [
+            -0.01933052880423336,
+            0.06727397282918292
+          ]
+        }
+      },
+      {
+        "compound": "SOFT",
+        "historical_stints": 12,
+        "historical_events": 4,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          14,
+          21
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.10472726001161826,
+          "interval_80": [
+            0.06155810075404682,
+            0.17507930059427215
+          ]
+        }
+      }
+    ],
+    "one_stop_options": [
+      {
+        "sequence": [
+          "HARD",
+          "MEDIUM"
+        ],
+        "pit_window_laps": [
+          20,
+          28
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "SOFT"
+        ],
+        "pit_window_laps": [
+          23,
+          30
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "HARD"
+        ],
+        "pit_window_laps": [
+          16,
+          24
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT"
+        ],
+        "pit_window_laps": [
+          23,
+          30
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "HARD"
+        ],
+        "pit_window_laps": [
+          14,
+          21
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM"
+        ],
+        "pit_window_laps": [
+          14,
+          21
+        ]
+      }
+    ],
+    "two_stop_options": [
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          16,
+          16
+        ],
+        "second_pit_window_laps": [
+          30,
+          30
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          14,
+          14
+        ],
+        "second_pit_window_laps": [
+          30,
+          30
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "SOFT",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          14,
+          14
+        ],
+        "second_pit_window_laps": [
+          28,
+          28
+        ]
+      }
+    ],
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "future_results_used": false,
+    "limitations": [
+      "仅使用目标分站前的公开历史 stint，不能代表实时天气、赛道演化或车队内部模型。",
+      "进站窗口由历史长度包络覆盖赛程推导，未估计真实燃油、胎温胎压和磨损量。"
+    ]
+  }
+}

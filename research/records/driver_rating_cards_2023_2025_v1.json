@@ -1,0 +1,1686 @@
+{
+  "run_id": "driver_rating_cards_2023_2025_v1-20260731T153107+0800",
+  "created_at": "2026-07-31T15:31:07+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "driver_rating_cards_2023_2025_v1",
+    "validation_status": "historical_pac_candidate_blocked_pending_driver_specific_time_forward_validation",
+    "offline_only": true,
+    "inputs": {
+      "seasonal_result": "research/records/seasonal_standings_calibration_results.json",
+      "objective_result": "research/records/objective_rating_review_2023_2026_v1.json"
+    },
+    "rating_contract": {
+      "seasonal_source": {
+        "run_id": "seasonal_standings_calibration_2023_2025_v1-20260719T002710",
+        "config_hash": "8b999bdd6de1158a33eb7ec9184c91e3077383351d9c288758d727417c89f0a3"
+      },
+      "objective_source": {
+        "run_id_prefix": "objective_rating_review_2023_2026_v1-",
+        "config_hash": "89854c4f934f52b27f21962a5d98cbe5249acb7032e5df27b12d924b83f950c3"
+      },
+      "population_size": 28,
+      "population_mean": 1.1964635631451463e-15,
+      "population_sd": 0.22839362345273181,
+      "sd_ddof": 0,
+      "validation_tolerance": 1e-12,
+      "additional_sample_count_shrinkage": false,
+      "pooled_pac_interval_source": null,
+      "forbidden_ability_input_fields": [
+        "actual_points",
+        "championship_points",
+        "finish_position",
+        "finishing_position",
+        "championship_position",
+        "constructor_position",
+        "wins",
+        "podiums"
+      ]
+    },
+    "outputs": {
+      "result": "research/records/driver_rating_cards_2023_2025_v1.json",
+      "summary": "research/records/driver_rating_cards_2023_2025_v1.md"
+    },
+    "boundaries": {
+      "published_metric": "none",
+      "pac_interval": "null_until_pooled_driver_base_interval_is_exported",
+      "other_metrics": "null_until_module_specific_time_out_validation",
+      "sample_count": "coverage_only_never_second_stage_rating_shrinkage",
+      "standings": "external_construct_validation_only_not_rating_label",
+      "season_2026": "exploratory_only_until_objective_exposure_gate_passes"
+    }
+  },
+  "config_hash": "b74fc88eda26de30caf2c5f0e0060e30ccdc14c18fe8b3d69ea3e0d2755cf8c9",
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "network_calls": [],
+  "input_identity": {
+    "seasonal_result": {
+      "path": "research/records/seasonal_standings_calibration_results.json",
+      "sha256": "aecf0d3456fe825ac5543ab057d7757f9ce3fefb9f4c115bbc6b0ad6c54ead14",
+      "run_id": "seasonal_standings_calibration_2023_2025_v1-20260719T002710",
+      "config_hash": "8b999bdd6de1158a33eb7ec9184c91e3077383351d9c288758d727417c89f0a3"
+    },
+    "objective_result": {
+      "path": "research/records/objective_rating_review_2023_2026_v1.json",
+      "sha256": "166a0ef3b3c271c1ef95800e5bc567cc23fb4929d73fdd78f65f54d258c9dd0f",
+      "run_id": "objective_rating_review_2023_2026_v1-20260731T140139+0800",
+      "config_hash": "89854c4f934f52b27f21962a5d98cbe5249acb7032e5df27b12d924b83f950c3"
+    }
+  },
+  "contract_version": "driver-rating-cards-v1",
+  "release_status": "historical_result_accounting_passed_full_driver_card_not_ready",
+  "reference_distribution": {
+    "source_metric": "negative_driver_base_z",
+    "source_run_id": "seasonal_standings_calibration_2023_2025_v1-20260719T002710",
+    "source_config_hash": "8b999bdd6de1158a33eb7ec9184c91e3077383351d9c288758d727417c89f0a3",
+    "population_size": 28,
+    "population_mean": 1.1964635631451463e-15,
+    "population_sd": 0.22839362345273181,
+    "sd_ddof": 0,
+    "formula": "clip(75 + 10 * ((-driver_base_z - population_mean) / population_sd), 0, 100)",
+    "additional_sample_count_shrinkage": false,
+    "pooled_interval_available": false,
+    "interval_policy": "ci_null_because_pooled_driver_base_interval_not_exported;annual_driver_pace_intervals_are_not_reused"
+  },
+  "coverage": {
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "race_meetings": 69,
+    "clean_laps": 61351,
+    "driver_count": 28,
+    "driver_season_rows": 67,
+    "module_coverage": {
+      "PAC": "prototype",
+      "TYM": "prototype",
+      "EXT": "prototype",
+      "ATK": "missing",
+      "DEF": "missing",
+      "AWA": "missing",
+      "STR": "missing",
+      "ADP": "missing"
+    },
+    "published_modules": [],
+    "null_metrics": [
+      "PAC",
+      "TYM",
+      "EXT",
+      "ATK",
+      "DEF",
+      "AWA",
+      "STR",
+      "ADP",
+      "EventDelivery",
+      "OVR"
+    ]
+  },
+  "identification": {
+    "transfer_graph_connected": false,
+    "component_count": 4,
+    "weakly_anchored_drivers": [
+      "ALO",
+      "NOR",
+      "PIA",
+      "STR"
+    ],
+    "flags": [
+      "driver_team_graph_disconnected:4_components",
+      "unvalidated_driver_modules:ADP,ATK,AWA,DEF,EXT,PAC,STR,TYM",
+      "pac_driver_specific_time_forward_gate_not_passed",
+      "pooled_pac_interval_not_exported_ci_null",
+      "annual_driver_intervals_not_reused_for_pooled_pac",
+      "sample_count_not_used_for_second_stage_shrinkage"
+    ]
+  },
+  "forbidden_ability_input_fields": [
+    "actual_points",
+    "championship_points",
+    "championship_position",
+    "classification",
+    "classification_position",
+    "constructor_position",
+    "dnf",
+    "dns",
+    "dsq",
+    "fastest_lap",
+    "final_position",
+    "finish_position",
+    "finish_status",
+    "finishing_position",
+    "podium",
+    "podiums",
+    "points",
+    "race_result",
+    "result_position",
+    "result_rank",
+    "win",
+    "winner",
+    "wins"
+  ],
+  "season_2026_release_gate": {
+    "gate_id": "2026_confirmatory_exposure",
+    "passed": false,
+    "observed_events": 4,
+    "minimum_events": 8,
+    "role": "future_release",
+    "note": "不足时仍可生成逐场探索报告，但不得发布确认性赛季评分。",
+    "publication_mode": "exploratory_only"
+  },
+  "cards": [
+    {
+      "driver": "ALB",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Williams"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2826,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "ALO",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Aston Martin"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3088,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 3,
+        "component_team_count": 1,
+        "internally_transfer_anchored": false,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 1,
+        "graph_degree": 1,
+        "weakly_anchored": true,
+        "flags": [
+          "driver_teammate_network_weakly_anchored",
+          "component_not_cross_grid_transfer_anchored",
+          "component_not_internally_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "ANT",
+      "years": [
+        2025
+      ],
+      "teams": [
+        "Mercedes"
+      ],
+      "coverage": {
+        "season_rows": 1,
+        "sample_count_total": 1009,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 2,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "BEA",
+      "years": [
+        2024,
+        2025
+      ],
+      "teams": [
+        "Ferrari",
+        "Haas F1 Team"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1097,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "BOR",
+      "years": [
+        2025
+      ],
+      "teams": [
+        "Kick Sauber"
+      ],
+      "coverage": {
+        "season_rows": 1,
+        "sample_count_total": 987,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "BOT",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "Kick Sauber"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 2057,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "COL",
+      "years": [
+        2024,
+        2025
+      ],
+      "teams": [
+        "Alpine",
+        "Williams"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1174,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "DEV",
+      "years": [
+        2023
+      ],
+      "teams": [
+        "RB"
+      ],
+      "coverage": {
+        "season_rows": 1,
+        "sample_count_total": 454,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 4,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "DOO",
+      "years": [
+        2024,
+        2025
+      ],
+      "teams": [
+        "Alpine"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 233,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "GAS",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Alpine"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2966,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "HAD",
+      "years": [
+        2025
+      ],
+      "teams": [
+        "RB"
+      ],
+      "coverage": {
+        "season_rows": 1,
+        "sample_count_total": 1106,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 4,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "HAM",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Ferrari",
+        "Mercedes"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3124,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 5,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "HUL",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Haas F1 Team",
+        "Kick Sauber"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2999,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "LAW",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "RB"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 1422,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "LEC",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Ferrari"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3117,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "MAG",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "Haas F1 Team"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1954,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "NOR",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "McLaren"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3271,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 2,
+        "component_team_count": 1,
+        "internally_transfer_anchored": false,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 1,
+        "graph_degree": 1,
+        "weakly_anchored": true,
+        "flags": [
+          "driver_teammate_network_weakly_anchored",
+          "component_not_cross_grid_transfer_anchored",
+          "component_not_internally_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "OCO",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Alpine",
+        "Haas F1 Team"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2964,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "PER",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "Red Bull Racing"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1943,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "PIA",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "McLaren"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3167,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 2,
+        "component_team_count": 1,
+        "internally_transfer_anchored": false,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 1,
+        "graph_degree": 1,
+        "weakly_anchored": true,
+        "flags": [
+          "driver_teammate_network_weakly_anchored",
+          "component_not_cross_grid_transfer_anchored",
+          "component_not_internally_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "RIC",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "RB"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1180,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 4,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "RUS",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Mercedes"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3250,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 2,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "SAI",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Ferrari",
+        "Williams"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3078,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "SAR",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "Williams"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 1552,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "STR",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Aston Martin"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2999,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 3,
+        "component_team_count": 1,
+        "internally_transfer_anchored": false,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 1,
+        "graph_degree": 1,
+        "weakly_anchored": true,
+        "flags": [
+          "driver_teammate_network_weakly_anchored",
+          "component_not_cross_grid_transfer_anchored",
+          "component_not_internally_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "TSU",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "RB",
+        "Red Bull Racing"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 2913,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 2,
+        "distinct_teammates": 6,
+        "graph_degree": 2,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "VER",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "teams": [
+        "Red Bull Racing"
+      ],
+      "coverage": {
+        "season_rows": 3,
+        "sample_count_total": 3241,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 1,
+        "component_team_count": 2,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": false,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "component_not_cross_grid_transfer_anchored"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    },
+    {
+      "driver": "ZHO",
+      "years": [
+        2023,
+        2024
+      ],
+      "teams": [
+        "Kick Sauber"
+      ],
+      "coverage": {
+        "season_rows": 2,
+        "sample_count_total": 2040,
+        "sample_count_role": "evidence_coverage_only_not_rating_shrinkage"
+      },
+      "identification": {
+        "component_index": 0,
+        "component_team_count": 6,
+        "internally_transfer_anchored": true,
+        "cross_grid_anchored": true,
+        "distinct_teams": 1,
+        "distinct_teammates": 3,
+        "graph_degree": 1,
+        "weakly_anchored": false,
+        "flags": [
+          "transfer_graph_anchor_available"
+        ]
+      },
+      "metrics": {
+        "PAC": null,
+        "TYM": null,
+        "EXT": null,
+        "ATK": null,
+        "DEF": null,
+        "AWA": null,
+        "STR": null,
+        "ADP": null,
+        "EventDelivery": null,
+        "OVR": null
+      },
+      "metric_status": {
+        "PAC": "prototype",
+        "TYM": "prototype",
+        "EXT": "prototype",
+        "ATK": "missing",
+        "DEF": "missing",
+        "AWA": "missing",
+        "STR": "missing",
+        "ADP": "missing",
+        "EventDelivery": "not_estimated",
+        "OVR": "blocked_until_all_ability_modules_validated"
+      },
+      "pac_rank": null
+    }
+  ]
+}

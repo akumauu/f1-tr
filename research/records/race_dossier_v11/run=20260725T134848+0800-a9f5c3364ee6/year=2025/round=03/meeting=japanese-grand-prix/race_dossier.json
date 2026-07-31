@@ -1,0 +1,4848 @@
+{
+  "report_id": "race_dossier_2025_Japanese Grand Prix_v11",
+  "scope": {
+    "year": 2025,
+    "meeting": "Japanese Grand Prix",
+    "session": "Race",
+    "team": "McLaren / Red Bull Racing / Ferrari / Mercedes"
+  },
+  "schema_version": "race-dossier-v11",
+  "release_status": "audit_only",
+  "analysis_unit": "complete_race",
+  "coverage": {
+    "analysis_unit": "complete_race",
+    "observed_field_laps": 1059,
+    "observed_reporting_team_laps": 424,
+    "race_lap_span": 53,
+    "reporting_driver_lap_continuity_proxy": 1.0,
+    "modelable_reporting_laps": 108,
+    "modelable_reporting_lap_fraction": 0.25471698113207547,
+    "pace_adjusted_reporting_laps": 107,
+    "pace_adjusted_reporting_lap_fraction": 0.25235849056603776,
+    "baseline_available_reporting_laps": 103,
+    "stint_assignment_coverage": 1.0,
+    "track_state_coverage": 1.0,
+    "position_gap_state_coverage": 1.0,
+    "teams": [
+      {
+        "team": "McLaren",
+        "drivers": 2,
+        "modelable_laps": 0,
+        "pace_adjusted_laps": 0,
+        "baseline_laps": 0,
+        "valid_stints": 0
+      },
+      {
+        "team": "Red Bull Racing",
+        "drivers": 2,
+        "modelable_laps": 42,
+        "pace_adjusted_laps": 41,
+        "baseline_laps": 17,
+        "valid_stints": 2
+      },
+      {
+        "team": "Ferrari",
+        "drivers": 2,
+        "modelable_laps": 43,
+        "pace_adjusted_laps": 43,
+        "baseline_laps": 19,
+        "valid_stints": 1
+      },
+      {
+        "team": "Mercedes",
+        "drivers": 2,
+        "modelable_laps": 23,
+        "pace_adjusted_laps": 23,
+        "baseline_laps": 0,
+        "valid_stints": 0
+      }
+    ],
+    "lap_disposition_closure": {
+      "accounted_laps": 424,
+      "observed_laps": 424,
+      "passed": true
+    }
+  },
+  "publication_gate": {
+    "passed": false,
+    "status": "audit_only",
+    "reasons": [
+      "pace_adjusted_lap_fraction_below_gate",
+      "McLaren:pace_adjusted_laps_below_gate",
+      "McLaren:valid_stints_below_gate",
+      "McLaren:baseline_laps_below_gate",
+      "Ferrari:valid_stints_below_gate",
+      "Mercedes:pace_adjusted_laps_below_gate",
+      "Mercedes:valid_stints_below_gate",
+      "Mercedes:baseline_laps_below_gate"
+    ],
+    "whole_race_conclusion_allowed": false,
+    "partial_team_conclusion_allowed": false,
+    "publishable_teams": [
+      "Red Bull Racing"
+    ],
+    "module_gates": {
+      "whole_race_context": {
+        "passed": true,
+        "reasons": [],
+        "analysis_unit": "complete_race"
+      },
+      "teams": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 0,
+          "baseline_laps": 0,
+          "valid_stints": 0
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": true,
+          "reasons": [],
+          "drivers": 2,
+          "pace_adjusted_laps": 41,
+          "baseline_laps": 17,
+          "valid_stints": 2
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "valid_stints_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 43,
+          "baseline_laps": 19,
+          "valid_stints": 1
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 23,
+          "baseline_laps": 0,
+          "valid_stints": 0
+        }
+      ],
+      "driver_pairs": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "NOR:pace_laps_below_gate",
+            "NOR:valid_stints_below_gate",
+            "PIA:pace_laps_below_gate",
+            "PIA:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "NOR",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            },
+            {
+              "driver": "PIA",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": false,
+          "reasons": [
+            "TSU:pace_laps_below_gate",
+            "TSU:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "TSU",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            },
+            {
+              "driver": "VER",
+              "pace_adjusted_laps": 41,
+              "valid_stints": 2
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "HAM:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "HAM",
+              "pace_adjusted_laps": 13,
+              "valid_stints": 0
+            },
+            {
+              "driver": "LEC",
+              "pace_adjusted_laps": 30,
+              "valid_stints": 1
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "ANT:valid_stints_below_gate",
+            "RUS:pace_laps_below_gate",
+            "RUS:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "ANT",
+              "pace_adjusted_laps": 23,
+              "valid_stints": 0
+            },
+            {
+              "driver": "RUS",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        }
+      ],
+      "full_reporting_field": {
+        "passed": false,
+        "reasons": [
+          "pace_adjusted_lap_fraction_below_gate",
+          "McLaren:pace_adjusted_laps_below_gate",
+          "McLaren:valid_stints_below_gate",
+          "McLaren:baseline_laps_below_gate",
+          "Ferrari:valid_stints_below_gate",
+          "Mercedes:pace_adjusted_laps_below_gate",
+          "Mercedes:valid_stints_below_gate",
+          "Mercedes:baseline_laps_below_gate"
+        ]
+      }
+    },
+    "legacy_clean_four_team_gate": {
+      "passed": false,
+      "reasons": [
+        "McLaren:modelable_laps_below_gate",
+        "McLaren:valid_stints_below_gate",
+        "Ferrari:valid_stints_below_gate",
+        "Mercedes:modelable_laps_below_gate",
+        "Mercedes:valid_stints_below_gate",
+        "reporting_team_coverage_below_gate",
+        "modelable_lap_fraction_below_gate"
+      ],
+      "thresholds_unchanged": true
+    }
+  },
+  "event_ledger": {
+    "observed_laps": 1059,
+    "primary_disposition_counts": {
+      "model_eligible": 244,
+      "event_excluded": 0,
+      "traffic_separate": 742,
+      "pit_excluded": 0,
+      "quality_missing": 70,
+      "unknown_unaccounted": 3
+    },
+    "primary_disposition_closure": {
+      "accounted_laps": 1059,
+      "unaccounted_laps": 0,
+      "passed": true
+    },
+    "lap_category_counts": {
+      "non_green": 0,
+      "pit_in_boundary_proxy": 21,
+      "pit_out_boundary_proxy": 21,
+      "traffic_dirty_air": 613,
+      "traffic_gap_unknown": 0,
+      "inaccurate_or_deleted": 70,
+      "incomplete_distance": 0,
+      "unexplained_slow_lap_proxy": 3
+    },
+    "entries": [
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ANT",
+        "lap_ranges": [
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "BEA",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "BOR",
+        "lap_ranges": [
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "DOO",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HAD",
+        "lap_ranges": [
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "LAW",
+        "lap_ranges": [
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            32,
+            32
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            20,
+            20
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            19,
+            19
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            9,
+            9
+          ],
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ANT",
+        "lap_ranges": [
+          [
+            32,
+            32
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "BEA",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "BOR",
+        "lap_ranges": [
+          [
+            32,
+            32
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "DOO",
+        "lap_ranges": [
+          [
+            16,
+            16
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HAD",
+        "lap_ranges": [
+          [
+            26,
+            26
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "LAW",
+        "lap_ranges": [
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            20,
+            20
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            10,
+            10
+          ],
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 2,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            19
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            26,
+            28
+          ],
+          [
+            30,
+            32
+          ]
+        ],
+        "affected_laps": 26,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            14
+          ],
+          [
+            21,
+            24
+          ]
+        ],
+        "affected_laps": 18,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ANT",
+        "lap_ranges": [
+          [
+            1,
+            14
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            50,
+            53
+          ]
+        ],
+        "affected_laps": 19,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "BEA",
+        "lap_ranges": [
+          [
+            1,
+            16
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            29,
+            33
+          ]
+        ],
+        "affected_laps": 23,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "BOR",
+        "lap_ranges": [
+          [
+            1,
+            15
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            24,
+            31
+          ],
+          [
+            33,
+            53
+          ]
+        ],
+        "affected_laps": 45,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "DOO",
+        "lap_ranges": [
+          [
+            1,
+            15
+          ],
+          [
+            24,
+            28
+          ],
+          [
+            33,
+            34
+          ],
+          [
+            50,
+            50
+          ]
+        ],
+        "affected_laps": 23,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            19
+          ],
+          [
+            21,
+            24
+          ],
+          [
+            30,
+            32
+          ],
+          [
+            45,
+            46
+          ],
+          [
+            48,
+            48
+          ],
+          [
+            53,
+            53
+          ]
+        ],
+        "affected_laps": 30,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HAD",
+        "lap_ranges": [
+          [
+            1,
+            10
+          ],
+          [
+            27,
+            31
+          ]
+        ],
+        "affected_laps": 15,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            21
+          ],
+          [
+            32,
+            36
+          ]
+        ],
+        "affected_laps": 26,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            53
+          ]
+        ],
+        "affected_laps": 53,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "LAW",
+        "lap_ranges": [
+          [
+            1,
+            6
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            32,
+            33
+          ],
+          [
+            36,
+            37
+          ],
+          [
+            42,
+            53
+          ]
+        ],
+        "affected_laps": 23,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            15
+          ],
+          [
+            22,
+            23
+          ]
+        ],
+        "affected_laps": 17,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            53
+          ]
+        ],
+        "affected_laps": 53,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            32
+          ],
+          [
+            34,
+            38
+          ],
+          [
+            48,
+            53
+          ]
+        ],
+        "affected_laps": 43,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            19
+          ],
+          [
+            22,
+            53
+          ]
+        ],
+        "affected_laps": 51,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            25
+          ],
+          [
+            50,
+            53
+          ]
+        ],
+        "affected_laps": 29,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            35
+          ],
+          [
+            41,
+            49
+          ]
+        ],
+        "affected_laps": 44,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            9
+          ],
+          [
+            16,
+            17
+          ],
+          [
+            23,
+            27
+          ]
+        ],
+        "affected_laps": 16,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            23
+          ],
+          [
+            25,
+            53
+          ]
+        ],
+        "affected_laps": 52,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            25,
+            25
+          ],
+          [
+            29,
+            30
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "affected_laps": 7,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ANT",
+        "lap_ranges": [
+          [
+            1,
+            2
+          ],
+          [
+            31,
+            32
+          ],
+          [
+            47,
+            47
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "BEA",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            23,
+            24
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "BOR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            31,
+            32
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "DOO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            15,
+            16
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            24,
+            25
+          ],
+          [
+            53,
+            53
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HAD",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            25,
+            26
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            30,
+            31
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            23
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "LAW",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            33,
+            34
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            21,
+            22
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            21,
+            22
+          ],
+          [
+            53,
+            53
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            32,
+            33
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            20,
+            21
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            19,
+            20
+          ],
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            15,
+            15
+          ],
+          [
+            25,
+            25
+          ],
+          [
+            33,
+            34
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            30,
+            31
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            23,
+            24
+          ],
+          [
+            26,
+            26
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            21,
+            22
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "BEA",
+        "lap_ranges": [
+          [
+            44,
+            44
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "LAW",
+        "lap_ranges": [
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            45,
+            45
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      }
+    ],
+    "not_identified_categories": [
+      "accident_or_damage",
+      "penalty",
+      "abnormal_pit_stop",
+      "defending_or_team_order",
+      "reliability_state"
+    ],
+    "track_status_limit": "track_status 组合编码只支持 non-green 排除，未核对 race-control 来源时不得细分为官方 SC、VSC 或黄旗。"
+  },
+  "simulation_proxy_audit": {
+    "status": "conditional_simulation_proxy",
+    "model_registry": {
+      "acceptance_rule": "value_then_data_then_identifiability_then_synthetic_recovery_then_holdout_or_sensitivity_then_product",
+      "accepted_for_v11": [
+        {
+          "id": "linear_fuel_mass_sensitivity",
+          "source": "data/raw/tracinginsights/2025/README.md#fuel-correction",
+          "role": "base_and_sensitivity_scenarios",
+          "direct_truth_available": false
+        },
+        {
+          "id": "robust_additive_track_evolution",
+          "source": "project_method_using_driver_fixed_centers_and_conditional_medians",
+          "role": "field_common_stage_proxy",
+          "direct_truth_available": false
+        },
+        {
+          "id": "empirical_gap_band_fixed_effects",
+          "source": "project_method_with_two_fold_non_worsening_holdout_gate",
+          "role": "traffic_condition_adjustment",
+          "direct_truth_available": false
+        },
+        {
+          "id": "theil_sen_stint_slope",
+          "source": "Theil_1950_and_Sen_1968_robust_slope_family",
+          "role": "outlier_resistant_stint_degradation_proxy",
+          "direct_truth_available": false
+        }
+      ],
+      "deferred_until_extra_validation": [
+        {
+          "id": "bayesian_state_space_tyre_degradation",
+          "source": "https://arxiv.org/abs/2512.00640",
+          "reason": "需要先验证多车手多分站的后验校准、状态重置和计算成本"
+        },
+        {
+          "id": "multi_agent_monte_carlo_strategy_simulation",
+          "source": "https://github.com/TUMFTM/race-simulation",
+          "reason": "当前缺少已校准超车、进站损失、故障和安全车概率输入"
+        },
+        {
+          "id": "learning_based_energy_and_strategy_optimization",
+          "source": "https://arxiv.org/abs/2512.21570",
+          "reason": "公开逐圈数据不能识别能量分配控制量"
+        }
+      ]
+    },
+    "fuel": {
+      "model": "linear_remaining_mass_sensitivity_v1",
+      "enabled": true,
+      "burn_rule": "linear_by_scheduled_race_fraction",
+      "assumptions": {
+        "initial_fuel_kg": {
+          "low": 90.0,
+          "base": 100.0,
+          "high": 110.0
+        },
+        "lap_time_s_per_kg": {
+          "low": 0.02,
+          "base": 0.03,
+          "high": 0.04
+        }
+      },
+      "base_correction_range_s": [
+        0.0,
+        2.943396226415094
+      ],
+      "sensitivity_correction_range_s": [
+        0.0,
+        4.316981132075472
+      ],
+      "real_fuel_load_identified": false
+    },
+    "track_evolution": {
+      "model": "robust_additive_field_median_v1",
+      "enabled": true,
+      "available_laps": 1059,
+      "direct_support_laps": 439,
+      "correction_range_s": [
+        -0.06954077054867192,
+        0.010689186600002287
+      ],
+      "physical_track_state_identified": false
+    },
+    "traffic": {
+      "model": "empirical_gap_band_fixed_effects_v1",
+      "enabled": true,
+      "states": [
+        {
+          "state": "clean_air",
+          "observed_laps": 263,
+          "supported_laps": 247,
+          "penalty_proxy_s": 0.0,
+          "support_drivers": 13,
+          "holdout_validation": {
+            "status": "not_tested",
+            "holdout_laps": 0,
+            "mae_before_s": null,
+            "mae_after_s": null
+          }
+        },
+        {
+          "state": "intermediate_gap",
+          "observed_laps": 183,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 175,
+            "mae_before_s": 0.09500122070315342,
+            "mae_after_s": 0.090235532047374
+          }
+        },
+        {
+          "state": "dirty_air",
+          "observed_laps": 613,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 567,
+            "mae_before_s": 0.13660017049538453,
+            "mae_after_s": 0.1333910384268222
+          }
+        }
+      ],
+      "causal_aerodynamic_loss_identified": false
+    },
+    "ablation": {
+      "clean_air_modelable_laps": 244,
+      "conditional_proxy_eligible_laps": 241,
+      "eligible_lap_change": -3
+    },
+    "validation_boundary": "合成恢复测试验证实现；真实比赛只报告支持度、敏感性和消融，没有真实油量、真实胎态或风洞真值可作直接监督。"
+  },
+  "qualifying_analysis": {
+    "status": "descriptive_vehicle_potential_proxy",
+    "absolute_time_merged_with_race": false,
+    "team_order": [
+      {
+        "team": "McLaren",
+        "rank": 1,
+        "value": 87.01100158691406,
+        "rank_interval_80": [
+          1,
+          2
+        ],
+        "p_rank_1": 0.725
+      },
+      {
+        "team": "Mercedes",
+        "rank": 2,
+        "value": 87.4365005493164,
+        "rank_interval_80": [
+          2,
+          4
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "Ferrari",
+        "rank": 3,
+        "value": 87.45450210571289,
+        "rank_interval_80": [
+          2,
+          4
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "Red Bull Racing",
+        "rank": 4,
+        "value": 87.47500228881836,
+        "rank_interval_80": [
+          1,
+          4
+        ],
+        "p_rank_1": 0.275
+      }
+    ],
+    "published_vehicle_ranking": [
+      {
+        "team": "McLaren",
+        "rank": 1
+      },
+      {
+        "team": "Mercedes",
+        "rank": 2
+      },
+      {
+        "team": "Ferrari",
+        "rank": 3
+      },
+      {
+        "team": "Red Bull Racing",
+        "rank": 4
+      }
+    ],
+    "interpretation": "以两位车手各自最佳准确推圈的车队中位数描述排位潜力；不与正赛绝对圈时加权融合。"
+  },
+  "race_analysis": {
+    "status": "audit_only",
+    "descriptive_team_order": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1,
+        "value": -0.41660438393647325,
+        "rank_interval_80": [
+          1,
+          1
+        ],
+        "p_rank_1": 1.0
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2,
+        "value": -0.014021675541727063,
+        "rank_interval_80": [
+          2,
+          2
+        ],
+        "p_rank_1": 0.0
+      }
+    ],
+    "published_vehicle_ranking": null,
+    "ranking_scope_teams": [
+      "Red Bull Racing"
+    ],
+    "ranking_scope_complete": false,
+    "pace_basis": "fuel_track_traffic_adjusted_conditional_proxy",
+    "ranking_uncertainty": "bootstrap rank interval over complete-event modelable laps",
+    "interpretation": "正赛次序来自同配方、相近胎龄与比赛阶段条件池的长距离基础配速代理；部分发布只覆盖独立通过车队模块的车队，不代表四队完整全序。"
+  },
+  "tyre_strategy_envelope": {
+    "label": "observed_data_strategy_proxy",
+    "timing_role": "post_race_audit_not_pre_race_forecast",
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "compounds": [
+      {
+        "compound": "HARD",
+        "valid_stints": 4,
+        "status": "usable_proxy",
+        "reasonable_stint_length_laps": [
+          29,
+          32
+        ],
+        "observed_length_range_laps": [
+          28,
+          32
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.02122446930429043,
+          "interval_80": [
+            0.011089801215796445,
+            0.039815767756048365
+          ]
+        }
+      },
+      {
+        "compound": "MEDIUM",
+        "valid_stints": 2,
+        "status": "insufficient_stints",
+        "reasonable_stint_length_laps": null,
+        "observed_length_range_laps": [
+          21,
+          22
+        ],
+        "degradation_proxy_s_per_lap": null
+      }
+    ],
+    "one_stop_window_laps": [
+      21,
+      31
+    ],
+    "two_stop_window_laps": [
+      null,
+      null
+    ],
+    "observed_driver_patterns": {
+      "one_stop": 19,
+      "two_stop": 1
+    },
+    "limitations": [
+      "合理 stint 长度来自本场公开观测分布，不是轮胎物理寿命。",
+      "一停/两停窗口来自实际换胎圈分布，不含真实燃油、胎温胎压或车队内部模拟。",
+      "SC/VSC、异常慢停和损伤未被可靠识别时不得用于主要策略归因。"
+    ]
+  },
+  "stint_dossiers": [
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 24,
+      "observed_laps": 24,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.5136473404462039,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 22,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 25,
+      "lap_end": 53,
+      "observed_laps": 29,
+      "modelable_laps": 13,
+      "clean_modelable_laps": 13,
+      "pace_adjusted_laps": 13,
+      "modelable_fraction": 0.4482758620689655,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 28.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.39807545463992,
+      "stable_pace_s": 91.34566558082152,
+      "variability_mad_s": 0.09160995844000738,
+      "degradation_s_per_tyre_lap": -0.019212741671864108,
+      "raw_net_slope_s_per_tyre_lap": -0.07359924316406534,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.04185425110582486,
+        0.007202352667761147
+      ],
+      "late_drop_s": -0.11368458226044709,
+      "cumulative_delta_to_reasonable_baseline_s": 0.0690143513228918,
+      "baseline_laps": 11,
+      "baseline_coverage": 0.8461538461538461,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 3.955433773079125,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "model_eligible": 13,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 24,
+      "observed_laps": 24,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.9170443907957067,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 22,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 25,
+      "lap_end": 53,
+      "observed_laps": 29,
+      "modelable_laps": 13,
+      "clean_modelable_laps": 13,
+      "pace_adjusted_laps": 13,
+      "modelable_fraction": 0.4482758620689655,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 28.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.53904226591,
+      "stable_pace_s": 91.67244417262525,
+      "variability_mad_s": 0.07586916126028616,
+      "degradation_s_per_tyre_lap": 0.0014369534889252258,
+      "raw_net_slope_s_per_tyre_lap": -0.050519150572937155,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.021204555945037014,
+        0.0278520478285473
+      ],
+      "late_drop_s": -0.046723374780583526,
+      "cumulative_delta_to_reasonable_baseline_s": 2.387285700384126,
+      "baseline_laps": 7,
+      "baseline_coverage": 0.5384615384615384,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 3.9386568231097723,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "model_eligible": 13,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ANT",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 31,
+      "observed_laps": 31,
+      "modelable_laps": 10,
+      "clean_modelable_laps": 10,
+      "pace_adjusted_laps": 10,
+      "modelable_fraction": 0.3225806451612903,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 30.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.58141959388298,
+      "stable_pace_s": 91.58163523224164,
+      "variability_mad_s": 0.2247800221856983,
+      "degradation_s_per_tyre_lap": 0.039853437891544274,
+      "raw_net_slope_s_per_tyre_lap": -0.016750335693359375,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.017211928457584236,
+        0.06626853223117024
+      ],
+      "late_drop_s": 0.2450168537643549,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.7055452336951085,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "model_eligible": 10,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "ANT",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 32,
+      "lap_end": 53,
+      "observed_laps": 22,
+      "modelable_laps": 13,
+      "clean_modelable_laps": 13,
+      "pace_adjusted_laps": 13,
+      "modelable_fraction": 0.5909090909090909,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.40876797910005,
+      "stable_pace_s": 90.86087898938159,
+      "variability_mad_s": 0.1163894502639981,
+      "degradation_s_per_tyre_lap": 0.03677805800323089,
+      "raw_net_slope_s_per_tyre_lap": -0.011678695678710684,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.01413654856926781,
+        0.0631931523428528
+      ],
+      "late_drop_s": -0.006355816463226915,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 5.237388467276562,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 13,
+        "traffic_separate": 7,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "BEA",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 23,
+      "observed_laps": 23,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 22.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.3222903126945829,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 21,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "BEA",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 24,
+      "lap_end": 53,
+      "observed_laps": 30,
+      "modelable_laps": 19,
+      "clean_modelable_laps": 20,
+      "pace_adjusted_laps": 19,
+      "modelable_fraction": 0.6333333333333333,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 29.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.28337254614198,
+      "stable_pace_s": 91.51861806185741,
+      "variability_mad_s": 0.30924761618134405,
+      "degradation_s_per_tyre_lap": 0.04547834524889944,
+      "raw_net_slope_s_per_tyre_lap": -0.008000691731770834,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.02283683581493737,
+        0.07189343958852236
+      ],
+      "late_drop_s": 0.5035714833241371,
+      "cumulative_delta_to_reasonable_baseline_s": 5.6678629461322885,
+      "baseline_laps": 17,
+      "baseline_coverage": 0.8947368421052632,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 4.414723319583022,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": true,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 20,
+        "traffic_separate": 8,
+        "quality_missing": 1,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "BOR",
+      "team": "Kick Sauber",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 31,
+      "observed_laps": 31,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 30.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.2029181890593177,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 29,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "BOR",
+      "team": "Kick Sauber",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 32,
+      "lap_end": 53,
+      "observed_laps": 22,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.941567899437667,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 21,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "DOO",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 15,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1289432178844105,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "DOO",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 16,
+      "lap_end": 53,
+      "observed_laps": 38,
+      "modelable_laps": 22,
+      "clean_modelable_laps": 22,
+      "pace_adjusted_laps": 22,
+      "modelable_fraction": 0.5789473684210527,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 37.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.76060729656578,
+      "stable_pace_s": 92.2830542348466,
+      "variability_mad_s": 0.3357029471020167,
+      "degradation_s_per_tyre_lap": 0.027353843972223,
+      "raw_net_slope_s_per_tyre_lap": -0.026593685150146484,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.004712334538260899,
+        0.05376893831184576
+      ],
+      "late_drop_s": 0.3875186848190282,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 5.793918320308146,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 22,
+        "traffic_separate": 15,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 24,
+      "observed_laps": 24,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.5524955000196183,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 22,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 25,
+      "lap_end": 53,
+      "observed_laps": 29,
+      "modelable_laps": 4,
+      "clean_modelable_laps": 4,
+      "pace_adjusted_laps": 4,
+      "modelable_fraction": 0.13793103448275862,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 28.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.43927029843599,
+      "stable_pace_s": 91.35067589777816,
+      "variability_mad_s": 0.07101067381086441,
+      "degradation_s_per_tyre_lap": -0.058897630223668784,
+      "raw_net_slope_s_per_tyre_lap": -0.11550140380857718,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.08153913965763357,
+        -0.03248253588405229
+      ],
+      "late_drop_s": -0.06439842368068582,
+      "cumulative_delta_to_reasonable_baseline_s": 0.4874025740713961,
+      "baseline_laps": 4,
+      "baseline_coverage": 1.0,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 2.8206652625132413,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 23,
+        "model_eligible": 4,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HAD",
+      "team": "Racing Bulls",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 25,
+      "observed_laps": 25,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 24.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.6258986687345125,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 23,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HAD",
+      "team": "Racing Bulls",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 26,
+      "lap_end": 53,
+      "observed_laps": 28,
+      "modelable_laps": 22,
+      "clean_modelable_laps": 22,
+      "pace_adjusted_laps": 22,
+      "modelable_fraction": 0.7857142857142857,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 27.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.3826627101538,
+      "stable_pace_s": 91.26491845328854,
+      "variability_mad_s": 0.13253870954693786,
+      "degradation_s_per_tyre_lap": 0.009051493878629913,
+      "raw_net_slope_s_per_tyre_lap": -0.04512500762939453,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.013590015555330126,
+        0.035466588218248774
+      ],
+      "late_drop_s": 0.10276116964951143,
+      "cumulative_delta_to_reasonable_baseline_s": -0.34397621874541073,
+      "baseline_laps": 14,
+      "baseline_coverage": 0.6363636363636364,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 8.466073318501333,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 22,
+        "traffic_separate": 5,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 30,
+      "observed_laps": 30,
+      "modelable_laps": 3,
+      "clean_modelable_laps": 3,
+      "pace_adjusted_laps": 3,
+      "modelable_fraction": 0.1,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 29.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.80843870594813,
+      "stable_pace_s": 91.74984308458721,
+      "variability_mad_s": 0.0068226590138426154,
+      "degradation_s_per_tyre_lap": -0.0608965315908776,
+      "raw_net_slope_s_per_tyre_lap": -0.11750030517578125,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.08353804102483764,
+        -0.03448143725125874
+      ],
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.9334441677408094,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 25,
+        "model_eligible": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 31,
+      "lap_end": 53,
+      "observed_laps": 23,
+      "modelable_laps": 10,
+      "clean_modelable_laps": 10,
+      "pace_adjusted_laps": 10,
+      "modelable_fraction": 0.43478260869565216,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 22.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.94757430058607,
+      "stable_pace_s": 91.39798136477201,
+      "variability_mad_s": 0.3097138888376988,
+      "degradation_s_per_tyre_lap": -0.02147972898663113,
+      "raw_net_slope_s_per_tyre_lap": -0.07720031738280682,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.04412123842059259,
+        0.004935365352991994
+      ],
+      "late_drop_s": 0.022807193252262437,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.9346578271907164,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 12,
+        "model_eligible": 10,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HUL",
+      "team": "Kick Sauber",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 22,
+      "observed_laps": 22,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.106388249232322,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 20,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "HUL",
+      "team": "Kick Sauber",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 23,
+      "lap_end": 53,
+      "observed_laps": 31,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 30.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7505843993600482,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 30,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "LAW",
+      "team": "Racing Bulls",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 33,
+      "observed_laps": 33,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 8,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.21212121212121213,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 32.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 92.62260680828453,
+      "stable_pace_s": 92.60063242462444,
+      "variability_mad_s": 0.05628864423644742,
+      "degradation_s_per_tyre_lap": 0.005058196969138542,
+      "raw_net_slope_s_per_tyre_lap": -0.051545576615767044,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.017583312464824728,
+        0.031473291308761926
+      ],
+      "late_drop_s": 0.0501143977327132,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.136441939217704,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 22,
+        "model_eligible": 8,
+        "quality_missing": 2,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "LAW",
+      "team": "Racing Bulls",
+      "stint_number": 2,
+      "compound": "SOFT",
+      "lap_start": 34,
+      "lap_end": 53,
+      "observed_laps": 20,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.05,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.25066979426256,
+      "stable_pace_s": 91.25066979426256,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.3998395812429607,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 1,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 21,
+      "observed_laps": 21,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.7221614450054052,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 19,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 22,
+      "lap_end": 53,
+      "observed_laps": 32,
+      "modelable_laps": 30,
+      "clean_modelable_laps": 30,
+      "pace_adjusted_laps": 30,
+      "modelable_fraction": 0.9375,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 31.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.35783392528316,
+      "stable_pace_s": 91.05535126632114,
+      "variability_mad_s": 0.30906147260305417,
+      "degradation_s_per_tyre_lap": 0.026603086939395837,
+      "raw_net_slope_s_per_tyre_lap": -0.026416778564453125,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.003961577505435798,
+        0.0530181812790218
+      ],
+      "late_drop_s": 0.5567341390645595,
+      "cumulative_delta_to_reasonable_baseline_s": -1.1684766805398255,
+      "baseline_laps": 19,
+      "baseline_coverage": 0.6333333333333333,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 7.0377961421918265,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 30,
+        "quality_missing": 1,
+        "traffic_separate": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 21,
+      "observed_laps": 21,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.9197301248371503,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 19,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 22,
+      "lap_end": 53,
+      "observed_laps": 32,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 31.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.4342061675762063,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 30,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "OCO",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 32,
+      "observed_laps": 32,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 31.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.215393167727693,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 30,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "OCO",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 33,
+      "lap_end": 53,
+      "observed_laps": 21,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.434317516722408,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 20,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "PIA",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 20,
+      "observed_laps": 20,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1797163621432547,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "PIA",
+      "team": "McLaren",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 21,
+      "lap_end": 53,
+      "observed_laps": 33,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 32.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.2644944712778265,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 32,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 19,
+      "observed_laps": 19,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 18.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8729378051757812,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 17,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 20,
+      "lap_end": 53,
+      "observed_laps": 34,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 33.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.894853900971901,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 32,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "SAI",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 33,
+      "observed_laps": 33,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 32.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8328859943442677,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 29,
+        "quality_missing": 4
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "SAI",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "SOFT",
+      "lap_start": 34,
+      "lap_end": 53,
+      "observed_laps": 20,
+      "modelable_laps": 7,
+      "clean_modelable_laps": 7,
+      "pace_adjusted_laps": 7,
+      "modelable_fraction": 0.35,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.73207890312625,
+      "stable_pace_s": 91.1285877857568,
+      "variability_mad_s": 0.1447368696320489,
+      "degradation_s_per_tyre_lap": 0.053601606836856774,
+      "raw_net_slope_s_per_tyre_lap": -0.003002166748046875,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.030960097402896736,
+        0.08001670117648274
+      ],
+      "late_drop_s": 0.22640041135390732,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.516276373881397,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 12,
+        "model_eligible": 7,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 9,
+      "observed_laps": 9,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 8.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7740566563997034,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 10,
+      "lap_end": 30,
+      "observed_laps": 21,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.2857142857142857,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 92.76898041311298,
+      "stable_pace_s": 92.70319092048786,
+      "variability_mad_s": 0.37835771803945484,
+      "degradation_s_per_tyre_lap": -0.032728806981509706,
+      "raw_net_slope_s_per_tyre_lap": -0.08933258056641573,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.05537031641547211,
+        -0.006313712641888476
+      ],
+      "late_drop_s": -0.12086911471384099,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.9722370907637656,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "model_eligible": 6,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 3,
+      "compound": "MEDIUM",
+      "lap_start": 31,
+      "lap_end": 52,
+      "observed_laps": 22,
+      "modelable_laps": 20,
+      "clean_modelable_laps": 20,
+      "pace_adjusted_laps": 20,
+      "modelable_fraction": 0.9090909090909091,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.31866353412842,
+      "stable_pace_s": 91.94487862317067,
+      "variability_mad_s": 0.168720912789392,
+      "degradation_s_per_tyre_lap": 0.019036311023638793,
+      "raw_net_slope_s_per_tyre_lap": -0.033000564575193535,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.003605198410322667,
+        0.04545140536326192
+      ],
+      "late_drop_s": 0.10010496175513595,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 14.293993769491369,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 20,
+        "quality_missing": 1,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "TSU",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 23,
+      "observed_laps": 23,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 22.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8107511218316955,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 21,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "TSU",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 24,
+      "lap_end": 53,
+      "observed_laps": 30,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 29.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.3617635233340004,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 28,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 21,
+      "observed_laps": 21,
+      "modelable_laps": 19,
+      "clean_modelable_laps": 19,
+      "pace_adjusted_laps": 19,
+      "modelable_fraction": 0.9047619047619048,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.00205057072188,
+      "stable_pace_s": 91.15937199682557,
+      "variability_mad_s": 0.2007613513874649,
+      "degradation_s_per_tyre_lap": 0.03135333870941892,
+      "raw_net_slope_s_per_tyre_lap": -0.02525043487548828,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.00871182927545533,
+        0.057768433049041334
+      ],
+      "late_drop_s": 0.28203352442328367,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.05129302224447561,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 19,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 22,
+      "lap_end": 53,
+      "observed_laps": 32,
+      "modelable_laps": 22,
+      "clean_modelable_laps": 23,
+      "pace_adjusted_laps": 22,
+      "modelable_fraction": 0.6875,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 31.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.77374792098996,
+      "stable_pace_s": 90.89647308385597,
+      "variability_mad_s": 0.13915190868197447,
+      "degradation_s_per_tyre_lap": 0.01584585166918502,
+      "raw_net_slope_s_per_tyre_lap": -0.03772735595703125,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.0067956577647769545,
+        0.042260946008808406
+      ],
+      "late_drop_s": 0.16150717465382058,
+      "cumulative_delta_to_reasonable_baseline_s": -6.3776784213085165,
+      "baseline_laps": 17,
+      "baseline_coverage": 0.7727272727272727,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 2.156857179200504,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": true,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 23,
+        "traffic_separate": 8,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    }
+  ],
+  "vehicle_driver_decomposition": [
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "team": "Ferrari",
+      "driver": "LEC",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -1.1684766805398255,
+      "components": {
+        "vehicle_common_baseline_s": -0.2664118352928142,
+        "driver_realization_deviation_s": 0.0,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": -0.9020648452470112
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2025,
+      "meeting_name": "Japanese Grand Prix",
+      "team": "Red Bull Racing",
+      "driver": "VER",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -6.3776784213085165,
+      "components": {
+        "vehicle_common_baseline_s": -7.082274526920045,
+        "driver_realization_deviation_s": 0.0,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.7045961056115289
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    }
+  ],
+  "result_impact_audit": {
+    "major_factor_claims": [],
+    "classification_proxy_comparison": [
+      {
+        "team": "Ferrari",
+        "performance_proxy_rank": 2,
+        "classification_proxy_rank": 3,
+        "rank_difference": 1
+      },
+      {
+        "team": "McLaren",
+        "performance_proxy_rank": null,
+        "classification_proxy_rank": 1,
+        "rank_difference": null
+      },
+      {
+        "team": "Mercedes",
+        "performance_proxy_rank": null,
+        "classification_proxy_rank": 4,
+        "rank_difference": null
+      },
+      {
+        "team": "Red Bull Racing",
+        "performance_proxy_rank": 1,
+        "classification_proxy_rank": 2,
+        "rank_difference": 1
+      }
+    ],
+    "fia_final_classification_used": false,
+    "expected_points_interval": null,
+    "reason": "没有冻结且时间外校准的全场位置/积分反事实模拟；classification_proxy 仅用于赛后构念审计。"
+  },
+  "ratings": {
+    "PAC": null,
+    "OVR": null
+  },
+  "event_conclusion": null,
+  "boundaries": {
+    "data_proxy": true,
+    "unidentified": [
+      "真实燃油量",
+      "真实胎温胎压与磨损量",
+      "车辆损伤与具体故障",
+      "车队指令与驾驶意图",
+      "倍耐力或车队内部策略模拟"
+    ],
+    "forbidden_claims": [
+      "由少量圈直接形成整场结论",
+      "把公开数据包络称为倍耐力内部模拟",
+      "把单场保胎差异直接归因为纯车手能力",
+      "把 classification_proxy 称为 FIA 最终分类",
+      "输出伪精确贡献百分比"
+    ]
+  },
+  "run_id": "20260725T134848+0800-a9f5c3364ee6",
+  "created_at": "2026-07-25T13:51:30+08:00",
+  "config_hash": "a9f5c3364ee67f321b367eaa89cfbd2b3617b46b766fd44b2bea05981ed73ccd",
+  "round": 3,
+  "event_order": 202503,
+  "source_identity": {
+    "lap_universe_manifest": "research/artifacts/race_dossier_v11/run=20260725T134848+0800-a9f5c3364ee6/manifest.json",
+    "qualifying_manifest_sha256": "b4af9a995f9cb1465a6c8d43339bd684e937e4c4cf87213f3ab4cb20d3ffb0c6",
+    "v5_result_sha256": "40937855648ffa1cf45094d6e39c5d82fac010242302973efd205a1394f5accd"
+  },
+  "pre_race_tyre_envelope": {
+    "label": "historical_pre_race_data_proxy",
+    "target_event_id": "2025|Japanese Grand Prix",
+    "target_event_order": 202503,
+    "history_cutoff_rule": "event_order_strictly_less_than_target",
+    "visible_valid_stints": 372,
+    "compounds": [
+      {
+        "compound": "HARD",
+        "historical_stints": 206,
+        "historical_events": 40,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          17,
+          42
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.05168522183335196,
+          "interval_80": [
+            0.002048007742025534,
+            0.09994770602473141
+          ]
+        }
+      },
+      {
+        "compound": "MEDIUM",
+        "historical_stints": 115,
+        "historical_events": 39,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          12,
+          32
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.05427297206819874,
+          "interval_80": [
+            -0.018545563633281442,
+            0.12474750947724224
+          ]
+        }
+      },
+      {
+        "compound": "SOFT",
+        "historical_stints": 51,
+        "historical_events": 16,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          12,
+          24
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.06975512071089725,
+          "interval_80": [
+            -0.022619403930362984,
+            0.134965589830092
+          ]
+        }
+      }
+    ],
+    "one_stop_options": [
+      {
+        "sequence": [
+          "HARD",
+          "MEDIUM"
+        ],
+        "pit_window_laps": [
+          21,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "SOFT"
+        ],
+        "pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "HARD"
+        ],
+        "pit_window_laps": [
+          12,
+          32
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT"
+        ],
+        "pit_window_laps": [
+          29,
+          32
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "HARD"
+        ],
+        "pit_window_laps": [
+          12,
+          24
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM"
+        ],
+        "pit_window_laps": [
+          21,
+          24
+        ]
+      }
+    ],
+    "two_stop_options": [
+      {
+        "sequence": [
+          "HARD",
+          "HARD",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          17,
+          24
+        ],
+        "second_pit_window_laps": [
+          34,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "HARD",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          17,
+          24
+        ],
+        "second_pit_window_laps": [
+          34,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "MEDIUM",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          17,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "MEDIUM",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          17,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "MEDIUM",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          17,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "SOFT",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          17,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "SOFT",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          17,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "HARD",
+          "SOFT",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          17,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "HARD",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          19
+        ],
+        "second_pit_window_laps": [
+          29,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "HARD",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "HARD",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "MEDIUM",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "MEDIUM",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          12,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          12,
+          29
+        ],
+        "second_pit_window_laps": [
+          24,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "MEDIUM",
+          "SOFT",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          12,
+          29
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "HARD",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          19
+        ],
+        "second_pit_window_laps": [
+          29,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "HARD",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "HARD",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "MEDIUM",
+          "SOFT"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          29,
+          41
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "SOFT",
+          "HARD"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          36
+        ]
+      },
+      {
+        "sequence": [
+          "SOFT",
+          "SOFT",
+          "MEDIUM"
+        ],
+        "first_pit_window_laps": [
+          12,
+          24
+        ],
+        "second_pit_window_laps": [
+          24,
+          41
+        ]
+      }
+    ],
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "future_results_used": false,
+    "limitations": [
+      "仅使用目标分站前的公开历史 stint，不能代表实时天气、赛道演化或车队内部模型。",
+      "进站窗口由历史长度包络覆盖赛程推导，未估计真实燃油、胎温胎压和磨损量。"
+    ]
+  }
+}

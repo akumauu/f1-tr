@@ -1,0 +1,4532 @@
+{
+  "report_id": "race_dossier_2023_Miami Grand Prix_v11",
+  "scope": {
+    "year": 2023,
+    "meeting": "Miami Grand Prix",
+    "session": "Race",
+    "team": "McLaren / Red Bull Racing / Ferrari / Mercedes"
+  },
+  "schema_version": "race-dossier-v11",
+  "release_status": "audit_only",
+  "analysis_unit": "complete_race",
+  "coverage": {
+    "analysis_unit": "complete_race",
+    "observed_field_laps": 1138,
+    "observed_reporting_team_laps": 455,
+    "race_lap_span": 57,
+    "reporting_driver_lap_continuity_proxy": 1.0,
+    "modelable_reporting_laps": 158,
+    "modelable_reporting_lap_fraction": 0.34725274725274724,
+    "pace_adjusted_reporting_laps": 156,
+    "pace_adjusted_reporting_lap_fraction": 0.34285714285714286,
+    "baseline_available_reporting_laps": 100,
+    "stint_assignment_coverage": 1.0,
+    "track_state_coverage": 1.0,
+    "position_gap_state_coverage": 1.0,
+    "teams": [
+      {
+        "team": "McLaren",
+        "drivers": 2,
+        "modelable_laps": 52,
+        "pace_adjusted_laps": 51,
+        "baseline_laps": 7,
+        "valid_stints": 1
+      },
+      {
+        "team": "Red Bull Racing",
+        "drivers": 2,
+        "modelable_laps": 75,
+        "pace_adjusted_laps": 74,
+        "baseline_laps": 12,
+        "valid_stints": 3
+      },
+      {
+        "team": "Ferrari",
+        "drivers": 2,
+        "modelable_laps": 5,
+        "pace_adjusted_laps": 5,
+        "baseline_laps": 4,
+        "valid_stints": 0
+      },
+      {
+        "team": "Mercedes",
+        "drivers": 2,
+        "modelable_laps": 26,
+        "pace_adjusted_laps": 26,
+        "baseline_laps": 16,
+        "valid_stints": 0
+      }
+    ],
+    "lap_disposition_closure": {
+      "accounted_laps": 455,
+      "observed_laps": 455,
+      "passed": true
+    }
+  },
+  "publication_gate": {
+    "passed": false,
+    "status": "audit_only",
+    "reasons": [
+      "pace_adjusted_lap_fraction_below_gate",
+      "McLaren:valid_stints_below_gate",
+      "McLaren:baseline_laps_below_gate",
+      "Ferrari:pace_adjusted_laps_below_gate",
+      "Ferrari:valid_stints_below_gate",
+      "Ferrari:baseline_laps_below_gate",
+      "Mercedes:valid_stints_below_gate"
+    ],
+    "whole_race_conclusion_allowed": false,
+    "partial_team_conclusion_allowed": false,
+    "publishable_teams": [
+      "Red Bull Racing"
+    ],
+    "module_gates": {
+      "whole_race_context": {
+        "passed": true,
+        "reasons": [],
+        "analysis_unit": "complete_race"
+      },
+      "teams": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 51,
+          "baseline_laps": 7,
+          "valid_stints": 1
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": true,
+          "reasons": [],
+          "drivers": 2,
+          "pace_adjusted_laps": 74,
+          "baseline_laps": 12,
+          "valid_stints": 3
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "pace_adjusted_laps_below_gate",
+            "valid_stints_below_gate",
+            "baseline_laps_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 5,
+          "baseline_laps": 4,
+          "valid_stints": 0
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "valid_stints_below_gate"
+          ],
+          "drivers": 2,
+          "pace_adjusted_laps": 26,
+          "baseline_laps": 16,
+          "valid_stints": 0
+        }
+      ],
+      "driver_pairs": [
+        {
+          "team": "McLaren",
+          "passed": false,
+          "reasons": [
+            "NOR:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "NOR",
+              "pace_adjusted_laps": 19,
+              "valid_stints": 0
+            },
+            {
+              "driver": "PIA",
+              "pace_adjusted_laps": 32,
+              "valid_stints": 1
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Red Bull Racing",
+          "passed": true,
+          "reasons": [],
+          "drivers": [
+            {
+              "driver": "PER",
+              "pace_adjusted_laps": 42,
+              "valid_stints": 2
+            },
+            {
+              "driver": "VER",
+              "pace_adjusted_laps": 32,
+              "valid_stints": 1
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Ferrari",
+          "passed": false,
+          "reasons": [
+            "LEC:pace_laps_below_gate",
+            "LEC:valid_stints_below_gate",
+            "SAI:pace_laps_below_gate",
+            "SAI:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "LEC",
+              "pace_adjusted_laps": 5,
+              "valid_stints": 0
+            },
+            {
+              "driver": "SAI",
+              "pace_adjusted_laps": 0,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        },
+        {
+          "team": "Mercedes",
+          "passed": false,
+          "reasons": [
+            "HAM:pace_laps_below_gate",
+            "HAM:valid_stints_below_gate",
+            "RUS:valid_stints_below_gate"
+          ],
+          "drivers": [
+            {
+              "driver": "HAM",
+              "pace_adjusted_laps": 6,
+              "valid_stints": 0
+            },
+            {
+              "driver": "RUS",
+              "pace_adjusted_laps": 20,
+              "valid_stints": 0
+            }
+          ],
+          "interpretation": "只允许同队条件对照；通过不等于识别纯车手能力。"
+        }
+      ],
+      "full_reporting_field": {
+        "passed": false,
+        "reasons": [
+          "pace_adjusted_lap_fraction_below_gate",
+          "McLaren:valid_stints_below_gate",
+          "McLaren:baseline_laps_below_gate",
+          "Ferrari:pace_adjusted_laps_below_gate",
+          "Ferrari:valid_stints_below_gate",
+          "Ferrari:baseline_laps_below_gate",
+          "Mercedes:valid_stints_below_gate"
+        ]
+      }
+    },
+    "legacy_clean_four_team_gate": {
+      "passed": false,
+      "reasons": [
+        "McLaren:valid_stints_below_gate",
+        "Ferrari:modelable_laps_below_gate",
+        "Ferrari:valid_stints_below_gate",
+        "Mercedes:valid_stints_below_gate",
+        "modelable_lap_fraction_below_gate"
+      ],
+      "thresholds_unchanged": true
+    }
+  },
+  "event_ledger": {
+    "observed_laps": 1138,
+    "primary_disposition_counts": {
+      "model_eligible": 350,
+      "event_excluded": 0,
+      "traffic_separate": 714,
+      "pit_excluded": 0,
+      "quality_missing": 67,
+      "unknown_unaccounted": 7
+    },
+    "primary_disposition_closure": {
+      "accounted_laps": 1138,
+      "unaccounted_laps": 0,
+      "passed": true
+    },
+    "lap_category_counts": {
+      "non_green": 0,
+      "pit_in_boundary_proxy": 20,
+      "pit_out_boundary_proxy": 20,
+      "traffic_dirty_air": 619,
+      "traffic_gap_unknown": 0,
+      "inaccurate_or_deleted": 67,
+      "incomplete_distance": 0,
+      "unexplained_slow_lap_proxy": 7
+    },
+    "entries": [
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            22,
+            22
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            24,
+            24
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "DEV",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            37,
+            37
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            17,
+            17
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            14,
+            14
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            4,
+            4
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            39,
+            39
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            20,
+            20
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            5,
+            5
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            17,
+            17
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            18,
+            18
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            2,
+            2
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            42,
+            42
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            36,
+            36
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            45,
+            45
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_in_boundary_proxy",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            31,
+            31
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            23,
+            23
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            25,
+            25
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            16,
+            16
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "DEV",
+        "lap_ranges": [
+          [
+            16,
+            16
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            16,
+            16
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            38,
+            38
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            18,
+            18
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            15,
+            15
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            5,
+            5
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            40,
+            40
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            21,
+            21
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            6,
+            6
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            18,
+            18
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            19,
+            19
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            3,
+            3
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            43,
+            43
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            37,
+            37
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            46,
+            46
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "pit_out_boundary_proxy",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            32,
+            32
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "exclude",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "medium"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            22
+          ],
+          [
+            25,
+            27
+          ],
+          [
+            36,
+            57
+          ]
+        ],
+        "affected_laps": 47,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            11
+          ],
+          [
+            15,
+            18
+          ],
+          [
+            25,
+            29
+          ]
+        ],
+        "affected_laps": 20,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            1,
+            11
+          ],
+          [
+            13,
+            15
+          ],
+          [
+            40,
+            41
+          ],
+          [
+            51,
+            53
+          ]
+        ],
+        "affected_laps": 19,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "DEV",
+        "lap_ranges": [
+          [
+            1,
+            5
+          ],
+          [
+            24,
+            30
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            57,
+            57
+          ]
+        ],
+        "affected_laps": 14,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            14
+          ],
+          [
+            21,
+            36
+          ],
+          [
+            53,
+            57
+          ]
+        ],
+        "affected_laps": 35,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            23
+          ],
+          [
+            25,
+            25
+          ],
+          [
+            31,
+            39
+          ],
+          [
+            44,
+            46
+          ],
+          [
+            50,
+            54
+          ]
+        ],
+        "affected_laps": 41,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            15
+          ],
+          [
+            21,
+            30
+          ],
+          [
+            33,
+            33
+          ],
+          [
+            36,
+            57
+          ]
+        ],
+        "affected_laps": 48,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            14
+          ],
+          [
+            25,
+            27
+          ],
+          [
+            31,
+            39
+          ],
+          [
+            41,
+            42
+          ],
+          [
+            46,
+            52
+          ],
+          [
+            55,
+            57
+          ]
+        ],
+        "affected_laps": 38,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            1,
+            12
+          ],
+          [
+            16,
+            24
+          ],
+          [
+            26,
+            41
+          ],
+          [
+            46,
+            51
+          ]
+        ],
+        "affected_laps": 43,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            4
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            16,
+            22
+          ],
+          [
+            27,
+            31
+          ],
+          [
+            37,
+            38
+          ],
+          [
+            43,
+            43
+          ],
+          [
+            49,
+            50
+          ]
+        ],
+        "affected_laps": 22,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            17
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            30,
+            47
+          ]
+        ],
+        "affected_laps": 37,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            46,
+            52
+          ]
+        ],
+        "affected_laps": 9,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            5
+          ],
+          [
+            13,
+            18
+          ],
+          [
+            23,
+            23
+          ],
+          [
+            31,
+            31
+          ],
+          [
+            49,
+            49
+          ]
+        ],
+        "affected_laps": 14,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            12
+          ],
+          [
+            19,
+            37
+          ]
+        ],
+        "affected_laps": 31,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            20
+          ],
+          [
+            24,
+            34
+          ],
+          [
+            38,
+            42
+          ],
+          [
+            45,
+            50
+          ]
+        ],
+        "affected_laps": 42,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            1,
+            2
+          ],
+          [
+            33,
+            33
+          ],
+          [
+            42,
+            42
+          ],
+          [
+            54,
+            54
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            42
+          ],
+          [
+            45,
+            57
+          ]
+        ],
+        "affected_laps": 55,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            21
+          ],
+          [
+            24,
+            32
+          ],
+          [
+            38,
+            50
+          ],
+          [
+            57,
+            57
+          ]
+        ],
+        "affected_laps": 44,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            15
+          ],
+          [
+            19,
+            20
+          ],
+          [
+            46,
+            48
+          ]
+        ],
+        "affected_laps": 20,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "traffic_dirty_air",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            1,
+            29
+          ],
+          [
+            43,
+            48
+          ]
+        ],
+        "affected_laps": 35,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALB",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            27,
+            27
+          ],
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 5,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ALO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            15,
+            16
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "DEV",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            15,
+            16
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            15,
+            16
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HAM",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            37,
+            38
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "HUL",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            33,
+            34
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "LEC",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "MAG",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            35,
+            35
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "NOR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "OCO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            39,
+            40
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "PER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            20,
+            21
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "RUS",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "SAI",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            18,
+            19
+          ],
+          [
+            33,
+            33
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            1,
+            3
+          ],
+          [
+            34,
+            34
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "STR",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            42,
+            43
+          ]
+        ],
+        "affected_laps": 4,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "TSU",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            36,
+            37
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            45,
+            46
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "inaccurate_or_deleted",
+        "driver": "ZHO",
+        "lap_ranges": [
+          [
+            1,
+            1
+          ],
+          [
+            31,
+            32
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "censor",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "BOT",
+        "lap_ranges": [
+          [
+            50,
+            50
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "GAS",
+        "lap_ranges": [
+          [
+            46,
+            46
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "PIA",
+        "lap_ranges": [
+          [
+            48,
+            48
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "SAR",
+        "lap_ranges": [
+          [
+            32,
+            32
+          ],
+          [
+            53,
+            53
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "affected_laps": 3,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      },
+      {
+        "event_type": "unexplained_slow_lap_proxy",
+        "driver": "VER",
+        "lap_ranges": [
+          [
+            30,
+            30
+          ]
+        ],
+        "affected_laps": 1,
+        "analysis_action": "separate",
+        "source": "public_telemetry_lap_proxy",
+        "directness": "observed_or_derived_proxy",
+        "confidence": "low"
+      }
+    ],
+    "not_identified_categories": [
+      "accident_or_damage",
+      "penalty",
+      "abnormal_pit_stop",
+      "defending_or_team_order",
+      "reliability_state"
+    ],
+    "track_status_limit": "track_status 组合编码只支持 non-green 排除，未核对 race-control 来源时不得细分为官方 SC、VSC 或黄旗。"
+  },
+  "simulation_proxy_audit": {
+    "status": "conditional_simulation_proxy",
+    "model_registry": {
+      "acceptance_rule": "value_then_data_then_identifiability_then_synthetic_recovery_then_holdout_or_sensitivity_then_product",
+      "accepted_for_v11": [
+        {
+          "id": "linear_fuel_mass_sensitivity",
+          "source": "data/raw/tracinginsights/2025/README.md#fuel-correction",
+          "role": "base_and_sensitivity_scenarios",
+          "direct_truth_available": false
+        },
+        {
+          "id": "robust_additive_track_evolution",
+          "source": "project_method_using_driver_fixed_centers_and_conditional_medians",
+          "role": "field_common_stage_proxy",
+          "direct_truth_available": false
+        },
+        {
+          "id": "empirical_gap_band_fixed_effects",
+          "source": "project_method_with_two_fold_non_worsening_holdout_gate",
+          "role": "traffic_condition_adjustment",
+          "direct_truth_available": false
+        },
+        {
+          "id": "theil_sen_stint_slope",
+          "source": "Theil_1950_and_Sen_1968_robust_slope_family",
+          "role": "outlier_resistant_stint_degradation_proxy",
+          "direct_truth_available": false
+        }
+      ],
+      "deferred_until_extra_validation": [
+        {
+          "id": "bayesian_state_space_tyre_degradation",
+          "source": "https://arxiv.org/abs/2512.00640",
+          "reason": "需要先验证多车手多分站的后验校准、状态重置和计算成本"
+        },
+        {
+          "id": "multi_agent_monte_carlo_strategy_simulation",
+          "source": "https://github.com/TUMFTM/race-simulation",
+          "reason": "当前缺少已校准超车、进站损失、故障和安全车概率输入"
+        },
+        {
+          "id": "learning_based_energy_and_strategy_optimization",
+          "source": "https://arxiv.org/abs/2512.21570",
+          "reason": "公开逐圈数据不能识别能量分配控制量"
+        }
+      ]
+    },
+    "fuel": {
+      "model": "linear_remaining_mass_sensitivity_v1",
+      "enabled": true,
+      "burn_rule": "linear_by_scheduled_race_fraction",
+      "assumptions": {
+        "initial_fuel_kg": {
+          "low": 90.0,
+          "base": 100.0,
+          "high": 110.0
+        },
+        "lap_time_s_per_kg": {
+          "low": 0.02,
+          "base": 0.03,
+          "high": 0.04
+        }
+      },
+      "base_correction_range_s": [
+        0.0,
+        2.9473684210526314
+      ],
+      "sensitivity_correction_range_s": [
+        0.0,
+        4.322807017543859
+      ],
+      "real_fuel_load_identified": false
+    },
+    "track_evolution": {
+      "model": "robust_additive_field_median_v1",
+      "enabled": true,
+      "available_laps": 1138,
+      "direct_support_laps": 798,
+      "correction_range_s": [
+        -0.08027518422982283,
+        0.06767052098323845
+      ],
+      "physical_track_state_identified": false
+    },
+    "traffic": {
+      "model": "empirical_gap_band_fixed_effects_v1",
+      "enabled": true,
+      "states": [
+        {
+          "state": "clean_air",
+          "observed_laps": 373,
+          "supported_laps": 357,
+          "penalty_proxy_s": 0.0,
+          "support_drivers": 17,
+          "holdout_validation": {
+            "status": "not_tested",
+            "holdout_laps": 0,
+            "mae_before_s": null,
+            "mae_after_s": null
+          }
+        },
+        {
+          "state": "intermediate_gap",
+          "observed_laps": 146,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 136,
+            "mae_before_s": 0.16987787736091953,
+            "mae_after_s": 0.16987787736091953
+          }
+        },
+        {
+          "state": "dirty_air",
+          "observed_laps": 619,
+          "supported_laps": 0,
+          "penalty_proxy_s": null,
+          "support_drivers": 0,
+          "holdout_validation": {
+            "status": "rejected_or_insufficient_holdout",
+            "holdout_laps": 578,
+            "mae_before_s": 0.20984471785395264,
+            "mae_after_s": 0.21351777424032298
+          }
+        }
+      ],
+      "causal_aerodynamic_loss_identified": false
+    },
+    "ablation": {
+      "clean_air_modelable_laps": 350,
+      "conditional_proxy_eligible_laps": 346,
+      "eligible_lap_change": -4
+    },
+    "validation_boundary": "合成恢复测试验证实现；真实比赛只报告支持度、敏感性和消融，没有真实油量、真实胎态或风洞真值可作直接监督。"
+  },
+  "qualifying_analysis": {
+    "status": "descriptive_vehicle_potential_proxy",
+    "absolute_time_merged_with_race": false,
+    "team_order": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1,
+        "value": 86.8275032043457,
+        "rank_interval_80": [
+          1,
+          1
+        ],
+        "p_rank_1": 1.0
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2,
+        "value": 87.05599975585938,
+        "rank_interval_80": [
+          2,
+          2
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "Mercedes",
+        "rank": 3,
+        "value": 87.79449844360352,
+        "rank_interval_80": [
+          3,
+          3
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "McLaren",
+        "rank": 4,
+        "value": 88.43899917602539,
+        "rank_interval_80": [
+          4,
+          4
+        ],
+        "p_rank_1": 0.0
+      }
+    ],
+    "published_vehicle_ranking": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1
+      },
+      {
+        "team": "Ferrari",
+        "rank": 2
+      },
+      {
+        "team": "Mercedes",
+        "rank": 3
+      },
+      {
+        "team": "McLaren",
+        "rank": 4
+      }
+    ],
+    "interpretation": "以两位车手各自最佳准确推圈的车队中位数描述排位潜力；不与正赛绝对圈时加权融合。"
+  },
+  "race_analysis": {
+    "status": "audit_only",
+    "descriptive_team_order": [
+      {
+        "team": "Red Bull Racing",
+        "rank": 1,
+        "value": -1.0748196652060926,
+        "rank_interval_80": [
+          1,
+          1
+        ],
+        "p_rank_1": 0.905
+      },
+      {
+        "team": "Mercedes",
+        "rank": 2,
+        "value": -0.38955849095395934,
+        "rank_interval_80": [
+          2,
+          2
+        ],
+        "p_rank_1": 0.095
+      },
+      {
+        "team": "Ferrari",
+        "rank": 3,
+        "value": 0.06444388941712731,
+        "rank_interval_80": [
+          3,
+          3
+        ],
+        "p_rank_1": 0.0
+      },
+      {
+        "team": "McLaren",
+        "rank": 4,
+        "value": 0.5942615709806773,
+        "rank_interval_80": [
+          4,
+          4
+        ],
+        "p_rank_1": 0.0
+      }
+    ],
+    "published_vehicle_ranking": null,
+    "ranking_scope_teams": [
+      "Red Bull Racing"
+    ],
+    "ranking_scope_complete": false,
+    "pace_basis": "fuel_track_traffic_adjusted_conditional_proxy",
+    "ranking_uncertainty": "bootstrap rank interval over complete-event modelable laps",
+    "interpretation": "正赛次序来自同配方、相近胎龄与比赛阶段条件池的长距离基础配速代理；部分发布只覆盖独立通过车队模块的车队，不代表四队完整全序。"
+  },
+  "tyre_strategy_envelope": {
+    "label": "observed_data_strategy_proxy",
+    "timing_role": "post_race_audit_not_pre_race_forecast",
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "compounds": [
+      {
+        "compound": "HARD",
+        "valid_stints": 6,
+        "status": "usable_proxy",
+        "reasonable_stint_length_laps": [
+          38,
+          49
+        ],
+        "observed_length_range_laps": [
+          33,
+          54
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.023085671558715326,
+          "interval_80": [
+            0.010221923857730618,
+            0.03190645888474203
+          ]
+        }
+      },
+      {
+        "compound": "MEDIUM",
+        "valid_stints": 3,
+        "status": "insufficient_stints",
+        "reasonable_stint_length_laps": null,
+        "observed_length_range_laps": [
+          12,
+          26
+        ],
+        "degradation_proxy_s_per_lap": null
+      }
+    ],
+    "one_stop_window_laps": [
+      15,
+      34
+    ],
+    "two_stop_window_laps": [
+      null,
+      null
+    ],
+    "observed_driver_patterns": {
+      "one_stop": 20,
+      "two_stop": 0
+    },
+    "limitations": [
+      "合理 stint 长度来自本场公开观测分布，不是轮胎物理寿命。",
+      "一停/两停窗口来自实际换胎圈分布，不含真实燃油、胎温胎压或车队内部模拟。",
+      "SC/VSC、异常慢停和损伤未被可靠识别时不得用于主要策略归因。"
+    ]
+  },
+  "stint_dossiers": [
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 22,
+      "observed_laps": 22,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 21.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.8662308156478637,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 20,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ALB",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 23,
+      "lap_end": 57,
+      "observed_laps": 35,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 34.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.77071773234255,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 32,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 24,
+      "observed_laps": 24,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.041666666666666664,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.44268989562991,
+      "stable_pace_s": 90.44268989562991,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.876657380279961,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 21,
+        "quality_missing": 2,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 25,
+      "lap_end": 57,
+      "observed_laps": 33,
+      "modelable_laps": 28,
+      "clean_modelable_laps": 28,
+      "pace_adjusted_laps": 28,
+      "modelable_fraction": 0.8484848484848485,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 32.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.1795947426244,
+      "stable_pace_s": 90.98201581051475,
+      "variability_mad_s": 0.43267379987614846,
+      "degradation_s_per_tyre_lap": 0.015920841586140315,
+      "raw_net_slope_s_per_tyre_lap": -0.0348960558573399,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.005131789992806947,
+        0.04048224509491258
+      ],
+      "late_drop_s": 0.5150360810129371,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 2,
+      "baseline_coverage": 0.07142857142857142,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 14.175506103981942,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 28,
+        "traffic_separate": 4,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "BOT",
+      "team": "Alfa Romeo",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 15,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.0447281840982474,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "BOT",
+      "team": "Alfa Romeo",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 16,
+      "lap_end": 57,
+      "observed_laps": 42,
+      "modelable_laps": 30,
+      "clean_modelable_laps": 30,
+      "pace_adjusted_laps": 30,
+      "modelable_fraction": 0.7142857142857143,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 41.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.89756202697754,
+      "stable_pace_s": 91.23071560106781,
+      "variability_mad_s": 0.27974202283559035,
+      "degradation_s_per_tyre_lap": 0.02373254090024801,
+      "raw_net_slope_s_per_tyre_lap": -0.029349899291992186,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.0026799093213002814,
+        0.04829394440902016
+      ],
+      "late_drop_s": 0.6386650737963038,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 10,
+      "baseline_coverage": 0.3333333333333333,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 4.736999271515247,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 30,
+        "traffic_separate": 10,
+        "quality_missing": 1,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "DEV",
+      "team": "AlphaTauri",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 15,
+      "observed_laps": 15,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.4,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.65789072137132,
+      "stable_pace_s": 91.46615299425629,
+      "variability_mad_s": 0.14287889773719967,
+      "degradation_s_per_tyre_lap": -0.011367597078020708,
+      "raw_net_slope_s_per_tyre_lap": -0.06399917602539062,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.032420228656967254,
+        0.013193806430749078
+      ],
+      "late_drop_s": 0.15026514153733217,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.7864745036941216,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 7,
+        "model_eligible": 6,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "DEV",
+      "team": "AlphaTauri",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 16,
+      "lap_end": 57,
+      "observed_laps": 42,
+      "modelable_laps": 26,
+      "clean_modelable_laps": 26,
+      "pace_adjusted_laps": 26,
+      "modelable_fraction": 0.6190476190476191,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 41.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.92824544404684,
+      "stable_pace_s": 91.85901471188195,
+      "variability_mad_s": 0.2091394643181343,
+      "degradation_s_per_tyre_lap": 0.02243880221718264,
+      "raw_net_slope_s_per_tyre_lap": -0.028666640772964016,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.001386170638236095,
+        0.04700020572595509
+      ],
+      "late_drop_s": -0.03619394804303511,
+      "cumulative_delta_to_reasonable_baseline_s": 5.760935933966309,
+      "baseline_laps": 18,
+      "baseline_coverage": 0.6923076923076923,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 5.646019209927649,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": true,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 26,
+        "traffic_separate": 15,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 15,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.1312806086140896,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "GAS",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 16,
+      "lap_end": 57,
+      "observed_laps": 42,
+      "modelable_laps": 16,
+      "clean_modelable_laps": 16,
+      "pace_adjusted_laps": 16,
+      "modelable_fraction": 0.38095238095238093,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 41.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.75688859036096,
+      "stable_pace_s": 91.46922211898001,
+      "variability_mad_s": 0.1547096667239557,
+      "degradation_s_per_tyre_lap": 0.030978218263943123,
+      "raw_net_slope_s_per_tyre_lap": -0.010383097330729167,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.009925586684995907,
+        0.05553962177271558
+      ],
+      "late_drop_s": 0.21441379346347844,
+      "cumulative_delta_to_reasonable_baseline_s": 0.3071764895790494,
+      "baseline_laps": 12,
+      "baseline_coverage": 0.75,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 2.413788893124222,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 24,
+        "model_eligible": 16,
+        "quality_missing": 1,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 37,
+      "observed_laps": 37,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 36.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.6956327946484917,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 35,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 38,
+      "lap_end": 57,
+      "observed_laps": 20,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.3,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.74144182707136,
+      "stable_pace_s": 90.69411782214519,
+      "variability_mad_s": 0.20190444825824827,
+      "degradation_s_per_tyre_lap": 0.0022698233002111934,
+      "raw_net_slope_s_per_tyre_lap": -0.04375028610229492,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.01878280827873624,
+        0.026831226808983644
+      ],
+      "late_drop_s": 0.6016427341260311,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.479041271870641,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 13,
+        "model_eligible": 6,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "HUL",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 33,
+      "observed_laps": 33,
+      "modelable_laps": 3,
+      "clean_modelable_laps": 3,
+      "pace_adjusted_laps": 3,
+      "modelable_fraction": 0.09090909090909091,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 32.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.439184088456,
+      "stable_pace_s": 91.1050033569336,
+      "variability_mad_s": 0.31486782748573483,
+      "degradation_s_per_tyre_lap": -0.4403684515702082,
+      "raw_net_slope_s_per_tyre_lap": -0.4930000305175781,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.46142108314915475,
+        -0.4158070480614384
+      ],
+      "late_drop_s": -0.21237544009559883,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 3,
+      "baseline_coverage": 1.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.0263984254798888,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 28,
+        "model_eligible": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "HUL",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 34,
+      "lap_end": 57,
+      "observed_laps": 24,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 23.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.9836539459638173,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 23,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 17,
+      "observed_laps": 17,
+      "modelable_laps": 1,
+      "clean_modelable_laps": 1,
+      "pace_adjusted_laps": 1,
+      "modelable_fraction": 0.058823529411764705,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 16.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.22349528262491,
+      "stable_pace_s": 91.22349528262491,
+      "variability_mad_s": 0.0,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": 0.0,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.019712239391399,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 14,
+        "quality_missing": 2,
+        "model_eligible": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 18,
+      "lap_end": 57,
+      "observed_laps": 40,
+      "modelable_laps": 4,
+      "clean_modelable_laps": 4,
+      "pace_adjusted_laps": 4,
+      "modelable_fraction": 0.1,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 39.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.9142612658049,
+      "stable_pace_s": 92.02705067082456,
+      "variability_mad_s": 0.8513257422848829,
+      "degradation_s_per_tyre_lap": 0.03677328673678392,
+      "raw_net_slope_s_per_tyre_lap": -0.015455021577726439,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.015720655157833406,
+        0.06133469024555496
+      ],
+      "late_drop_s": 0.14062901547080742,
+      "cumulative_delta_to_reasonable_baseline_s": 0.32713799727584103,
+      "baseline_laps": 4,
+      "baseline_coverage": 1.0,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 2.1609682385198674,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 35,
+        "model_eligible": 4,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "MAG",
+      "team": "Haas F1 Team",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 14,
+      "observed_laps": 14,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 13.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.6086106210870796,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 12,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "MAG",
+      "team": "Haas F1 Team",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 15,
+      "lap_end": 57,
+      "observed_laps": 43,
+      "modelable_laps": 3,
+      "clean_modelable_laps": 3,
+      "pace_adjusted_laps": 3,
+      "modelable_fraction": 0.06976744186046512,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 42.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.62646765457957,
+      "stable_pace_s": 91.68615040026212,
+      "variability_mad_s": 0.1769712774978997,
+      "degradation_s_per_tyre_lap": 0.023956055583260884,
+      "raw_net_slope_s_per_tyre_lap": -0.020538330078123907,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.0029034240043127003,
+        0.04851745909203286
+      ],
+      "late_drop_s": 0.3114287225823915,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.83860738100752,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 38,
+        "model_eligible": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 4,
+      "observed_laps": 4,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 3.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7232730150291135,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2,
+        "traffic_separate": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "NOR",
+      "team": "McLaren",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 5,
+      "lap_end": 57,
+      "observed_laps": 53,
+      "modelable_laps": 19,
+      "clean_modelable_laps": 19,
+      "pace_adjusted_laps": 19,
+      "modelable_fraction": 0.3584905660377358,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 52.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.54212951660158,
+      "stable_pace_s": 91.73946747026946,
+      "variability_mad_s": 1.1622309914438291,
+      "degradation_s_per_tyre_lap": 0.04438016769733865,
+      "raw_net_slope_s_per_tyre_lap": -0.0059999738420752164,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.023327536118391348,
+        0.06894157120611055
+      ],
+      "late_drop_s": 1.0202150846782558,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.5335339576410494,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 33,
+        "model_eligible": 19,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "OCO",
+      "team": "Alpine",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 39,
+      "observed_laps": 39,
+      "modelable_laps": 9,
+      "clean_modelable_laps": 9,
+      "pace_adjusted_laps": 9,
+      "modelable_fraction": 0.23076923076923078,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 38.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.06418408845602,
+      "stable_pace_s": 91.26760999779952,
+      "variability_mad_s": 0.08287342794318613,
+      "degradation_s_per_tyre_lap": 0.05194024483960355,
+      "raw_net_slope_s_per_tyre_lap": 0.0038401739937909646,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.030887613260655603,
+        0.07650164834837714
+      ],
+      "late_drop_s": 0.054242736414849446,
+      "cumulative_delta_to_reasonable_baseline_s": -0.5176279168380375,
+      "baseline_laps": 6,
+      "baseline_coverage": 0.6666666666666666,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 0.8180366974224316,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 27,
+        "model_eligible": 9,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "OCO",
+      "team": "Alpine",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 40,
+      "lap_end": 57,
+      "observed_laps": 18,
+      "modelable_laps": 6,
+      "clean_modelable_laps": 6,
+      "pace_adjusted_laps": 6,
+      "modelable_fraction": 0.3333333333333333,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 17.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.54163380673059,
+      "stable_pace_s": 91.44773729223957,
+      "variability_mad_s": 0.23175537306132127,
+      "degradation_s_per_tyre_lap": -0.07728319419057428,
+      "raw_net_slope_s_per_tyre_lap": -0.13724899291991832,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.09833582576952082,
+        -0.05272179068180094
+      ],
+      "late_drop_s": -0.1937366284822133,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 3.001086009495065,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 11,
+        "model_eligible": 6,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 20,
+      "observed_laps": 20,
+      "modelable_laps": 18,
+      "clean_modelable_laps": 18,
+      "pace_adjusted_laps": 18,
+      "modelable_fraction": 0.9,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 19.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.90246863114209,
+      "stable_pace_s": 90.3209202415065,
+      "variability_mad_s": 0.3139755711003747,
+      "degradation_s_per_tyre_lap": -0.01736811587685357,
+      "raw_net_slope_s_per_tyre_lap": -0.06722259521484375,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.03842074745580012,
+        0.007193287631920953
+      ],
+      "late_drop_s": 0.3790767067357024,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.11646929307864431,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 18,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 21,
+      "lap_end": 57,
+      "observed_laps": 37,
+      "modelable_laps": 24,
+      "clean_modelable_laps": 25,
+      "pace_adjusted_laps": 24,
+      "modelable_fraction": 0.6486486486486487,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 36.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 89.86579066828679,
+      "stable_pace_s": 90.14941009722259,
+      "variability_mad_s": 0.39513655885899013,
+      "degradation_s_per_tyre_lap": 0.03888679108424409,
+      "raw_net_slope_s_per_tyre_lap": -0.020929287641476314,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.017834159505297147,
+        0.06344819459301684
+      ],
+      "late_drop_s": 0.4297930566888226,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 6,
+      "baseline_coverage": 0.25,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 14.406945128369246,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 25,
+        "traffic_separate": 11,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "PIA",
+      "team": "McLaren",
+      "stint_number": 1,
+      "compound": "SOFT",
+      "lap_start": 1,
+      "lap_end": 5,
+      "observed_laps": 5,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 4.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.6785258118535432,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "PIA",
+      "team": "McLaren",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 6,
+      "lap_end": 56,
+      "observed_laps": 51,
+      "modelable_laps": 32,
+      "clean_modelable_laps": 33,
+      "pace_adjusted_laps": 32,
+      "modelable_fraction": 0.6274509803921569,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 50.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.65262985229494,
+      "stable_pace_s": 92.48424600300038,
+      "variability_mad_s": 0.37506611098238574,
+      "degradation_s_per_tyre_lap": 0.004523006129320922,
+      "raw_net_slope_s_per_tyre_lap": -0.04599571228027284,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.01652962544962668,
+        0.02908440963809282
+      ],
+      "late_drop_s": -0.17487902390330134,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 7,
+      "baseline_coverage": 0.21875,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 6.815674209594727,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 33,
+        "traffic_separate": 16,
+        "quality_missing": 1,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 17,
+      "observed_laps": 17,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 16.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.146647312330163,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 15,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "RUS",
+      "team": "Mercedes",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 18,
+      "lap_end": 57,
+      "observed_laps": 40,
+      "modelable_laps": 20,
+      "clean_modelable_laps": 20,
+      "pace_adjusted_laps": 20,
+      "modelable_fraction": 0.5,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 39.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.91709207233632,
+      "stable_pace_s": 91.01625462582238,
+      "variability_mad_s": 0.18439151675575435,
+      "degradation_s_per_tyre_lap": 0.01317976789864951,
+      "raw_net_slope_s_per_tyre_lap": -0.03292710440498731,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.007872863680296247,
+        0.037741171407423245
+      ],
+      "late_drop_s": 0.17105950807270176,
+      "cumulative_delta_to_reasonable_baseline_s": -6.133065876207866,
+      "baseline_laps": 16,
+      "baseline_coverage": 0.8,
+      "cumulative_baseline_status": "identified_proxy",
+      "cumulative_baseline_gate_failures": [],
+      "adjacent_gap_proxy_s": 4.677925200872865,
+      "materiality": {
+        "physical_time_material": true,
+        "could_affect_track_position_proxy": true,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 20,
+        "traffic_separate": 19,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "SAI",
+      "team": "Ferrari",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 18,
+      "observed_laps": 18,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 17.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.6817569431441506,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 16,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "SAI",
+      "team": "Ferrari",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 19,
+      "lap_end": 57,
+      "observed_laps": 39,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 38.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 2.112494421774232,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 37,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 1,
+      "compound": "MEDIUM",
+      "lap_start": 1,
+      "lap_end": 2,
+      "observed_laps": 2,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 1.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "observed_laps_below_gate",
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate",
+        "tyre_age_span_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.38957326143462695,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "SAR",
+      "team": "Williams",
+      "stint_number": 2,
+      "compound": "HARD",
+      "lap_start": 3,
+      "lap_end": 56,
+      "observed_laps": 54,
+      "modelable_laps": 42,
+      "clean_modelable_laps": 44,
+      "pace_adjusted_laps": 42,
+      "modelable_fraction": 0.7777777777777778,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 53.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 91.0282319721423,
+      "stable_pace_s": 91.60700225830078,
+      "variability_mad_s": 0.43554717798733744,
+      "degradation_s_per_tyre_lap": 0.024926126685239972,
+      "raw_net_slope_s_per_tyre_lap": -0.02622222900390625,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.003873495106293119,
+        0.04948753019401223
+      ],
+      "late_drop_s": 0.5472920066432039,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 15,
+      "baseline_coverage": 0.35714285714285715,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 20.130128161468463,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 44,
+        "traffic_separate": 5,
+        "unknown_unaccounted": 3,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 42,
+      "observed_laps": 42,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 41.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.9043033620903455,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 39,
+        "quality_missing": 3
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 43,
+      "lap_end": 57,
+      "observed_laps": 15,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 14.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.4363355512862857,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 14,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 36,
+      "observed_laps": 36,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.05555555555555555,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 35.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.16609357532703,
+      "stable_pace_s": 91.16609357532703,
+      "variability_mad_s": 0.04786996436873311,
+      "degradation_s_per_tyre_lap": 0.06457569724636869,
+      "raw_net_slope_s_per_tyre_lap": -0.1360015869140625,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.04352306566742925,
+        0.08913710075513848
+      ],
+      "late_drop_s": 0.032287848623184345,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 1,
+      "baseline_coverage": 0.5,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7657149195542801,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 32,
+        "quality_missing": 2,
+        "model_eligible": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 37,
+      "lap_end": 57,
+      "observed_laps": 21,
+      "modelable_laps": 2,
+      "clean_modelable_laps": 2,
+      "pace_adjusted_laps": 2,
+      "modelable_fraction": 0.09523809523809523,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 20.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 91.14393367265401,
+      "stable_pace_s": 91.14393367265401,
+      "variability_mad_s": 0.10153494419801216,
+      "degradation_s_per_tyre_lap": 0.1369687632510619,
+      "raw_net_slope_s_per_tyre_lap": 0.05500030517578125,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.11591613167210824,
+        0.16153016675983167
+      ],
+      "late_drop_s": 0.06848438162553805,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.70674551904729,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 18,
+        "model_eligible": 2,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 45,
+      "observed_laps": 45,
+      "modelable_laps": 23,
+      "clean_modelable_laps": 23,
+      "pace_adjusted_laps": 23,
+      "modelable_fraction": 0.5111111111111111,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 44.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": 90.44057705527857,
+      "stable_pace_s": 90.2158499265972,
+      "variability_mad_s": 0.13007981848463218,
+      "degradation_s_per_tyre_lap": 0.0057320845754534585,
+      "raw_net_slope_s_per_tyre_lap": -0.05494106517118566,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.015320547003493733,
+        0.030293488084224537
+      ],
+      "late_drop_s": 0.21466977972733048,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 6,
+      "baseline_coverage": 0.2608695652173913,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 1.2852803762315341,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 23,
+        "traffic_separate": 19,
+        "quality_missing": 2,
+        "unknown_unaccounted": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 46,
+      "lap_end": 57,
+      "observed_laps": 12,
+      "modelable_laps": 9,
+      "clean_modelable_laps": 9,
+      "pace_adjusted_laps": 9,
+      "modelable_fraction": 0.75,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 11.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.42200469970705,
+      "stable_pace_s": 90.30736426303262,
+      "variability_mad_s": 0.09058597604851308,
+      "degradation_s_per_tyre_lap": -0.02569346553400962,
+      "raw_net_slope_s_per_tyre_lap": -0.08492584228515625,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        -0.04674609711295545,
+        -0.0011320620252366353
+      ],
+      "late_drop_s": -0.06178404155529904,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.33490459832678493,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 9,
+        "traffic_separate": 2,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ZHO",
+      "team": "Alfa Romeo",
+      "stint_number": 1,
+      "compound": "HARD",
+      "lap_start": 1,
+      "lap_end": 31,
+      "observed_laps": 31,
+      "modelable_laps": 0,
+      "clean_modelable_laps": 0,
+      "pace_adjusted_laps": 0,
+      "modelable_fraction": 0.0,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 30.0,
+      "status": "audit_only",
+      "gate_failures": [
+        "modelable_laps_below_gate",
+        "modelable_fraction_below_gate"
+      ],
+      "initial_pace_s": null,
+      "stable_pace_s": null,
+      "variability_mad_s": null,
+      "degradation_s_per_tyre_lap": null,
+      "raw_net_slope_s_per_tyre_lap": null,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": null,
+      "late_drop_s": null,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 0.7727961347857877,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "traffic_separate": 29,
+        "quality_missing": 2
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "driver": "ZHO",
+      "team": "Alfa Romeo",
+      "stint_number": 2,
+      "compound": "MEDIUM",
+      "lap_start": 32,
+      "lap_end": 57,
+      "observed_laps": 26,
+      "modelable_laps": 16,
+      "clean_modelable_laps": 16,
+      "pace_adjusted_laps": 16,
+      "modelable_fraction": 0.6153846153846154,
+      "internal_lap_continuity": 1.0,
+      "tyre_age_span": 25.0,
+      "status": "valid",
+      "gate_failures": [],
+      "initial_pace_s": 90.77448593942742,
+      "stable_pace_s": 91.48317964453447,
+      "variability_mad_s": 0.34325285467347266,
+      "degradation_s_per_tyre_lap": 0.039292739148725615,
+      "raw_net_slope_s_per_tyre_lap": -0.008349609375003553,
+      "fuel_sensitivity_degradation_interval_s_per_tyre_lap": [
+        0.018240107569778206,
+        0.06385414265749748
+      ],
+      "late_drop_s": 0.2663196764494131,
+      "cumulative_delta_to_reasonable_baseline_s": null,
+      "baseline_laps": 0,
+      "baseline_coverage": 0.0,
+      "cumulative_baseline_status": "not_identifiable",
+      "cumulative_baseline_gate_failures": [
+        "baseline_laps_below_cumulative_gate",
+        "baseline_fraction_below_cumulative_gate"
+      ],
+      "adjacent_gap_proxy_s": 4.82658713859626,
+      "materiality": {
+        "physical_time_material": false,
+        "could_affect_track_position_proxy": false,
+        "final_position_change_identified": false,
+        "reason": "缺少 FIA 最终相邻车辆计时差和完整反事实赛道位置。"
+      },
+      "major_factor_claimed": false,
+      "event_exposure_counts": {
+        "model_eligible": 16,
+        "traffic_separate": 9,
+        "quality_missing": 1
+      },
+      "pace_basis": "pace_adjusted_lap_duration_s",
+      "degradation_estimator": "theil_sen_pairwise_median",
+      "interpretation": "衰减与累计秒差是同配方、相近胎龄和比赛阶段的条件代理；v11 可扣除燃油、公共赛道演化和可估交通项，但仍不是纯轮胎物理退化或真实胎态。"
+    }
+  ],
+  "vehicle_driver_decomposition": [
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "team": "Ferrari",
+      "driver": "LEC",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": 0.32713799727584103,
+      "components": {
+        "vehicle_common_baseline_s": 0.25777555766850924,
+        "driver_realization_deviation_s": 0.0,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.0693624396073318
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "team": "McLaren",
+      "driver": "PIA",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": 4.991351880525215,
+      "components": {
+        "vehicle_common_baseline_s": 4.159830996864741,
+        "driver_realization_deviation_s": 0.0,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.8315208836604739
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "team": "Mercedes",
+      "driver": "RUS",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -6.133065876207866,
+      "components": {
+        "vehicle_common_baseline_s": -6.232935855263349,
+        "driver_realization_deviation_s": 0.0,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": 0.09986997905548378
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "team": "Red Bull Racing",
+      "driver": "PER",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -2.9105820906789717,
+      "components": {
+        "vehicle_common_baseline_s": -6.448917991236556,
+        "driver_realization_deviation_s": 4.754229294626242,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": -1.215893394068658
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    },
+    {
+      "year": 2023,
+      "meeting_name": "Miami Grand Prix",
+      "team": "Red Bull Racing",
+      "driver": "VER",
+      "scope": "fuel_track_traffic_adjusted_laps_with_baseline",
+      "observed_accounted_delta_s": -8.596991689581586,
+      "components": {
+        "vehicle_common_baseline_s": -6.448917991236556,
+        "driver_realization_deviation_s": -2.0304396779914526,
+        "strategy_track_position_proxy_s": 0.0,
+        "unexplained_residual_s": -0.11763402035357728
+      },
+      "closure_error_s": 0.0,
+      "vehicle_parameter_shared_by_team_drivers": true,
+      "strategy_identification": "empirical_traffic_penalty_proxy_only_pit_and_full_counterfactual_not_identified",
+      "driver_interpretation": "当场车手—赛车组合兑现偏差；不是长期纯车手能力。"
+    }
+  ],
+  "result_impact_audit": {
+    "major_factor_claims": [],
+    "classification_proxy_comparison": [
+      {
+        "team": "Ferrari",
+        "performance_proxy_rank": 3,
+        "classification_proxy_rank": 3,
+        "rank_difference": 0
+      },
+      {
+        "team": "McLaren",
+        "performance_proxy_rank": 4,
+        "classification_proxy_rank": 4,
+        "rank_difference": 0
+      },
+      {
+        "team": "Mercedes",
+        "performance_proxy_rank": 2,
+        "classification_proxy_rank": 2,
+        "rank_difference": 0
+      },
+      {
+        "team": "Red Bull Racing",
+        "performance_proxy_rank": 1,
+        "classification_proxy_rank": 1,
+        "rank_difference": 0
+      }
+    ],
+    "fia_final_classification_used": false,
+    "expected_points_interval": null,
+    "reason": "没有冻结且时间外校准的全场位置/积分反事实模拟；classification_proxy 仅用于赛后构念审计。"
+  },
+  "ratings": {
+    "PAC": null,
+    "OVR": null
+  },
+  "event_conclusion": null,
+  "boundaries": {
+    "data_proxy": true,
+    "unidentified": [
+      "真实燃油量",
+      "真实胎温胎压与磨损量",
+      "车辆损伤与具体故障",
+      "车队指令与驾驶意图",
+      "倍耐力或车队内部策略模拟"
+    ],
+    "forbidden_claims": [
+      "由少量圈直接形成整场结论",
+      "把公开数据包络称为倍耐力内部模拟",
+      "把单场保胎差异直接归因为纯车手能力",
+      "把 classification_proxy 称为 FIA 最终分类",
+      "输出伪精确贡献百分比"
+    ]
+  },
+  "run_id": "20260725T134848+0800-a9f5c3364ee6",
+  "created_at": "2026-07-25T13:49:08+08:00",
+  "config_hash": "a9f5c3364ee67f321b367eaa89cfbd2b3617b46b766fd44b2bea05981ed73ccd",
+  "round": 5,
+  "event_order": 202305,
+  "source_identity": {
+    "lap_universe_manifest": "research/artifacts/race_dossier_v11/run=20260725T134848+0800-a9f5c3364ee6/manifest.json",
+    "qualifying_manifest_sha256": "b4af9a995f9cb1465a6c8d43339bd684e937e4c4cf87213f3ab4cb20d3ffb0c6",
+    "v5_result_sha256": "40937855648ffa1cf45094d6e39c5d82fac010242302973efd205a1394f5accd"
+  },
+  "pre_race_tyre_envelope": {
+    "label": "historical_pre_race_data_proxy",
+    "target_event_id": "2023|Miami Grand Prix",
+    "target_event_order": 202305,
+    "history_cutoff_rule": "event_order_strictly_less_than_target",
+    "visible_valid_stints": 26,
+    "compounds": [
+      {
+        "compound": "HARD",
+        "historical_stints": 17,
+        "historical_events": 4,
+        "status": "usable_pre_race_proxy",
+        "reasonable_stint_length_laps": [
+          12,
+          43
+        ],
+        "degradation_proxy_s_per_lap": {
+          "median": 0.05633280436198144,
+          "interval_80": [
+            -0.00707291740432877,
+            0.09474685744235355
+          ]
+        }
+      },
+      {
+        "compound": "MEDIUM",
+        "historical_stints": 2,
+        "historical_events": 2,
+        "status": "insufficient_history",
+        "reasonable_stint_length_laps": null,
+        "degradation_proxy_s_per_lap": null
+      },
+      {
+        "compound": "SOFT",
+        "historical_stints": 7,
+        "historical_events": 2,
+        "status": "insufficient_history",
+        "reasonable_stint_length_laps": null,
+        "degradation_proxy_s_per_lap": null
+      }
+    ],
+    "one_stop_options": [],
+    "two_stop_options": [],
+    "real_fuel_load_identified": false,
+    "pirelli_internal_simulation": false,
+    "future_results_used": false,
+    "limitations": [
+      "仅使用目标分站前的公开历史 stint，不能代表实时天气、赛道演化或车队内部模型。",
+      "进站窗口由历史长度包络覆盖赛程推导，未估计真实燃油、胎温胎压和磨损量。"
+    ]
+  }
+}

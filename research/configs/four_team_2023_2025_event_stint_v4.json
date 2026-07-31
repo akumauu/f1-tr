@@ -1,0 +1,66 @@
+{
+  "experiment_name": "four_team_event_stint_attribution_2023_2025_v4",
+  "validation_status": "retrospective_descriptive_extension_after_2025_review",
+  "offline_only": true,
+  "identity_model_config": "research/configs/four_team_2023_2025_bayesian_v3.json",
+  "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "qualifying_freeze": {
+    "years": [2023, 2024, 2025],
+    "sessions": ["Qualifying"],
+    "dry_compounds": ["SOFT", "MEDIUM", "HARD"],
+    "minimum_lap_duration_seconds": 45.0,
+    "maximum_lap_duration_seconds": 200.0,
+    "minimum_accurate_laps_per_session": 20,
+    "output": "research/artifacts/data/qualifying_2023_2025_v4.csv.gz",
+    "manifest": "research/artifacts/four_team_qualifying_2023_2025_manifest.json"
+  },
+  "frontier": {
+    "race_ceiling_quantile": 0.10,
+    "qualifying_ceiling_quantile": 0.20,
+    "usable_baseline_quantile": 0.50,
+    "performance_floor_quantile": 0.90,
+    "driver_pooling": "equal_driver_robust_median_with_best_driver_sensitivity",
+    "weekend_session_weights": {
+      "Qualifying": 0.65,
+      "Race": 0.35
+    },
+    "parameter_sensitivity": {
+      "race_ceiling_quantiles": [0.05, 0.10, 0.20],
+      "qualifying_ceiling_quantiles": [0.10, 0.20, 0.30],
+      "qualifying_weights": [0.50, 0.65, 0.80]
+    },
+    "bootstrap_repetitions": 240,
+    "bootstrap_seed": 20260719,
+    "reference_lap_seconds": 90.0
+  },
+  "detail_thresholds": {
+    "minimum_team_event_clean_laps": 12,
+    "minimum_driver_event_clean_laps": 8,
+    "minimum_stint_clean_laps": 5,
+    "minimum_qualifying_team_laps": 3,
+    "minimum_qualifying_drivers": 2,
+    "maximum_scale_rhat": 1.05,
+    "rank_tolerance": 1
+  },
+  "boundaries": {
+    "absolute_qualifying_race_time_merge": false,
+    "setup_linkage": "parc_ferme_weekend_family_proxy_not_observed_setup_identity",
+    "ceiling_definition": "driver-neutral conditional statistical frontier_not_physical_limit",
+    "result_label_role": "local_live_timing_classification_proxy_external_check_only",
+    "unmodeled_result_causes": [
+      "strategy",
+      "traffic_and_dirty_air",
+      "safety_car_and_flags",
+      "damage_and_specification",
+      "reliability",
+      "penalties_and_post_race_revisions"
+    ]
+  },
+  "outputs": {
+    "result": "research/records/four_team_event_stint_attribution_2023_2025.json",
+    "summary": "research/records/four_team_event_stint_attribution_2023_2025.md",
+    "lap_detail": "research/artifacts/data/four_team_lap_explanations_2023_2025_v4.csv.gz",
+    "lap_detail_manifest": "research/artifacts/four_team_lap_explanations_2023_2025_v4_manifest.json"
+  }
+}

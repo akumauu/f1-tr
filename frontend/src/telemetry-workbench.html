@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>F1 TR Race Dossier 工作台</title>
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="telemetry-workbench.css?v=20260726-help-v1">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="返回赛后复盘">F1 TR</a>
+      <div>
+        <h1>Race Dossier 与遥测证据工作台</h1>
+        <p>完整比赛覆盖、事件账本、Stint、轮胎包络、时间代价与科学边界</p>
+      </div>
+      <div class="headerActions">
+        <a class="helpButton" href="reference-analysis-lab.html" aria-label="打开参考分析复刻实验室">复刻实验室</a>
+        <span id="status" class="status">加载中</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="reportNavigator" aria-label="报告筛选">
+        <div class="navigatorHeader">
+          <div>
+            <p class="eyebrow">REPORT NAVIGATOR</p>
+            <h2>先确定产品、赛季、分站，再选择版本</h2>
+          </div>
+          <div class="headerMeta">
+            <span>新 → 旧</span>
+            <button type="button" class="helpButton" data-help-topic="report_navigation" aria-label="解释报告排列与筛选">?</button>
+          </div>
+        </div>
+        <div class="reportFilterGrid">
+          <label>
+            <span>1 · 产品</span>
+            <select id="productSelect"></select>
+          </label>
+          <label>
+            <span>2 · 赛季</span>
+            <select id="yearSelect"></select>
+          </label>
+          <label class="meetingFilter">
+            <span>3 · 分站</span>
+            <select id="meetingSelect"></select>
+          </label>
+          <label>
+            <span>4 · 报告版本</span>
+            <select id="reportSelect"></select>
+          </label>
+        </div>
+        <div class="filterMeta">
+          <div id="filterSummary" class="filterSummary" aria-live="polite"></div>
+          <div id="scope" class="scope"></div>
+        </div>
+      </section>
+
+      <section id="releaseBanner" class="releaseBanner"></section>
+      <section class="summaryGrid" id="summaryGrid" aria-label="关键摘要"></section>
+
+      <nav id="sectionNav" class="sectionNav" aria-label="报告阅读顺序">
+        <span>阅读顺序</span>
+        <a href="#raceConclusionPanel" data-dossier-only="true">整场结论</a>
+        <a href="#eventLedgerPanel">比赛事件</a>
+        <a href="#stintPanel" data-dossier-only="true">Stint</a>
+        <a href="#pacePanel">条件配速</a>
+        <a href="#decompositionPanel" data-dossier-only="true">秒数拆分</a>
+        <a href="#auditSection">数据审计</a>
+      </nav>
+
+      <section id="raceConclusionPanel" class="panel" hidden>
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">RACE DOSSIER CONCLUSION</p>
+            <h2>整场结论、同条件配速与成绩审计</h2>
+          </div>
+          <div class="headerMeta">
+            <span>排位 / 正赛独立 · − 更快</span>
+            <button type="button" class="helpButton" data-help-topic="race_pace_direction" aria-label="解释配速方向与比较口径">?</button>
+          </div>
+        </div>
+        <div id="raceConclusion" class="conclusionGrid"></div>
+        <div class="comparisonGrid">
+          <div>
+            <h3 class="subheading">排位单圈潜力</h3>
+            <div id="qualifyingTable" class="tableWrap"></div>
+          </div>
+          <div>
+            <h3 class="subheading">正赛长距离与成绩代理</h3>
+            <div id="raceOutcomeTable" class="tableWrap"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="eventLedgerPanel" class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">RACE CONTEXT FIRST</p>
+            <h2>比赛事件、交通、进出站与样本处理</h2>
+          </div>
+          <button type="button" class="helpButton" data-help-topic="event_context" aria-label="解释比赛事件账本">?</button>
+        </div>
+        <div id="eventFilterBar" class="sectionFilterBar" hidden>
+          <label>
+            <span>车队范围</span>
+            <select id="eventTeamSelect"></select>
+          </label>
+          <label>
+            <span>账本范围</span>
+            <select id="eventCategorySelect">
+              <option value="CONTEXT">比赛因素优先</option>
+              <option value="ALL">完整账本</option>
+              <option value="QUALITY">仅计时与质量</option>
+            </select>
+          </label>
+        </div>
+        <div id="eventLedgerSummary" class="roleNote" hidden></div>
+        <div id="anomalyList" class="evidenceList"></div>
+      </section>
+
+      <section id="stintPanel" class="panel" hidden>
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">STINT DOSSIER</p>
+            <h2>每个 Stint 一个同油量条件代表配速</h2>
+          </div>
+        </div>
+        <div class="sectionFilterBar stintFilterBar">
+          <label>
+            <span>车队范围</span>
+            <select id="stintTeamSelect"></select>
+          </label>
+          <label>
+            <span>车手</span>
+            <select id="stintDriverSelect"></select>
+          </label>
+          <label>
+            <span>排列方式</span>
+            <select id="stintOrderSelect">
+              <option value="RACE_SEQUENCE">比赛进程 · 车手与 Stint 顺序</option>
+              <option value="COMPARABLE">真实可比窗口 · 基准置顶 / 快 → 慢</option>
+            </select>
+          </label>
+        </div>
+        <div id="stintSummary" class="roleNote"></div>
+        <section id="stintCurveExplorer" class="stintCurveExplorer" hidden>
+          <div class="stintCurveExplorerHeader">
+            <div>
+              <p class="eyebrow">SAME-COMPOUND TEAM CURVES</p>
+              <h3>同配方跨车队：逐圈证据与共同胎龄配速</h3>
+            </div>
+            <div class="headerMeta">
+              <span id="stintCurveModeLabel">同窗比较 · 证据模式待识别</span>
+              <button type="button" class="helpButton" data-help-topic="curve_projection" aria-label="解释曲线生成方法">?</button>
+            </div>
+          </div>
+          <div class="stintCurveFilterBar">
+            <label>
+              <span>轮胎配方</span>
+              <select id="stintCurveCompoundSelect"></select>
+            </label>
+            <label>
+              <span>可比窗口</span>
+              <select id="stintCurveWindowSelect"></select>
+            </label>
+            <label class="stintCurveFocusControl">
+              <span>图表焦点</span>
+              <select id="stintCurveFocusSelect"></select>
+            </label>
+            <label class="stintCurveScaleControl">
+              <span>纵轴视窗</span>
+              <select id="stintCurveScaleSelect">
+                <option value="FOCUS">聚焦主趋势 · 标记离群圈</option>
+                <option value="FULL">全部散点 · 完整纵轴</option>
+              </select>
+            </label>
+          </div>
+          <div id="stintCurveSummary" class="roleNote"></div>
+          <div id="stintCurveExtremes" class="stintCurveExtremes"></div>
+          <div class="stintCurveGrid">
+            <article class="stintCurveCard">
+              <div class="stintCurveCardHeader">
+                <div>
+                  <p id="stintPrimaryCurveEyebrow" class="eyebrow">LAP-LEVEL EVIDENCE</p>
+                  <h4 id="stintPrimaryCurveTitle">逐圈散点与稳健主拟合</h4>
+                </div>
+                <div class="headerMeta">
+                  <span id="stintPrimaryCurveMeta">点 = 已发布逐圈证据</span>
+                  <button type="button" class="helpButton" data-help-topic="curve_scatter" aria-label="解释逐圈散点、稳健回归与稳定性范围">?</button>
+                </div>
+              </div>
+              <div class="stintCurveEncodingLegend" aria-label="逐圈证据图形编码">
+                <span><i class="encodingMark encodingScatter"></i>实心入模 / 空心审计</span>
+                <span><i class="encodingMark encodingFit"></i>冻结主拟合</span>
+                <span><i class="encodingMark encodingBand"></i>删块敏感性边界</span>
+                <span><i class="encodingMark encodingConfirmed"></i>确认后描述曲线</span>
+                <span><i class="encodingMark encodingClipped"></i>视窗外圈边缘标记</span>
+              </div>
+              <canvas id="stintDegradationChart" class="stintCurveCanvas" width="720" height="360"></canvas>
+              <p id="stintDegradationEmpty" class="empty" hidden>当前窗口没有足够的逐圈曲线证据。</p>
+            </article>
+            <article class="stintCurveCard">
+              <div class="stintCurveCardHeader">
+                <div>
+                  <p id="stintSecondaryCurveEyebrow" class="eyebrow">COMMON-AGE PACE RANGES</p>
+                  <h4 id="stintSecondaryCurveTitle">共同胎龄配速范围</h4>
+                </div>
+                <div class="headerMeta">
+                  <span id="stintSecondaryCurveMeta">仅在 comparable 焦点内比较</span>
+                  <button type="button" class="helpButton" data-help-topic="curve_ranges" aria-label="解释观测范围、删块稳定性与燃油情景">?</button>
+                </div>
+              </div>
+              <div class="stintCurveEncodingLegend" aria-label="共同胎龄范围图形编码">
+                <span><i class="encodingMark encodingObserved"></i>观测残差 80%</span>
+                <span><i class="encodingMark encodingStability"></i>删块敏感性 80%</span>
+                <span><i class="encodingMark encodingFuel"></i>燃油 L / B / H 情景点</span>
+                <span><i class="encodingMark encodingEstimate"></i>条件点估计</span>
+              </div>
+              <canvas id="stintPaceChart" class="stintCurveCanvas" width="720" height="360"></canvas>
+              <p id="stintPaceEmpty" class="empty" hidden>当前窗口没有共同胎龄配速范围。</p>
+            </article>
+          </div>
+          <div id="stintCurveHoverTooltip" class="stintCurveHoverTooltip" role="tooltip" hidden></div>
+          <div id="stintCurveLegend" class="stintCurveLegend" aria-label="不同车队 Stint 曲线图例"></div>
+          <div id="stintCurveEvidenceAudit" class="stintCurveEvidenceAudit" hidden></div>
+          <div id="stintCurvePairwiseAudit" class="stintCurvePairwiseAudit" hidden></div>
+        </section>
+        <div id="stintTable" class="tableWrap stintTable"></div>
+      </section>
+
+      <section id="pacePanel" class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">DESCRIPTIVE PACE VIEW</p>
+            <h2>同配方、近胎龄、近阶段的正赛条件配速</h2>
+          </div>
+          <div class="headerMeta">
+            <span>条件代理 · − 更快</span>
+            <button type="button" class="helpButton" data-help-topic="conditional_pace" aria-label="解释正赛条件配速">?</button>
+          </div>
+        </div>
+        <div class="chartWrap">
+          <canvas id="segmentChart" width="1200" height="420"></canvas>
+          <p id="chartEmpty" class="empty" hidden>当前报告没有可比较的时间代理。</p>
+        </div>
+      </section>
+
+      <section id="decompositionPanel" class="panel" hidden>
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">CAR / DRIVER / STRATEGY SECONDS</p>
+            <h2>车辆共同基线、当场兑现与策略位置秒数</h2>
+          </div>
+          <div class="headerMeta">
+            <span>秒数闭合 · − 节省</span>
+            <button type="button" class="helpButton" data-help-topic="seconds_decomposition" aria-label="解释秒数拆分">?</button>
+          </div>
+        </div>
+        <div id="decompositionTable" class="tableWrap"></div>
+      </section>
+
+      <section id="tyreStrategyPanel" class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">TYRE STRATEGY ENVELOPE</p>
+            <h2>赛前历史与本场轮胎包络</h2>
+          </div>
+        </div>
+        <div id="modeList" class="evidenceList"></div>
+      </section>
+
+      <div id="auditSection" class="flowDivider">
+        <span>METHOD &amp; AUDIT</span>
+        <div>
+          <h2>以下内容用于判断结论能否成立</h2>
+        </div>
+      </div>
+
+      <section id="fuelStatePanel" class="panel" hidden>
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">FUEL / TYRE / DAMAGE / ENERGY</p>
+            <h2>燃油补偿与车辆状态可识别性</h2>
+          </div>
+          <div class="headerMeta">
+            <span>代理 / 不可识别</span>
+            <button type="button" class="helpButton" data-help-topic="fuel_state" aria-label="解释车辆状态可识别性">?</button>
+          </div>
+        </div>
+        <div id="fuelStateGrid" class="stateGrid"></div>
+        <div id="fuelComparisonNote" class="roleNote"></div>
+      </section>
+
+      <section id="raceCoveragePanel" class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">DATA COVERAGE FUNNEL</p>
+            <h2>全场数据漏斗与样本角色</h2>
+          </div>
+          <div class="headerMeta">
+            <span>全场控制样本</span>
+            <button type="button" class="helpButton" data-help-topic="control_sample" aria-label="解释控制样本范围">?</button>
+          </div>
+        </div>
+        <div id="dataFunnel"></div>
+      </section>
+
+      <section class="twoCol">
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">PAC / OVR</p>
+              <h2>次要评分模块</h2>
+            </div>
+          </div>
+          <div id="ratingGrid" class="ratingGrid"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">COVERAGE</p>
+              <h2>四队发布模块门</h2>
+            </div>
+          </div>
+          <div id="episodeTable" class="tableWrap"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">INTERPRETATION CONTRACT</p>
+            <h2>可以说什么，不能说什么</h2>
+          </div>
+        </div>
+        <div id="boundaries" class="boundaries"></div>
+      </section>
+    </main>
+
+    <div id="workbenchHelpTooltip" class="helpTooltip" role="tooltip" hidden></div>
+  <script
+    src="data-page-entry.js?v=20260726-runtime-v1"
+    data-page="telemetry-workbench.html"
+    data-module="telemetry-workbench.js?v=20260726-official-v1"
+  ></script>
+  </body>
+</html>

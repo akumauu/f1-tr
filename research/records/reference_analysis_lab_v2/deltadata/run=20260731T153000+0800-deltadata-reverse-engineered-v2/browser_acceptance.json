@@ -1,0 +1,45 @@
+{
+  "schema_version": "reference-analysis-browser-acceptance-v2",
+  "status": "PASS",
+  "tested_at": "2026-07-31T15:45:00+08:00",
+  "url": "http://127.0.0.1:5174/deltadata-reverse-engineered-v2.html",
+  "server_role": "local_http_frontend_dist",
+  "checks": {
+    "report_sha256_verified_in_browser": true,
+    "load_status": "???????",
+    "runtime_errors": 0,
+    "desktop_inner_width": 1440,
+    "desktop_document_scroll_width": 1425,
+    "mobile_inner_width": 390,
+    "mobile_document_scroll_width": 390,
+    "mobile_horizontal_overflow": false,
+    "metric_cards": 12,
+    "benchmark_cards": 3,
+    "visual_ranking_rows": 10,
+    "visual_pair_rows": 10,
+    "audit_pair_rows": 10,
+    "audit_view_visual_hidden": true
+  },
+  "screenshots": {
+    "desktop_visual": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/deltadata-ui-smoke/deltadata-v2-desktop.png",
+      "sha256": "7d3e38fb9d8ee9812978a1c625884224e2871bf538540a2b8f0ef2957a7e4ef6",
+      "bytes": 850924
+    },
+    "mobile_390_visual": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/deltadata-ui-smoke/deltadata-v2-mobile-390.png",
+      "sha256": "2acebd5b67b99547d8aa34331995a917c01dbbe1eca66408c0dfe9e90dcbb755",
+      "bytes": 133399
+    },
+    "desktop_audit": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/deltadata-ui-smoke/deltadata-v2-desktop-audit.png",
+      "sha256": "88fbe0bedb78a51d674b5e9c7ecf97b4d13d9af3c3cd63446ff1689d1e87017e",
+      "bytes": 767556
+    }
+  },
+  "commands": [
+    "npm run build",
+    "npm test",
+    "python -m pytest tests/test_reference_analysis_lab.py -q"
+  ]
+}

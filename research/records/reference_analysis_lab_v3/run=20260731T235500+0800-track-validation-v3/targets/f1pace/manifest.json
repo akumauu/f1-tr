@@ -1,0 +1,173 @@
+{
+  "schema_version": "reference-analysis-target-manifest-v3",
+  "run_id": "20260731T235500+0800-track-validation-v3",
+  "target_id": "f1pace",
+  "status": "PASS_WITH_MODEL_FALLBACKS",
+  "files": [
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/coverage_matrix.csv",
+      "sha256": "d1bbc5178d1ab4911274319e13efe76af49821d0ed0365e7b1aa30d04258ba86",
+      "bytes": 5707,
+      "rows": 24,
+      "columns": [
+        "track_key",
+        "meeting",
+        "years",
+        "events",
+        "driver_laps",
+        "eligible_driver_laps",
+        "kish_ess",
+        "traffic_ratio_mean",
+        "traffic_ratio_p90",
+        "traffic_lap_share",
+        "compounds",
+        "tyre_age_min",
+        "tyre_age_max",
+        "selected_model_type",
+        "fallback_reason"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/split_registry.csv",
+      "sha256": "76ad2b143fbc525b0a609ae99ee7b0c831a1b6d0abe4d517990af9c2658d59be",
+      "bytes": 300108,
+      "rows": 210,
+      "columns": [
+        "task_id",
+        "test_event_id",
+        "model_type",
+        "status",
+        "training_event_count",
+        "training_events",
+        "validation_identity",
+        "test_events",
+        "frozen_training_exclusions",
+        "training_rows",
+        "training_kish_ess",
+        "reason"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/model_comparison.csv",
+      "sha256": "c14639b32f3822257c2f6ae168a383d6732f48e2721897ea41d3042b191ad16f",
+      "bytes": 20958,
+      "rows": 72,
+      "columns": [
+        "task_id",
+        "track_key",
+        "meeting",
+        "model_type",
+        "status",
+        "unit",
+        "target_rows",
+        "predicted_rows",
+        "coverage",
+        "mae",
+        "p90_abs_error",
+        "max_abs_error",
+        "bias",
+        "direction_accuracy",
+        "test_events",
+        "training_kish_ess_min",
+        "fold_improvement_share",
+        "publication_gate_passed",
+        "gate_failures"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/sample_exclusion_ledger.csv",
+      "sha256": "c7eafd65830e5e1744cf528e54bc441b1c405c2f0371f6090ae0e25c56a2715f",
+      "bytes": 1435,
+      "rows": 24,
+      "columns": [
+        "track_key",
+        "all_driver_laps",
+        "excluded_non_green_or_yellow",
+        "excluded_missing_traffic_target",
+        "excluded_telemetry_coverage_below_0_80",
+        "model_eligible",
+        "first_laps_retained_for_traffic",
+        "pit_boundary_laps_retained_for_traffic",
+        "ledger_closed"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/event_predictions.csv",
+      "sha256": "48881b1564face9a9cc15a45ca087180d427ee80b56c0bb0e59f9e54971c55aa",
+      "bytes": 32965902,
+      "rows": 196406,
+      "columns": [
+        "event_id",
+        "track_key",
+        "observable_cluster",
+        "year",
+        "meeting",
+        "driver",
+        "team",
+        "lap",
+        "compound",
+        "model_type",
+        "actual",
+        "predicted",
+        "evaluation_weight"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/model_coefficients.csv",
+      "sha256": "2cb5110441f57de91721bcdb29a133373c42f3a76ce7fa5cf09dbead156ed3da",
+      "bytes": 175983,
+      "rows": 196,
+      "columns": [
+        "task_id",
+        "test_event_id",
+        "model_type",
+        "feature_columns",
+        "coefficients",
+        "intercept",
+        "scale",
+        "scaler_mean",
+        "scaler_scale",
+        "training_rows",
+        "training_events",
+        "training_kish_ess"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/pairwise_invariants.csv",
+      "sha256": "9763aff0750755653771072f5ec01fd1b7f1115d3ab57b5ddf7f45946a08bda2",
+      "bytes": 3173,
+      "rows": 70,
+      "columns": [
+        "event_id",
+        "drivers",
+        "unordered_pairs",
+        "max_antisymmetry_error_s",
+        "status"
+      ]
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/model_registry.json",
+      "sha256": "56ce0c553a2add5295fb7913a2d637d02e17d01a721f8abc749f2a443c4d4150",
+      "bytes": 19440
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/method_card.md",
+      "sha256": "61f97ab85410157bdcb2e7b66075714cf83cc9f153f68c757c4e3abd885dbb3b",
+      "bytes": 1777
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/data_gap_audit.md",
+      "sha256": "331e96fb514489b94597cf2d669e0f08ffe6bfe8e5013596d7ee90a0c39d9a74",
+      "bytes": 416
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235500+0800-track-validation-v3/targets/f1pace/reference_difference.md",
+      "sha256": "e60ff5f5283d54e455c4f1eb43512c6203727d874b1bbc8bbaad1e83a60c9e3a",
+      "bytes": 351
+    }
+  ],
+  "selected_model_counts": {
+    "universal": 24
+  },
+  "visual_replication_and_audited_analysis_are_separate": true
+}

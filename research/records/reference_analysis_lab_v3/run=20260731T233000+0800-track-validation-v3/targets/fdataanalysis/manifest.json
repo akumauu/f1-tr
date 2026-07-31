@@ -1,0 +1,190 @@
+{
+  "schema_version": "reference-analysis-target-manifest-v3",
+  "run_id": "20260731T233000+0800-track-validation-v3",
+  "target_id": "fdataanalysis",
+  "status": "PASS_WITH_MODEL_FALLBACKS",
+  "files": [
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/coverage_matrix.csv",
+      "sha256": "fb5d3820f9ecc7f0f0d23adff1c96c9e32fa8a75c6fa0758469c5cf071b8c598",
+      "bytes": 7354,
+      "rows": 24,
+      "columns": [
+        "track_key",
+        "meeting",
+        "years",
+        "year_count",
+        "event_count",
+        "observable_cluster",
+        "median_speed_kph",
+        "circuit_length_m",
+        "corner_density_per_km",
+        "full_throttle_distance_share",
+        "drs_distance_share",
+        "layout_proxy_status",
+        "track_model_allowed_by_layout_proxy",
+        "profile_events",
+        "representative_laps",
+        "corner_proxy_count_min",
+        "corner_proxy_count_max",
+        "straight_proxy_count_min",
+        "straight_proxy_count_max",
+        "selected_model_type",
+        "fallback_reason"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/split_registry.csv",
+      "sha256": "7e14d9e5e51cf4c060fb1b09417046ea56386b776d6149e3110d8abf57002c7d",
+      "bytes": 295003,
+      "rows": 210,
+      "columns": [
+        "task_id",
+        "test_event_id",
+        "model_type",
+        "status",
+        "training_event_count",
+        "training_events",
+        "validation_identity",
+        "test_events",
+        "training_rows",
+        "training_kish_ess",
+        "reason"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/model_comparison.csv",
+      "sha256": "4b9344da8e69e16ede1a79e7e7a2133440c3935858a28df79966bc3b83d88ffb",
+      "bytes": 17639,
+      "rows": 72,
+      "columns": [
+        "task_id",
+        "track_key",
+        "meeting",
+        "model_type",
+        "status",
+        "unit",
+        "target_rows",
+        "predicted_rows",
+        "coverage",
+        "mae",
+        "p90_abs_error",
+        "max_abs_error",
+        "bias",
+        "direction_accuracy",
+        "test_events",
+        "training_kish_ess_min",
+        "fold_improvement_share",
+        "publication_gate_passed",
+        "gate_failures"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/sample_exclusion_ledger.csv",
+      "sha256": "27286d7ba741eb6291611b27b6a47a9b0eed91fe0a8b28bf445d7c8d9f8b962a",
+      "bytes": 9038,
+      "rows": 70,
+      "columns": [
+        "event_id",
+        "track_key",
+        "year",
+        "representative_laps",
+        "representative_drivers",
+        "corner_proxy_count",
+        "straight_proxy_count",
+        "synthetic_laps",
+        "excluded_non_representative_laps_role"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/segmentation_events.csv",
+      "sha256": "5da76508e5a798f7cee4e0b6446080022b20380ce493ff689967b0f53dc3f4ca",
+      "bytes": 48391,
+      "rows": 200,
+      "columns": [
+        "task_id",
+        "event_id",
+        "track_key",
+        "meeting",
+        "year",
+        "model_type",
+        "reference_corner_count",
+        "candidate_corner_count",
+        "matched_corners",
+        "corner_match_share",
+        "corner_count_difference",
+        "peak_mae_fraction",
+        "peak_p90_fraction",
+        "peak_max_error_fraction",
+        "endpoint_start_error",
+        "endpoint_finish_error",
+        "strategy_id",
+        "axis_intervals",
+        "extra_smoothing_sigma_fraction",
+        "straight_proxy_count",
+        "speed_profile_mae_kph",
+        "status"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/strategy_selection_audit.csv",
+      "sha256": "86c7decc3478b7ccc8425ca22d7be360dd6105fd1d19ac1bd18165a07b9baa35",
+      "bytes": 66930,
+      "rows": 520,
+      "columns": [
+        "test_event_id",
+        "model_type",
+        "strategy_id",
+        "axis_intervals",
+        "extra_smoothing_sigma_fraction",
+        "training_events",
+        "failed_events",
+        "worst_peak_error_fraction",
+        "mean_p90_peak_error_fraction",
+        "mean_corner_count_difference",
+        "selected"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/layout_stability.csv",
+      "sha256": "b30ff51e69132a5e22d399b66090b7335459a8aa215191dec28e41cea94126b1",
+      "bytes": 6075,
+      "rows": 68,
+      "columns": [
+        "track_key",
+        "meeting",
+        "left_year",
+        "right_year",
+        "corner_match_share",
+        "corner_count_difference",
+        "speed_profile_correlation",
+        "status",
+        "gate_failures"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/model_registry.json",
+      "sha256": "1c2a92eaa8004ab3aac26163692d14c67cc081b782df557c6cfb180cd84e2190",
+      "bytes": 19626
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/method_card.md",
+      "sha256": "9988ac5ae97592854c2220df42a751c80757df29fe13f326b0ebe8db9c4b1949",
+      "bytes": 1707
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/data_gap_audit.md",
+      "sha256": "7f0b18b4a2144a4c0891d5c4d7243ff68d33a529dba3ff928e9536560335b2bd",
+      "bytes": 523
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/fdataanalysis/reference_difference.md",
+      "sha256": "efa7c260206650d9c65b335f08e78b056e81f20aaf4d67db692a1604af427696",
+      "bytes": 348
+    }
+  ],
+  "selected_model_counts": {
+    "universal": 24
+  },
+  "visual_replication_and_audited_analysis_are_separate": true
+}

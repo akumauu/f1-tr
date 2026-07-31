@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="track-validation-v3.css?v=20260731-v3">
+    <title>2023–2025 分赛道模型验证 · F1 TR</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="reference-analysis-lab.html" aria-label="返回参考分析复刻实验室">
+        <span class="brandMark" aria-hidden="true">V3</span>
+        <span>F1 TR <small>分赛道验证</small></span>
+      </a>
+      <nav aria-label="本地导航">
+        <a href="reference-analysis-lab.html">五项目实验室</a>
+        <a aria-current="page" href="track-validation-v3.html">23–25 验证</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="loadStatus">读取冻结产物…</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="heroCopy">
+          <p class="eyebrow">REFERENCE ANALYSIS LAB · APPEND-ONLY V3</p>
+          <h1>不是一个模型跑遍所有赛道。</h1>
+          <p>
+            2023–2025 共 70 场、24 条赛道。每个图表任务都先守住冻结 universal
+            baseline，再让可观测赛道族群与单赛道候选接受完全留出的跨年检验。
+            过不了尾部误差、覆盖与方向门，就明确回退。
+          </p>
+        </div>
+        <div class="heroProof" aria-label="发布身份">
+          <span class="proofLabel">LATEST VALIDATED RUN</span>
+          <strong id="runIdentity">读取中</strong>
+          <span id="manifestStatus">等待 manifest</span>
+        </div>
+      </section>
+
+      <section class="metricGrid" id="metricGrid" aria-label="验证总览"></section>
+
+      <section class="controlPanel" aria-label="分赛道验证筛选">
+        <label>
+          <span>图表目标</span>
+          <select id="targetSelect"></select>
+        </label>
+        <label>
+          <span>赛道</span>
+          <select id="trackSelect"></select>
+        </label>
+        <label id="taskControl" hidden>
+          <span>图表任务</span>
+          <select id="taskSelect"></select>
+        </label>
+        <label>
+          <span>证据层</span>
+          <select id="layerSelect">
+            <option value="audited_analysis">audited_analysis · 留出审计</option>
+            <option value="visual_replication">visual_replication · 冻结复刻</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="selectionPanel">
+        <div>
+          <p class="eyebrow" id="selectionEyebrow">MODEL REGISTRY</p>
+          <h2 id="selectionTitle">等待选择结果</h2>
+          <p id="selectionReason"></p>
+        </div>
+        <div class="selectionBadge">
+          <span>发布模型</span>
+          <strong id="selectionPill">—</strong>
+          <small id="selectionGate">逐门验证</small>
+        </div>
+      </section>
+
+      <section class="panel" id="comparisonPanel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">UNIVERSAL vs CLUSTER vs TRACK</p>
+            <h2>留出误差与发布门</h2>
+          </div>
+          <span class="panelNote">不同量纲不合成总复刻率</span>
+        </div>
+        <div class="tableScroll">
+          <table class="evidenceTable">
+            <thead>
+              <tr>
+                <th>候选</th>
+                <th>状态</th>
+                <th>MAE / 段内 MAE</th>
+                <th>P90</th>
+                <th>max / 端点 max</th>
+                <th>方向一致率</th>
+                <th>覆盖 / 测试</th>
+                <th>发布门</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+          </table>
+        </div>
+        <p class="tableFoot" id="comparisonFoot"></p>
+      </section>
+
+      <section class="twoColumn">
+        <article class="panel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">23–25 COVERAGE</p>
+              <h2>样本与共同支持</h2>
+            </div>
+          </div>
+          <div class="coverageGrid" id="coverageGrid"></div>
+          <dl class="supportList" id="supportList"></dl>
+        </article>
+
+        <article class="panel proxyPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">OBSERVABLE TRACK FAMILY</p>
+              <h2 id="trackFamilyTitle">赛道族群代理</h2>
+            </div>
+          </div>
+          <div class="trackGlyph" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <dl class="supportList" id="trackMeta"></dl>
+          <p class="boundaryNote">
+            族群名只描述可观测速度带与弯角代理密度，不等于真实下压力、空气阻力或引擎功率。
+          </p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">TWO-LAYER CONTRACT</p>
+            <h2>复刻语义与分析结论分层</h2>
+          </div>
+          <span class="statusTag" id="layerStatus">audited_analysis</span>
+        </div>
+        <div class="methodGrid">
+          <article id="visualMethodCard">
+            <span class="methodIndex">01</span>
+            <h3>visual_replication</h3>
+            <p id="methodVisual"></p>
+          </article>
+          <article id="auditMethodCard">
+            <span class="methodIndex">02</span>
+            <h3>audited_analysis</h3>
+            <p id="methodAudit"></p>
+          </article>
+          <article class="boundaryCard">
+            <span class="methodIndex">03</span>
+            <h3>不可识别 / 不发布</h3>
+            <ul id="boundaryList"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">MODEL REGISTRY · 24 TRACKS</p>
+            <h2>赛道选择与回退总表</h2>
+          </div>
+          <span class="panelNote">按 2025 赛历顺序</span>
+        </div>
+        <div class="tableScroll registryScroll">
+          <table class="evidenceTable registryTable">
+            <thead>
+              <tr>
+                <th>赛道</th>
+                <th>可观测族群</th>
+                <th>发布模型</th>
+                <th>回退 / 边界原因</th>
+              </tr>
+            </thead>
+            <tbody id="registryBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="auditStrip">
+        <div>
+          <span class="auditDot" aria-hidden="true"></span>
+          <strong>fail-close 已启用</strong>
+          <p id="failureLedger">NOT_TESTED 保持空值；reference-informed 不称 blind holdout。</p>
+        </div>
+        <a href="reference-analysis-lab.html">回看冻结五项目 →</a>
+      </section>
+
+      <footer>
+        <span id="identityFooter">身份与哈希读取中</span>
+        <span>PAC / OVR = null · 不发布跨任务总分</span>
+      </footer>
+    </main>
+
+    <script
+      src="data-page-entry.js?v=20260726-runtime-v1"
+      data-page="track-validation-v3.html"
+      data-module="track-validation-v3.js?v=20260731-v3"
+    ></script>
+  </body>
+</html>

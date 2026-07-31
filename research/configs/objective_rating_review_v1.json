@@ -1,0 +1,55 @@
+{
+  "experiment_name": "objective_rating_review_2023_2026_v1",
+  "validation_status": "frozen_acceptance_contract_after_2025_review",
+  "offline_only": true,
+  "inputs": {
+    "seasonal_result": "research/records/seasonal_standings_calibration_results.json",
+    "bayesian_result": "research/records/four_team_bayesian_attribution_2023_2025.json",
+    "race_by_race_result": "research/records/four_team_race_by_race_2023_2026_v5.json",
+    "conditional_pair_prototype": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json"
+  },
+  "ability_feature_names": [
+    "lap_fraction",
+    "lap_fraction_sq",
+    "tyre_age",
+    "tyre_age_sq",
+    "compound",
+    "circuit_name",
+    "session_name",
+    "driver_id",
+    "team_name",
+    "traffic_dirty_air"
+  ],
+  "module_coverage": {
+    "PAC": "failed",
+    "TYM": "prototype",
+    "EXT": "prototype",
+    "ATK": "missing",
+    "DEF": "missing",
+    "AWA": "missing",
+    "STR": "missing",
+    "ADP": "missing"
+  },
+  "thresholds": {
+    "constructor_each_year_spearman": 0.8,
+    "realized_driver_each_year_spearman": 0.8,
+    "pooled_constructor_spearman": 0.85,
+    "pooled_realized_driver_spearman": 0.85,
+    "maximum_rhat": 1.05,
+    "locked_mae_improvement_fraction": 0.1,
+    "calibrated_95_coverage_low": 0.9,
+    "calibrated_95_coverage_high": 0.99,
+    "minimum_rolling_origins": 20,
+    "minimum_2026_events": 8
+  },
+  "outputs": {
+    "result": "research/records/objective_rating_review_2023_2026_v1.json",
+    "summary": "research/records/objective_rating_review_2023_2026_v1.md"
+  },
+  "boundaries": {
+    "standings_role": "external_construct_validation_only_not_ability_training_label",
+    "2026_role": "first_four_events_are_pre_protocol_development_only; confirmation starts post-freeze and needs 16 event clusters plus 120 pair-events",
+    "pac_role": "conditional_pair_prototype_is_version_isolated_from_legacy_pooled_driver_base_z_and_cannot_bind_driver_cards",
+    "full_driver_card": "requires_all_modules_validated"
+  }
+}

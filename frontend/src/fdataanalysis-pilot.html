@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="fdataanalysis-pilot.css?v=20260730-fdataanalysis-v1">
+    <title>FDataAnalysis 观测特征复刻实验室 · F1 TR</title>
+  </head>
+  <body>
+    <header class="fdataTopbar">
+      <a class="fdataBrand" href="reference-analysis-lab.html" aria-label="返回参考分析复刻实验室">
+        <span class="fdataMark" aria-hidden="true">FD</span>
+        <span>F1 TR · FDataAnalysis</span>
+      </a>
+      <nav class="fdataNav" aria-label="本地导航">
+        <a href="reference-analysis-lab.html">F1pace</a>
+        <a href="deltadata-reverse-engineered-v2.html">DeltaData v2</a>
+        <a href="fdataanalysis-reverse-engineered-v2.html">FData v2</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="fdataStatus">加载中</span>
+    </header>
+
+    <main class="fdataShell">
+      <section class="fdataHero">
+        <div>
+          <p class="eyebrow">OBSERVED TELEMETRY FEATURES · V1</p>
+          <h1>FDataAnalysis 速度、控制与赛道距离轴</h1>
+          <p class="heroLead">真实 2025 Abu Dhabi Race pilot：把公开图表语义重画为逐点遥测的距离轴特征，覆盖弯道入口/最低/出口速度、直道速度、全油门、制动、挡位、DRS、胎龄变化和同队双车基线。每一项都标为观测代理，不把它直接命名为下压力、引擎功率或物理轮胎磨损。</p>
+        </div>
+        <div class="heroLinks">
+          <a href="https://x.com/FDataAnalysis" target="_blank" rel="noreferrer">查看 @FDataAnalysis →</a>
+          <a href="https://x.com/FDataAnalysis/status/2081706503862378548" target="_blank" rel="noreferrer">RACE PACE 参考贴</a>
+          <a href="https://x.com/FDataAnalysis/status/2081027167987634407" target="_blank" rel="noreferrer">LONG RUNS 参考贴</a>
+          <span>当前 target status：PASS · audited_analysis：audit_only</span>
+        </div>
+      </section>
+
+      <section class="fdataControls" aria-label="分析视图控制">
+        <span><strong>目标：</strong>2025 Abu Dhabi Race · Race session · 20 drivers · 距离轴特征与 v17 审计并列展示</span>
+        <div class="fdataTabs" role="tablist" aria-label="视图">
+          <button id="visualTab" role="tab" aria-selected="true">visual_replication</button>
+          <button id="auditTab" role="tab" aria-selected="false">audited_analysis</button>
+        </div>
+      </section>
+
+      <section id="metricGrid" class="metricGrid" aria-label="样本摘要"></section>
+
+      <section id="visualPanel">
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">METHOD CARD</p><h2>公开图表语义、距离轴等价实现与边界</h2></div>
+            <span class="statusPill okPill">PASS · REAL SOURCE</span>
+          </div>
+          <div class="methodGrid">
+            <article><h3>公开方法</h3><ul id="publicMethodList"></ul></article>
+            <article><h3>本 pilot 的等价实现</h3><ul id="pilotMethodList"></ul></article>
+            <article><h3>无法识别 / 禁止命名</h3><ul id="notIdentifiableList"></ul></article>
+          </div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">DISTANCE AXIS</p><h2>弯道与直道：具名的观测代理</h2></div>
+            <span class="statusPill warnPill">ANCHOR = PROXY</span>
+          </div>
+          <p class="panelIntro">距离轴按 0.005 rel_distance 重采样。弯道是全场中位速度平滑后的局部最低值，直道是相邻代理弯道之间的距离窗口；它们不是 FIA 官方弯道/sector anchor。</p>
+          <div class="subGrid">
+            <div><h3>弯道速度代理</h3><div class="tableWrap"><table id="cornerTable"></table></div></div>
+            <div><h3>直道控制特征代理</h3><div class="tableWrap"><table id="straightTable"></table></div></div>
+          </div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">DRIVER FEATURE PROFILE</p><h2>车手的观测速度与控制特征</h2></div><span class="statusPill warnPill">非因果排序</span></div>
+          <p class="panelIntro">表格按车手代码展示速度分布、全油门/制动/DRS 时间份额、挡位和胎龄相关变化。不同车辆状态、交通、轮胎和策略没有被伪装成统一条件，因此不形成“车辆强弱”或“车手能力”的全序。</p>
+          <div class="tableWrap"><table id="driverFeatureTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">TEAM / DRIVER BASELINE</p><h2>车队聚合与同队双车差异</h2></div></div>
+          <p class="panelIntro">同队双车差异是 delivery baseline：帮助审阅同一车队的可观测差异，不是剥离车辆、设定或车队指令后的车手因果效应。</p>
+          <div class="subGrid">
+            <div><h3>车队观测聚合</h3><div class="tableWrap"><table id="teamFeatureTable"></table></div></div>
+            <div><h3>同队双车基线</h3><div class="tableWrap"><table id="teammateTable"></table></div></div>
+          </div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">SAMPLE LEDGER</p><h2>样本、有效圈与排除账本</h2></div></div>
+          <div class="callout" id="sampleCallout"></div>
+          <div class="tableWrap"><table id="exclusionTable"></table></div>
+        </article>
+      </section>
+
+      <section id="auditPanel" hidden>
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">AUDITED ANALYSIS</p><h2>完整比赛输入下的 fail-closed 结论</h2></div><span class="statusPill warnPill">audit_only</span></div>
+          <div class="callout auditCallout" id="auditCallout"></div>
+          <div class="claimGrid">
+            <article><h3>允许发布</h3><ul id="allowedClaimsList"></ul></article>
+            <article><h3>禁止发布</h3><ul id="forbiddenClaimsList"></ul></article>
+          </div>
+          <p class="smallNote">v17 的覆盖与有效 Stint 账本用于审计输入边界；本页的速度/控制特征仍是具名 proxy。未观察到的真实下压力、功率、燃油、损伤、设定和物理胎耗不会被补值。</p>
+        </article>
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">AUDIT DATA GAP</p><h2>字段可识别性与发布规则</h2></div></div>
+          <div class="tableWrap"><table id="auditGapTable"></table></div>
+        </article>
+      </section>
+
+      <section class="fdataPanel">
+        <div class="panelHeader"><div><p class="eyebrow">DATA-GAP AUDIT</p><h2>目标图表字段与当前冻结数据</h2></div></div>
+        <div class="tableWrap"><table id="dataGapTable"></table></div>
+      </section>
+
+      <footer class="fdataFooter"><span id="identityFooter">加载中</span><span>来源冻结：FDataAnalysis 公开 profile / posts · 页面只在本地 HTTP 下运行</span></footer>
+    </main>
+
+    <script src="data-page-entry.js?v=20260726-runtime-v1" data-page="fdataanalysis-pilot.html" data-module="fdataanalysis-pilot.js?v=20260730-fdataanalysis-v1"></script>
+  </body>
+</html>

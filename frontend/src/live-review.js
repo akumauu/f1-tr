@@ -1,3 +1,7 @@
+import {
+  requireOfficialTeamIdentity,
+} from "./official-team-colours.js?v=20260726-official-v1";
+
 const state = {
   data: null,
   indexes: null,
@@ -34,10 +38,11 @@ async function boot() {
     timeline: $("timeline"),
   });
 
-  state.data = await fetch("data/live-review/timeline.json").then((res) => {
+  const payload = await fetch("data/live-review/timeline.json").then((res) => {
     if (!res.ok) throw new Error(`timeline.json ${res.status}`);
     return res.json();
   });
+  state.data = attachOfficialTeamIdentities(payload);
   state.selectedDrivers = new Set(state.data.drivers.map((driver) => driver.tla));
   state.lapFrom = state.data.stats.lap_min;
   state.lapTo = state.data.stats.lap_max;
@@ -47,6 +52,28 @@ async function boot() {
 
   bind();
   render();
+}
+
+function attachOfficialTeamIdentities(data) {
+  const year = Number(data?.year);
+  if (!Number.isInteger(year)) {
+    throw new Error("Live Review 缺少颜色解析所需的赛季");
+  }
+  const drivers = (data.drivers || []).map((driver) => {
+    const identity = requireOfficialTeamIdentity(year, driver.team);
+    if (driver.team_key && driver.team_key !== identity.key) {
+      throw new Error(
+        `Live Review 车队身份冲突：${driver.tla} · ${driver.team_key} != ${identity.key}`,
+      );
+    }
+    return {
+      ...driver,
+      team: identity.name,
+      team_key: identity.key,
+      team_colour: identity.colour,
+    };
+  });
+  return { ...data, drivers };
 }
 
 function buildIndexes(data) {
@@ -148,7 +175,7 @@ function renderDrivers() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `driver ${on ? "on" : "off"}`;
-    button.style.setProperty("--driver", driver.color);
+    setOfficialDriverColour(button, driver.tla);
     button.innerHTML = `<span class="avatar"></span><span class="tla"></span><span class="count"></span>`;
     button.querySelector(".avatar").textContent = driver.tla;
     button.querySelector(".tla").textContent = driver.tla;
@@ -251,7 +278,7 @@ function timingTable(rows) {
   const tbody = table.querySelector("tbody");
   for (const row of rows) {
     const tr = document.createElement("tr");
-    tr.style.setProperty("--driver", colorOf(row.driver));
+    setOfficialDriverColour(tr, row.driver);
     tr.innerHTML = `
       <td class="num">${value(row.position)}</td>
       <td><span class="driverCell"><span class="bar"></span>${escapeHTML(row.driver)}</span></td>
@@ -286,7 +313,7 @@ function radioPanel(radios) {
 function radioCard(radio) {
   const card = document.createElement("div");
   card.className = "radioCard";
-  card.style.setProperty("--driver", colorOf(radio.driver_tla));
+  setOfficialDriverColour(card, radio.driver_tla);
   card.innerHTML = `
     <div class="radioTop">
       <span class="miniAvatar">${escapeHTML(radio.driver_tla ?? "?")}</span>
@@ -352,8 +379,18 @@ function radioCountFor(tla) {
   return state.indexes.radioCountByDriver.get(tla) ?? 0;
 }
 
-function colorOf(tla) {
-  return state.indexes.driverByTla.get(tla)?.color ?? "#7f8aa0";
+function setOfficialDriverColour(element, tla) {
+  if (!tla) {
+    element.dataset.colorSource = "unmapped";
+    return;
+  }
+  const driver = state.indexes.driverByTla.get(tla);
+  if (!driver?.team_colour || !driver?.team_key) {
+    throw new Error(`Live Review 官方车队颜色未映射：${tla}`);
+  }
+  element.style.setProperty("--driver", driver.team_colour);
+  element.dataset.teamKey = driver.team_key;
+  element.dataset.colorSource = "official";
 }
 
 function stat(label, text) {

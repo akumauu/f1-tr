@@ -1,0 +1,79 @@
+{
+  "experiment_name": "four_team_race_by_race_2023_2026_v5",
+  "validation_status": "standardized_all_event_retrospective_plus_time_forward_and_2026_exploratory",
+  "offline_only": true,
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "event_stint_result": "research/records/four_team_event_stint_attribution_2023_2025.json",
+  "event_stint_lap_manifest": "research/artifacts/four_team_lap_explanations_2023_2025_v4_manifest.json",
+  "seasonal_result": "research/records/four_team_seasonal_attribution_2023_2025.json",
+  "bayesian_result": "research/records/four_team_bayesian_attribution_2023_2025.json",
+  "season_order_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "entity_alias_config": "research/configs/entity_aliases.json",
+  "telemetry": {
+    "schema_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+    "years": [2023, 2024, 2025, 2026],
+    "session": "Race",
+    "average_speed_formula": "3.6 * (max(distance) - min(distance)) / lap_duration",
+    "minimum_distance_coverage_ratio": 0.97,
+    "maximum_distance_coverage_ratio": 1.03,
+    "minimum_samples_per_lap": 80,
+    "maximum_relative_gap_to_sample_mean": 0.06
+  },
+  "same_event_comparison": {
+    "fastest_lap_source": "same_event_clean_race_laps_only",
+    "rank_tolerance": 1,
+    "warning": "同场最快圈和模型上沿共享本场圈速数据，只能作回顾性构念检查，不能作预测验证。"
+  },
+  "stint_validation": {
+    "minimum_clean_laps": 8,
+    "minimum_half_laps": 4,
+    "minimum_tyre_age_span": 2.0,
+    "bootstrap_repetitions": 200,
+    "bootstrap_seed": 20260719,
+    "slope_interval": 0.80,
+    "warning": "斜率是控制全场轮胎年龄与燃油阶段后的超额残差斜率，不是纯轮胎物理衰退。"
+  },
+  "rolling_rank_validation": {
+    "minimum_prior_events": 5,
+    "exponential_update_alpha": 0.35,
+    "season_boundary_carry": 0.50,
+    "prediction_target": ["same_event_fastest_clean_lap_rank", "classification_proxy_rank"],
+    "role": "transparent_no_current_event_rolling_baseline"
+  },
+  "season_summary": {
+    "aggregation_unit": "event_equal_weight",
+    "minimum_events_for_rating": 5
+  },
+  "projection_2026": {
+    "minimum_events_for_confirmatory_release": 5,
+    "current_local_events": 4,
+    "car_state_prior_mean_z": 0.0,
+    "car_state_prior_event_equivalent": 5.0,
+    "new_driver_prior_mean_z": 0.0,
+    "new_driver_prior_sd_z": 0.45,
+    "historical_driver_prior_year": 2025,
+    "season_order": [
+      "Australian Grand Prix",
+      "Chinese Grand Prix",
+      "Japanese Grand Prix",
+      "Miami Grand Prix"
+    ],
+    "role": "exploratory_rules_reset_update_not_full_season_forecast"
+  },
+  "outputs": {
+    "result": "research/records/four_team_race_by_race_2023_2026_v5.json",
+    "master_summary": "research/records/four_team_race_by_race_2023_2026_v5.md",
+    "season_report_template": "research/records/four_team_race_by_race_{year}_v5.md",
+    "telemetry_lap_metrics": "research/artifacts/data/four_team_telemetry_lap_metrics_2023_2026_v5.csv.gz",
+    "telemetry_manifest": "research/artifacts/four_team_telemetry_lap_metrics_2023_2026_v5_manifest.json",
+    "figure_directory": "research/artifacts/figures/race_by_race_v5"
+  },
+  "boundaries": {
+    "absolute_qualifying_race_time_merge": false,
+    "same_setup_observed": false,
+    "fastest_lap_is_event_local": true,
+    "same_event_metrics_are_predictive_validation": false,
+    "classification_is_causal_label": false,
+    "2026_confirmatory_release_allowed_below_gate": false
+  }
+}

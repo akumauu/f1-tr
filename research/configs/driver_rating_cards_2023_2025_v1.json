@@ -1,0 +1,48 @@
+{
+  "experiment_name": "driver_rating_cards_2023_2025_v1",
+  "validation_status": "historical_pac_candidate_blocked_pending_driver_specific_time_forward_validation",
+  "offline_only": true,
+  "inputs": {
+    "seasonal_result": "research/records/seasonal_standings_calibration_results.json",
+    "objective_result": "research/records/objective_rating_review_2023_2026_v1.json"
+  },
+  "rating_contract": {
+    "seasonal_source": {
+      "run_id": "seasonal_standings_calibration_2023_2025_v1-20260719T002710",
+      "config_hash": "8b999bdd6de1158a33eb7ec9184c91e3077383351d9c288758d727417c89f0a3"
+    },
+    "objective_source": {
+      "run_id_prefix": "objective_rating_review_2023_2026_v1-",
+      "config_hash": "89854c4f934f52b27f21962a5d98cbe5249acb7032e5df27b12d924b83f950c3"
+    },
+    "population_size": 28,
+    "population_mean": 1.1964635631451463e-15,
+    "population_sd": 0.22839362345273181,
+    "sd_ddof": 0,
+    "validation_tolerance": 1e-12,
+    "additional_sample_count_shrinkage": false,
+    "pooled_pac_interval_source": null,
+    "forbidden_ability_input_fields": [
+      "actual_points",
+      "championship_points",
+      "finish_position",
+      "finishing_position",
+      "championship_position",
+      "constructor_position",
+      "wins",
+      "podiums"
+    ]
+  },
+  "outputs": {
+    "result": "research/records/driver_rating_cards_2023_2025_v1.json",
+    "summary": "research/records/driver_rating_cards_2023_2025_v1.md"
+  },
+  "boundaries": {
+    "published_metric": "none",
+    "pac_interval": "null_until_pooled_driver_base_interval_is_exported",
+    "other_metrics": "null_until_module_specific_time_out_validation",
+    "sample_count": "coverage_only_never_second_stage_rating_shrinkage",
+    "standings": "external_construct_validation_only_not_rating_label",
+    "season_2026": "exploratory_only_until_objective_exposure_gate_passes"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "experiment_name": "seasonal_standings_calibration_2023_2025_v1",
+  "validation_status": "retrospective_calibration_layer_over_seasonal_v2",
+  "max_attempts": 3,
+  "random_seed": 20260719,
+  "reference_lap_seconds": 90.0,
+  "seasonal_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "chosen_penalty_id": "balanced_v1",
+  "scope_note": "在已有 §5.6 三季面板 RAPM(seasonal_attribution) 之上叠加：真实积分榜校准 + rolling-origin 逐站时间外验证 + 转会图连通性诊断 + 2026 车手先验。估计器复用不重写；积分榜只读只作外部校准，不入拟合。",
+  "standings": {
+    "years": [2023, 2024, 2025],
+    "driver_url_template": "https://api.jolpi.ca/ergast/f1/{year}/driverStandings.json",
+    "constructor_url_template": "https://api.jolpi.ca/ergast/f1/{year}/constructorStandings.json",
+    "cache_dir": "research/cache/external",
+    "reuse_cache": true
+  },
+  "rolling": {
+    "warm_start_global_round": 25,
+    "run_penalty_selection": false,
+    "selection_cutoff_year": 2024,
+    "decay_enabled": false
+  },
+  "graph": {
+    "min_laps": 5
+  },
+  "bootstrap": {
+    "repetitions": 40,
+    "random_seed": 20260718
+  },
+  "interpretation": {
+    "car_vs_standings": "车队 car_total_z(越小越快) 排名 vs 官方车队积分榜名次的 Spearman，方向正相关即车辆评分与制造商成绩一致。",
+    "driver_vs_standings": "同时报纯车手 driver_pace_z 与 车手实跑(car_total_z+driver_pace_z) 对车手积分榜的相关：纯技能不必与名次强相关(好车手可在差车里名次低)，实跑应相关。",
+    "no_share_ratio": "沿用 §5.6：不输出车/手百分比分摊。",
+    "standings_confound": "积分榜含可靠性/策略/碰撞/罚时，非纯速度，只作方向性佐证。"
+  }
+}

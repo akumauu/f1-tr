@@ -1,0 +1,45 @@
+{
+  "experiment_name": "dossier_result_concordance_2023_2025_v1",
+  "method_version": "concordance-v1",
+  "schema_version": "dossier-concordance-v1",
+  "offline_only": true,
+  "validation_status": "synthetic_counterexamples_required_before_real_full_run",
+  "protocol_frozen_at": "2026-07-25",
+  "protocol_frozen_at_attestation": "timestamp_not_immutably_attested",
+  "inputs": {
+    "dossier_run_manifest": "research/records/race_dossier_v15/run=20260725T163219+0800-58bdc41b029f/manifest.json",
+    "lap_universe_manifest": "research/artifacts/race_dossier_v15/run=20260725T163219+0800-58bdc41b029f/manifest.json"
+  },
+  "classification_proxy": {
+    "source": "race_lap_universe_last_lap_position",
+    "classified_completion_fraction": 0.9,
+    "claim": "post_race_construct_audit_not_fia_final_classification"
+  },
+  "clean_race_gate": {
+    "maximum_non_green_lap_fraction": 0.05,
+    "maximum_field_retirements": 2,
+    "maximum_unexplained_slow_lap_fraction": 0.02
+  },
+  "pair_explanation": {
+    "context_cover_tolerance_s": 0.0,
+    "pace_noise_floor_s_per_lap": 0.05
+  },
+  "stint_comparison": {
+    "require_valid_status": true,
+    "maximum_reference_tyre_age_gap_laps": 2.0,
+    "maximum_phase_midpoint_fraction_gap": 0.2
+  },
+  "outputs": {
+    "records_base": "research/records/dossier_concordance_v1"
+  },
+  "runtime": {
+    "execution_policy": "foreground_serial_low_resource"
+  },
+  "publication_contract": {
+    "audit_only_layer": true,
+    "classification_or_points_used_for_fit": false,
+    "modifies_dossier_gates": false,
+    "claims_fia_final_classification": false
+  },
+  "freeze_note": "本层只消费已发布 Dossier 与同源冻结圈宇宙。成绩代理来自末圈 position（不含罚时/DSQ/FIA 最终修订）；表现代理是车辆共同基线+车手兑现秒数；倒挂解释顺序为 未完赛代理 → 策略/位置代理覆盖差距 → 配速差低于 0.05 s/圈 噪声地板（约为逐圈 OOF MAE 除以 sqrt(圈数) 的量级）。清洁场判据（非绿旗≤5%、退赛代理≤2、未解释慢圈≤2%）与 Stint 比较门（同配方、参考胎龄差≤2 圈、阶段中点差≤0.2=2 个冻结基线圈比例 bin）均为预注册常数；看过真实结果后如需修改任何阈值，必须新建 concordance-v2，不得回调本文件。"
+}

@@ -1,0 +1,139 @@
+{
+  "experiment_name": "four_team_seasonal_attribution_2023_2025_v2",
+  "validation_status": "retrospective_time_forward_locked_2025",
+  "offline_only": true,
+  "input_files": [
+    {
+      "year": 2023,
+      "path": "research/artifacts/data/dynamic_tune_train_2023.csv.gz",
+      "sha256": "40af0ea13425349fade09c3e02ecbcb4ed1edcf6cc1b9b8978e9bc860b3ff13b"
+    },
+    {
+      "year": 2024,
+      "path": "research/artifacts/data/dynamic_tune_validation_2024.csv.gz",
+      "sha256": "82078a356dcd1f031a8df6ee22b3fc4119e1f361dea349cef00c4f6312391111"
+    },
+    {
+      "year": 2025,
+      "path": "research/artifacts/data/validation_2025.csv.gz",
+      "sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671"
+    }
+  ],
+  "source_manifests": [
+    "research/artifacts/dynamic_tuning_data_manifest.json",
+    "research/artifacts/data_manifest.json"
+  ],
+  "entity_alias_config": "research/configs/entity_aliases.json",
+  "session_name": "Race",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "season_order": {
+    "2023": [
+      "Bahrain Grand Prix", "Saudi Arabian Grand Prix", "Australian Grand Prix",
+      "Azerbaijan Grand Prix", "Miami Grand Prix", "Monaco Grand Prix",
+      "Spanish Grand Prix", "Canadian Grand Prix", "Austrian Grand Prix",
+      "British Grand Prix", "Hungarian Grand Prix", "Belgian Grand Prix",
+      "Dutch Grand Prix", "Italian Grand Prix", "Singapore Grand Prix",
+      "Japanese Grand Prix", "Qatar Grand Prix", "United States Grand Prix",
+      "Mexico City Grand Prix", "São Paulo Grand Prix", "Las Vegas Grand Prix",
+      "Abu Dhabi Grand Prix"
+    ],
+    "2024": [
+      "Bahrain Grand Prix", "Saudi Arabian Grand Prix", "Australian Grand Prix",
+      "Japanese Grand Prix", "Chinese Grand Prix", "Miami Grand Prix",
+      "Emilia Romagna Grand Prix", "Monaco Grand Prix", "Canadian Grand Prix",
+      "Spanish Grand Prix", "Austrian Grand Prix", "British Grand Prix",
+      "Hungarian Grand Prix", "Belgian Grand Prix", "Dutch Grand Prix",
+      "Italian Grand Prix", "Azerbaijan Grand Prix", "Singapore Grand Prix",
+      "United States Grand Prix", "Mexico City Grand Prix", "São Paulo Grand Prix",
+      "Las Vegas Grand Prix", "Qatar Grand Prix", "Abu Dhabi Grand Prix"
+    ],
+    "2025": [
+      "Australian Grand Prix", "Chinese Grand Prix", "Japanese Grand Prix",
+      "Bahrain Grand Prix", "Saudi Arabian Grand Prix", "Miami Grand Prix",
+      "Emilia Romagna Grand Prix", "Monaco Grand Prix", "Spanish Grand Prix",
+      "Canadian Grand Prix", "Austrian Grand Prix", "British Grand Prix",
+      "Belgian Grand Prix", "Hungarian Grand Prix", "Dutch Grand Prix",
+      "Italian Grand Prix", "Azerbaijan Grand Prix", "Singapore Grand Prix",
+      "United States Grand Prix", "Mexico City Grand Prix", "São Paulo Grand Prix",
+      "Las Vegas Grand Prix", "Qatar Grand Prix", "Abu Dhabi Grand Prix"
+    ]
+  },
+  "time_forward": {
+    "adaptation_races": 5,
+    "tuning_year": 2024,
+    "locked_test_year": 2025,
+    "selection_metric": "event_balanced_mae",
+    "practical_equivalence_tolerance": 0.01,
+    "tie_break": "first_pre_registered_candidate",
+    "interval_calibration": "split_conformal_absolute_2024_time_forward_residuals_for_2025"
+  },
+  "robust_fit": {
+    "irls_iterations": 3,
+    "huber_k": 1.5,
+    "balance_unit": "meeting_driver"
+  },
+  "candidate_penalties": [
+    {
+      "id": "balanced_v1",
+      "team_year": 4.0,
+      "team_circuit": 24.0,
+      "driver": 8.0,
+      "driver_year": 30.0,
+      "driver_team": 120.0
+    },
+    {
+      "id": "car_flexible",
+      "team_year": 2.0,
+      "team_circuit": 16.0,
+      "driver": 10.0,
+      "driver_year": 40.0,
+      "driver_team": 160.0
+    },
+    {
+      "id": "driver_flexible",
+      "team_year": 8.0,
+      "team_circuit": 32.0,
+      "driver": 4.0,
+      "driver_year": 16.0,
+      "driver_team": 80.0
+    },
+    {
+      "id": "interaction_tight",
+      "team_year": 4.0,
+      "team_circuit": 24.0,
+      "driver": 8.0,
+      "driver_year": 30.0,
+      "driver_team": 300.0
+    },
+    {
+      "id": "all_tight",
+      "team_year": 10.0,
+      "team_circuit": 48.0,
+      "driver": 16.0,
+      "driver_year": 60.0,
+      "driver_team": 300.0
+    }
+  ],
+  "descriptive_event_penalties": {
+    "team_event": 12.0,
+    "driver_event": 180.0
+  },
+  "bootstrap": {
+    "repetitions": 40,
+    "random_seed": 20260718,
+    "unit": "meeting_within_year"
+  },
+  "local_result_reference": {
+    "root_template": "data/raw/tracinginsights/{year}",
+    "sessions": ["Race", "Sprint"],
+    "mode": "local_live_timing_classification_proxy",
+    "uses_network": false,
+    "points_are_official": false
+  },
+  "interpretation": {
+    "car_score": "固定参考车手后的 team-year + team-circuit + team-event 有符号配速贡献。",
+    "driver_score": "固定参考车辆后的 driver + driver-year 有符号配速贡献。",
+    "interaction": "强收缩 driver-team 组合项，仅作未解释组合效应。",
+    "no_share_ratio": "不输出车辆/车手百分比分摊，避免总增益接近零和极端队友差导致的伪比例。"
+  }
+}

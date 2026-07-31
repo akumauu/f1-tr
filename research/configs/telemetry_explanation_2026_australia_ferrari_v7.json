@@ -1,0 +1,93 @@
+{
+  "experiment_name": "telemetry_explanation_2026_australia_ferrari_v7",
+  "validation_status": "exploratory_2026_rules_reset_four_event_snapshot",
+  "offline_only": true,
+  "scope": {
+    "year": 2026,
+    "meeting": "Australian Grand Prix",
+    "meeting_partition": "Australian_Grand_Prix",
+    "session": "Race",
+    "team": "Ferrari",
+    "target_driver": "HAM",
+    "reference_driver": "LEC"
+  },
+  "telemetry": {
+    "schema_roots_preference": [
+      "data/normalized/tracinginsights/schema=tracinginsights-expanded-v5",
+      "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4"
+    ],
+    "raw_corners": "data/raw/tracinginsights/2026/Australian Grand Prix/Race/corners.json",
+    "grid_step_m": 5.0,
+    "minimum_distance_coverage": 0.96,
+    "minimum_samples_per_lap": 100,
+    "full_throttle_threshold": 95.0,
+    "brake_active_threshold": 0.5
+  },
+  "episode": {
+    "attack_gap_seconds": 1.2,
+    "traffic_gap_seconds": 2.5,
+    "clean_air_gap_seconds": 4.0,
+    "warmup_laps": 2,
+    "late_stint_fraction": 0.25,
+    "negative_tail_mad": 3.5
+  },
+  "matching": {
+    "tyre_life_caliper": 2.0,
+    "lap_fraction_caliper": 0.08,
+    "time_window_laps": 8,
+    "traffic_state_exact": true,
+    "compound_exact": true,
+    "minimum_matched_pairs": 3,
+    "balance_warning_fraction_of_caliper": 0.65,
+    "balance_reject_fraction_of_caliper": 0.9
+  },
+  "field_reference": {
+    "maximum_laps_per_driver": 3,
+    "exclude_target_team": true,
+    "ridge_alpha": 2.0,
+    "minimum_rows_per_segment": 12
+  },
+  "anomaly": {
+    "minimum_persistent_laps": 3,
+    "minimum_independent_feature_families": 2,
+    "practical_time_loss_ms": 20.0,
+    "false_discovery_rate": 0.1
+  },
+  "strategy_modes": {
+    "n_modes": 4,
+    "minimum_straight_samples": 5,
+    "random_seed": 20260723,
+    "prefer_sklearn": false,
+    "labels": [
+      "early_gain_mode",
+      "late_gain_mode",
+      "balanced_mode",
+      "save_like_mode"
+    ]
+  },
+  "rating": {
+    "reference_center": 75.0,
+    "points_per_z": 10.0,
+    "race_value_center": 50.0,
+    "minimum_effective_exposure": 6.0
+  },
+  "outputs": {
+    "result": "research/records/telemetry_explanation_2026_australia_ferrari_v7.json",
+    "summary": "research/records/telemetry_explanation_2026_australia_ferrari_v7.md"
+  },
+  "boundaries": {
+    "allowed_claims": [
+      "距离域赛段时间差",
+      "匹配条件下的可观测车辆响应差异",
+      "中性操作模式及策略兼容代理",
+      "按机会暴露统计的攻防 Episode"
+    ],
+    "forbidden_claims": [
+      "具体机械部件故障",
+      "真实 SOC、回收或部署功率",
+      "主动空力或 Overtake 的实际开启状态",
+      "把位置变化直接称为纯车手能力",
+      "把四站探索结果称为完整 2026 赛季评分"
+    ]
+  }
+}

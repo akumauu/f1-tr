@@ -1,0 +1,65 @@
+{
+  "schema_version": "reference-analysis-acceptance-manifest-v1",
+  "target_id": "f1telemetrydata-reverse-engineered-v1",
+  "run_id": "20260731T193000+0800-f1telemetrydata-reverse-engineered-v1",
+  "status": "PASS",
+  "base_manifest": {
+    "path": "research/records/reference_analysis_lab_v2/f1telemetrydata/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/manifest.json",
+    "sha256": "5a32585b7e5d13fb0cad481944e193c4a96747209636d4607ff23ab25527c46f"
+  },
+  "report": {
+    "path": "research/records/reference_analysis_lab_v2/f1telemetrydata/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/f1telemetrydata_reverse_engineered_v1.json",
+    "sha256": "af132dd167f8da91ca30071fdcd1f5a4c9e7268ce7d4c267a93651441301aea5"
+  },
+  "browser_acceptance": {
+    "path": "research/records/reference_analysis_lab_v2/f1telemetrydata/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/browser_acceptance.json",
+    "sha256": "33f0f28fe230a52f477f4909f76981de67d06478e7bb293ec43d59687ca21def"
+  },
+  "commands": [
+    {
+      "command": "python -m pytest tests/test_reference_analysis_lab.py -q",
+      "result": "30 passed"
+    },
+    {
+      "command": "npm run build",
+      "cwd": "frontend",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "cwd": "frontend",
+      "result": "Frontend build contract OK"
+    }
+  ],
+  "screenshots": {
+    "desktop_visual": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\f1telemetrydata-ui-smoke\\f1telemetrydata-v1-desktop-visual.png",
+      "bytes": 2575200,
+      "sha256": "526c682d3010f113a5f6ce4dab93620f4b36b0f39e26ec20e6ea06fb4db6ea8d",
+      "width": 1425,
+      "height": 8017
+    },
+    "desktop_audit": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\f1telemetrydata-ui-smoke\\f1telemetrydata-v1-desktop-audit.png",
+      "bytes": 1636080,
+      "sha256": "b053e37301183ae1d282b88153bdc402a3917c7b704ad94c5697fe596d90d650",
+      "width": 1425,
+      "height": 3782
+    },
+    "mobile_visual_390": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\f1telemetrydata-ui-smoke\\f1telemetrydata-v1-mobile-390.png",
+      "bytes": 1432923,
+      "sha256": "fa165c82701e1f6905003c421af75cb941843f724da3e26eb4311d009aea9e86",
+      "width": 390,
+      "height": 9574
+    }
+  },
+  "gates": {
+    "runtime_status": "PASS",
+    "hash_identity": "PASS",
+    "desktop_visual": "PASS",
+    "desktop_audit": "PASS",
+    "mobile_390_no_horizontal_overflow": "PASS",
+    "cdp_errors": "PASS"
+  }
+}

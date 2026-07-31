@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="reference-analysis-lab.css?v=20260730-f1pace-v1">
+    <title>参考分析复刻实验室 · F1 TR</title>
+  </head>
+  <body>
+    <header class="labTopbar">
+      <a class="labBrand" href="index.html" aria-label="返回 F1 TR 赛后复盘">
+        <span class="labBrandMark" aria-hidden="true">F1</span>
+        <span>F1 TR <em>参考分析复刻实验室</em></span>
+      </a>
+      <nav class="labNav" aria-label="本地导航">
+        <a href="index.html">赛后复盘</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+        <a href="track-validation-v3.html">23–25 分赛道验证</a>
+        <a href="deltadata-reverse-engineered-v2.html">DeltaData 倒推 v2</a>
+        <a href="fdataanalysis-reverse-engineered-v2.html">FDataAnalysis 倒推 v2</a>
+        <a href="f1telemetrydata-reverse-engineered-v1.html">F1TelemetryData 图表包 v1</a>
+        <a href="gptempo-reverse-engineered-v1.html">GP Tempo Delta v1</a>
+        <a href="f1pace-reverse-engineered-v2.html">F1pace 倒推 v2</a>
+      </nav>
+      <span id="loadStatus" class="labStatus">加载中</span>
+    </header>
+
+    <main class="labShell">
+      <section class="labHero">
+        <div>
+          <p class="eyebrow">REFERENCE ANALYSIS LAB · V1</p>
+          <h1>2023–2025 F1 成熟分析图表复刻</h1>
+          <p class="heroLead">
+            先把创作者公开口径忠实重绘，再把 F1 TR 的覆盖、字段和可比性边界放在同一页审计。
+            当前 pilot：<strong>F1pace · 2025 Abu Dhabi Race</strong>。
+          </p>
+        </div>
+        <div class="heroLinks">
+          <a href="https://f1pace.com/p/2025-abu-dhabi-gp-race-pace/" target="_blank" rel="noreferrer">查看原作者页面 ↗</a>
+          <span>参考图只用于语义核对，不作为本产品资产</span>
+        </div>
+      </section>
+
+      <section class="labControls" aria-label="复刻实验筛选">
+        <label>
+          <span>目标</span>
+          <select id="targetSelect">
+            <option value="f1pace">F1pace · Abu Dhabi Race pace</option>
+          </select>
+        </label>
+        <label>
+          <span>视图</span>
+          <select id="viewSelect">
+            <option value="visual">visual_replication · 视觉复刻</option>
+            <option value="audit">audited_analysis · 审计伴随</option>
+          </select>
+        </label>
+        <label id="paceScopeLabel">
+          <span>配速范围</span>
+          <select id="paceScopeSelect">
+            <option value="all">All drivers · 20</option>
+            <option value="top">Top 10</option>
+            <option value="bottom">Bottom 10</option>
+          </select>
+        </label>
+        <div class="controlNote" id="viewNote">视觉复刻可形成描述性顺序；不等于车辆/车手因果排名。</div>
+      </section>
+
+      <section class="metricGrid" id="metricGrid" aria-label="pilot 覆盖指标"></section>
+
+      <section class="labPanel" id="methodPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">METHOD CARD</p>
+            <h2>公开口径、复刻实现与不可识别边界</h2>
+          </div>
+          <span class="statusPill" id="targetStatus">读取中</span>
+        </div>
+        <div class="methodGrid">
+          <article>
+            <h3>原作者公开口径</h3>
+            <ul id="publicMethodList"></ul>
+          </article>
+          <article>
+            <h3>视觉反推的实现</h3>
+            <ul id="visualInferenceList"></ul>
+          </article>
+          <article>
+            <h3>不可识别 / 不发布</h3>
+            <ul id="notIdentifiableList"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="labPanel" id="pacePanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">RACE PACE</p>
+            <h2 id="paceTitle">Race pace · All drivers</h2>
+          </div>
+          <div class="legendInline" aria-label="圈点标记">
+            <span><i class="legendDot traffic" aria-hidden="true"></i>交通</span>
+            <span><i class="legendDot clean" aria-hidden="true"></i>非交通</span>
+            <span><i class="legendBand" aria-hidden="true"></i>Q1–Q3</span>
+          </div>
+        </div>
+        <p class="panelIntro" id="paceIntro"></p>
+        <div class="paceAxis" id="paceAxis" aria-hidden="true"></div>
+        <div class="paceRows" id="paceRows"></div>
+      </section>
+
+      <section class="labPanel" id="summaryPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">SUMMARY</p>
+            <h2>Summarized race pace</h2>
+          </div>
+          <span class="muted">均值点 · 分布轮廓 · 距最快均值差</span>
+        </div>
+        <div class="summaryRows" id="summaryRows"></div>
+      </section>
+
+      <section class="labPanel" id="trafficPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">POINT-WEIGHTED TRAFFIC</p>
+            <h2>逐圈交通热图</h2>
+          </div>
+          <span class="muted">前车距离 ≤ 速度 × 2 秒；一圈 &gt; 33% 为 in traffic</span>
+        </div>
+        <div class="auditCallout">
+          <strong>计算身份：</strong>每个 driver×lap 使用逐点 <code>distance_to_driver_ahead</code>、速度换算阈值和时间区间权重；回退车保留。分母是有效遥测时间，未使用圈级 median gap 冒充比例。
+        </div>
+        <div class="heatmapWrap" id="trafficHeatmap"></div>
+        <div class="heatLegend"><span>0%</span><i style="--heat:0"></i><i style="--heat:.25"></i><i style="--heat:.5"></i><i style="--heat:.75"></i><i style="--heat:1"></i><span>100% / &gt;90%</span></div>
+        <div class="trafficSummary" id="trafficSummary"></div>
+      </section>
+
+      <section class="labPanel" id="pairPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">PAIRWISE DELTA</p>
+            <h2>全车手 pairwise mean race-pace delta</h2>
+          </div>
+          <span class="statusPill warning">视觉复刻 · 不形成因果全序</span>
+        </div>
+        <p class="panelIntro">矩阵定义为“左侧车手均值 − 底部车手均值”。负数代表左侧均值更快；矩阵保留反对称性，但停站次数、配方和胎龄差异使它不能替代可比 Stint 比较。</p>
+        <div class="pairMatrixWrap" id="pairMatrix"></div>
+      </section>
+
+      <section class="labPanel" id="auditPanel" hidden>
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">AUDITED ANALYSIS</p>
+            <h2>全局均值的条件审计伴随</h2>
+          </div>
+          <span class="statusPill warning">audit_only</span>
+        </div>
+        <p class="panelIntro" id="auditReason"></p>
+        <div class="tableWrap">
+          <table class="auditTable">
+            <thead><tr><th>车手</th><th>有效圈</th><th>停站</th><th>Stint</th><th>配方</th><th>胎龄范围</th><th>交通时间</th><th>结论</th></tr></thead>
+            <tbody id="auditProfiles"></tbody>
+          </table>
+        </div>
+        <details class="auditDetails">
+          <summary>展开 190 对结构原因</summary>
+          <div class="tableWrap"><table class="auditTable compact"><thead><tr><th>左</th><th>右</th><th>全局均值差</th><th>审计状态</th><th>原因</th></tr></thead><tbody id="auditPairs"></tbody></table></div>
+        </details>
+      </section>
+
+      <section class="labPanel" id="qualifyingPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">QUALIFYING · INDEPENDENT</p>
+            <h2>排位只显示整场最佳准确推圈代理</h2>
+          </div>
+          <span class="statusPill warning">阶段不可识别</span>
+        </div>
+        <div class="auditCallout" id="qualifyingNote"></div>
+        <div class="tableWrap"><table class="auditTable"><thead><tr><th>车手</th><th>最佳准确推圈代理</th><th>圈</th><th>配方</th><th>阶段</th></tr></thead><tbody id="qualifyingRows"></tbody></table></div>
+      </section>
+
+      <section class="labPanel" id="dataGapPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">DATA-GAP AUDIT</p>
+            <h2>目标图需要什么，当前冻结集能证明什么</h2>
+          </div>
+          <span class="muted">字段状态先于图表结论</span>
+        </div>
+        <div class="tableWrap"><table class="auditTable"><thead><tr><th>目标字段</th><th>当前字段</th><th>状态</th><th>替代代理</th><th>发布边界</th></tr></thead><tbody id="dataGapRows"></tbody></table></div>
+      </section>
+
+      <footer class="labFooter">
+        <span id="identityFooter">实验身份读取中</span>
+        <span>实验室与 Race Dossier 真相层隔离 · 真实数据 · 中文边界说明</span>
+      </footer>
+    </main>
+
+    <script
+      src="data-page-entry.js?v=20260726-runtime-v1"
+      data-page="reference-analysis-lab.html"
+      data-module="reference-analysis-lab.js?v=20260730-f1pace-v1"
+    ></script>
+  </body>
+</html>

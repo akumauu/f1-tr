@@ -1,0 +1,71 @@
+{
+  "extends": "research/configs/race_dossier_2023_2025_v16.json",
+  "experiment_name": "race_dossier_2023_2025_v17",
+  "method_version": "v17",
+  "schema_version": "race-dossier-v17",
+  "validation_status": "v17_curve_sidecar_scatter_regression_and_condition_balance_protocol_frozen",
+  "protocol_frozen_at": "2026-07-26T18:30:00+08:00",
+  "stint_curve_evidence": {
+    "enabled": true,
+    "schema_version": "race-dossier-stint-curve-evidence-v17",
+    "primary_fit": "oof_reliability_weighted_theil_sen_linear_projection_v1",
+    "minimum_fit_points": 6,
+    "prediction_grid_points": 33,
+    "observed_range_probability": 0.8,
+    "delete_block_laps": 3,
+    "minimum_delete_block_refits": 5,
+    "stability_interval_probability": 0.8,
+    "minimum_kish_effective_laps_for_range": 8.0,
+    "comparison_gate": {
+      "maximum_reference_tyre_age_gap_laps": 2.0,
+      "maximum_lap_fraction_difference": 0.2,
+      "maximum_traffic_total_variation_distance": 0.35,
+      "maximum_non_green_fraction_difference": 0.2,
+      "maximum_pit_boundary_fraction_difference": 0.2,
+      "maximum_low_quality_fraction_difference": 0.2,
+      "nuisance_scale_floor_s": 0.1,
+      "minimum_profile_coverage": 0.8,
+      "minimum_common_support_span_laps": 5.0,
+      "minimum_support_overlap_ratio": 0.5,
+      "minimum_kish_effective_laps": 8.0,
+      "maximum_direct_distance": 0.65,
+      "maximum_warning_distance": 0.9,
+      "claim": "observable_condition_balance_proxy_not_true_track_or_weather_state"
+    }
+  },
+  "model_registry_append": [
+    {
+      "id": "stint_curve_evidence_sidecar",
+      "source": "frozen race lap universe plus v15 out-of-fold condition-adjusted lap pace",
+      "role": "publish weighted lap scatter, frozen regression equation, named fuel scenarios and stability audit",
+      "direct_truth_available": false
+    },
+    {
+      "id": "observable_condition_balance_gate",
+      "source": "published lap context profiles and frozen v17 calipers",
+      "role": "separate near-condition direct comparison from condition-model extrapolation audit",
+      "direct_truth_available": false
+    }
+  ],
+  "runtime": {
+    "execution_policy": "foreground_serial_low_resource",
+    "duckdb_threads": 1,
+    "file_batch_size": 1,
+    "duckdb_memory_limit": "768MB",
+    "batch_cooldown_seconds": 0.25,
+    "project_cache": ".runtime-cache/race-dossier-v17"
+  },
+  "outputs": {
+    "records_base": "research/records/race_dossier_v17",
+    "artifacts_base": "research/artifacts/race_dossier_v17",
+    "frontend_base": "frontend/public/data/race-dossier/v17"
+  },
+  "boundaries": {
+    "stability_interval_is_confidence_interval": false,
+    "observed_range_is_prediction_interval": false,
+    "fuel_scenario_is_statistical_interval": false,
+    "browser_refits_stint_models": false,
+    "condition_balance_identifies_weather_or_track_temperature": false
+  },
+  "freeze_note": "v17 不改写 v16 代表配速，也不在浏览器重新拟合。每场追加逐圈 sidecar：发布原始圈时、条件修正圈时、可靠性权重、处置原因、具名 low/base/high 燃油情景、加权 Theil-Sen 居中方程、删连续三圈稳定性范围、观测中间 80% 范围和严格确认后的描述性曲线形状。直接比较除同配方、参考胎龄差不超过 2 圈和阶段差不超过 0.20 外，还要求共同支持至少 5 圈、支持重叠率至少 50%、Kish ESS 至少 8，并对 traffic TVD、非绿旗、进出站、低质量与 nuisance 调整做显式平衡门。D<=0.65 才进入直接排序，0.65<D<=0.90 只作平衡警告审计，D>0.90 不可比较。天气、赛道温度、真实油量与物理磨损仍不可识别。"
+}

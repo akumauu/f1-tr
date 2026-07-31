@@ -1,0 +1,437 @@
+{
+  "run_id": "f1_car_driver_envelope_spain_2025_v1-20260718T190332",
+  "created_at": "2026-07-18T19:03:36+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "f1_car_driver_envelope_spain_2025_v1",
+    "max_attempts": 3,
+    "parent_config": "research/configs/2024_train_2025_validate.json",
+    "validation_status": "exploratory_descriptive_single_race",
+    "scope_note": "单站四大车队机理级车辆能力包络与车手发挥定位原型；描述性条件关联，非因果真值；单站=赛道特定，未跨赛道归一；不进入 2026。",
+    "year": 2025,
+    "meeting_manifest": "Spanish Grand Prix",
+    "meeting_dir": "Spanish_Grand_Prix",
+    "session": "Race",
+    "parquet_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+    "teams": [
+      "McLaren",
+      "Red Bull Racing",
+      "Ferrari",
+      "Mercedes"
+    ],
+    "dry_compounds": [
+      "SOFT",
+      "MEDIUM",
+      "HARD"
+    ],
+    "grid_points": 1000,
+    "mini_sectors": 30,
+    "bootstrap_n": 400,
+    "random_seed": 202507,
+    "ceiling_methods": [
+      "frontier_p90",
+      "ideal_lap_splice"
+    ],
+    "ceiling_sector_quantile": 0.1,
+    "floor_sector_quantile": 0.6,
+    "cleaning": {
+      "minimum_lap_number": 3,
+      "minimum_lap_duration_seconds": 74.0,
+      "maximum_lap_duration_seconds": 95.0,
+      "robust_mad_multiplier": 6.0,
+      "minimum_clean_laps_per_driver": 10,
+      "full_throttle_threshold_pct": 95.0,
+      "traffic_min_median_gap_m": 120.0,
+      "traffic_exclude": false
+    },
+    "corner_speed_bins_kmh": {
+      "low_max": 130.0,
+      "medium_max": 210.0
+    },
+    "notes": {
+      "ceiling_frontier_p90": "两名车手全部 clean 圈池化，逐 mini-sector 取 ceiling_sector_quantile 分位（P10 最快）作为车辆展示上限。",
+      "ceiling_ideal_lap_splice": "逐车手 mini-sector 稳健最优（P10），再对两车手取 min 拼接理论最优圈。",
+      "floor": "池化 clean 圈逐 mini-sector 的 floor_sector_quantile 分位作为参考下限；上下限构成能力包络。",
+      "driver_extraction": "车手 mini-sector 中位实现落在同队车包络 [下限->上限] 的位置百分比，分母为同车能力，故排除车辆。",
+      "identity": "逐点 dt=ds/v，总圈时差可加分解到每段；恒等式在测试中校验。",
+      "identification": "同队前沿+队友仅部分识别车辆上限；两名车手都不发挥会低估上限；跨队转会锚定留待下一阶段。"
+    }
+  },
+  "config_hash": "851ed3607e03ecdb574302fa6c20309bbb58e882084fa0374021c452f60f3502",
+  "data_manifest": {
+    "parquet_path": "data\\normalized\\tracinginsights\\schema=tracinginsights-expanded-v4\\year=2025\\commit=f7a5324cae58\\session=Race\\meeting=Spanish_Grand_Prix\\telemetry.parquet",
+    "parquet_sha256_manifest": "9263d007a2653e7821edfd926fc9526e96f71548765a58ced3936c1cddef480f",
+    "parquet_sha256_recomputed": "9263d007a2653e7821edfd926fc9526e96f71548765a58ced3936c1cddef480f",
+    "source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6",
+    "config_hash": "851ed3607e03ecdb574302fa6c20309bbb58e882084fa0374021c452f60f3502",
+    "lap_distance_grid_max_m": 4627.328125,
+    "clean_lap_counts": {
+      "ANT": 45,
+      "HAM": 54,
+      "LEC": 54,
+      "NOR": 54,
+      "PIA": 54,
+      "RUS": 54,
+      "TSU": 51,
+      "VER": 51
+    },
+    "dirty_air_laps_flagged": 169
+  },
+  "sample_scope": {
+    "teams": [
+      "Mercedes",
+      "Ferrari",
+      "McLaren",
+      "Red Bull Racing"
+    ],
+    "drivers": {
+      "ANT": 45,
+      "HAM": 54,
+      "LEC": 54,
+      "NOR": 54,
+      "PIA": 54,
+      "RUS": 54,
+      "TSU": 51,
+      "VER": 51
+    },
+    "grid_points": 1000,
+    "mini_sectors": 30,
+    "corner_labels": [
+      "straight_or_flat",
+      "straight_or_flat",
+      "straight_or_flat",
+      "straight_or_flat",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "straight_or_flat",
+      "straight_or_flat",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "low_speed_corner",
+      "low_speed_corner",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "medium_speed_corner",
+      "straight_or_flat",
+      "straight_or_flat",
+      "straight_or_flat",
+      "medium_speed_corner",
+      "low_speed_corner",
+      "medium_speed_corner",
+      "low_speed_corner",
+      "medium_speed_corner",
+      "straight_or_flat",
+      "straight_or_flat",
+      "straight_or_flat",
+      "straight_or_flat"
+    ],
+    "reference_team": "McLaren"
+  },
+  "consistency": {
+    "median_integrated_laptime_s": 80.3919007078888,
+    "note": "积分圈时来自 speed(distance) 数值积分，与实际 lap_duration 存在已知小偏差。"
+  },
+  "car_envelope": {
+    "Mercedes": {
+      "drivers": [
+        "ANT",
+        "RUS"
+      ],
+      "ceiling_frontier_p90_laptime": 78.39463272978584,
+      "ceiling_ideal_lap_splice_laptime": 77.93846814213094,
+      "floor_laptime": 81.16972356157042,
+      "ceiling_by_channel": {
+        "straight_or_flat": 26.480963398293138,
+        "medium_speed_corner": 35.67422830588468,
+        "low_speed_corner": 16.239441025608038
+      },
+      "ceiling_sensitivity_ideal_minus_frontier_s": -0.45616458765489654,
+      "ceiling_frontier_p90_laptime_ci": {
+        "p2_5": 77.85690275131867,
+        "p10": 78.08105063662434,
+        "p90": 78.60340417633925,
+        "p97_5": 78.74519628398977
+      }
+    },
+    "Ferrari": {
+      "drivers": [
+        "HAM",
+        "LEC"
+      ],
+      "ceiling_frontier_p90_laptime": 78.01171401519365,
+      "ceiling_ideal_lap_splice_laptime": 77.9056118634957,
+      "floor_laptime": 80.64964160774193,
+      "ceiling_by_channel": {
+        "straight_or_flat": 26.41464093961129,
+        "medium_speed_corner": 35.46782256443999,
+        "low_speed_corner": 16.12925051114238
+      },
+      "ceiling_sensitivity_ideal_minus_frontier_s": -0.10610215169795367,
+      "ceiling_frontier_p90_laptime_ci": {
+        "p2_5": 77.554076758091,
+        "p10": 77.70844053777999,
+        "p90": 78.30304314039641,
+        "p97_5": 78.39456313701916
+      }
+    },
+    "McLaren": {
+      "drivers": [
+        "NOR",
+        "PIA"
+      ],
+      "ceiling_frontier_p90_laptime": 76.95232029216952,
+      "ceiling_ideal_lap_splice_laptime": 76.65665745391412,
+      "floor_laptime": 80.29184125087605,
+      "ceiling_by_channel": {
+        "straight_or_flat": 26.208262637914206,
+        "medium_speed_corner": 35.00012508656936,
+        "low_speed_corner": 15.743932567685967
+      },
+      "ceiling_sensitivity_ideal_minus_frontier_s": -0.29566283825539585,
+      "ceiling_frontier_p90_laptime_ci": {
+        "p2_5": 76.44563307969182,
+        "p10": 76.55391215049278,
+        "p90": 77.52378551263507,
+        "p97_5": 77.76151580793149
+      }
+    },
+    "Red Bull Racing": {
+      "drivers": [
+        "TSU",
+        "VER"
+      ],
+      "ceiling_frontier_p90_laptime": 77.76519616845664,
+      "ceiling_ideal_lap_splice_laptime": 77.22290567473352,
+      "floor_laptime": 80.93396409557745,
+      "ceiling_by_channel": {
+        "straight_or_flat": 26.102027143480758,
+        "medium_speed_corner": 35.71719231693383,
+        "low_speed_corner": 15.945976708042043
+      },
+      "ceiling_sensitivity_ideal_minus_frontier_s": -0.5422904937231152,
+      "ceiling_frontier_p90_laptime_ci": {
+        "p2_5": 77.35986180582587,
+        "p10": 77.51111683690424,
+        "p90": 77.973211531806,
+        "p97_5": 78.06770831289805
+      }
+    }
+  },
+  "driver_extraction": {
+    "ANT": {
+      "team": "Mercedes",
+      "clean_laps_used": 45,
+      "median_realized_laptime": 81.04324828795212,
+      "best_realized_laptime": 79.2119672982302,
+      "peak_gap_to_car_ceiling_s": 0.817334568444366,
+      "overall_extraction_pct": 63.06180190839945,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 49.766790595554205,
+        "medium_speed_corner": 70.37217626436679,
+        "low_speed_corner": 82.51187201825263
+      }
+    },
+    "HAM": {
+      "team": "Ferrari",
+      "clean_laps_used": 54,
+      "median_realized_laptime": 80.37746048676175,
+      "best_realized_laptime": 78.19722792762263,
+      "peak_gap_to_car_ceiling_s": 0.18551391242898774,
+      "overall_extraction_pct": 86.79185064301336,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 73.22584073033083,
+        "medium_speed_corner": 96.59158156675063,
+        "low_speed_corner": 99.03225735708544
+      }
+    },
+    "LEC": {
+      "team": "Ferrari",
+      "clean_laps_used": 54,
+      "median_realized_laptime": 80.09098200010044,
+      "best_realized_laptime": 78.13954160088562,
+      "peak_gap_to_car_ceiling_s": 0.12782758569197483,
+      "overall_extraction_pct": 98.72559629533605,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 105.15038683799625,
+        "medium_speed_corner": 92.4889615708027,
+        "low_speed_corner": 98.11408988642361
+      }
+    },
+    "NOR": {
+      "team": "McLaren",
+      "clean_laps_used": 54,
+      "median_realized_laptime": 79.81375381085155,
+      "best_realized_laptime": 76.93500740091224,
+      "peak_gap_to_car_ceiling_s": -0.01731289125727642,
+      "overall_extraction_pct": 101.9989292584237,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 136.55384973430088,
+        "medium_speed_corner": 96.65479029091547,
+        "low_speed_corner": 96.14156533875241
+      }
+    },
+    "PIA": {
+      "team": "McLaren",
+      "clean_laps_used": 54,
+      "median_realized_laptime": 79.91205686110662,
+      "best_realized_laptime": 77.06397847535604,
+      "peak_gap_to_car_ceiling_s": 0.11165818318652043,
+      "overall_extraction_pct": 95.12654444203561,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 93.49880685818128,
+        "medium_speed_corner": 96.389725184146,
+        "low_speed_corner": 96.31135417770327
+      }
+    },
+    "RUS": {
+      "team": "Mercedes",
+      "clean_laps_used": 54,
+      "median_realized_laptime": 80.38293117347094,
+      "best_realized_laptime": 78.08541209602545,
+      "peak_gap_to_car_ceiling_s": -0.3092206337603898,
+      "overall_extraction_pct": 117.23337536591801,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 127.67991432861945,
+        "medium_speed_corner": 110.20968630968713,
+        "low_speed_corner": 106.21790429949208
+      }
+    },
+    "TSU": {
+      "team": "Red Bull Racing",
+      "clean_laps_used": 51,
+      "median_realized_laptime": 81.27076811006758,
+      "best_realized_laptime": 78.63776391730624,
+      "peak_gap_to_car_ceiling_s": 0.8725677488496046,
+      "overall_extraction_pct": 79.00254944164024,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 89.10953676582992,
+        "medium_speed_corner": 73.6612258045021,
+        "low_speed_corner": 63.514142458722866
+      }
+    },
+    "VER": {
+      "team": "Red Bull Racing",
+      "clean_laps_used": 51,
+      "median_realized_laptime": 79.72410011263064,
+      "best_realized_laptime": 77.43795596104339,
+      "peak_gap_to_car_ceiling_s": -0.3272402074132543,
+      "overall_extraction_pct": 107.43133901472702,
+      "extraction_pct_by_channel": {
+        "straight_or_flat": 99.84407043920007,
+        "medium_speed_corner": 116.05414325548607,
+        "low_speed_corner": 105.80712695624871
+      }
+    }
+  },
+  "cross_team": {
+    "Mercedes": {
+      "ceiling_gap_to_reference_s": 1.442312437616323,
+      "ceiling_gap_by_channel_s": {
+        "straight_or_flat": 0.27270076037893176,
+        "medium_speed_corner": 0.6741032193153202,
+        "low_speed_corner": 0.495508457922071
+      },
+      "realized_gap_to_reference_s": 0.569177362619385
+    },
+    "Ferrari": {
+      "ceiling_gap_to_reference_s": 1.0593937230241295,
+      "ceiling_gap_by_channel_s": {
+        "straight_or_flat": 0.20637830169708238,
+        "medium_speed_corner": 0.46769747787062954,
+        "low_speed_corner": 0.385317943456414
+      },
+      "realized_gap_to_reference_s": 0.2772281892488877
+    },
+    "McLaren": {
+      "ceiling_gap_to_reference_s": 0.0,
+      "ceiling_gap_by_channel_s": {
+        "straight_or_flat": 0.0,
+        "medium_speed_corner": 0.0,
+        "low_speed_corner": 0.0
+      },
+      "realized_gap_to_reference_s": 0.0
+    },
+    "Red Bull Racing": {
+      "ceiling_gap_to_reference_s": 0.8128758762871229,
+      "ceiling_gap_by_channel_s": {
+        "straight_or_flat": -0.10623549443344871,
+        "medium_speed_corner": 0.7170672303644707,
+        "low_speed_corner": 0.20204414035607599
+      },
+      "realized_gap_to_reference_s": -0.08965369822091418
+    }
+  },
+  "result_attribution": {
+    "Mercedes_vs_McLaren": {
+      "realized_gap_s": 0.569177362619385,
+      "car_ceiling_gap_s": 1.442312437616323,
+      "driver_extraction_gap_s": -0.873135074996938,
+      "car_share_pct": 62.29087162457421,
+      "driver_share_pct": 37.70912837542579,
+      "car_share_pct_ci": {
+        "p2_5": 53.42996145543483,
+        "p10": 57.1506758970223,
+        "p90": 79.17541238957682,
+        "p97_5": 92.58458167655706
+      },
+      "car_ceiling_gap_s_ci": {
+        "p2_5": 0.4407523869234858,
+        "p10": 0.7862966335777941,
+        "p90": 1.894696389848774,
+        "p97_5": 2.064638998546587
+      }
+    },
+    "Ferrari_vs_McLaren": {
+      "realized_gap_s": 0.2772281892488877,
+      "car_ceiling_gap_s": 1.0593937230241295,
+      "driver_extraction_gap_s": -0.7821655337752418,
+      "car_share_pct": 57.52699616440011,
+      "driver_share_pct": 42.47300383559989,
+      "car_share_pct_ci": {
+        "p2_5": 49.130131780983454,
+        "p10": 53.69012312111798,
+        "p90": 74.10099727530485,
+        "p97_5": 85.43727241501489
+      },
+      "car_ceiling_gap_s_ci": {
+        "p2_5": 0.23267089351418493,
+        "p10": 0.4422221391043806,
+        "p90": 1.5421228565024783,
+        "p97_5": 1.791639144964544
+      }
+    },
+    "Red Bull Racing_vs_McLaren": {
+      "realized_gap_s": -0.08965369822091418,
+      "car_ceiling_gap_s": 0.8128758762871229,
+      "driver_extraction_gap_s": -0.9025295745080371,
+      "car_share_pct": 47.38680735276444,
+      "driver_share_pct": 52.61319264723556,
+      "car_share_pct_ci": {
+        "p2_5": 19.7685138686757,
+        "p10": 35.90659812208241,
+        "p90": 59.384890366205084,
+        "p97_5": 67.57510665801146
+      },
+      "car_ceiling_gap_s_ci": {
+        "p2_5": -0.06472072512989584,
+        "p10": 0.21594397368479437,
+        "p90": 1.2560666040448738,
+        "p97_5": 1.4297332211183504
+      }
+    }
+  },
+  "interpretation_limits": [
+    "从属机理组件：本脚本提供弯段级'差在哪'的 Δt 分解；车辆基准以全场联合模型 run_four_team_baseline.py 为准。",
+    "条件关联非因果真值；同队前沿仅部分识别车辆上限，一名车手异常出色会把其技能误并入车辆上限（本站 Red Bull 车即被高估）。",
+    "燃油与胎龄混淆：上限取自低油 P10 圈，发挥%用车手自身低油最优对齐（同口径抵消大部分燃油），但中位实跑仍含燃油/胎龄，跨队成绩归因中的发挥差含各队比赛燃油/策略差异，未做显式燃油修正。",
+    "单站=赛道特定，未跨赛道归一；不能外推为季度车辆评级。",
+    "直道/尾速差含设定与能量部署，不能等同车手弯中能力。",
+    "车手转会锚定、全场识别网络与 2026 迁移由 four-team 主规范承担；本组件不重复。"
+  ],
+  "figures": [
+    "research\\artifacts\\figures\\cross_team_ceiling_vs_realized.png"
+  ]
+}

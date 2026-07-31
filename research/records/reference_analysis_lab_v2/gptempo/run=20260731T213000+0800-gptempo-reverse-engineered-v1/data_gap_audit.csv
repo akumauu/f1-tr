@@ -1,0 +1,7 @@
+required,repository,supplement,publish
+about 4 Hz car telemetry,expanded-v4 about 7.69 Hz,frozen OpenF1 raw car_data median about 3.7 Hz,ALLOW_WITH_SAMPLING_LIMIT
+official three sector times,not retained in expanded-v4,frozen OpenF1 laps from official timing feed,ALLOW_FROZEN_SUPPLEMENT
+distance and track x/y,expanded-v4 rel_distance/x/y,speed-integrated raw distance plus local frozen geometry,ALLOW_DISTANCE_PROXY
+comparable tyre and session conditions,"session, compound, tyre_life, track_status",same session/compound and tyre-age difference <=2 default gate,ALLOW_DEFAULT; OTHERWISE_WARNING
+cross-session pure driver delta,fuel/weather/evolution not separable,none,WARNING_CROSS_SESSION_COMBINED_CONDITIONS
+high-frequency exact braking point,public car channel about 4 Hz,none,NOT_IDENTIFIABLE_SUB_SAMPLE_EVENT_TIME

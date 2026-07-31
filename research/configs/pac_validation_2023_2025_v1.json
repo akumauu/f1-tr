@@ -1,0 +1,133 @@
+{
+  "experiment_name": "conditional_pair_prototype_validation_2023_2025_v1",
+  "validation_status": "retrospective_protocol_frozen_before_first_protocol_result_run",
+  "protocol_frozen_at": "2026-07-23T00:00:00+08:00",
+  "temporal_boundary": {
+    "historical_2023_2025": "retrospective_only_because_all_seasons_were_visible_when_protocol_was_designed",
+    "visible_2026_events_before_freeze": 4,
+    "visible_2026_events_role": "development_or_calibration_only_not_confirmatory",
+    "confirmatory_origin_definition": "complete_event_first_observed_after_protocol_frozen_at",
+    "minimum_post_freeze_interim_event_clusters": 8,
+    "minimum_post_freeze_confirmatory_event_clusters": 16,
+    "minimum_post_freeze_confirmatory_pair_events": 120
+  },
+  "offline_only": true,
+  "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "parent_config_sha256": "438548848856f37cc50b55bc46d8419b3a1ec3a42750701a0ad1468e4b9eae48",
+  "target_contract": {
+    "name": "held_out_within_team_pair_gap_conditional_clean_pace_z",
+    "higher_is_better": true,
+    "construction": "下一完整分站的 target_log_pct 减去仅用过去分站拟合的无身份赛况头；只对同一 team-event 的车手差做 proper scoring",
+    "interpretation": "held-out pair-gap 混有未来 Event Delivery、单车状态及人车/赛道交互，只验证预测分布，不等同于 pooled PAC latent",
+    "minimum_clean_laps_per_driver_event": 5,
+    "minimum_drivers_per_team_event": 2,
+    "prohibited_fields": [
+      "actual_points",
+      "championship_points",
+      "finish_position",
+      "finishing_position",
+      "classification_proxy",
+      "classification_proxy_rank",
+      "championship_position",
+      "podiums",
+      "wins"
+    ]
+  },
+  "rolling_origin": {
+    "minimum_completed_events": 8,
+    "horizon_events": 1,
+    "context_blocks": [
+      "compound",
+      "circuit"
+    ],
+    "context_numeric": [
+      "lap_fraction",
+      "lap_fraction_sq",
+      "tyre_age",
+      "tyre_age_sq"
+    ],
+    "ridge_alpha": 1.0,
+    "irls_iterations": 3,
+    "huber_k": 1.5,
+    "driver_event_shrinkage": 5.0,
+    "driver_event_shrinkage_sensitivity_grid": [
+      2.5,
+      5.0,
+      10.0
+    ],
+    "probability_scale_floor_z": 0.05
+  },
+  "baselines": {
+    "neutral": "所有未来同队条件优势预测为 0",
+    "negative_control": "在每个训练期内按车手代码排序循环错位历史车手分数",
+    "negative_control_seed": 20260723,
+    "required_benchmark_suite": [
+      "neutral_zero_gap",
+      "rolling_climatology",
+      "ewma",
+      "bradley_terry",
+      "novel_edge"
+    ],
+    "required_negative_controls": [
+      "odd_even_lap_pseudo_pair",
+      "label_permutation",
+      "reference_shift_invariance",
+      "semi_synthetic_known_effect_coverage"
+    ]
+  },
+  "intervals": {
+    "predictive_levels": [
+      0.8,
+      0.95
+    ],
+    "pooled_bootstrap_repetitions": 500,
+    "pooled_bootstrap_seed": 20260723,
+    "hierarchy": "event_then_driver_then_stint",
+    "coverage_target": "held_out_pair_gap_predictive_distribution_only",
+    "pooled_interval_role": "component_conditional_latent_sensitivity_not_coverage_validated",
+    "minimum_driver_events_for_card": 8
+  },
+  "individual_identification": {
+    "estimator": "ridge_laplacian_driver_effect_on_past_within_team_pair_margins_without_driver_year_or_driver_team_blocks",
+    "minimum_distinct_teams": 2,
+    "minimum_distinct_seasons": 2,
+    "maximum_shrinkage_grid_range_z": 0.1,
+    "maximum_leave_team_out_shift_z": 0.15,
+    "single_team_or_single_year_policy": "local_only_global_pac_null"
+  },
+  "publication_gates": {
+    "minimum_event_clusters": 30,
+    "minimum_pairwise_comparisons": 150,
+    "minimum_teams": 8,
+    "minimum_pairwise_balanced_accuracy": 0.6,
+    "minimum_block_bootstrap_balanced_accuracy_95_low": 0.5,
+    "minimum_pair_margin_spearman": 0.3,
+    "minimum_block_bootstrap_pair_margin_spearman_95_low": 0.0,
+    "minimum_each_season_direction_accuracy": 0.5,
+    "minimum_brier_skill_vs_best_baseline": 0.05,
+    "minimum_block_bootstrap_brier_skill_95_low": 0.0,
+    "minimum_log_loss_improvement_vs_best_baseline": 0.02,
+    "coverage_80_low": 0.72,
+    "coverage_80_high": 0.88,
+    "coverage_95_low": 0.9,
+    "coverage_95_high": 0.99,
+    "minimum_wis_improvement_vs_best_baseline": 0.05,
+    "minimum_origins_with_past_only_graph_audit": 30,
+    "minimum_post_freeze_confirmatory_event_clusters": 16,
+    "minimum_post_freeze_confirmatory_pair_events": 120,
+    "minimum_identifiable_novel_edges": 5,
+    "maximum_novel_edge_brier": 0.3,
+    "minimum_novel_edge_direction_accuracy": 0.6,
+    "require_actual_design_manifest_leakage_free": true,
+    "require_complete_benchmark_suite": true,
+    "require_complete_negative_control_suite": true,
+    "require_frozen_0_100_mapping_validation": true,
+    "require_connected_transfer_graph_for_global_pac": true,
+    "require_no_weakly_anchored_published_drivers": true
+  },
+  "outputs": {
+    "result": "research/records/conditional_pair_prototype_validation_2023_2025_v1.json",
+    "summary": "research/records/conditional_pair_prototype_validation_2023_2025_v1.md"
+  },
+  "freeze_note": "本文件在首次运行真实 rolling-origin 指标前冻结；全场 future rank 与普通 rank_spearman 不属于 PAC 通过门槛；失败不得事后放宽阈值，任何 v2 必须使用新实验名并保留本结果。"
+}

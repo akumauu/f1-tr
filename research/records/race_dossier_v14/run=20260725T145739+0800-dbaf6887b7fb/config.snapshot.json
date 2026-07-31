@@ -1,0 +1,276 @@
+{
+  "experiment_name": "race_dossier_2023_2025_v14",
+  "method_version": "v14",
+  "schema_version": "race-dossier-v14",
+  "validation_status": "v14_valid_stint_only_curve_execution_with_v13_scientific_contract",
+  "protocol_frozen_at": "2026-07-25T14:54:20+08:00",
+  "offline_only": true,
+  "scope": {
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "session": "Race",
+    "reporting_teams": [
+      "McLaren",
+      "Red Bull Racing",
+      "Ferrari",
+      "Mercedes"
+    ],
+    "expected_events": 70
+  },
+  "inputs": {
+    "telemetry_schema_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+    "lap_universe_manifest": "research/artifacts/race_dossier_v8/run=20260725T003934+0800-476316f80d23/manifest.json",
+    "qualifying_manifest": "research/artifacts/four_team_qualifying_2023_2025_manifest.json",
+    "race_by_race_v5_result": "research/records/four_team_race_by_race_2023_2026_v5.json",
+    "event_stint_v4_result": "research/records/four_team_event_stint_attribution_2023_2025.json",
+    "explanatory_depth_v6_result": "research/records/four_team_explanatory_depth_2023_2025_v6.json",
+    "pac_v1_result": "research/records/conditional_pair_prototype_validation_2023_2025_v1.json",
+    "pac_v2_result": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json"
+  },
+  "coverage_gate": {
+    "minimum_race_laps": 20,
+    "minimum_reporting_teams": 4,
+    "minimum_drivers_per_team": 2,
+    "minimum_clean_laps_per_team": 24,
+    "minimum_valid_stints_per_team": 2,
+    "minimum_modelable_lap_fraction": 0.4
+  },
+  "module_publication_gate": {
+    "minimum_publishable_teams": 2,
+    "team": {
+      "minimum_drivers": 2,
+      "minimum_pace_adjusted_laps": 24,
+      "minimum_valid_stints": 2,
+      "minimum_baseline_laps": 12
+    },
+    "driver_pair": {
+      "minimum_drivers": 2,
+      "minimum_pace_adjusted_laps_per_driver": 8,
+      "minimum_valid_stints_per_driver": 1
+    }
+  },
+  "lap_filter": {
+    "dry_compounds": [
+      "SOFT",
+      "MEDIUM",
+      "HARD"
+    ],
+    "minimum_distance_coverage": 0.95,
+    "minimum_samples_per_lap": 80,
+    "dirty_air_gap_seconds": 2.5,
+    "clean_air_gap_seconds": 4.0,
+    "slow_lap_mad": 3.5
+  },
+  "stint_gate": {
+    "minimum_observed_laps": 8,
+    "minimum_modelable_laps": 6,
+    "minimum_modelable_fraction": 0.6,
+    "minimum_tyre_age_span": 5.0,
+    "stint_validity_independent_of_baseline": true,
+    "minimum_baseline_laps_for_cumulative": 4,
+    "minimum_baseline_fraction_for_cumulative": 0.5,
+    "warmup_laps": 2,
+    "late_stint_fraction": 0.25
+  },
+  "baseline": {
+    "minimum_laps_per_cell": 6,
+    "minimum_teams_per_cell": 3,
+    "tyre_age_bin_laps": 3,
+    "lap_fraction_bin": 0.1
+  },
+  "simulation_proxies": {
+    "fuel": {
+      "enabled": true,
+      "model": "linear_remaining_mass_sensitivity_v1",
+      "initial_fuel_kg": {
+        "low": 90.0,
+        "base": 100.0,
+        "high": 110.0
+      },
+      "lap_time_s_per_kg": {
+        "low": 0.02,
+        "base": 0.03,
+        "high": 0.04
+      },
+      "burn_rule": "linear_by_scheduled_race_fraction",
+      "claim": "analyst_sensitivity_proxy_not_actual_fuel"
+    },
+    "track_evolution": {
+      "enabled": true,
+      "model": "robust_additive_field_median_v1",
+      "minimum_laps_per_bin": 20,
+      "minimum_teams_per_bin": 4,
+      "minimum_drivers_per_bin": 8,
+      "maximum_abs_correction_s": 3.0,
+      "require_holdout_non_worsening": true,
+      "minimum_holdout_laps": 80,
+      "minimum_holdout_mae_improvement_s": 0.01,
+      "maximum_holdout_mae_worsening_s": 0.0,
+      "claim": "cross_driver_validated_field_common_shift_not_physical_track_state"
+    },
+    "traffic": {
+      "enabled": true,
+      "model": "empirical_gap_band_fixed_effects_v1",
+      "minimum_clean_laps": 40,
+      "minimum_laps_per_state": 30,
+      "minimum_drivers_per_state": 8,
+      "shrinkage_laps": 40,
+      "maximum_penalty_s": 3.0,
+      "minimum_holdout_laps": 20,
+      "require_holdout_non_worsening": true,
+      "minimum_holdout_mae_improvement_s": 0.01,
+      "maximum_holdout_mae_worsening_s": 0.0,
+      "claim": "conditional_gap_band_penalty_not_causal_aerodynamic_loss"
+    }
+  },
+  "stint_curve_models": {
+    "enabled": true,
+    "execution_scope": "valid_stints_only",
+    "candidates": [
+      "constant_median",
+      "linear_theil_sen",
+      "log_theil_sen",
+      "quadratic_least_squares",
+      "kalman_local_linear"
+    ],
+    "minimum_train_laps": 4,
+    "minimum_validation_laps": 2,
+    "minimum_mae_improvement_s": 0.01,
+    "maximum_prediction_deviation_s": 5.0,
+    "minimum_strategy_curves_per_compound": 4,
+    "minimum_historical_curve_models_per_compound": 8,
+    "validation_protocol": "ordered_selection_confirmation_v1",
+    "selection_fraction": 0.5,
+    "minimum_selection_points": 2,
+    "minimum_confirmation_points": 2,
+    "minimum_confirmation_improvement_s": 0.01,
+    "kalman": {
+      "level_process_variance": 0.0025,
+      "slope_process_variance": 0.0001,
+      "measurement_sigma_floor_s": 0.03
+    },
+    "claim": "ordered_confirmatory_predictive_proxy_not_true_tyre_state"
+  },
+  "pit_loss_proxy": {
+    "enabled": true,
+    "model": "local_adjacent_pace_pit_cycle_v1",
+    "minimum_adjacent_pace_laps_each_side": 2,
+    "minimum_valid_cycles_per_event": 3,
+    "minimum_historical_events": 4,
+    "maximum_cycle_loss_s": 60.0,
+    "claim": "pit_in_out_cycle_proxy_not_stationary_stop_time"
+  },
+  "model_registry": {
+    "acceptance_rule": "value_then_data_then_identifiability_then_synthetic_recovery_then_independent_confirmation_then_product",
+    "accepted_for_v14": [
+      {
+        "id": "linear_fuel_mass_sensitivity",
+        "source": "data/raw/tracinginsights/2025/README.md#fuel-correction",
+        "role": "base_and_sensitivity_scenarios",
+        "direct_truth_available": false
+      },
+      {
+        "id": "cross_driver_robust_additive_track_evolution",
+        "source": "project_method_using_driver_fixed_centers_conditional_medians_and_driver_holdout",
+        "role": "field_common_stage_proxy",
+        "direct_truth_available": false
+      },
+      {
+        "id": "empirical_gap_band_fixed_effects",
+        "source": "project_method_with_two_fold_non_worsening_holdout_gate",
+        "role": "traffic_condition_adjustment",
+        "direct_truth_available": false
+      },
+      {
+        "id": "ordered_selection_confirmation_stint_curve_tournament",
+        "source": "https://arxiv.org/abs/2512.00640 and https://arxiv.org/abs/2306.16088",
+        "role": "valid_stints_only_select_early_confirm_late",
+        "direct_truth_available": false
+      },
+      {
+        "id": "local_adjacent_pace_pit_cycle",
+        "source": "project_observational_proxy_inspired_by_lapwise_additive_race_simulation",
+        "role": "historical_pit_in_out_cycle_cost_component",
+        "direct_truth_available": false
+      }
+    ],
+    "deferred_until_extra_data": [
+      {
+        "id": "full_bayesian_skew_t_state_space_tyre_degradation",
+        "source": "https://arxiv.org/abs/2512.00640",
+        "reason": "论文为单车单场案例；低资源局部线性候选先接受全量有序确认审计"
+      },
+      {
+        "id": "multi_agent_monte_carlo_strategy_simulation",
+        "source": "https://github.com/TUMFTM/race-simulation",
+        "reason": "缺少已校准超车、故障、安全车概率和配方新胎基础速度差"
+      },
+      {
+        "id": "physical_tyre_thermal_wear_model",
+        "source": "Farroni_et_al_2016_physical_tyre_wear",
+        "reason": "缺少胎温、胎压、胎体与路面能量输入"
+      }
+    ]
+  },
+  "strategy_envelope": {
+    "minimum_valid_stints_per_compound": 4,
+    "minimum_drivers_per_stop_pattern": 3,
+    "minimum_historical_stints_per_compound": 12,
+    "minimum_historical_events_per_compound": 4,
+    "history_rule": "strictly_prior_events_only",
+    "history_admission": "individually_valid_stint_and_event_ledger_closure",
+    "post_race_envelope_role": "audit_only"
+  },
+  "materiality": {
+    "pit_window_seconds": 2.0,
+    "require_adjacent_gap_proxy": true,
+    "major_factor_requires_fia_final_adjacent_gap": true
+  },
+  "publication_contract": {
+    "analysis_unit": "complete_race",
+    "qualifying_race_independent": true,
+    "publish_pac": false,
+    "publish_ovr": false,
+    "classification_or_points_used_for_fit": false,
+    "claim_real_fuel_load": false,
+    "claim_pirelli_internal_simulation": false,
+    "publish_expected_points": false,
+    "publish_expected_championship_rank": false
+  },
+  "bootstrap": {
+    "repetitions": 200,
+    "seed": 20260725
+  },
+  "runtime": {
+    "execution_policy": "foreground_serial_low_resource",
+    "duckdb_threads": 1,
+    "file_batch_size": 1,
+    "duckdb_memory_limit": "768MB",
+    "batch_cooldown_seconds": 0.25,
+    "project_cache": ".runtime-cache/race-dossier-v14"
+  },
+  "outputs": {
+    "records_base": "research/records/race_dossier_v14",
+    "artifacts_base": "research/artifacts/race_dossier_v14",
+    "frontend_base": "frontend/public/data/race-dossier/v14"
+  },
+  "boundaries": {
+    "matched_laps_are_primary_evidence": false,
+    "track_phase_is_race_timeline": false,
+    "classification_proxy_is_fia_final": false,
+    "single_stint_tyre_management_is_driver_skill": false,
+    "season_results_can_tune_event_model": false,
+    "historical_v1_to_v13_outputs_may_be_overwritten": false,
+    "v13_runtime_used_to_change_scientific_thresholds": false,
+    "fuel_proxy_is_actual_fuel": false,
+    "traffic_penalty_is_causal_aerodynamic_loss": false,
+    "track_evolution_proxy_is_physical_grip_measurement": false,
+    "local_linear_kalman_is_bayesian_posterior": false,
+    "pit_cycle_proxy_is_stationary_pit_stop_time": false,
+    "identified_cost_components_imply_optimal_strategy": false
+  },
+  "freeze_note": "v14 与 v13 的全部科学模型、阈值和确认协议相同；唯一方法执行差异是只对已经通过 observed/modelable/fraction/tyre-age/continuity 物理门的 Stint 运行五候选曲线竞赛。未通过 Stint 记录 not_run_stint_gate_failed，不再浪费计算。有效 Stint 的模型审计必须与 v13 等价。"
+}

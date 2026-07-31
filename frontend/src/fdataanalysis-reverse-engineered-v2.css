@@ -1,0 +1,127 @@
+@import url("./fdataanalysis-pilot.css?v=20260731-fdata-v2-base");
+
+:root {
+  --fdata-accent: #8cf0ac;
+  --fdata-cyan: #61dff2;
+  --fdata-magenta: #ff79cc;
+}
+
+.fdataMark { width: 38px; }
+.trackPanel { overflow: hidden; }
+.trackChart {
+  width: 100%;
+  min-height: 310px;
+  margin: 4px 0 12px;
+  overflow: hidden;
+  border: 1px solid var(--fdata-border);
+  border-radius: 13px;
+  background:
+    linear-gradient(rgba(104, 216, 238, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 216, 238, .045) 1px, transparent 1px),
+    #0b1421;
+  background-size: 100% 25%, 10% 100%;
+}
+.trackChart svg { display: block; width: 100%; height: auto; min-height: 310px; }
+.trackBand { fill: rgba(255, 255, 255, .055); }
+.trackBand.low { fill: rgba(255, 121, 204, .10); }
+.trackBand.medium { fill: rgba(255, 211, 110, .075); }
+.trackBand.high { fill: rgba(97, 223, 242, .075); }
+.speedPath { fill: none; stroke: var(--fdata-accent); stroke-width: 2.3; vector-effect: non-scaling-stroke; }
+.throttlePath { fill: none; stroke: var(--fdata-cyan); stroke-width: 1.25; opacity: .72; vector-effect: non-scaling-stroke; }
+.peakLine { stroke: rgba(255, 255, 255, .27); stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+.chartLabel { fill: #9eafc3; font: 10px Inter, system-ui, sans-serif; }
+.cornerLabel { fill: #eef5fb; font: 700 9px Inter, system-ui, sans-serif; text-anchor: middle; }
+.trackLegend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; color: var(--fdata-muted); font-size: 11px; }
+.legendItem { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 1px solid var(--fdata-border); border-radius: 999px; background: rgba(23, 38, 58, .6); }
+.legendSwatch { width: 14px; height: 3px; border-radius: 3px; background: var(--fdata-accent); }
+.legendSwatch.throttle { background: var(--fdata-cyan); }
+.legendSwatch.proxy { height: 10px; background: rgba(255, 211, 110, .22); }
+
+.driverPicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fdata-muted);
+  font-size: 11px;
+}
+.driverPicker select {
+  min-width: 155px;
+  padding: 8px 10px;
+  border: 1px solid var(--fdata-border);
+  border-radius: 9px;
+  background: var(--fdata-panel-soft);
+  color: var(--fdata-text);
+  font: inherit;
+}
+.formulaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.formulaCard {
+  min-width: 0;
+  min-height: 118px;
+  padding: 14px;
+  border: 1px solid var(--fdata-border);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(22, 47, 54, .7), rgba(23, 38, 58, .7));
+}
+.formulaCard.warn { background: linear-gradient(145deg, rgba(75, 58, 23, .5), rgba(23, 38, 58, .72)); }
+.formulaCard .label { color: var(--fdata-muted); font-size: 10px; line-height: 1.4; }
+.formulaCard .value { margin: 9px 0 5px; color: var(--fdata-text); font-size: clamp(20px, 2.4vw, 29px); font-weight: 780; letter-spacing: -.035em; }
+.formulaCard .detail { color: var(--fdata-muted); font-size: 10px; line-height: 1.45; overflow-wrap: anywhere; }
+.statusDot { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: var(--fdata-ok); }
+.statusDot.warn { background: var(--fdata-warn); }
+.deltaPositive { color: #ffb8b8; }
+.deltaNegative { color: #9df0c0; }
+.rankCell strong { color: var(--fdata-accent); }
+.rankCell small { display: block; margin-top: 2px; color: var(--fdata-muted); }
+.auditOnlyRow { opacity: .68; }
+
+@media (max-width: 1100px) {
+  .formulaGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .heroLinks {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .heroLinks > * {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .fdataTopbar { overflow: hidden; }
+  .fdataBrand {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+  .fdataBrand > span:last-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .fdataNav {
+    flex: 0 1 100px;
+    margin-left: 0;
+  }
+  .fdataPanel,
+  .trackPanel {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .tableWrap {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .trackChart, .trackChart svg { min-height: 220px; }
+  .formulaGrid { grid-template-columns: 1fr; }
+  .formulaCard { min-height: 96px; }
+  .driverPicker { display: flex; margin-top: 12px; }
+  .driverPicker select { flex: 1; min-width: 0; }
+  .trackLegend { gap: 5px; }
+  .legendItem { font-size: 9px; }
+}

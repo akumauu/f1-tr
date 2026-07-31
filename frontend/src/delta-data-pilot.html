@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="delta-data-pilot.css?v=20260730-deltadata-v1">
+    <title>DeltaData 方法等价 pilot · F1 TR</title>
+  </head>
+  <body>
+    <header class="deltaTopbar">
+      <a class="deltaBrand" href="reference-analysis-lab.html" aria-label="返回参考分析复刻实验室">
+        <span class="deltaMark" aria-hidden="true">Δ</span>
+        <span>F1 TR · DeltaData</span>
+      </a>
+      <nav class="deltaNav" aria-label="本地导航">
+        <a href="reference-analysis-lab.html">F1pace pilot</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="deltaStatus">加载中</span>
+    </header>
+
+    <main class="deltaShell">
+      <section class="deltaHero">
+        <div>
+          <p class="eyebrow">METHOD-EQUIVALENT REPLICATION · V1</p>
+          <h1>DeltaData clean-air pace 与燃油情景审计</h1>
+          <p class="heroLead">真实 2025 Abu Dhabi v17 sidecar pilot：复刻公开语义，公开显示 cross-fit/soft-weight、low/base/high、胎龄斜率、Kish ESS 与条件平衡；精确创作者算法不公开，因此不声称一比一复制。</p>
+        </div>
+        <div class="heroLinks">
+          <a href="https://x.com/DeltaData_" target="_blank" rel="noreferrer">查看 @DeltaData_ ↗</a>
+          <span>当前 target status：METHOD_EQUIVALENT_ONLY</span>
+        </div>
+      </section>
+
+      <section class="deltaControls" aria-label="分析视图控制">
+        <span><strong>目标：</strong>2025 Abu Dhabi Race · 19 Stints · v17 sidecar；visual 与 audited 不合并成同一个排名。</span>
+        <div class="deltaTabs" role="tablist" aria-label="视图">
+          <button id="visualTab" role="tab" aria-selected="true">visual_replication</button>
+          <button id="auditTab" role="tab" aria-selected="false">audited_analysis</button>
+        </div>
+      </section>
+
+      <section id="metricGrid" class="metricGrid" aria-label="样本摘要"></section>
+
+      <section id="visualPanel">
+        <article class="deltaPanel">
+          <div class="panelHeader"><div><p class="eyebrow">METHOD CARD</p><h2>公开口径、等价实现与边界</h2></div><span class="statusPill">METHOD_EQUIVALENT_ONLY</span></div>
+          <div class="methodGrid">
+            <article><h3>公开语义</h3><ul id="publicMethodList"></ul></article>
+            <article><h3>本 pilot 如何等价复刻</h3><ul id="equivalentMethodList"></ul></article>
+            <article><h3>不可识别 / 不发布</h3><ul id="notIdentifiableList"></ul></article>
+          </div>
+        </article>
+
+        <article class="deltaPanel">
+          <div class="panelHeader"><div><p class="eyebrow">CLEAN-AIR PACE</p><h2>车队与车手描述性顺序</h2></div></div>
+          <p class="panelIntro">排序按 v17 条件模型参考胎龄与 named fuel sensitivity 的描述性代理；每行同时披露 Stint、有效点、clean-air 点和 ESS。不同配方/胎龄/比赛阶段不构成因果车手排名。</p>
+          <div class="subGrid"><div><h3>车队</h3><div class="tableWrap"><table id="teamTable"></table></div></div><div><h3>车手</h3><div class="tableWrap"><table id="driverTable"></table></div></div></div>
+        </article>
+
+        <article class="deltaPanel">
+          <div class="panelHeader"><div><p class="eyebrow">FUEL + TYRE SENSITIVITY</p><h2>low / base / high 与胎龄斜率</h2></div></div>
+          <p class="panelIntro">low/base/high 是具名燃油修正敏感性，不是统计区间或真实油量；胎龄斜率是条件模型观察代理，不是物理轮胎磨损。</p>
+          <div class="tableWrap"><table id="sensitivityTable"></table></div>
+        </article>
+
+        <article class="deltaPanel">
+          <div class="panelHeader"><div><p class="eyebrow">SAMPLE DISCLOSURE</p><h2>样本与排除账本</h2></div></div>
+          <div class="callout" id="sampleCallout"></div>
+          <div class="tableWrap"><table id="gapTable"></table></div>
+        </article>
+      </section>
+
+      <section id="auditPanel" hidden>
+        <article class="deltaPanel">
+          <div class="panelHeader"><div><p class="eyebrow">AUDITED ANALYSIS</p><h2>条件平衡伴随视图</h2></div><span class="statusPill">audit_only</span></div>
+          <div class="callout auditCallout" id="auditCallout"></div>
+          <div class="tableWrap"><table id="pairTable"></table></div>
+          <p class="smallNote">只有 `status=comparable` 的成对窗口可保留 direct delta；warning / not_comparable 仅用于解释为什么不能形成全序。所有 fuel sensitivity delta 仍是情景代理。</p>
+        </article>
+      </section>
+
+      <section class="deltaPanel">
+        <div class="panelHeader"><div><p class="eyebrow">DATA-GAP AUDIT</p><h2>字段可识别性与发布规则</h2></div></div>
+        <div class="tableWrap"><table id="dataGapTable"></table></div>
+      </section>
+
+      <footer class="deltaFooter"><span id="identityFooter">加载中</span><span>来源冻结：DeltaData profile / v17 sidecar；页面只在本地 HTTP 下运行。</span></footer>
+    </main>
+
+    <script src="data-page-entry.js?v=20260726-runtime-v1" data-page="delta-data-pilot.html" data-module="delta-data-pilot.js?v=20260730-deltadata-v1"></script>
+  </body>
+</html>

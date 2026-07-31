@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="fdataanalysis-reverse-engineered-v2.css?v=20260731-fdata-v2">
+    <title>FDataAnalysis 算法倒推 v2 · F1 TR</title>
+  </head>
+  <body>
+    <header class="fdataTopbar">
+      <a class="fdataBrand" href="reference-analysis-lab.html" aria-label="返回参考分析复刻实验室">
+        <span class="fdataMark" aria-hidden="true">FD2</span>
+        <span>F1 TR · FDataAnalysis v2</span>
+      </a>
+      <nav class="fdataNav" aria-label="本地导航">
+        <a href="f1pace-reverse-engineered-v2.html">F1pace</a>
+        <a href="track-validation-v3.html">23–25 验证</a>
+        <a href="deltadata-reverse-engineered-v2.html">DeltaData</a>
+        <a href="f1telemetrydata-reverse-engineered-v1.html">F1TelemetryData</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="fdataStatus">加载中</span>
+    </header>
+
+    <main class="fdataShell">
+      <section class="fdataHero">
+        <div>
+          <p class="eyebrow">REVERSE-ENGINEERED TELEMETRY MODEL · V2</p>
+          <h1>从公开图反推，到可检验的赛道距离模型</h1>
+          <p class="heroLead">真实 2025 Abu Dhabi Race pilot。视觉层复刻最高 15 个速度样本、全油门样本比例、弯角入口/最低/出口和胎龄曲线语义；审计层改用时间权重、逐圈 P99、动态弯角边界、单 Stint 鲁棒斜率与同队条件匹配。观测输出不冒充真实下压力、功率、阻力或物理胎耗。</p>
+        </div>
+        <div class="heroLinks">
+          <a href="https://x.com/FDataAnalysis" target="_blank" rel="noreferrer">@FDataAnalysis 原始 profile →</a>
+          <a href="https://bsky.app/profile/fdataanalysis.bsky.social" target="_blank" rel="noreferrer">同创作者 Bluesky profile</a>
+          <span>参考：2026 Hungary · Pilot：2025 Abu Dhabi</span>
+          <span id="heroStatus">METHOD_EQUIVALENT</span>
+        </div>
+      </section>
+
+      <section class="fdataControls" aria-label="分析视图控制">
+        <span><strong>双视图不可混排：</strong>visual_replication 忠实保留公开统计语义；audited_analysis 只在可比条件与支持门通过时发布。</span>
+        <div class="fdataTabs" role="tablist" aria-label="视图">
+          <button id="visualTab" role="tab" aria-selected="true">visual_replication</button>
+          <button id="auditTab" role="tab" aria-selected="false">audited_analysis</button>
+        </div>
+      </section>
+
+      <section id="metricGrid" class="metricGrid" aria-label="验收摘要"></section>
+
+      <section id="visualPanel">
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">METHOD CARD</p><h2>公开方法、反推实现与不可识别边界</h2></div>
+            <span class="statusPill okPill">REAL SOURCE · HASHED</span>
+          </div>
+          <div class="methodGrid">
+            <article><h3>可公开确认</h3><ul id="publicMethodList"></ul></article>
+            <article><h3>倒推 / 等价实现</h3><ul id="reverseMethodList"></ul></article>
+            <article><h3>不可识别</h3><ul id="notIdentifiableList"></ul></article>
+          </div>
+        </article>
+
+        <article class="fdataPanel trackPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">TRACK DNA · 1,000 INTERVALS</p><h2>速度—距离轨迹与 16 个动态弯角代理</h2></div>
+            <span class="statusPill warnPill">P01…P16 ≠ 官方弯号</span>
+          </div>
+          <p class="panelIntro">横向加速度峰值给出方向变化中心，制动证据向前扩展入口；相邻峰相交时在峰间中点切开。灰色是入口—出口窗口，绿线是全场中位速度，青线是油门。</p>
+          <div id="trackChart" class="trackChart" role="img" aria-label="Abu Dhabi 速度、油门和动态弯角距离轴"></div>
+          <div id="trackLegend" class="trackLegend"></div>
+          <div class="tableWrap"><table id="segmentTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">DRIVER FEATURE PROFILE</p><h2>同一车手，两套公式的差距</h2></div>
+            <label class="driverPicker">车手 <select id="driverSelect"></select></label>
+          </div>
+          <div id="driverFormulaCards" class="formulaGrid"></div>
+          <div class="tableWrap"><table id="driverCornerTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">OBSERVED TEAM PROFILE</p><h2>单特征名次矩阵，不合成车辆总分</h2></div>
+            <span class="statusPill warnPill">NO TOTAL ORDER</span>
+          </div>
+          <p class="panelIntro">每列只回答一个观测问题；不会把直道速度、全油门和不同速度弯的输出相加成“下压力/动力/总性能”。</p>
+          <div class="tableWrap"><table id="teamRankTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">TYRE AGE · VISUAL</p><h2>公开图风格的原始胎龄趋势</h2></div>
+            <span class="statusPill warnPill">相关变化 ≠ 物理磨损</span>
+          </div>
+          <p class="panelIntro">这里保留原始 OLS 视觉口径，未分离燃油、交通和赛道演化；具名燃油情景与 Stint 支持门只在 audited_analysis 中出现。</p>
+          <div class="tableWrap"><table id="visualTyreTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">REFERENCE DIFFERENCE</p><h2>和历史图、v1 到底差多少</h2></div>
+            <span class="statusPill warnPill">不同赛事不算伪 MAE</span>
+          </div>
+          <div id="referenceGapCards" class="formulaGrid"></div>
+          <div class="callout" id="referenceGapNote"></div>
+        </article>
+      </section>
+
+      <section id="auditPanel" hidden>
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">CONDITION-MATCHED TEAMMATES</p><h2>同配方、胎龄、阶段与交通的一对一匹配</h2></div>
+            <span class="statusPill warnPill">仅通过子集可比较</span>
+          </div>
+          <div class="callout auditCallout" id="auditReason"></div>
+          <div class="tableWrap"><table id="teammateAuditTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">TYRE AGE · AUDITED</p><h2>单 Stint Theil–Sen 与具名燃油情景</h2></div>
+            <span class="statusPill warnPill">TRACK EVOLUTION NOT SEPARABLE</span>
+          </div>
+          <div class="tableWrap"><table id="tyreAuditTable"></table></div>
+        </article>
+
+        <article class="fdataPanel">
+          <div class="panelHeader"><div><p class="eyebrow">NUMERIC ACCEPTANCE</p><h2>重构、稳定性、反对称性与样本门</h2></div></div>
+          <div id="validationGrid" class="formulaGrid"></div>
+          <div class="claimGrid">
+            <article><h3>允许发布</h3><ul id="allowedClaimsList"></ul></article>
+            <article><h3>禁止发布</h3><ul id="forbiddenClaimsList"></ul></article>
+          </div>
+        </article>
+      </section>
+
+      <section class="fdataPanel">
+        <div class="panelHeader"><div><p class="eyebrow">DATA-GAP AUDIT</p><h2>字段、替代代理与发布规则</h2></div></div>
+        <div class="tableWrap"><table id="dataGapTable"></table></div>
+      </section>
+
+      <footer class="fdataFooter">
+        <span id="identityFooter">加载中</span>
+        <span>只在本地 HTTP 下读取哈希冻结 JSON；参考原图不作为产品资产。</span>
+      </footer>
+    </main>
+
+    <script src="data-page-entry.js?v=20260726-runtime-v1" data-page="fdataanalysis-reverse-engineered-v2.html" data-module="fdataanalysis-reverse-engineered-v2.js?v=20260731-fdata-v2"></script>
+  </body>
+</html>

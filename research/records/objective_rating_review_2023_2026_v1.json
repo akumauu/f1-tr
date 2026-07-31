@@ -1,0 +1,226 @@
+{
+  "run_id": "objective_rating_review_2023_2026_v1-20260731T153117+0800",
+  "created_at": "2026-07-31T15:31:17+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "objective_rating_review_2023_2026_v1",
+    "validation_status": "frozen_acceptance_contract_after_2025_review",
+    "offline_only": true,
+    "inputs": {
+      "seasonal_result": "research/records/seasonal_standings_calibration_results.json",
+      "bayesian_result": "research/records/four_team_bayesian_attribution_2023_2025.json",
+      "race_by_race_result": "research/records/four_team_race_by_race_2023_2026_v5.json",
+      "conditional_pair_prototype": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json"
+    },
+    "ability_feature_names": [
+      "lap_fraction",
+      "lap_fraction_sq",
+      "tyre_age",
+      "tyre_age_sq",
+      "compound",
+      "circuit_name",
+      "session_name",
+      "driver_id",
+      "team_name",
+      "traffic_dirty_air"
+    ],
+    "module_coverage": {
+      "PAC": "failed",
+      "TYM": "prototype",
+      "EXT": "prototype",
+      "ATK": "missing",
+      "DEF": "missing",
+      "AWA": "missing",
+      "STR": "missing",
+      "ADP": "missing"
+    },
+    "thresholds": {
+      "constructor_each_year_spearman": 0.8,
+      "realized_driver_each_year_spearman": 0.8,
+      "pooled_constructor_spearman": 0.85,
+      "pooled_realized_driver_spearman": 0.85,
+      "maximum_rhat": 1.05,
+      "locked_mae_improvement_fraction": 0.1,
+      "calibrated_95_coverage_low": 0.9,
+      "calibrated_95_coverage_high": 0.99,
+      "minimum_rolling_origins": 20,
+      "minimum_2026_events": 8
+    },
+    "outputs": {
+      "result": "research/records/objective_rating_review_2023_2026_v1.json",
+      "summary": "research/records/objective_rating_review_2023_2026_v1.md"
+    },
+    "boundaries": {
+      "standings_role": "external_construct_validation_only_not_ability_training_label",
+      "2026_role": "first_four_events_are_pre_protocol_development_only; confirmation starts post-freeze and needs 16 event clusters plus 120 pair-events",
+      "pac_role": "conditional_pair_prototype_is_version_isolated_from_legacy_pooled_driver_base_z_and_cannot_bind_driver_cards",
+      "full_driver_card": "requires_all_modules_validated"
+    }
+  },
+  "config_hash": "89854c4f934f52b27f21962a5d98cbe5249acb7032e5df27b12d924b83f950c3",
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "network_calls": [],
+  "input_identity": {
+    "seasonal_result": {
+      "path": "research/records/seasonal_standings_calibration_results.json",
+      "sha256": "aecf0d3456fe825ac5543ab057d7757f9ce3fefb9f4c115bbc6b0ad6c54ead14"
+    },
+    "bayesian_result": {
+      "path": "research/records/four_team_bayesian_attribution_2023_2025.json",
+      "sha256": "81eb4c5acff7011e42013ae969dd12089d9e3237b6a4033d6376c8d52d6afab3"
+    },
+    "race_by_race_result": {
+      "path": "research/records/four_team_race_by_race_2023_2026_v5.json",
+      "sha256": "40937855648ffa1cf45094d6e39c5d82fac010242302973efd205a1394f5accd"
+    },
+    "conditional_pair_prototype": {
+      "path": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json",
+      "sha256": "7835262bd4ff679d4df0e97519022a06cbdf394aacc362f3a6a02efc5f007087"
+    }
+  },
+  "evaluation": {
+    "release_status": "historical_result_accounting_passed_full_driver_card_not_ready",
+    "core_historical_passed": true,
+    "full_driver_card_ready": false,
+    "gates": [
+      {
+        "gate_id": "ability_feature_leakage",
+        "passed": true,
+        "value": [],
+        "threshold": "no prohibited result fields",
+        "role": "core_historical",
+        "note": "积分、完赛名次和冠军身份不得进入长期能力输入。"
+      },
+      {
+        "gate_id": "constructor_construct_each_year",
+        "passed": true,
+        "value": 0.8545454545454544,
+        "threshold": 0.8,
+        "role": "core_historical",
+        "note": "只验证车辆/结果层与制造商赛季结果方向，不定义车辆物理真值。"
+      },
+      {
+        "gate_id": "realized_driver_construct_each_year",
+        "passed": true,
+        "value": 0.8669565217391304,
+        "threshold": 0.8,
+        "role": "core_historical",
+        "note": "车+手实跑组合应与车手赛季结果一致；纯车手能力不要求复制积分榜。"
+      },
+      {
+        "gate_id": "constructor_construct_pooled",
+        "passed": true,
+        "value": 0.8922994144139845,
+        "threshold": 0.85,
+        "role": "core_historical",
+        "note": "跨赛季车辆结果构念检查。"
+      },
+      {
+        "gate_id": "realized_driver_construct_pooled",
+        "passed": true,
+        "value": 0.9036120162868106,
+        "threshold": 0.85,
+        "role": "core_historical",
+        "note": "跨赛季实跑组合结果构念检查。"
+      },
+      {
+        "gate_id": "posterior_convergence",
+        "passed": true,
+        "value": 1.0143684377998818,
+        "threshold": 1.05,
+        "role": "core_historical",
+        "note": "只检查主层级尺度收敛，不替代后验预测检验。"
+      },
+      {
+        "gate_id": "locked_time_forward_improvement",
+        "passed": true,
+        "value": 0.1778799559730647,
+        "threshold": 0.1,
+        "role": "core_historical",
+        "note": "2025 锁定段必须相对零模型有实际改进。"
+      },
+      {
+        "gate_id": "locked_interval_calibration_95",
+        "passed": true,
+        "value": 0.9395604395604396,
+        "threshold": [
+          0.9,
+          0.99
+        ],
+        "role": "core_historical",
+        "note": "只接受时间外校准后的覆盖率。"
+      },
+      {
+        "gate_id": "rolling_origin_depth",
+        "passed": true,
+        "value": 44,
+        "threshold": 20.0,
+        "role": "core_historical",
+        "note": "逐站前推 origin 数必须足够，不能只做一个赛季切分。"
+      },
+      {
+        "gate_id": "pac_driver_specific_time_forward",
+        "passed": false,
+        "value": {
+          "locked_events": null,
+          "rank_spearman": null,
+          "interval_coverage": null
+        },
+        "threshold": {
+          "minimum_locked_events": 20.0,
+          "minimum_rank_spearman": 0.7,
+          "interval_coverage": [
+            0.9,
+            0.99
+          ]
+        },
+        "role": "ability_module",
+        "note": "联合圈速预测通过不等于池化 driver_base_z 的 PAC 排序与区间已通过时间外验证。"
+      },
+      {
+        "gate_id": "2026_confirmatory_exposure",
+        "passed": false,
+        "value": 4,
+        "threshold": 8.0,
+        "role": "future_release",
+        "note": "不足时仍可生成逐场探索报告，但不得发布确认性赛季评分。"
+      }
+    ],
+    "module_coverage": {
+      "PAC": "prototype",
+      "TYM": "prototype",
+      "EXT": "prototype",
+      "ATK": "missing",
+      "DEF": "missing",
+      "AWA": "missing",
+      "STR": "missing",
+      "ADP": "missing"
+    },
+    "weak_identification_flags": [
+      "driver_team_graph_disconnected:4_components",
+      "unvalidated_driver_modules:ADP,ATK,AWA,DEF,EXT,PAC,STR,TYM"
+    ],
+    "limitations": [
+      "赛果相关性只验证结果生成层，不把赛果变成长期开车能力标签。",
+      "转会图不连通时，孤立车队内部的车辆—车手分离依赖层级先验。",
+      "2026 新规车辆响应、主动空力和能量代理必须按新 era 重置。",
+      "当前 rolling-origin 验证的是联合圈速预测，不是池化 PAC 的车手级排序稳定性或区间覆盖。"
+    ]
+  },
+  "pac_validation_reference": {
+    "path": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json",
+    "protocol_hash": "ce5247472afc6dfce4380a900eb64fc16818e6e02dcb6e45c5616abff447f624",
+    "status": "v2_retrospective_prototype_keep_null",
+    "publication_gate_passed": false,
+    "pac": null,
+    "ability_feature_audit_source": "actual_design_audit.fields"
+  },
+  "interpretation": {
+    "historical_core": "车辆/实跑结果构念、时间前推、区间和泄漏门控",
+    "full_driver_card": "所有能力模块验证前保持不可发布",
+    "season_2026": "事件暴露不足时只允许逐场探索性分析"
+  }
+}

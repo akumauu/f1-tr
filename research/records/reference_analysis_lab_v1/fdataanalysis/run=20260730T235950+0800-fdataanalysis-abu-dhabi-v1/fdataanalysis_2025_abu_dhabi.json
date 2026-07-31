@@ -1,0 +1,4109 @@
+{
+  "schema_version": "reference-analysis-lab-fdataanalysis-v1",
+  "target_id": "fdataanalysis",
+  "status": "PASS",
+  "run_id": "20260730T235950+0800-fdataanalysis-abu-dhabi-v1",
+  "source_identity": {
+    "run_id": "20260730T235950+0800-fdataanalysis-abu-dhabi-v1",
+    "created_at": "2026-07-30T16:56:17.700886+00:00",
+    "source_kind": "real_tracinginsights_expanded_v4",
+    "session": "Race",
+    "year": 2025,
+    "meeting": "Abu Dhabi Grand Prix",
+    "telemetry": {
+      "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Race/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+      "sha256": "1fb05bd10f89a492ee1797040b2b4c23cb60eea709c44df747d4e9f2e0259601",
+      "rows": 784424,
+      "columns": [
+        "year",
+        "meeting",
+        "session",
+        "driver_acronym",
+        "driver_number",
+        "lap",
+        "sample_index",
+        "time",
+        "distance",
+        "rel_distance",
+        "speed",
+        "throttle",
+        "brake",
+        "gear",
+        "rpm",
+        "drs",
+        "x",
+        "y",
+        "z",
+        "acc_x",
+        "acc_y",
+        "acc_z",
+        "driver_ahead",
+        "distance_to_driver_ahead",
+        "lap_duration",
+        "compound",
+        "stint",
+        "tyre_life",
+        "fresh_tyre",
+        "team",
+        "position",
+        "track_status",
+        "deleted",
+        "is_accurate",
+        "lap_start_raw",
+        "data_key",
+        "source_file",
+        "source_commit"
+      ],
+      "source_commit": "f7a5324cae58"
+    },
+    "v17_manifest": {
+      "path": "research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json",
+      "sha256": "9322064faee009e0e53d7ec345e9d25499f821658cdf05d497a74d233567658c",
+      "run_id": "20260726T124625+0800-ce93134a40b8",
+      "role": "coverage/audit reference only; no v17 numbers are rewritten"
+    }
+  },
+  "reference_identity": {
+    "source_profile_url": "https://x.com/FDataAnalysis",
+    "source_profile_sha256": "efaf66b20029af6d244ee3a5cc9038907ec41c004033efbe63819118f138ec08",
+    "source_profile_cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/source.html",
+    "source_profile_fetch_status": "HTTP_200",
+    "source_profile_title": "Formula Data Analysis (@FDataAnalysis) / X",
+    "web_extraction_observation": "web open returned zero extracted lines; cached HTML exposed public profile metadata and current posts",
+    "images": [
+      {
+        "name": "FDataAnalysis RACE PACE #HungarianGP",
+        "post_url": "https://x.com/FDataAnalysis/status/2081706503862378548",
+        "cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/reference-images/race-pace-hungarian-v2.jpg",
+        "sha256": "c2ce1c32e9fcdc9a64fd1001f5115242cc77e3aab8642e808614fb7738cb45e0",
+        "status": "AVAILABLE"
+      },
+      {
+        "name": "FDataAnalysis LONG RUNS DATA",
+        "post_url": "https://x.com/FDataAnalysis/status/2081027167987634407",
+        "cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/reference-images/long-runs-fp2-hungarian.jpg",
+        "sha256": "519573a2ca23aa102c97116871fd065d2a1eb3e3bc4b3a5d533b0f62cb479f3a",
+        "status": "AVAILABLE"
+      }
+    ],
+    "license_or_republication_boundary": "仅重绘公开语义与布局；不复制 X 原图、logo、品牌字体或人物照片作为产品资产。"
+  },
+  "method_card": {
+    "creator": "Formula Data Analysis",
+    "source_posts": [
+      {
+        "url": "https://x.com/FDataAnalysis/status/2081706503862378548",
+        "name": "RACE PACE #HungarianGP",
+        "public_semantics": [
+          "pit-equated race pace",
+          "smoothed lap-by-lap race pace",
+          "box/point distribution"
+        ]
+      },
+      {
+        "url": "https://x.com/FDataAnalysis/status/2081027167987634407",
+        "name": "LONG RUNS DATA (FP2 #HungarianGP)",
+        "public_semantics": [
+          "tyre age",
+          "lap time change",
+          "long-run distribution"
+        ]
+      }
+    ],
+    "public_method": [
+      "公开图表展示 lap time 的分布/曲线、胎龄轴、车手/车队比较和样本圈数。",
+      "公开图表语义覆盖速度、油门、制动、挡位/赛道位置等驾驶特征方向。"
+    ],
+    "visual_inference": [
+      "曲线/小提琴/箱线图对逐圈遥测或选圈后的统计量做了视觉聚合。",
+      "弯道入口/最低/出口与直道通常依赖统一赛道距离轴，但公开页没有冻结 anchor 文件。"
+    ],
+    "pilot_method": [
+      "从真实逐点遥测过滤首圈、Stint 边界和非绿/黄旗圈，使用 0.005 rel_distance 轴。",
+      "每个 driver×lap×axis bin 取速度/挡位中位数，控制开关使用采样时间权重。",
+      "弯道是全场中位速度平滑局部极小值 proxy；直道是相邻 proxy 弯道之间的距离窗。",
+      "同队双车以同队观察差值报告，作为 delivery baseline，不解释成车手因果贡献。"
+    ],
+    "not_identifiable": [
+      "真实下压力、引擎功率、能量/SOC、动力模式、真实制动压力和物理轮胎磨损。",
+      "创作者精确选圈、平滑核、弯道/直道 anchor、pit-equation 代码和车辆模型。",
+      "Setup、损伤、车队指令、燃油负载和策略意图。"
+    ],
+    "reference_boundary": "只重绘公开语义；不复制 X 原图、logo、品牌字体或人物照片作为产品资产。"
+  },
+  "data_gap_audit": [
+    {
+      "field": "speed_throttle_brake_gear_drs",
+      "current_field": "telemetry.speed/throttle/brake/gear/drs",
+      "status": "AVAILABLE",
+      "substitute": "distance-axis median + time-weighted control shares",
+      "publication": "允许发布观测特征"
+    },
+    {
+      "field": "corner_entry_min_exit_and_brake_position",
+      "current_field": "rel_distance + speed + brake",
+      "status": "AVAILABLE_PROXY",
+      "substitute": "speed local-minimum corner proxies and distance windows",
+      "publication": "允许发布 proxy，必须标明 anchor 非官方"
+    },
+    {
+      "field": "straight_speed_and_full_throttle",
+      "current_field": "rel_distance + speed + throttle + drs",
+      "status": "AVAILABLE_PROXY",
+      "substitute": "between-proxy-corner distance windows",
+      "publication": "允许发布观测特征"
+    },
+    {
+      "field": "tyre_age_effect",
+      "current_field": "tyre_life + lap_duration + speed",
+      "status": "AVAILABLE_PROXY",
+      "substitute": "lap-time/speed slope per tyre-age lap",
+      "publication": "允许发布条件变化，不称物理磨损"
+    },
+    {
+      "field": "official_corner_anchor_and_vehicle_physics",
+      "current_field": "NOT_AVAILABLE_IN_FREEZE",
+      "status": "NOT_IDENTIFIABLE",
+      "substitute": "named distance-axis proxy only",
+      "publication": "禁止命名真实下压力/功率/物理轮胎状态"
+    }
+  ],
+  "visual_replication": {
+    "axis_contract": {
+      "bins": 200,
+      "rel_distance_range": [
+        0.0,
+        1.0
+      ],
+      "resampling": "median_per_driver_lap_distance_bin",
+      "control_weight": "sample_interval_seconds",
+      "scope": "2025 Abu Dhabi Race valid Stints"
+    },
+    "track_segments": {
+      "corner_proxies": [
+        {
+          "corner_id": "C01",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.06,
+          "minimum_rel_distance": 0.0725,
+          "exit_rel_distance": 0.085,
+          "global_proxy_speed_kph": 158.048141,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        },
+        {
+          "corner_id": "C02",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.255,
+          "minimum_rel_distance": 0.2675,
+          "exit_rel_distance": 0.28,
+          "global_proxy_speed_kph": 115.053574,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        },
+        {
+          "corner_id": "C03",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.485,
+          "minimum_rel_distance": 0.4975,
+          "exit_rel_distance": 0.51,
+          "global_proxy_speed_kph": 92.274704,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        },
+        {
+          "corner_id": "C04",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.69,
+          "minimum_rel_distance": 0.7025,
+          "exit_rel_distance": 0.715,
+          "global_proxy_speed_kph": 161.32843,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        },
+        {
+          "corner_id": "C05",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.81,
+          "minimum_rel_distance": 0.8225,
+          "exit_rel_distance": 0.835,
+          "global_proxy_speed_kph": 116.169418,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        },
+        {
+          "corner_id": "C06",
+          "segment_role": "distance_axis_speed_local_minimum_proxy",
+          "entry_rel_distance": 0.95,
+          "minimum_rel_distance": 0.9625,
+          "exit_rel_distance": 0.975,
+          "global_proxy_speed_kph": 127.744995,
+          "anchor_definition": "smoothed median speed local minimum on 0.005 rel_distance axis"
+        }
+      ],
+      "straight_proxies": [
+        {
+          "straight_id": "S01",
+          "from_corner": "C01",
+          "to_corner": "C02",
+          "start_rel_distance": 0.085,
+          "end_rel_distance": 0.255,
+          "span_rel_distance": 0.17,
+          "segment_role": "between_proxy_corners_distance_window"
+        },
+        {
+          "straight_id": "S02",
+          "from_corner": "C02",
+          "to_corner": "C03",
+          "start_rel_distance": 0.28,
+          "end_rel_distance": 0.485,
+          "span_rel_distance": 0.205,
+          "segment_role": "between_proxy_corners_distance_window"
+        },
+        {
+          "straight_id": "S03",
+          "from_corner": "C03",
+          "to_corner": "C04",
+          "start_rel_distance": 0.51,
+          "end_rel_distance": 0.69,
+          "span_rel_distance": 0.18,
+          "segment_role": "between_proxy_corners_distance_window"
+        },
+        {
+          "straight_id": "S04",
+          "from_corner": "C04",
+          "to_corner": "C05",
+          "start_rel_distance": 0.715,
+          "end_rel_distance": 0.81,
+          "span_rel_distance": 0.095,
+          "segment_role": "between_proxy_corners_distance_window"
+        },
+        {
+          "straight_id": "S05",
+          "from_corner": "C05",
+          "to_corner": "C06",
+          "start_rel_distance": 0.835,
+          "end_rel_distance": 0.95,
+          "span_rel_distance": 0.115,
+          "segment_role": "between_proxy_corners_distance_window"
+        },
+        {
+          "straight_id": "S06",
+          "from_corner": "C06",
+          "to_corner": "C01",
+          "start_rel_distance": 0.975,
+          "end_rel_distance": 0.06,
+          "span_rel_distance": 0.085,
+          "segment_role": "between_proxy_corners_distance_window"
+        }
+      ]
+    },
+    "driver_profiles": [
+      {
+        "driver": "ALB",
+        "team": "Williams",
+        "valid_laps": 53,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 136,
+          "p50_kph": 245.514999,
+          "p90_kph": 305.887219,
+          "min_kph": 55.946426,
+          "max_kph": 341,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.496361,
+          "brake_share": 0.176312,
+          "drs_share": 0.03724,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.006044,
+          "median_speed_kph_per_tyre_lap": -0.119579,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 25,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 204.457794,
+            "minimum_speed_kph": 155.410858,
+            "exit_speed_kph": 159.410599,
+            "brake_position_rel_distance": 0.055366,
+            "brake_to_apex_distance_fraction": 0.017134,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 197.060806,
+            "minimum_speed_kph": 115.23394,
+            "exit_speed_kph": 97.504379,
+            "brake_position_rel_distance": 0.249,
+            "brake_to_apex_distance_fraction": 0.0185,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 207.222321,
+            "minimum_speed_kph": 97.147499,
+            "exit_speed_kph": 74.414093,
+            "brake_position_rel_distance": 0.476701,
+            "brake_to_apex_distance_fraction": 0.020799,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 188.114334,
+            "minimum_speed_kph": 162.673004,
+            "exit_speed_kph": 161.12738,
+            "brake_position_rel_distance": 0.674558,
+            "brake_to_apex_distance_fraction": 0.027941,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 195.104706,
+            "minimum_speed_kph": 117.101395,
+            "exit_speed_kph": 102.564293,
+            "brake_position_rel_distance": 0.807267,
+            "brake_to_apex_distance_fraction": 0.015233,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 189.998138,
+            "minimum_speed_kph": 124.588791,
+            "exit_speed_kph": 124.939423,
+            "brake_position_rel_distance": 0.946679,
+            "brake_to_apex_distance_fraction": 0.015821,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 295.283142,
+            "p90_speed_kph": 291.553238,
+            "full_throttle_share": 0.73268,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 319.698639,
+            "p90_speed_kph": 317.837273,
+            "full_throttle_share": 0.885387,
+            "drs_share": 0.125133,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 311.550934,
+            "p90_speed_kph": 309.090037,
+            "full_throttle_share": 0.787173,
+            "drs_share": 0.1564,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 265.149445,
+            "p90_speed_kph": 263.495505,
+            "full_throttle_share": 0.63068,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 245.454086,
+            "p90_speed_kph": 239.749838,
+            "full_throttle_share": 0.324033,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.616302,
+            "p90_speed_kph": 277.111515,
+            "full_throttle_share": 0.835399,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "ALO",
+        "team": "Aston Martin",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 136,
+          "p50_kph": 246.40625,
+          "p90_kph": 299.234949,
+          "min_kph": 59,
+          "max_kph": 345,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.527324,
+          "brake_share": 0.169254,
+          "drs_share": 0.027804,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.041021,
+          "median_speed_kph_per_tyre_lap": 0.187201,
+          "tyre_age_min_laps": 3,
+          "tyre_age_max_laps": 43,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 216.773697,
+            "minimum_speed_kph": 160.175156,
+            "exit_speed_kph": 159.642105,
+            "brake_position_rel_distance": 0.057741,
+            "brake_to_apex_distance_fraction": 0.014759,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 196.269394,
+            "minimum_speed_kph": 119.130516,
+            "exit_speed_kph": 95.988678,
+            "brake_position_rel_distance": 0.250157,
+            "brake_to_apex_distance_fraction": 0.017343,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 191.964386,
+            "minimum_speed_kph": 86.213974,
+            "exit_speed_kph": 82.663315,
+            "brake_position_rel_distance": 0.477963,
+            "brake_to_apex_distance_fraction": 0.019537,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 185.155853,
+            "minimum_speed_kph": 158.819672,
+            "exit_speed_kph": 155.24646,
+            "brake_position_rel_distance": 0.674976,
+            "brake_to_apex_distance_fraction": 0.027524,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 194.118744,
+            "minimum_speed_kph": 126.032043,
+            "exit_speed_kph": 105.08007,
+            "brake_position_rel_distance": 0.806061,
+            "brake_to_apex_distance_fraction": 0.016439,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 199.917221,
+            "minimum_speed_kph": 128.203659,
+            "exit_speed_kph": 130.908066,
+            "brake_position_rel_distance": 0.947708,
+            "brake_to_apex_distance_fraction": 0.014792,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 291.4375,
+            "p90_speed_kph": 288.315616,
+            "full_throttle_share": 0.770595,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 312.990631,
+            "p90_speed_kph": 311.26848,
+            "full_throttle_share": 0.862695,
+            "drs_share": 0.103533,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 302.441132,
+            "p90_speed_kph": 300.369038,
+            "full_throttle_share": 0.789383,
+            "drs_share": 0.104165,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 269.382904,
+            "p90_speed_kph": 268.033106,
+            "full_throttle_share": 0.714166,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 248.260925,
+            "p90_speed_kph": 245.216246,
+            "full_throttle_share": 0.458871,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 276.677307,
+            "p90_speed_kph": 274.386623,
+            "full_throttle_share": 0.861115,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "ANT",
+        "team": "Mercedes",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135.608099,
+          "p50_kph": 246.353729,
+          "p90_kph": 307,
+          "min_kph": 56,
+          "max_kph": 341,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.495432,
+          "brake_share": 0.222882,
+          "drs_share": 0.103863,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.04324,
+          "median_speed_kph_per_tyre_lap": -0.164546,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 31,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 212.486877,
+            "minimum_speed_kph": 156.009781,
+            "exit_speed_kph": 158.118378,
+            "brake_position_rel_distance": 0.056558,
+            "brake_to_apex_distance_fraction": 0.015942,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 183.294342,
+            "minimum_speed_kph": 124.670067,
+            "exit_speed_kph": 98.346077,
+            "brake_position_rel_distance": 0.245414,
+            "brake_to_apex_distance_fraction": 0.022086,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 215.801682,
+            "minimum_speed_kph": 130.294937,
+            "exit_speed_kph": 81.232918,
+            "brake_position_rel_distance": 0.468804,
+            "brake_to_apex_distance_fraction": 0.028696,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 215.338989,
+            "minimum_speed_kph": 188.967087,
+            "exit_speed_kph": 164.614975,
+            "brake_position_rel_distance": 0.671744,
+            "brake_to_apex_distance_fraction": 0.030756,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 212.709198,
+            "minimum_speed_kph": 166.166672,
+            "exit_speed_kph": 112.675125,
+            "brake_position_rel_distance": 0.801771,
+            "brake_to_apex_distance_fraction": 0.020729,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 227.485764,
+            "minimum_speed_kph": 145.686844,
+            "exit_speed_kph": 120.683342,
+            "brake_position_rel_distance": 0.946361,
+            "brake_to_apex_distance_fraction": 0.016139,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 293.894562,
+            "p90_speed_kph": 289.161538,
+            "full_throttle_share": 0.68504,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 324.226715,
+            "p90_speed_kph": 320.294307,
+            "full_throttle_share": 0.83643,
+            "drs_share": 0.324682,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 315.320099,
+            "p90_speed_kph": 308.559249,
+            "full_throttle_share": 0.787789,
+            "drs_share": 0.439213,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 273.160004,
+            "p90_speed_kph": 268.237742,
+            "full_throttle_share": 0.634796,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 249.561722,
+            "p90_speed_kph": 245.347703,
+            "full_throttle_share": 0.258425,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.682861,
+            "p90_speed_kph": 277.121945,
+            "full_throttle_share": 0.8441,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "BEA",
+        "team": "Haas F1 Team",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 134.318533,
+          "p50_kph": 248.90567,
+          "p90_kph": 306.789069,
+          "min_kph": 55,
+          "max_kph": 346.679993,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.523584,
+          "brake_share": 0.188706,
+          "drs_share": 0.076081,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.024909,
+          "median_speed_kph_per_tyre_lap": 0.190017,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 44,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 207.455612,
+            "minimum_speed_kph": 155.893127,
+            "exit_speed_kph": 156.07988,
+            "brake_position_rel_distance": 0.054231,
+            "brake_to_apex_distance_fraction": 0.018269,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 187.067856,
+            "minimum_speed_kph": 112.538597,
+            "exit_speed_kph": 95.915726,
+            "brake_position_rel_distance": 0.246785,
+            "brake_to_apex_distance_fraction": 0.020715,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 191.835739,
+            "minimum_speed_kph": 89.149567,
+            "exit_speed_kph": 81.725983,
+            "brake_position_rel_distance": 0.473297,
+            "brake_to_apex_distance_fraction": 0.024203,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 182.335617,
+            "minimum_speed_kph": 157.046158,
+            "exit_speed_kph": 162.136261,
+            "brake_position_rel_distance": 0.67262,
+            "brake_to_apex_distance_fraction": 0.02988,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 183.726547,
+            "minimum_speed_kph": 112.767014,
+            "exit_speed_kph": 107.33847,
+            "brake_position_rel_distance": 0.799131,
+            "brake_to_apex_distance_fraction": 0.023369,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 187.901154,
+            "minimum_speed_kph": 121.478676,
+            "exit_speed_kph": 126.827408,
+            "brake_position_rel_distance": 0.942994,
+            "brake_to_apex_distance_fraction": 0.019506,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 290.694092,
+            "p90_speed_kph": 289.792794,
+            "full_throttle_share": 0.830193,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 322.104889,
+            "p90_speed_kph": 320.817508,
+            "full_throttle_share": 0.884132,
+            "drs_share": 0.290992,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 308.499756,
+            "p90_speed_kph": 306.724848,
+            "full_throttle_share": 0.807831,
+            "drs_share": 0.277812,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 271.053894,
+            "p90_speed_kph": 269.521148,
+            "full_throttle_share": 0.634885,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 252.545609,
+            "p90_speed_kph": 250.31804,
+            "full_throttle_share": 0.39577,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 273.894196,
+            "p90_speed_kph": 271.919456,
+            "full_throttle_share": 0.871668,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "BOR",
+        "team": "Kick Sauber",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 134.588885,
+          "p50_kph": 248,
+          "p90_kph": 308,
+          "min_kph": 55,
+          "max_kph": 340.908875,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.513608,
+          "brake_share": 0.192098,
+          "drs_share": 0.107151,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.017263,
+          "median_speed_kph_per_tyre_lap": 0.152193,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 43,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 217.864014,
+            "minimum_speed_kph": 156.390945,
+            "exit_speed_kph": 155.896332,
+            "brake_position_rel_distance": 0.056752,
+            "brake_to_apex_distance_fraction": 0.015748,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 197.456741,
+            "minimum_speed_kph": 114.92186,
+            "exit_speed_kph": 94.978561,
+            "brake_position_rel_distance": 0.249379,
+            "brake_to_apex_distance_fraction": 0.018121,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 196.572632,
+            "minimum_speed_kph": 93.456757,
+            "exit_speed_kph": 76.949257,
+            "brake_position_rel_distance": 0.475711,
+            "brake_to_apex_distance_fraction": 0.021789,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 179.903824,
+            "minimum_speed_kph": 155.623199,
+            "exit_speed_kph": 158.520081,
+            "brake_position_rel_distance": 0.672881,
+            "brake_to_apex_distance_fraction": 0.029619,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 186.822372,
+            "minimum_speed_kph": 109.818993,
+            "exit_speed_kph": 106.370277,
+            "brake_position_rel_distance": 0.802952,
+            "brake_to_apex_distance_fraction": 0.019548,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 181.338882,
+            "minimum_speed_kph": 124.132217,
+            "exit_speed_kph": 126.881737,
+            "brake_position_rel_distance": 0.946379,
+            "brake_to_apex_distance_fraction": 0.01612,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 289.202698,
+            "p90_speed_kph": 287.784843,
+            "full_throttle_share": 0.746438,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 321.969757,
+            "p90_speed_kph": 320.415007,
+            "full_throttle_share": 0.877162,
+            "drs_share": 0.379819,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 312.709564,
+            "p90_speed_kph": 310.935149,
+            "full_throttle_share": 0.790791,
+            "drs_share": 0.424519,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 271.793518,
+            "p90_speed_kph": 270.230353,
+            "full_throttle_share": 0.697728,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 249.078674,
+            "p90_speed_kph": 246.642686,
+            "full_throttle_share": 0.381815,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 275.82608,
+            "p90_speed_kph": 273.704221,
+            "full_throttle_share": 0.88567,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "COL",
+        "team": "Alpine",
+        "valid_laps": 52,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135,
+          "p50_kph": 247.516663,
+          "p90_kph": 298.851666,
+          "min_kph": 61.481716,
+          "max_kph": 340,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.529637,
+          "brake_share": 0.161643,
+          "drs_share": 0.009324,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.050331,
+          "median_speed_kph_per_tyre_lap": -0.047924,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 24,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 204.061493,
+            "minimum_speed_kph": 154.986511,
+            "exit_speed_kph": 156.706451,
+            "brake_position_rel_distance": 0.05662,
+            "brake_to_apex_distance_fraction": 0.01588,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 193.924698,
+            "minimum_speed_kph": 117.962631,
+            "exit_speed_kph": 96.487511,
+            "brake_position_rel_distance": 0.250925,
+            "brake_to_apex_distance_fraction": 0.016575,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 201.705215,
+            "minimum_speed_kph": 103.168594,
+            "exit_speed_kph": 78.201836,
+            "brake_position_rel_distance": 0.478372,
+            "brake_to_apex_distance_fraction": 0.019128,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 194.749741,
+            "minimum_speed_kph": 166.136139,
+            "exit_speed_kph": 164.167267,
+            "brake_position_rel_distance": 0.6767,
+            "brake_to_apex_distance_fraction": 0.0258,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 195.704926,
+            "minimum_speed_kph": 120.802704,
+            "exit_speed_kph": 107.039017,
+            "brake_position_rel_distance": 0.806419,
+            "brake_to_apex_distance_fraction": 0.01608,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 198.531708,
+            "minimum_speed_kph": 131.136215,
+            "exit_speed_kph": 125.704964,
+            "brake_position_rel_distance": 0.94785,
+            "brake_to_apex_distance_fraction": 0.01465,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 287.432922,
+            "p90_speed_kph": 286.273845,
+            "full_throttle_share": 0.749595,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 310.41394,
+            "p90_speed_kph": 309.054741,
+            "full_throttle_share": 0.884864,
+            "drs_share": 0.023407,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 300.697693,
+            "p90_speed_kph": 299.357637,
+            "full_throttle_share": 0.800557,
+            "drs_share": 0.048819,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 267.32254,
+            "p90_speed_kph": 266.164873,
+            "full_throttle_share": 0.727914,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 249.26886,
+            "p90_speed_kph": 246.825225,
+            "full_throttle_share": 0.44686,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 269.246552,
+            "p90_speed_kph": 267.67796,
+            "full_throttle_share": 0.836756,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "GAS",
+        "team": "Alpine",
+        "valid_laps": 52,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135.59541,
+          "p50_kph": 248,
+          "p90_kph": 299.566321,
+          "min_kph": 56.743752,
+          "max_kph": 332.978119,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.54955,
+          "brake_share": 0.174762,
+          "drs_share": 0.015457,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.001556,
+          "median_speed_kph_per_tyre_lap": 0.029312,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 26,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 208.351639,
+            "minimum_speed_kph": 159.95462,
+            "exit_speed_kph": 155.602539,
+            "brake_position_rel_distance": 0.056783,
+            "brake_to_apex_distance_fraction": 0.015717,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 195.428253,
+            "minimum_speed_kph": 116.78405,
+            "exit_speed_kph": 99.134018,
+            "brake_position_rel_distance": 0.250917,
+            "brake_to_apex_distance_fraction": 0.016583,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 199.656738,
+            "minimum_speed_kph": 95.149063,
+            "exit_speed_kph": 78.854355,
+            "brake_position_rel_distance": 0.479648,
+            "brake_to_apex_distance_fraction": 0.017852,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 199.59375,
+            "minimum_speed_kph": 169.569656,
+            "exit_speed_kph": 163.686752,
+            "brake_position_rel_distance": 0.676972,
+            "brake_to_apex_distance_fraction": 0.025528,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 192.230728,
+            "minimum_speed_kph": 119.787888,
+            "exit_speed_kph": 106.580673,
+            "brake_position_rel_distance": 0.803716,
+            "brake_to_apex_distance_fraction": 0.018784,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 198.263336,
+            "minimum_speed_kph": 129.761139,
+            "exit_speed_kph": 125.615517,
+            "brake_position_rel_distance": 0.947251,
+            "brake_to_apex_distance_fraction": 0.015249,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 285.746735,
+            "p90_speed_kph": 284.221058,
+            "full_throttle_share": 0.793975,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 310.901886,
+            "p90_speed_kph": 309.824743,
+            "full_throttle_share": 0.907694,
+            "drs_share": 0.050041,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 300.63855,
+            "p90_speed_kph": 299.398444,
+            "full_throttle_share": 0.814215,
+            "drs_share": 0.06465,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 266.378326,
+            "p90_speed_kph": 265.465675,
+            "full_throttle_share": 0.763421,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 248.920868,
+            "p90_speed_kph": 246.645503,
+            "full_throttle_share": 0.474196,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 270.003418,
+            "p90_speed_kph": 268.354897,
+            "full_throttle_share": 0.879949,
+            "drs_share": 0,
+            "valid_laps": 52,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "HAD",
+        "team": "Racing Bulls",
+        "valid_laps": 54,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135.441368,
+          "p50_kph": 246.020309,
+          "p90_kph": 301.998334,
+          "min_kph": 51.035713,
+          "max_kph": 334.963989,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.5112,
+          "brake_share": 0.17904,
+          "drs_share": 0.038009,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.01455,
+          "median_speed_kph_per_tyre_lap": 0.042775,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 43,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 202.942596,
+            "minimum_speed_kph": 155.714676,
+            "exit_speed_kph": 158.917419,
+            "brake_position_rel_distance": 0.054796,
+            "brake_to_apex_distance_fraction": 0.017704,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 189.691971,
+            "minimum_speed_kph": 114.029602,
+            "exit_speed_kph": 95.913422,
+            "brake_position_rel_distance": 0.249982,
+            "brake_to_apex_distance_fraction": 0.017518,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 197.099487,
+            "minimum_speed_kph": 91.910576,
+            "exit_speed_kph": 75.241196,
+            "brake_position_rel_distance": 0.476254,
+            "brake_to_apex_distance_fraction": 0.021246,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 185.107529,
+            "minimum_speed_kph": 156.078903,
+            "exit_speed_kph": 157.580856,
+            "brake_position_rel_distance": 0.673456,
+            "brake_to_apex_distance_fraction": 0.029043,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 187.432617,
+            "minimum_speed_kph": 118.982925,
+            "exit_speed_kph": 102.669228,
+            "brake_position_rel_distance": 0.804266,
+            "brake_to_apex_distance_fraction": 0.018234,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 186.790314,
+            "minimum_speed_kph": 128.777557,
+            "exit_speed_kph": 127.674133,
+            "brake_position_rel_distance": 0.946024,
+            "brake_to_apex_distance_fraction": 0.016476,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 288.716644,
+            "p90_speed_kph": 287.812634,
+            "full_throttle_share": 0.764859,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 314.477661,
+            "p90_speed_kph": 312.966205,
+            "full_throttle_share": 0.866511,
+            "drs_share": 0.121377,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 306.513092,
+            "p90_speed_kph": 304.859927,
+            "full_throttle_share": 0.785811,
+            "drs_share": 0.166708,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 268.742767,
+            "p90_speed_kph": 267.266549,
+            "full_throttle_share": 0.672513,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 250.60553,
+            "p90_speed_kph": 246.27232,
+            "full_throttle_share": 0.344111,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 270.989716,
+            "p90_speed_kph": 268.313201,
+            "full_throttle_share": 0.846629,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "HAM",
+        "team": "Ferrari",
+        "valid_laps": 53,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135,
+          "p50_kph": 248.922501,
+          "p90_kph": 306.149994,
+          "min_kph": 57.099998,
+          "max_kph": 348.637878,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.517985,
+          "brake_share": 0.199439,
+          "drs_share": 0.081774,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.000343,
+          "median_speed_kph_per_tyre_lap": 0.018011,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 27,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 207.774841,
+            "minimum_speed_kph": 157.951431,
+            "exit_speed_kph": 158.897476,
+            "brake_position_rel_distance": 0.056072,
+            "brake_to_apex_distance_fraction": 0.016428,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 192.166443,
+            "minimum_speed_kph": 114.290649,
+            "exit_speed_kph": 98.030144,
+            "brake_position_rel_distance": 0.249353,
+            "brake_to_apex_distance_fraction": 0.018147,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 194.824463,
+            "minimum_speed_kph": 91.588615,
+            "exit_speed_kph": 80.560013,
+            "brake_position_rel_distance": 0.473848,
+            "brake_to_apex_distance_fraction": 0.023652,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 184.9319,
+            "minimum_speed_kph": 159.734985,
+            "exit_speed_kph": 164.557007,
+            "brake_position_rel_distance": 0.673599,
+            "brake_to_apex_distance_fraction": 0.028901,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 179.999481,
+            "minimum_speed_kph": 115.808609,
+            "exit_speed_kph": 110.252449,
+            "brake_position_rel_distance": 0.797819,
+            "brake_to_apex_distance_fraction": 0.024681,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 191.548096,
+            "minimum_speed_kph": 126.146301,
+            "exit_speed_kph": 129.356735,
+            "brake_position_rel_distance": 0.945458,
+            "brake_to_apex_distance_fraction": 0.017042,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 289.379425,
+            "p90_speed_kph": 287.767401,
+            "full_throttle_share": 0.752102,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 322.57312,
+            "p90_speed_kph": 320.657817,
+            "full_throttle_share": 0.884488,
+            "drs_share": 0.339274,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 311.454956,
+            "p90_speed_kph": 309.291732,
+            "full_throttle_share": 0.800594,
+            "drs_share": 0.272334,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 270.365021,
+            "p90_speed_kph": 268.69942,
+            "full_throttle_share": 0.66087,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 250.278946,
+            "p90_speed_kph": 247.571069,
+            "full_throttle_share": 0.376827,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 275.880646,
+            "p90_speed_kph": 273.673771,
+            "full_throttle_share": 0.884341,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "HUL",
+        "team": "Kick Sauber",
+        "valid_laps": 53,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 134.860718,
+          "p50_kph": 249.125,
+          "p90_kph": 307.863892,
+          "min_kph": 57,
+          "max_kph": 344.889099,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.538708,
+          "brake_share": 0.170476,
+          "drs_share": 0.092538,
+          "median_gear": 6,
+          "gear_p10": 3.5,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.04692,
+          "median_speed_kph_per_tyre_lap": -0.132876,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 34,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 207.961823,
+            "minimum_speed_kph": 154.538406,
+            "exit_speed_kph": 155.093781,
+            "brake_position_rel_distance": 0.056454,
+            "brake_to_apex_distance_fraction": 0.016046,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 192.784088,
+            "minimum_speed_kph": 112.995415,
+            "exit_speed_kph": 100.351662,
+            "brake_position_rel_distance": 0.250331,
+            "brake_to_apex_distance_fraction": 0.017169,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 203.03685,
+            "minimum_speed_kph": 91.828941,
+            "exit_speed_kph": 79.898109,
+            "brake_position_rel_distance": 0.476375,
+            "brake_to_apex_distance_fraction": 0.021125,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 184.461761,
+            "minimum_speed_kph": 156.363251,
+            "exit_speed_kph": 160.709457,
+            "brake_position_rel_distance": 0.674605,
+            "brake_to_apex_distance_fraction": 0.027895,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 191.23143,
+            "minimum_speed_kph": 109.754158,
+            "exit_speed_kph": 109.261772,
+            "brake_position_rel_distance": 0.803227,
+            "brake_to_apex_distance_fraction": 0.019273,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 189.911697,
+            "minimum_speed_kph": 126.543144,
+            "exit_speed_kph": 128.177216,
+            "brake_position_rel_distance": 0.947696,
+            "brake_to_apex_distance_fraction": 0.014804,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 290.372131,
+            "p90_speed_kph": 288.571288,
+            "full_throttle_share": 0.794178,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 323.697052,
+            "p90_speed_kph": 322.033411,
+            "full_throttle_share": 0.893069,
+            "drs_share": 0.36535,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 311.969788,
+            "p90_speed_kph": 310.454139,
+            "full_throttle_share": 0.819583,
+            "drs_share": 0.326759,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 272.197815,
+            "p90_speed_kph": 270.907969,
+            "full_throttle_share": 0.743753,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 250.210236,
+            "p90_speed_kph": 246.924963,
+            "full_throttle_share": 0.430884,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 274.949768,
+            "p90_speed_kph": 272.763328,
+            "full_throttle_share": 0.885347,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "LAW",
+        "team": "Racing Bulls",
+        "valid_laps": 54,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135,
+          "p50_kph": 247.787506,
+          "p90_kph": 301.02384,
+          "min_kph": 54.820084,
+          "max_kph": 337,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.522631,
+          "brake_share": 0.176156,
+          "drs_share": 0.046556,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.017585,
+          "median_speed_kph_per_tyre_lap": 0.132182,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 36,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 207.234787,
+            "minimum_speed_kph": 155.698639,
+            "exit_speed_kph": 159.587418,
+            "brake_position_rel_distance": 0.056202,
+            "brake_to_apex_distance_fraction": 0.016298,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 186.324829,
+            "minimum_speed_kph": 115.976021,
+            "exit_speed_kph": 96.890594,
+            "brake_position_rel_distance": 0.249634,
+            "brake_to_apex_distance_fraction": 0.017866,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 180.825745,
+            "minimum_speed_kph": 90.099678,
+            "exit_speed_kph": 78.412704,
+            "brake_position_rel_distance": 0.474032,
+            "brake_to_apex_distance_fraction": 0.023468,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 185.850677,
+            "minimum_speed_kph": 156.577072,
+            "exit_speed_kph": 160.851013,
+            "brake_position_rel_distance": 0.672412,
+            "brake_to_apex_distance_fraction": 0.030088,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 190.288773,
+            "minimum_speed_kph": 119.550476,
+            "exit_speed_kph": 108.892181,
+            "brake_position_rel_distance": 0.803416,
+            "brake_to_apex_distance_fraction": 0.019084,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 183.723694,
+            "minimum_speed_kph": 126.541451,
+            "exit_speed_kph": 128.589188,
+            "brake_position_rel_distance": 0.94686,
+            "brake_to_apex_distance_fraction": 0.01564,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 287.749847,
+            "p90_speed_kph": 286.40635,
+            "full_throttle_share": 0.789532,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 315.576874,
+            "p90_speed_kph": 313.39914,
+            "full_throttle_share": 0.836549,
+            "drs_share": 0.141243,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 307.867462,
+            "p90_speed_kph": 305.563031,
+            "full_throttle_share": 0.787071,
+            "drs_share": 0.211702,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 269.655853,
+            "p90_speed_kph": 268.167074,
+            "full_throttle_share": 0.688341,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 251.131577,
+            "p90_speed_kph": 247.96747,
+            "full_throttle_share": 0.424204,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 269.959381,
+            "p90_speed_kph": 267.72591,
+            "full_throttle_share": 0.851212,
+            "drs_share": 0,
+            "valid_laps": 54,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "LEC",
+        "team": "Ferrari",
+        "valid_laps": 53,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 137.242053,
+          "p50_kph": 251.119995,
+          "p90_kph": 303,
+          "min_kph": 60,
+          "max_kph": 332,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.550193,
+          "brake_share": 0.167716,
+          "drs_share": 0.032404,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.058365,
+          "median_speed_kph_per_tyre_lap": 0.28464,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 22,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 223.69577,
+            "minimum_speed_kph": 162.619308,
+            "exit_speed_kph": 157.525223,
+            "brake_position_rel_distance": 0.058351,
+            "brake_to_apex_distance_fraction": 0.014149,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 214.954269,
+            "minimum_speed_kph": 119.177124,
+            "exit_speed_kph": 98.496414,
+            "brake_position_rel_distance": 0.252048,
+            "brake_to_apex_distance_fraction": 0.015452,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 214.259888,
+            "minimum_speed_kph": 102.39463,
+            "exit_speed_kph": 80.75975,
+            "brake_position_rel_distance": 0.479782,
+            "brake_to_apex_distance_fraction": 0.017718,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 190.920578,
+            "minimum_speed_kph": 162.372223,
+            "exit_speed_kph": 161.540817,
+            "brake_position_rel_distance": 0.676449,
+            "brake_to_apex_distance_fraction": 0.026051,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 198.337677,
+            "minimum_speed_kph": 118.97995,
+            "exit_speed_kph": 111.262146,
+            "brake_position_rel_distance": 0.805871,
+            "brake_to_apex_distance_fraction": 0.016629,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 201.061615,
+            "minimum_speed_kph": 129.573212,
+            "exit_speed_kph": 129.951157,
+            "brake_position_rel_distance": 0.946351,
+            "brake_to_apex_distance_fraction": 0.016149,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 291.097687,
+            "p90_speed_kph": 289.62514,
+            "full_throttle_share": 0.809835,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 314.559021,
+            "p90_speed_kph": 313.146036,
+            "full_throttle_share": 0.918296,
+            "drs_share": 0.115445,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 305.832611,
+            "p90_speed_kph": 304.443031,
+            "full_throttle_share": 0.813658,
+            "drs_share": 0.126353,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 271.948029,
+            "p90_speed_kph": 270.805322,
+            "full_throttle_share": 0.775918,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 253.093475,
+            "p90_speed_kph": 249.638351,
+            "full_throttle_share": 0.395993,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 275.802307,
+            "p90_speed_kph": 274.232153,
+            "full_throttle_share": 0.918062,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "NOR",
+        "team": "McLaren",
+        "valid_laps": 53,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 140,
+          "p50_kph": 250.398125,
+          "p90_kph": 300,
+          "min_kph": 60.537312,
+          "max_kph": 331,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.504221,
+          "brake_share": 0.155559,
+          "drs_share": 0.008213,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.046916,
+          "median_speed_kph_per_tyre_lap": 0.026215,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 23,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 214.372986,
+            "minimum_speed_kph": 161.926682,
+            "exit_speed_kph": 163.516846,
+            "brake_position_rel_distance": 0.056338,
+            "brake_to_apex_distance_fraction": 0.016162,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 203.821625,
+            "minimum_speed_kph": 116.504898,
+            "exit_speed_kph": 97.56044,
+            "brake_position_rel_distance": 0.249512,
+            "brake_to_apex_distance_fraction": 0.017988,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 215.039444,
+            "minimum_speed_kph": 98.455132,
+            "exit_speed_kph": 78.071037,
+            "brake_position_rel_distance": 0.479213,
+            "brake_to_apex_distance_fraction": 0.018287,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 189.192398,
+            "minimum_speed_kph": 164.364258,
+            "exit_speed_kph": 167.802841,
+            "brake_position_rel_distance": 0.67641,
+            "brake_to_apex_distance_fraction": 0.02609,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 192.122147,
+            "minimum_speed_kph": 113.800606,
+            "exit_speed_kph": 109.80143,
+            "brake_position_rel_distance": 0.804854,
+            "brake_to_apex_distance_fraction": 0.017646,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 199.59407,
+            "minimum_speed_kph": 132.013885,
+            "exit_speed_kph": 130.70079,
+            "brake_position_rel_distance": 0.947187,
+            "brake_to_apex_distance_fraction": 0.015313,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 293.224579,
+            "p90_speed_kph": 290.280959,
+            "full_throttle_share": 0.698958,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 310.697754,
+            "p90_speed_kph": 309.275718,
+            "full_throttle_share": 0.876404,
+            "drs_share": 0.037022,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 300.917664,
+            "p90_speed_kph": 299.595025,
+            "full_throttle_share": 0.788304,
+            "drs_share": 0.024233,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 275.48111,
+            "p90_speed_kph": 273.437408,
+            "full_throttle_share": 0.640781,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 251.119843,
+            "p90_speed_kph": 248.358786,
+            "full_throttle_share": 0.351554,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 278.802582,
+            "p90_speed_kph": 276.57364,
+            "full_throttle_share": 0.812528,
+            "drs_share": 0,
+            "valid_laps": 53,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "OCO",
+        "team": "Haas F1 Team",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 134.235718,
+          "p50_kph": 248.300003,
+          "p90_kph": 307.969666,
+          "min_kph": 52.949997,
+          "max_kph": 342.88797,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.514228,
+          "brake_share": 0.223272,
+          "drs_share": 0.101383,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.033985,
+          "median_speed_kph_per_tyre_lap": 0.206088,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 39,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 208.943924,
+            "minimum_speed_kph": 155.228561,
+            "exit_speed_kph": 154.94397,
+            "brake_position_rel_distance": 0.055957,
+            "brake_to_apex_distance_fraction": 0.016543,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 194.846527,
+            "minimum_speed_kph": 115.704269,
+            "exit_speed_kph": 95.696625,
+            "brake_position_rel_distance": 0.248274,
+            "brake_to_apex_distance_fraction": 0.019226,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 199.277451,
+            "minimum_speed_kph": 90.379387,
+            "exit_speed_kph": 78.934196,
+            "brake_position_rel_distance": 0.47614,
+            "brake_to_apex_distance_fraction": 0.02136,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 183.303757,
+            "minimum_speed_kph": 155.201843,
+            "exit_speed_kph": 157.11705,
+            "brake_position_rel_distance": 0.674225,
+            "brake_to_apex_distance_fraction": 0.028275,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 180.721054,
+            "minimum_speed_kph": 115.464073,
+            "exit_speed_kph": 105.988846,
+            "brake_position_rel_distance": 0.795626,
+            "brake_to_apex_distance_fraction": 0.026874,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 188.143448,
+            "minimum_speed_kph": 125.511452,
+            "exit_speed_kph": 125.837563,
+            "brake_position_rel_distance": 0.928883,
+            "brake_to_apex_distance_fraction": 0.033617,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 291.958252,
+            "p90_speed_kph": 290.158739,
+            "full_throttle_share": 0.786969,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 322.35614,
+            "p90_speed_kph": 321.045138,
+            "full_throttle_share": 0.882503,
+            "drs_share": 0.375897,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 310.609985,
+            "p90_speed_kph": 309.167563,
+            "full_throttle_share": 0.793085,
+            "drs_share": 0.379227,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 270.975067,
+            "p90_speed_kph": 269.59754,
+            "full_throttle_share": 0.679713,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 249.599319,
+            "p90_speed_kph": 246.978419,
+            "full_throttle_share": 0.371311,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 275.969238,
+            "p90_speed_kph": 273.937135,
+            "full_throttle_share": 0.858578,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "PIA",
+        "team": "McLaren",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 137,
+          "p50_kph": 251,
+          "p90_kph": 299,
+          "min_kph": 61.277779,
+          "max_kph": 317,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.513983,
+          "brake_share": 0.156752,
+          "drs_share": 0,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.029075,
+          "median_speed_kph_per_tyre_lap": -0.146262,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 40,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 220.945114,
+            "minimum_speed_kph": 163.529633,
+            "exit_speed_kph": 159.844803,
+            "brake_position_rel_distance": 0.057011,
+            "brake_to_apex_distance_fraction": 0.015489,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 195.209305,
+            "minimum_speed_kph": 115.654198,
+            "exit_speed_kph": 96.643806,
+            "brake_position_rel_distance": 0.249798,
+            "brake_to_apex_distance_fraction": 0.017702,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 209.646133,
+            "minimum_speed_kph": 96.319679,
+            "exit_speed_kph": 78.899811,
+            "brake_position_rel_distance": 0.478527,
+            "brake_to_apex_distance_fraction": 0.018973,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 191.639648,
+            "minimum_speed_kph": 164.189224,
+            "exit_speed_kph": 162.511856,
+            "brake_position_rel_distance": 0.677995,
+            "brake_to_apex_distance_fraction": 0.024505,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 195.856644,
+            "minimum_speed_kph": 116.478119,
+            "exit_speed_kph": 107.217735,
+            "brake_position_rel_distance": 0.80606,
+            "brake_to_apex_distance_fraction": 0.01644,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 206.178955,
+            "minimum_speed_kph": 133.757721,
+            "exit_speed_kph": 128.269577,
+            "brake_position_rel_distance": 0.947601,
+            "brake_to_apex_distance_fraction": 0.014899,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 292.884552,
+            "p90_speed_kph": 290.647311,
+            "full_throttle_share": 0.714795,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 309.421783,
+            "p90_speed_kph": 307.96522,
+            "full_throttle_share": 0.893929,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 299.622375,
+            "p90_speed_kph": 298.363512,
+            "full_throttle_share": 0.818473,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 276.045044,
+            "p90_speed_kph": 274.459076,
+            "full_throttle_share": 0.690603,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 254.062485,
+            "p90_speed_kph": 250.903308,
+            "full_throttle_share": 0.294439,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.088593,
+            "p90_speed_kph": 276.884836,
+            "full_throttle_share": 0.86624,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "RUS",
+        "team": "Mercedes",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 136,
+          "p50_kph": 248,
+          "p90_kph": 303,
+          "min_kph": 59,
+          "max_kph": 337,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.527705,
+          "brake_share": 0.165771,
+          "drs_share": 0.026458,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.029816,
+          "median_speed_kph_per_tyre_lap": 0.125103,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 44,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 216.698639,
+            "minimum_speed_kph": 161.396957,
+            "exit_speed_kph": 158.337051,
+            "brake_position_rel_distance": 0.058573,
+            "brake_to_apex_distance_fraction": 0.013927,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 190.802261,
+            "minimum_speed_kph": 113.089119,
+            "exit_speed_kph": 99.177299,
+            "brake_position_rel_distance": 0.249675,
+            "brake_to_apex_distance_fraction": 0.017825,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 203.383926,
+            "minimum_speed_kph": 88.153763,
+            "exit_speed_kph": 81.854218,
+            "brake_position_rel_distance": 0.476879,
+            "brake_to_apex_distance_fraction": 0.020621,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 188.500748,
+            "minimum_speed_kph": 164.723083,
+            "exit_speed_kph": 164.515167,
+            "brake_position_rel_distance": 0.672788,
+            "brake_to_apex_distance_fraction": 0.029712,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 201.947372,
+            "minimum_speed_kph": 135.781052,
+            "exit_speed_kph": 104.824074,
+            "brake_position_rel_distance": 0.805456,
+            "brake_to_apex_distance_fraction": 0.017044,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 196.373199,
+            "minimum_speed_kph": 126.635536,
+            "exit_speed_kph": 126.096786,
+            "brake_position_rel_distance": 0.947001,
+            "brake_to_apex_distance_fraction": 0.015499,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 295.681488,
+            "p90_speed_kph": 291.599106,
+            "full_throttle_share": 0.738835,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 316.303131,
+            "p90_speed_kph": 314.677325,
+            "full_throttle_share": 0.879725,
+            "drs_share": 0.11419,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 307.701141,
+            "p90_speed_kph": 305.150748,
+            "full_throttle_share": 0.800589,
+            "drs_share": 0.083351,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 267.890015,
+            "p90_speed_kph": 266.526461,
+            "full_throttle_share": 0.671969,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 250.513428,
+            "p90_speed_kph": 246.327906,
+            "full_throttle_share": 0.454114,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.000488,
+            "p90_speed_kph": 276.819562,
+            "full_throttle_share": 0.899088,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "SAI",
+        "team": "Williams",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135.751212,
+          "p50_kph": 244.863548,
+          "p90_kph": 306,
+          "min_kph": 52.879997,
+          "max_kph": 343,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.495671,
+          "brake_share": 0.195652,
+          "drs_share": 0.062541,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.019154,
+          "median_speed_kph_per_tyre_lap": 0.014929,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 40,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 210.231201,
+            "minimum_speed_kph": 156.71637,
+            "exit_speed_kph": 155.642929,
+            "brake_position_rel_distance": 0.05515,
+            "brake_to_apex_distance_fraction": 0.01735,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 193.825394,
+            "minimum_speed_kph": 114.663162,
+            "exit_speed_kph": 97.700676,
+            "brake_position_rel_distance": 0.247296,
+            "brake_to_apex_distance_fraction": 0.020204,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 193.578674,
+            "minimum_speed_kph": 99.260612,
+            "exit_speed_kph": 77.951569,
+            "brake_position_rel_distance": 0.472912,
+            "brake_to_apex_distance_fraction": 0.024588,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 182.202835,
+            "minimum_speed_kph": 157.543182,
+            "exit_speed_kph": 158.372147,
+            "brake_position_rel_distance": 0.671218,
+            "brake_to_apex_distance_fraction": 0.031282,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 180.114838,
+            "minimum_speed_kph": 115.880798,
+            "exit_speed_kph": 105.068413,
+            "brake_position_rel_distance": 0.797851,
+            "brake_to_apex_distance_fraction": 0.024649,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 190.599533,
+            "minimum_speed_kph": 124.919281,
+            "exit_speed_kph": 127.716316,
+            "brake_position_rel_distance": 0.945202,
+            "brake_to_apex_distance_fraction": 0.017298,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 292.422668,
+            "p90_speed_kph": 290.004788,
+            "full_throttle_share": 0.694733,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 320.774689,
+            "p90_speed_kph": 318.649495,
+            "full_throttle_share": 0.876228,
+            "drs_share": 0.202607,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 312.49115,
+            "p90_speed_kph": 310.092547,
+            "full_throttle_share": 0.774797,
+            "drs_share": 0.268222,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 274.598175,
+            "p90_speed_kph": 272.15062,
+            "full_throttle_share": 0.661173,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 243.521164,
+            "p90_speed_kph": 240.720139,
+            "full_throttle_share": 0.339382,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.718842,
+            "p90_speed_kph": 277.083154,
+            "full_throttle_share": 0.848511,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "STR",
+        "team": "Aston Martin",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 134,
+          "p50_kph": 247.698273,
+          "p90_kph": 303,
+          "min_kph": 55.651455,
+          "max_kph": 345,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.532389,
+          "brake_share": 0.167925,
+          "drs_share": 0.085319,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.026179,
+          "median_speed_kph_per_tyre_lap": 0.007699,
+          "tyre_age_min_laps": 3,
+          "tyre_age_max_laps": 42,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 212.107407,
+            "minimum_speed_kph": 155.204529,
+            "exit_speed_kph": 155.355423,
+            "brake_position_rel_distance": 0.055769,
+            "brake_to_apex_distance_fraction": 0.016731,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 195.203171,
+            "minimum_speed_kph": 116.98761,
+            "exit_speed_kph": 95.80658,
+            "brake_position_rel_distance": 0.250334,
+            "brake_to_apex_distance_fraction": 0.017166,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 194.22226,
+            "minimum_speed_kph": 88.272972,
+            "exit_speed_kph": 79.903,
+            "brake_position_rel_distance": 0.476389,
+            "brake_to_apex_distance_fraction": 0.021111,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 193.470932,
+            "minimum_speed_kph": 166.341324,
+            "exit_speed_kph": 160.847244,
+            "brake_position_rel_distance": 0.675054,
+            "brake_to_apex_distance_fraction": 0.027446,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 199.769394,
+            "minimum_speed_kph": 127.482483,
+            "exit_speed_kph": 100.72007,
+            "brake_position_rel_distance": 0.806487,
+            "brake_to_apex_distance_fraction": 0.016013,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 194.145218,
+            "minimum_speed_kph": 127.221664,
+            "exit_speed_kph": 126.106659,
+            "brake_position_rel_distance": 0.946298,
+            "brake_to_apex_distance_fraction": 0.016202,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 289.076111,
+            "p90_speed_kph": 287.617506,
+            "full_throttle_share": 0.783119,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 319.484283,
+            "p90_speed_kph": 317.51909,
+            "full_throttle_share": 0.885256,
+            "drs_share": 0.326609,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 307.278992,
+            "p90_speed_kph": 304.826168,
+            "full_throttle_share": 0.805142,
+            "drs_share": 0.306753,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 270.831512,
+            "p90_speed_kph": 269.253177,
+            "full_throttle_share": 0.700812,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 247.981339,
+            "p90_speed_kph": 243.830666,
+            "full_throttle_share": 0.405991,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 278.112732,
+            "p90_speed_kph": 275.332759,
+            "full_throttle_share": 0.876592,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "TSU",
+        "team": "Red Bull Racing",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 135,
+          "p50_kph": 248.118744,
+          "p90_kph": 304.904755,
+          "min_kph": 55.459999,
+          "max_kph": 339,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.517091,
+          "brake_share": 0.179878,
+          "drs_share": 0.058596,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.02545,
+          "median_speed_kph_per_tyre_lap": 0.104978,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 31,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 207.654984,
+            "minimum_speed_kph": 155.471344,
+            "exit_speed_kph": 157.464752,
+            "brake_position_rel_distance": 0.055059,
+            "brake_to_apex_distance_fraction": 0.017441,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 193.272064,
+            "minimum_speed_kph": 116.387909,
+            "exit_speed_kph": 93.956345,
+            "brake_position_rel_distance": 0.247808,
+            "brake_to_apex_distance_fraction": 0.019692,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 191.654388,
+            "minimum_speed_kph": 90.252602,
+            "exit_speed_kph": 80.707588,
+            "brake_position_rel_distance": 0.47449,
+            "brake_to_apex_distance_fraction": 0.02301,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 184.133652,
+            "minimum_speed_kph": 156.94075,
+            "exit_speed_kph": 155.918182,
+            "brake_position_rel_distance": 0.671718,
+            "brake_to_apex_distance_fraction": 0.030782,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 182.973846,
+            "minimum_speed_kph": 114.842758,
+            "exit_speed_kph": 104.982361,
+            "brake_position_rel_distance": 0.800953,
+            "brake_to_apex_distance_fraction": 0.021547,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 184.354156,
+            "minimum_speed_kph": 121.741051,
+            "exit_speed_kph": 125.339142,
+            "brake_position_rel_distance": 0.945188,
+            "brake_to_apex_distance_fraction": 0.017311,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 289.594971,
+            "p90_speed_kph": 288.501075,
+            "full_throttle_share": 0.811612,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 320.383759,
+            "p90_speed_kph": 318.209023,
+            "full_throttle_share": 0.865314,
+            "drs_share": 0.216761,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 311.547333,
+            "p90_speed_kph": 308.418816,
+            "full_throttle_share": 0.778233,
+            "drs_share": 0.22306,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 274.261871,
+            "p90_speed_kph": 271.583893,
+            "full_throttle_share": 0.642375,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 253.101303,
+            "p90_speed_kph": 249.523146,
+            "full_throttle_share": 0.392144,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 277.114166,
+            "p90_speed_kph": 274.415017,
+            "full_throttle_share": 0.852294,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      },
+      {
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "valid_laps": 55,
+        "distance_axis_bins": 200,
+        "speed_distribution": {
+          "p10_kph": 139.0625,
+          "p50_kph": 250.505005,
+          "p90_kph": 300,
+          "min_kph": 59,
+          "max_kph": 335,
+          "role": "observed_speed_distribution_proxy"
+        },
+        "control_usage": {
+          "full_throttle_share": 0.532749,
+          "brake_share": 0.152266,
+          "drs_share": 0.001734,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8,
+          "role": "observed_control_feature_proxy"
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.020835,
+          "median_speed_kph_per_tyre_lap": 0.032749,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 35,
+          "role": "observed_tyre_age_change_proxy_not_physical_wear"
+        },
+        "corner_features": [
+          {
+            "corner_id": "C01",
+            "entry_speed_kph": 220.894073,
+            "minimum_speed_kph": 163.12851,
+            "exit_speed_kph": 162.41011,
+            "brake_position_rel_distance": 0.057187,
+            "brake_to_apex_distance_fraction": 0.015313,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C02",
+            "entry_speed_kph": 200.915726,
+            "minimum_speed_kph": 115.900055,
+            "exit_speed_kph": 98.772766,
+            "brake_position_rel_distance": 0.249388,
+            "brake_to_apex_distance_fraction": 0.018112,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C03",
+            "entry_speed_kph": 204.110062,
+            "minimum_speed_kph": 89.843628,
+            "exit_speed_kph": 82.405998,
+            "brake_position_rel_distance": 0.476939,
+            "brake_to_apex_distance_fraction": 0.020561,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C04",
+            "entry_speed_kph": 189.691635,
+            "minimum_speed_kph": 166.514786,
+            "exit_speed_kph": 168.766571,
+            "brake_position_rel_distance": 0.674958,
+            "brake_to_apex_distance_fraction": 0.027542,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C05",
+            "entry_speed_kph": 192.101196,
+            "minimum_speed_kph": 114.389389,
+            "exit_speed_kph": 108.73101,
+            "brake_position_rel_distance": 0.804004,
+            "brake_to_apex_distance_fraction": 0.018496,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          },
+          {
+            "corner_id": "C06",
+            "entry_speed_kph": 203.897827,
+            "minimum_speed_kph": 132.258759,
+            "exit_speed_kph": 131.552719,
+            "brake_position_rel_distance": 0.947768,
+            "brake_to_apex_distance_fraction": 0.014732,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_corner_proxy"
+          }
+        ],
+        "straight_features": [
+          {
+            "straight_id": "S01",
+            "max_speed_kph": 288.624054,
+            "p90_speed_kph": 287.575402,
+            "full_throttle_share": 0.714509,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S02",
+            "max_speed_kph": 309.074493,
+            "p90_speed_kph": 307.661395,
+            "full_throttle_share": 0.891813,
+            "drs_share": 0.012657,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S03",
+            "max_speed_kph": 301.057251,
+            "p90_speed_kph": 299.859023,
+            "full_throttle_share": 0.809696,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S04",
+            "max_speed_kph": 271.609863,
+            "p90_speed_kph": 270.484426,
+            "full_throttle_share": 0.690159,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S05",
+            "max_speed_kph": 255.537506,
+            "p90_speed_kph": 251.571281,
+            "full_throttle_share": 0.423843,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          },
+          {
+            "straight_id": "S06",
+            "max_speed_kph": 279.633331,
+            "p90_speed_kph": 276.311849,
+            "full_throttle_share": 0.884765,
+            "drs_share": 0,
+            "valid_laps": 55,
+            "feature_role": "distance_axis_observed_straight_proxy"
+          }
+        ]
+      }
+    ],
+    "team_profiles": [
+      {
+        "team": "McLaren",
+        "drivers": [
+          "NOR",
+          "PIA"
+        ],
+        "valid_laps": 108,
+        "speed_distribution": {
+          "p10_kph": 138.472222,
+          "p50_kph": 250.704635,
+          "p90_kph": 299.490741,
+          "min_kph": 60.914402,
+          "max_kph": 323.87037
+        },
+        "control_usage": {
+          "full_throttle_share": 0.509192,
+          "brake_share": 0.156167,
+          "drs_share": 0.00403,
+          "median_gear": 6,
+          "gear_p10": 3,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.008217,
+          "median_speed_kph_per_tyre_lap": -0.061621,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 31.657407
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Ferrari",
+        "drivers": [
+          "HAM",
+          "LEC"
+        ],
+        "valid_laps": 106,
+        "speed_distribution": {
+          "p10_kph": 136.121026,
+          "p50_kph": 250.021248,
+          "p90_kph": 304.574997,
+          "min_kph": 58.549999,
+          "max_kph": 340.318939
+        },
+        "control_usage": {
+          "full_throttle_share": 0.534089,
+          "brake_share": 0.183578,
+          "drs_share": 0.057089,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.029011,
+          "median_speed_kph_per_tyre_lap": 0.151326,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 24.5
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Red Bull Racing",
+        "drivers": [
+          "TSU",
+          "VER"
+        ],
+        "valid_laps": 110,
+        "speed_distribution": {
+          "p10_kph": 137.03125,
+          "p50_kph": 249.311874,
+          "p90_kph": 302.452378,
+          "min_kph": 57.23,
+          "max_kph": 337
+        },
+        "control_usage": {
+          "full_throttle_share": 0.52492,
+          "brake_share": 0.166072,
+          "drs_share": 0.030165,
+          "median_gear": 6,
+          "gear_p10": 3.5,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.002308,
+          "median_speed_kph_per_tyre_lap": 0.068863,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 33
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Haas F1 Team",
+        "drivers": [
+          "BEA",
+          "OCO"
+        ],
+        "valid_laps": 110,
+        "speed_distribution": {
+          "p10_kph": 134.277126,
+          "p50_kph": 248.602836,
+          "p90_kph": 307.379368,
+          "min_kph": 53.974999,
+          "max_kph": 344.783981
+        },
+        "control_usage": {
+          "full_throttle_share": 0.518906,
+          "brake_share": 0.205989,
+          "drs_share": 0.088732,
+          "median_gear": 6,
+          "gear_p10": 3.5,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.029447,
+          "median_speed_kph_per_tyre_lap": 0.198053,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 41.5
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Kick Sauber",
+        "drivers": [
+          "BOR",
+          "HUL"
+        ],
+        "valid_laps": 108,
+        "speed_distribution": {
+          "p10_kph": 134.722285,
+          "p50_kph": 248.552083,
+          "p90_kph": 307.933206,
+          "min_kph": 55.981481,
+          "max_kph": 342.862133
+        },
+        "control_usage": {
+          "full_throttle_share": 0.525926,
+          "brake_share": 0.181487,
+          "drs_share": 0.09998,
+          "median_gear": 6,
+          "gear_p10": 3.24537,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.014234,
+          "median_speed_kph_per_tyre_lap": 0.012298,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 38.583333
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Alpine",
+        "drivers": [
+          "COL",
+          "GAS"
+        ],
+        "valid_laps": 104,
+        "speed_distribution": {
+          "p10_kph": 135.297705,
+          "p50_kph": 247.758331,
+          "p90_kph": 299.208994,
+          "min_kph": 59.112734,
+          "max_kph": 336.489059
+        },
+        "control_usage": {
+          "full_throttle_share": 0.539593,
+          "brake_share": 0.168203,
+          "drs_share": 0.012391,
+          "median_gear": 6,
+          "gear_p10": 3.5,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.025944,
+          "median_speed_kph_per_tyre_lap": -0.009306,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 25
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Mercedes",
+        "drivers": [
+          "ANT",
+          "RUS"
+        ],
+        "valid_laps": 110,
+        "speed_distribution": {
+          "p10_kph": 135.80405,
+          "p50_kph": 247.176864,
+          "p90_kph": 305,
+          "min_kph": 57.5,
+          "max_kph": 339
+        },
+        "control_usage": {
+          "full_throttle_share": 0.511569,
+          "brake_share": 0.194326,
+          "drs_share": 0.06516,
+          "median_gear": 6.5,
+          "gear_p10": 3.5,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": 0.006712,
+          "median_speed_kph_per_tyre_lap": -0.019721,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 37.5
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Aston Martin",
+        "drivers": [
+          "ALO",
+          "STR"
+        ],
+        "valid_laps": 110,
+        "speed_distribution": {
+          "p10_kph": 135,
+          "p50_kph": 247.052262,
+          "p90_kph": 301.117475,
+          "min_kph": 57.325727,
+          "max_kph": 345
+        },
+        "control_usage": {
+          "full_throttle_share": 0.529857,
+          "brake_share": 0.168589,
+          "drs_share": 0.056561,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.007421,
+          "median_speed_kph_per_tyre_lap": 0.09745,
+          "tyre_age_min_laps": 3,
+          "tyre_age_max_laps": 42.5
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Racing Bulls",
+        "drivers": [
+          "HAD",
+          "LAW"
+        ],
+        "valid_laps": 108,
+        "speed_distribution": {
+          "p10_kph": 135.220684,
+          "p50_kph": 246.903908,
+          "p90_kph": 301.511087,
+          "min_kph": 52.927898,
+          "max_kph": 335.981994
+        },
+        "control_usage": {
+          "full_throttle_share": 0.516916,
+          "brake_share": 0.177598,
+          "drs_share": 0.042283,
+          "median_gear": 6,
+          "gear_p10": 4,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.016067,
+          "median_speed_kph_per_tyre_lap": 0.087479,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 39.5
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      },
+      {
+        "team": "Williams",
+        "drivers": [
+          "ALB",
+          "SAI"
+        ],
+        "valid_laps": 108,
+        "speed_distribution": {
+          "p10_kph": 135.873302,
+          "p50_kph": 245.183242,
+          "p90_kph": 305.944654,
+          "min_kph": 54.384819,
+          "max_kph": 342.018519
+        },
+        "control_usage": {
+          "full_throttle_share": 0.49601,
+          "brake_share": 0.186161,
+          "drs_share": 0.050125,
+          "median_gear": 7,
+          "gear_p10": 3,
+          "gear_p90": 8
+        },
+        "tyre_age_effects": {
+          "lap_time_s_per_tyre_lap": -0.006788,
+          "median_speed_kph_per_tyre_lap": -0.05108,
+          "tyre_age_min_laps": 2,
+          "tyre_age_max_laps": 32.638889
+        },
+        "profile_role": "team_aggregate_of_real_driver_distance_axis_features_not_vehicle_causal_model"
+      }
+    ],
+    "teammate_baselines": [
+      {
+        "team": "Alpine",
+        "driver": "COL",
+        "teammate": "GAS",
+        "driver_minus_teammate": {
+          "median_speed_kph": -0.483337,
+          "full_throttle_share": -0.019913,
+          "brake_share": -0.013119,
+          "drs_share": -0.006133,
+          "lap_time_s_per_tyre_lap": 0.048775
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Alpine",
+        "driver": "GAS",
+        "teammate": "COL",
+        "driver_minus_teammate": {
+          "median_speed_kph": 0.483337,
+          "full_throttle_share": 0.019913,
+          "brake_share": 0.013119,
+          "drs_share": 0.006133,
+          "lap_time_s_per_tyre_lap": -0.048775
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Aston Martin",
+        "driver": "ALO",
+        "teammate": "STR",
+        "driver_minus_teammate": {
+          "median_speed_kph": -1.292023,
+          "full_throttle_share": -0.005065,
+          "brake_share": 0.001329,
+          "drs_share": -0.057515,
+          "lap_time_s_per_tyre_lap": -0.0672
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Aston Martin",
+        "driver": "STR",
+        "teammate": "ALO",
+        "driver_minus_teammate": {
+          "median_speed_kph": 1.292023,
+          "full_throttle_share": 0.005065,
+          "brake_share": -0.001329,
+          "drs_share": 0.057515,
+          "lap_time_s_per_tyre_lap": 0.0672
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Ferrari",
+        "driver": "HAM",
+        "teammate": "LEC",
+        "driver_minus_teammate": {
+          "median_speed_kph": -2.197494,
+          "full_throttle_share": -0.032208,
+          "brake_share": 0.031723,
+          "drs_share": 0.04937,
+          "lap_time_s_per_tyre_lap": 0.058708
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Ferrari",
+        "driver": "LEC",
+        "teammate": "HAM",
+        "driver_minus_teammate": {
+          "median_speed_kph": 2.197494,
+          "full_throttle_share": 0.032208,
+          "brake_share": -0.031723,
+          "drs_share": -0.04937,
+          "lap_time_s_per_tyre_lap": -0.058708
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Haas F1 Team",
+        "driver": "BEA",
+        "teammate": "OCO",
+        "driver_minus_teammate": {
+          "median_speed_kph": 0.605667,
+          "full_throttle_share": 0.009356,
+          "brake_share": -0.034566,
+          "drs_share": -0.025302,
+          "lap_time_s_per_tyre_lap": 0.009076
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Haas F1 Team",
+        "driver": "OCO",
+        "teammate": "BEA",
+        "driver_minus_teammate": {
+          "median_speed_kph": -0.605667,
+          "full_throttle_share": -0.009356,
+          "brake_share": 0.034566,
+          "drs_share": 0.025302,
+          "lap_time_s_per_tyre_lap": -0.009076
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Kick Sauber",
+        "driver": "BOR",
+        "teammate": "HUL",
+        "driver_minus_teammate": {
+          "median_speed_kph": -1.125,
+          "full_throttle_share": -0.0251,
+          "brake_share": 0.021622,
+          "drs_share": 0.014613,
+          "lap_time_s_per_tyre_lap": -0.064183
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Kick Sauber",
+        "driver": "HUL",
+        "teammate": "BOR",
+        "driver_minus_teammate": {
+          "median_speed_kph": 1.125,
+          "full_throttle_share": 0.0251,
+          "brake_share": -0.021622,
+          "drs_share": -0.014613,
+          "lap_time_s_per_tyre_lap": 0.064183
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "McLaren",
+        "driver": "NOR",
+        "teammate": "PIA",
+        "driver_minus_teammate": {
+          "median_speed_kph": -0.601875,
+          "full_throttle_share": -0.009762,
+          "brake_share": -0.001193,
+          "drs_share": 0.008213,
+          "lap_time_s_per_tyre_lap": -0.075991
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "McLaren",
+        "driver": "PIA",
+        "teammate": "NOR",
+        "driver_minus_teammate": {
+          "median_speed_kph": 0.601875,
+          "full_throttle_share": 0.009762,
+          "brake_share": 0.001193,
+          "drs_share": -0.008213,
+          "lap_time_s_per_tyre_lap": 0.075991
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Mercedes",
+        "driver": "ANT",
+        "teammate": "RUS",
+        "driver_minus_teammate": {
+          "median_speed_kph": -1.646271,
+          "full_throttle_share": -0.032273,
+          "brake_share": 0.057111,
+          "drs_share": 0.077405,
+          "lap_time_s_per_tyre_lap": 0.073056
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Mercedes",
+        "driver": "RUS",
+        "teammate": "ANT",
+        "driver_minus_teammate": {
+          "median_speed_kph": 1.646271,
+          "full_throttle_share": 0.032273,
+          "brake_share": -0.057111,
+          "drs_share": -0.077405,
+          "lap_time_s_per_tyre_lap": -0.073056
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Racing Bulls",
+        "driver": "HAD",
+        "teammate": "LAW",
+        "driver_minus_teammate": {
+          "median_speed_kph": -1.767197,
+          "full_throttle_share": -0.011431,
+          "brake_share": 0.002884,
+          "drs_share": -0.008547,
+          "lap_time_s_per_tyre_lap": 0.003035
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Racing Bulls",
+        "driver": "LAW",
+        "teammate": "HAD",
+        "driver_minus_teammate": {
+          "median_speed_kph": 1.767197,
+          "full_throttle_share": 0.011431,
+          "brake_share": -0.002884,
+          "drs_share": 0.008547,
+          "lap_time_s_per_tyre_lap": -0.003035
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Red Bull Racing",
+        "driver": "TSU",
+        "teammate": "VER",
+        "driver_minus_teammate": {
+          "median_speed_kph": -2.386261,
+          "full_throttle_share": -0.015658,
+          "brake_share": 0.027612,
+          "drs_share": 0.056862,
+          "lap_time_s_per_tyre_lap": 0.046285
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Red Bull Racing",
+        "driver": "VER",
+        "teammate": "TSU",
+        "driver_minus_teammate": {
+          "median_speed_kph": 2.386261,
+          "full_throttle_share": 0.015658,
+          "brake_share": -0.027612,
+          "drs_share": -0.056862,
+          "lap_time_s_per_tyre_lap": -0.046285
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Williams",
+        "driver": "ALB",
+        "teammate": "SAI",
+        "driver_minus_teammate": {
+          "median_speed_kph": 0.651451,
+          "full_throttle_share": 0.00069,
+          "brake_share": -0.01934,
+          "drs_share": -0.025301,
+          "lap_time_s_per_tyre_lap": 0.025198
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      },
+      {
+        "team": "Williams",
+        "driver": "SAI",
+        "teammate": "ALB",
+        "driver_minus_teammate": {
+          "median_speed_kph": -0.651451,
+          "full_throttle_share": -0.00069,
+          "brake_share": 0.01934,
+          "drs_share": 0.025301,
+          "lap_time_s_per_tyre_lap": -0.025198
+        },
+        "role": "same_team_observed_baseline_not_driver_causal_effect"
+      }
+    ],
+    "ranking_note": "视觉排序仅表示观测到的速度/控制特征代理，不形成车辆物理强弱或车手因果全序。"
+  },
+  "audited_analysis": {
+    "status": "audit_only",
+    "reason": "距离轴和同队双车基线可解释观测差异，但真实车辆状态、燃油、设定、损伤和动力模式不可识别。",
+    "direct_ranking_allowed": false,
+    "vehicle_driver_claims": "not_identifiable",
+    "allowed_claims": [
+      "观测速度分布、油门/制动/DRS/挡位使用和胎龄相关变化。",
+      "同队双车在相同可观测距离轴上的条件差异代理。"
+    ],
+    "forbidden_claims": [
+      "真实下压力",
+      "引擎功率",
+      "物理轮胎磨损",
+      "无条件车辆强弱"
+    ]
+  },
+  "exclusion_ledger": {
+    "raw_points": 784424,
+    "valid_laps": 1082,
+    "valid_points": 728315,
+    "axis_rows": 213273,
+    "raw_drivers": 20,
+    "valid_drivers": 20,
+    "removed_first_or_stint_boundary_laps": 74,
+    "non_green_or_yellow_laps": 0,
+    "per_driver": [
+      {
+        "driver": "ALB",
+        "team": "Williams",
+        "raw_points": 39480,
+        "valid_laps": 53,
+        "valid_points": 35672,
+        "axis_rows": 10447,
+        "compounds": [
+          "HARD",
+          "MEDIUM",
+          "SOFT"
+        ]
+      },
+      {
+        "driver": "ALO",
+        "team": "Aston Martin",
+        "raw_points": 39356,
+        "valid_laps": 55,
+        "valid_points": 37110,
+        "axis_rows": 10845,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "ANT",
+        "team": "Mercedes",
+        "raw_points": 39473,
+        "valid_laps": 55,
+        "valid_points": 37139,
+        "axis_rows": 10838,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "BEA",
+        "team": "Haas F1 Team",
+        "raw_points": 39423,
+        "valid_laps": 55,
+        "valid_points": 37136,
+        "axis_rows": 10839,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "BOR",
+        "team": "Kick Sauber",
+        "raw_points": 39454,
+        "valid_laps": 55,
+        "valid_points": 37200,
+        "axis_rows": 10843,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "COL",
+        "team": "Alpine",
+        "raw_points": 38965,
+        "valid_laps": 52,
+        "valid_points": 35115,
+        "axis_rows": 10243,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "GAS",
+        "team": "Alpine",
+        "raw_points": 38910,
+        "valid_laps": 52,
+        "valid_points": 35069,
+        "axis_rows": 10259,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "HAD",
+        "team": "Racing Bulls",
+        "raw_points": 38870,
+        "valid_laps": 54,
+        "valid_points": 36599,
+        "axis_rows": 10642,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "HAM",
+        "team": "Ferrari",
+        "raw_points": 39395,
+        "valid_laps": 53,
+        "valid_points": 35580,
+        "axis_rows": 10446,
+        "compounds": [
+          "HARD",
+          "MEDIUM",
+          "SOFT"
+        ]
+      },
+      {
+        "driver": "HUL",
+        "team": "Kick Sauber",
+        "raw_points": 39437,
+        "valid_laps": 53,
+        "valid_points": 35657,
+        "axis_rows": 10441,
+        "compounds": [
+          "HARD",
+          "MEDIUM",
+          "SOFT"
+        ]
+      },
+      {
+        "driver": "LAW",
+        "team": "Racing Bulls",
+        "raw_points": 38895,
+        "valid_laps": 54,
+        "valid_points": 36527,
+        "axis_rows": 10649,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "LEC",
+        "team": "Ferrari",
+        "raw_points": 39028,
+        "valid_laps": 53,
+        "valid_points": 35335,
+        "axis_rows": 10445,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "NOR",
+        "team": "McLaren",
+        "raw_points": 38986,
+        "valid_laps": 53,
+        "valid_points": 35255,
+        "axis_rows": 10458,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "OCO",
+        "team": "Haas F1 Team",
+        "raw_points": 39374,
+        "valid_laps": 55,
+        "valid_points": 37105,
+        "axis_rows": 10841,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "PIA",
+        "team": "McLaren",
+        "raw_points": 38957,
+        "valid_laps": 55,
+        "valid_points": 36721,
+        "axis_rows": 10851,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "RUS",
+        "team": "Mercedes",
+        "raw_points": 39217,
+        "valid_laps": 55,
+        "valid_points": 36963,
+        "axis_rows": 10840,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "SAI",
+        "team": "Williams",
+        "raw_points": 39463,
+        "valid_laps": 55,
+        "valid_points": 37201,
+        "axis_rows": 10832,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "STR",
+        "team": "Aston Martin",
+        "raw_points": 39409,
+        "valid_laps": 55,
+        "valid_points": 37141,
+        "axis_rows": 10845,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "TSU",
+        "team": "Red Bull Racing",
+        "raw_points": 39469,
+        "valid_laps": 55,
+        "valid_points": 37134,
+        "axis_rows": 10831,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      },
+      {
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "raw_points": 38863,
+        "valid_laps": 55,
+        "valid_points": 36656,
+        "axis_rows": 10838,
+        "compounds": [
+          "HARD",
+          "MEDIUM"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "real_source_only": true,
+    "synthetic_points": 0,
+    "raw_points": 784424,
+    "valid_points": 728315,
+    "axis_bins": 200,
+    "corner_proxy_count": 6,
+    "straight_proxy_count": 6,
+    "all_driver_profiles_have_control_features": true,
+    "same_team_baseline_pairs": 20,
+    "distance_axis_resampling": "median_per_0.005_rel_distance_bin_with_time_weighted_control_shares",
+    "direct_physical_claims_allowed": false
+  }
+}

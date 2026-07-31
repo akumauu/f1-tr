@@ -1,0 +1,84 @@
+{
+  "experiment_name": "four_team_explanatory_depth_2023_2025_v6",
+  "validation_status": "retrospective_explanatory_extension_after_2025_review",
+  "offline_only": true,
+  "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "identity_model_config": "research/configs/four_team_2023_2025_bayesian_v3.json",
+  "event_stint_config": "research/configs/four_team_2023_2025_event_stint_v4.json",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "telemetry": {
+    "schema_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+    "session": "Race",
+    "years": [2023, 2024, 2025],
+    "traffic_gap_dirty_air_threshold_m": 120.0,
+    "traffic_gap_cap_m": 400.0,
+    "minimum_samples_per_lap": 40
+  },
+  "context_head": {
+    "baseline_numeric": ["lap_fraction", "lap_fraction_sq", "tyre_age", "tyre_age_sq"],
+    "candidate_features": ["compound_tyre_slope", "traffic_dirty_air"],
+    "ridge_alpha": 1.0,
+    "oos_gate": {
+      "selection_year": 2024,
+      "adaptation_races": 5,
+      "locked_year": 2025,
+      "metric": "driver_event_mae",
+      "tolerance": 0.005,
+      "note": "特征仅按 2024 时间外选择；2025 只作锁定报告，不参与选特征。"
+    }
+  },
+  "frontier": {
+    "race_ceiling_quantile": 0.10,
+    "qualifying_ceiling_quantile": 0.20,
+    "usable_baseline_quantile": 0.50,
+    "performance_floor_quantile": 0.90,
+    "weekend_session_weights": { "Qualifying": 0.65, "Race": 0.35 },
+    "half_normal_shortfall": true,
+    "half_normal_fastest_fraction": 0.10,
+    "half_normal_shortfall_cap_z": 0.30,
+    "fuel_correction": {
+      "minimum_stint_laps": 6,
+      "clean_air_quantile": 0.50,
+      "minimum_tyre_age_span": 3.0
+    },
+    "bootstrap_repetitions": 200,
+    "bootstrap_seed": 20260719,
+    "reference_lap_seconds": 90.0
+  },
+  "separation": {
+    "high_pair_confidence": 0.85,
+    "medium_pair_confidence": 0.70,
+    "separation_index_reference_high": 0.60,
+    "separation_index_reference_medium": 0.25,
+    "minimum_team_event_clean_laps": 12
+  },
+  "reconstruction": {
+    "rank_tolerance": 1,
+    "coverage_levels": [80, 95],
+    "anomaly_rank_gap": 2,
+    "classification_reference": "research/records/four_team_race_by_race_2023_2026_v5.json",
+    "classification_reference_role": "historical_classification_proxy_not_official_final_classification"
+  },
+  "boundaries": {
+    "absolute_qualifying_race_time_merge": false,
+    "setup_linkage": "parc_ferme_weekend_family_proxy_not_observed_setup_identity",
+    "ceiling_definition": "driver-neutral conditional statistical frontier with half-normal shortfall_not_physical_limit",
+    "fuel_correction_role": "empirical_low_fuel_projection_from_clean_early_stints_not_measured_fuel",
+    "rank_explanation_role": "pace_model_check_and_classification_proxy_gap_are_separate_constructs_result_gap_not_causally_attributed",
+    "unmodeled_result_causes": [
+      "strategy",
+      "traffic_and_dirty_air_beyond_proxy",
+      "safety_car_and_flags",
+      "damage_and_specification",
+      "reliability",
+      "penalties_and_post_race_revisions"
+    ]
+  },
+  "outputs": {
+    "result": "research/records/four_team_explanatory_depth_2023_2025_v6.json",
+    "summary": "research/records/four_team_explanatory_depth_2023_2025_v6.md",
+    "season_report_template": "research/records/four_team_explanatory_depth_{year}_v6.md",
+    "traffic_lap_metrics": "research/artifacts/data/four_team_traffic_lap_metrics_2023_2025_v6.csv.gz",
+    "traffic_manifest": "research/artifacts/four_team_traffic_lap_metrics_2023_2025_v6_manifest.json"
+  }
+}

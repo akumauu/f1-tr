@@ -1,0 +1,334 @@
+{
+  "schema_version": "reference-analysis-lab-record-manifest-v2",
+  "target_id": "gptempo-reverse-engineered-v1",
+  "status": "PUBLIC_METHOD_REIMPLEMENTED_ENDPOINT_VALIDATED",
+  "run_id": "20260731T213000+0800-gptempo-reverse-engineered-v1",
+  "report": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/gptempo_reverse_engineered_v1.json",
+    "sha256": "efc0f46f01c0250094acc606ba56479c6345d5c4bd278e6c2f2bd21736f31fcb",
+    "bytes": 2549146
+  },
+  "method_card": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/method_card.md",
+    "sha256": "465d6c308d655b24a8305fc34c6f375c8f8b2b5f6689465a8fbeaca86efea23e"
+  },
+  "data_gap_audit": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/data_gap_audit.md",
+    "sha256": "c642d4666e47e221419a658a7d50c08a1af25d0d8f70b599eed45deaa4cc7e0d"
+  },
+  "reference_difference": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/reference_difference.md",
+    "sha256": "e034cf3ce14348016ae6a93a53b895f7c2ce3622b75b981576e206cf4a7e1921"
+  },
+  "attempts": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/attempts.jsonl",
+    "sha256": "519254d2852aa242989813d4cf65ec381dd02031f1fd311784082a095e11e65e",
+    "resolved_groups": 1,
+    "skipped_after_3_attempts": 0
+  },
+  "sidecars": {
+    "laps": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/laps.csv",
+      "sha256": "6832b3193f7d05cae936146296ccc51730fc351e64b927f2871bfcc8793d8523",
+      "bytes": 1632,
+      "rows": 10,
+      "columns": [
+        "lap_id",
+        "session",
+        "driver",
+        "driver_number",
+        "team",
+        "lap_number",
+        "lap_duration_s",
+        "sector_times_s",
+        "compound",
+        "tyre_life",
+        "track_status",
+        "raw_sample_count",
+        "trimmed_sample_count",
+        "median_sample_interval_s",
+        "approx_sample_hz",
+        "distance_role"
+      ]
+    },
+    "display_traces": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/display_traces.csv",
+      "sha256": "5a1e438865170f3163aaf658d222296faea521a21b2429df9ba8bb07b7e9b3ce",
+      "bytes": 270333,
+      "rows": 4010,
+      "columns": [
+        "lap_id",
+        "session",
+        "driver",
+        "rel_distance",
+        "elapsed_s",
+        "speed_kph",
+        "throttle_pct",
+        "brake",
+        "gear",
+        "drs"
+      ]
+    },
+    "comparisons": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/comparisons.csv",
+      "sha256": "cd972a7748bac0d88232670e8aadf750900ccaa09c9ed662376de6fe52d21fd9",
+      "bytes": 14482,
+      "rows": 90,
+      "columns": [
+        "reference_lap_id",
+        "candidate_lap_id",
+        "expected_finish_delta_s",
+        "actual_finish_delta_s",
+        "finish_error_s",
+        "max_abs_sector_endpoint_error_s",
+        "endpoint_status",
+        "condition_status",
+        "condition_reasons"
+      ]
+    },
+    "sector_endpoints": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/sector_endpoints.csv",
+      "sha256": "25a725239e2868af24a7249979510459de014cdfb749fde37a873cf123afa294",
+      "bytes": 19324,
+      "rows": 270,
+      "columns": [
+        "reference_lap_id",
+        "candidate_lap_id",
+        "sector",
+        "reference_sector_time_s",
+        "candidate_sector_time_s",
+        "expected_cumulative_delta_s",
+        "actual_cumulative_delta_s",
+        "endpoint_error_s",
+        "reference_end_rel_distance",
+        "candidate_end_rel_distance"
+      ]
+    },
+    "track_geometry": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/track_geometry.csv",
+      "sha256": "7a2995b98468c6e881fd187e76326059a49fdd1c1604445f10a7fcd5dd436291",
+      "bytes": 33825,
+      "rows": 401,
+      "columns": [
+        "axis",
+        "x",
+        "y",
+        "source_points",
+        "role"
+      ]
+    },
+    "data_gap_audit": {
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/data_gap_audit.csv",
+      "sha256": "7ecd41b985e3de18d7de18e47896247aecf688337de50220c6edeb95dc282a5c",
+      "bytes": 823,
+      "rows": 6,
+      "columns": [
+        "required",
+        "repository",
+        "supplement",
+        "publish"
+      ]
+    }
+  },
+  "frontend_manifest": {
+    "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T213000+0800-gptempo-reverse-engineered-v1/manifest.json",
+    "sha256": "5dbf56e03a65e4bcca6ce415c456a87ce5bb9a26191cc362adab85095f120e68"
+  },
+  "source_identity": {
+    "run_id": "20260731T213000+0800-gptempo-reverse-engineered-v1",
+    "created_at": "2026-07-31T04:30:07.164929+00:00",
+    "primary_local": {
+      "qualifying": {
+        "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Qualifying/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+        "sha256": "6f8412fefdbeec7f5a27790c6d2063cfc9ab1f1dc0b7266fd2e5297088161451",
+        "rows": 395840,
+        "columns": [
+          "year",
+          "meeting",
+          "session",
+          "driver_acronym",
+          "driver_number",
+          "lap",
+          "sample_index",
+          "time",
+          "distance",
+          "rel_distance",
+          "speed",
+          "throttle",
+          "brake",
+          "gear",
+          "rpm",
+          "drs",
+          "x",
+          "y",
+          "z",
+          "acc_x",
+          "acc_y",
+          "acc_z",
+          "driver_ahead",
+          "distance_to_driver_ahead",
+          "lap_duration",
+          "compound",
+          "stint",
+          "tyre_life",
+          "fresh_tyre",
+          "team",
+          "position",
+          "track_status",
+          "deleted",
+          "is_accurate",
+          "lap_start_raw",
+          "data_key",
+          "source_file",
+          "source_commit"
+        ],
+        "source_commit": "f7a5324cae58"
+      },
+      "race": {
+        "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Race/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+        "sha256": "1fb05bd10f89a492ee1797040b2b4c23cb60eea709c44df747d4e9f2e0259601",
+        "rows": 784424,
+        "columns": [
+          "year",
+          "meeting",
+          "session",
+          "driver_acronym",
+          "driver_number",
+          "lap",
+          "sample_index",
+          "time",
+          "distance",
+          "rel_distance",
+          "speed",
+          "throttle",
+          "brake",
+          "gear",
+          "rpm",
+          "drs",
+          "x",
+          "y",
+          "z",
+          "acc_x",
+          "acc_y",
+          "acc_z",
+          "driver_ahead",
+          "distance_to_driver_ahead",
+          "lap_duration",
+          "compound",
+          "stint",
+          "tyre_life",
+          "fresh_tyre",
+          "team",
+          "position",
+          "track_status",
+          "deleted",
+          "is_accurate",
+          "lap_start_raw",
+          "data_key",
+          "source_file",
+          "source_commit"
+        ],
+        "source_commit": "f7a5324cae58"
+      }
+    },
+    "raw_car_channel": {
+      "qualifying": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_fastest_lap_car_data.json",
+        "sha256": "83d6173215e40bfb10f57f727ab188a567db48c3eeb659ca832755b36fd748d3",
+        "bytes": 1434376,
+        "rows": 6319
+      },
+      "race": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/gptempo/race_fastest_lap_car_data.json",
+        "sha256": "cad35eb60c00bb7d8e3a30ae91d380aa7225c455febdeef30a347553d7835212",
+        "bytes": 307269,
+        "rows": 1628
+      },
+      "role": "about 3.7 Hz public raw channel used for method-equivalent sampling; local expanded-v4 supplies geometry/condition"
+    },
+    "openf1_timing": {
+      "qualifying_laps": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_laps.json",
+        "sha256": "cb9d78874809074c0402c182a24b0fcd11eb83bfa543fcee5a0ecc455367eecb",
+        "bytes": 136380,
+        "rows": 286
+      },
+      "qualifying_drivers": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_drivers.json",
+        "sha256": "376892e2fdcc4bb09c6f4d737f02a52b374f5ab54abe64656e8068d3fc8d1b23",
+        "bytes": 8184,
+        "rows": 20
+      },
+      "race_laps": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_laps.json",
+        "sha256": "8a6a850686c75cde7620c8bea5f7882cc8205173941db7a03f21adde8d6afca2",
+        "bytes": 553912,
+        "rows": 1156
+      },
+      "race_drivers": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_drivers.json",
+        "sha256": "8032440666859103d5cf486e23a31ef87dba4e653f8cd9ee6eee35e086296ede",
+        "bytes": 8184,
+        "rows": 20
+      }
+    },
+    "gptempo_source_manifest": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/gptempo/source-manifest.json",
+      "sha256": "af605e38ff478e5b846b139d7cab0727a36dc781e7600a599bb6765149547e9e",
+      "captured_at": "2026-07-31T04:23:07.090874+00:00"
+    },
+    "v17_truth_reference": {
+      "path": "research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json",
+      "sha256": "9322064faee009e0e53d7ec345e9d25499f821658cdf05d497a74d233567658c",
+      "role": "coverage and non-identifiability boundary only"
+    }
+  },
+  "reference_identity": {
+    "about_url": "https://gp-tempo.com/about",
+    "x_profile_url": "https://x.com/f1_tempo_",
+    "captured_at": "2026-07-31T04:23:07.090874+00:00",
+    "about_html": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/gptempo/gp-tempo-about.html",
+      "sha256": "21d7e52798c9b7709b8d8a6692acd0c95e0fb0d6908966f0b0c70f27554464b6",
+      "bytes": 763,
+      "status": 200
+    },
+    "about_script": {
+      "url": "https://gp-tempo.com/assets/index-BAdvg-92.js",
+      "status": 200,
+      "path": ".runtime-cache/reference-analysis-lab-v2/gptempo/index-BAdvg-92.js",
+      "bytes": 565640,
+      "sha256": "58ed2cec81943cb702708c54c90711cca8b40ddea9742d7280378514ed5e5af5"
+    },
+    "x_profile": {
+      "url": "https://x.com/f1_tempo_",
+      "status": 200,
+      "path": ".runtime-cache/reference-analysis-lab-v2/gptempo/x-f1-tempo-profile.html",
+      "bytes": 219705,
+      "sha256": "967a7ab1d431a048f033f12d982ad8c03f7338cec4e223a7b0288cda8d243267"
+    },
+    "method_disclosure": "EXPLICIT_PUBLIC_THREE_STEP_DELTA_METHOD",
+    "numeric_reference_status": "NOT_APPLICABLE_PUBLIC_METHOD_PAGE_HAS_NO_FIXED_PILOT_VALUES",
+    "visual_license_boundary": "logic reimplemented; no source logo, font, screenshot or CSS is distributed in the product"
+  },
+  "validation": {
+    "status": "PASS",
+    "real_laps": 10,
+    "qualifying_laps": 5,
+    "race_laps": 5,
+    "synthetic_laps": 0,
+    "ordered_pair_comparisons": 90,
+    "comparable_default_pairs": 22,
+    "cross_session_warning_pairs": 50,
+    "sector_endpoint_checks": 270,
+    "max_abs_sector_endpoint_error_s": 0.0,
+    "finish_endpoint_checks": 90,
+    "max_official_sector_sum_error_s": 0.0,
+    "raw_sample_count": 3192,
+    "sample_hz_median": 4.167,
+    "sample_hz_min": 4.149,
+    "sample_hz_max": 4.167,
+    "default_selection_gate": "PASS",
+    "track_geometry_points": 401
+  }
+}

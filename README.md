@@ -1,34 +1,80 @@
 # F1 TR
 
-F1 TR 是一个用于 F1 赛后复盘的非严肃专业平台。它聚合全场比赛 Team Radio 原文与中文翻译、圈速数据，并基于圈速衍生计算圈速变化、轮胎衰退和关键阶段表现波动。
+F1 TR 是一个 F1 赛后复盘平台，聚合 Team Radio、圈速、轮胎 stint、位置和比赛事件，并提供圈速变化、stint 趋势、公开遥测解释与科研型车辆—车手分离实验。
 
-它的用途是帮助用户在赛后快速理解“比赛过程中发生了什么、车手和车队说了什么、圈速表现如何变化”。它不是官方技术分析工具，也不用于车队工程决策、判罚判断或高精度专业建模。
+产品定位是“辅助理解比赛”，不是官方技术分析、车队工程决策或高精度物理模型。当前交付形态为离线数据生产、静态 JSON 和浏览器 SPA；前端不直接连接 PostgreSQL，也不依赖公网常驻 API。
 
-当前项目是早期“离线数据生产 + 静态前端展示”系统。当前优先数据源是 Python FastF1 + 免认证 OpenF1 HTTP API，先从 2026 Barcelona-Catalunya Race 开始生成静态 JSON；Go/PostgreSQL 链路保留为后续数据库生产路径。
+## 文档入口
 
-开发交接与后续计划以以下文档为准：
+Agent 和开发者应先读 [文档地图与查询指南](docs/README.md)，再按任务读取对应主文档：
 
-- [开发技术统一文档](docs/technical-overview.md)
+- [产品与技术架构](docs/technical-overview.md)
+- [数据库、数据源与存储分层](docs/database.md)
+- [算法与模型说明](docs/algorithm-models.md)
+- [实现与验收结果](docs/implementation-results.md)
+- [当前进度与下一步](docs/progress.md)
 - [测试策略](docs/test-strategy.md)
-- [本地数据采集与代理调用说明](docs/local-data-pipeline.md)
-- [2026-07-18 本地存储瘦身报告](docs/storage-cleanup-20260718.md)
 
-当前已知状态：
+`docs/work-log.md`、`research/records/research_log.md` 和带日期报告是历史证据，不是当前状态入口。
 
-- 后端架构骨架存在，P0 编译阻断已修复。
-- 本机 shell 已安装 Go 1.22.2，`go test ./...` 已通过。
-- `cmd/exporter` 已实现基础静态 JSON 导出能力，Go 单元测试覆盖 manifest 和 session 文件合同。
-- `tools/export_catalunya_static.py` 已实现 Catalunya 默认采集器，目标为 `meeting_key=1287`、`session_key=11307`。
-- 前端 sample 数据已替换为 OpenF1 Catalunya Race：22 位车手、358 圈、70 段 stint、40 条 TR 音频记录。
-- `frontend` 已实现基础静态 SPA，`npm run build`、`npm test` 和本地浏览器 smoke test 已通过。
-- 本机 shell 仍缺少 `docker`，PostgreSQL 端到端运行尚未验收。
-- v1 先收束为 Python/Go CLI + 静态 JSON + 前端 SPA；公网不部署常驻 API 服务。
-- 前端部署目标是 GitHub Pages，读取导出的 JSON 后在浏览器内完成分站/session 切换、车手筛选、圈数筛选、TR 搜索和图表交互。
-- Cloudflare Workers、音频代理、音频播放、STT 音频转文字延后。
-- 2026-07-07 进度：live review 前端已中文化并加入洞察卡片；MultiViewer 本地 API 采集脚本已补齐；本地仓库已瘦身，`.git` 从约 1.2GB 降到约 0.37MB，原始采集数据和运行日志只保留在本地，不进入 Git 历史。
+## 代码入口
 
-仓库体积约定：
+```text
+backend/    Go CLI、本地调试 API、PostgreSQL 连接与 migrations
+tools/      OpenF1/FastF1/MultiViewer 采集、入库、规范化、导出和清理
+frontend/   静态 SPA 与可发布精简数据
+research/   冻结数据、模型实验、配置和结果
+tests/      Python 工程合同与数据链路测试
+docs/       架构、数据库、算法、结果、进度和专题说明
+```
 
-- Git 只保留源码、文档、构建脚本和可发布的精简 sample 数据。
-- `data/raw/`、`data/logs/`、`.playwright-mcp/` 和 `MultiViewer/` 都是本地产物，默认忽略。
-- 需要共享完整原始采集包时，优先使用 GitHub Release、外部对象存储或 Git LFS，避免直接提交到主分支历史。
+## 快速验证
+
+```powershell
+# Python
+python -m unittest discover -s tests
+
+# Go
+Push-Location backend
+$env:GOTOOLCHAIN="local"
+$env:GOSUMDB="off"
+go test ./...
+Pop-Location
+
+# 前端
+Push-Location frontend
+npm run build
+npm test
+npm run dev
+Pop-Location
+```
+
+数据页面必须通过 HTTP 打开；本地入口为
+`http://127.0.0.1:5173/`、`/telemetry-workbench.html` 和
+`/live-review.html`。不要直接打开 `frontend/src/*.html`。
+
+生成 Catalunya 默认静态数据：
+
+```powershell
+python tools\export_catalunya_static.py --out frontend\public\data
+```
+
+生成 2026 四站同队遥测报告和工作台数据：
+
+```powershell
+python research\run_2026_telemetry_batch.py --quiet
+python tools\export_telemetry_workbench.py `
+  --report research\records\telemetry_explanation_2026_australia_ferrari_v7.json `
+  --report research\records\telemetry_explanation_2026_china_ferrari_v7.json `
+  --report research\records\telemetry_explanation_2026_japan_ferrari_v7.json `
+  --report research\records\telemetry_explanation_2026_miami_ferrari_v7.json
+```
+
+数据库、代理和多数据源命令见 [数据库文档](docs/database.md)。
+
+## 仓库体积约定
+
+- Git 保留源码、文档、脚本、manifest、机器可读研究结果和精简 sample。
+- `data/raw/`、`data/logs/`、`.fastf1-cache/`、`.playwright-mcp/`、`MultiViewer/`、`research/cache/` 和本地冻结大文件不进入普通 Git 历史。
+- TracingInsights 历史冻结实验绑定 expanded v4；需要 raw 状态与绝对时间的新遥测解释使用 expanded v5。PostgreSQL 逐点遥测表只是可丢弃缓存。
+- 大体积原始包通过 Release、对象存储或 Git LFS 共享。

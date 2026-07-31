@@ -1,5 +1,7 @@
 # F1 TR 工作留痕
 
+> 本文是追加式历史日志，不是当前状态入口。当前进度见 [`progress.md`](progress.md)，已验证实现见 [`implementation-results.md`](implementation-results.md)，文档查询路由见 [`README.md`](README.md)。
+
 ## 2026-06-22 16:18 CST
 
 ### Step 1：环境与目标复核
@@ -219,3 +221,16 @@
   - 分支：`main`
   - 提交：`0bca725`
 - 后续待办：确认 GitHub Pages 发布配置和线上页面加载结果。
+
+## 2026-07-19 17:30 CST
+
+### Step 18：v6 可解释深度层（更强上下文 / 分离度 / 毫秒重建 / 理论上限）
+
+- 目标：让"每场/每 stint 特征值更明显"由更干净的上下文与显式信号/噪声**赚取**，并客观验证车辆+车手分解能否解释实际圈速与名次；复用 v3 Gibbs 骨架，不改 v2–v5 对外行为。
+- 新增：`research/modeling/explanatory_depth.py`、`research/run_four_team_explanatory_depth.py`、`research/configs/four_team_explanatory_depth_v6.json`、`tests/test_four_team_explanatory_depth.py`。
+- Layer A：从扩展 v4 遥测 parquet 逐圈提取 `distance_to_driver_ahead` 作 dirty-air 代理（全场，`(year,meeting,driver,lap)` 键 merge，94.7% 圈匹配），缓存到 `four_team_traffic_lap_metrics_2023_2025_v6.csv.gz`。上下文特征只按 2024 时间外 `driver×event` MAE 选：`traffic_dirty_air` 保留（2024 0.747→0.728、2025 锁定 0.719→0.677），`compound_tyre_slope` 退化被拒并写入 `context_gate.feature_trace`。
+- Layer B：队间/队内方差比 + 复用 Gibbs `team_event` 后验成对排序置信度定级；Hungarian 0.922 / Qatar 0.896 判 high，US 0.645 / Las Vegas 0.666 判 low。修复过程中发现并修正 rank 方向反转（`<`→`>`）。
+- Layer C：driver-event 加性毫秒分解 + 重建 R²=0.562、MAE≈274.7 ms、名次构念 Spearman 0.821、106 例"名次≠配速"异常。
+- Layer D：只看最快 10% 圈的 half-normal 执行损失校正（硬上限封顶，修复排位异质慢圈把上限抬到 z≈3 的初版缺陷），Q/R 分开再 0.65/0.35 融合成带 CI 的理论上限。
+- 验证：`--quick` 冒烟通过；全量 4 链×600、最大尺度 R-hat=1.020；`pytest tests/test_four_team_explanatory_depth.py` 7/7、全量 `pytest tests` 70/70，无回归。产物为 `research/records/four_team_explanatory_depth_2023_2025_v6.{json,md}` 与 traffic manifest。
+- 边界：所有"更明显"来自上下文剥离与显式分离度，未改 v3 先验；名次构念只判断配速能否解释名次，策略/可靠性/交通/事故未进入因果赛果；2025 已查看，标记为回顾性解释扩展，不冒充赛前预测。

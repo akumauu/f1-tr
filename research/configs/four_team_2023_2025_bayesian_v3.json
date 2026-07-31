@@ -1,0 +1,78 @@
+{
+  "experiment_name": "four_team_bayesian_counterfactual_2023_2025_v3",
+  "validation_status": "retrospective_bayesian_cross_check",
+  "offline_only": true,
+  "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "context_model": {
+    "candidate_id": "balanced_v1",
+    "blocks": ["compound", "circuit"],
+    "purpose": "只去除轮胎、赛道与圈次阶段上下文，不含车队或车手标签"
+  },
+  "aggregation": {
+    "unit": "driver_event",
+    "location": "huber_all_clean_laps",
+    "huber_k": 1.5,
+    "iterations": 8,
+    "standard_error_floor_z": 0.04,
+    "maximum_relative_precision": 8.0
+  },
+  "posterior": {
+    "blocks": [
+      "team_year",
+      "team_circuit",
+      "team_event",
+      "driver",
+      "driver_year",
+      "driver_team"
+    ],
+    "chains": 4,
+    "iterations": 6000,
+    "warmup": 3000,
+    "thin": 5,
+    "random_seed": 20260718,
+    "intercept_prior_sd_z": 2.0,
+    "noise_prior": {"shape": 3.0, "scale_sd_z": 0.70},
+    "block_prior_sd_z": {
+      "team_year": 0.50,
+      "team_circuit": 0.24,
+      "team_event": 0.28,
+      "driver": 0.40,
+      "driver_year": 0.20,
+      "driver_team": 0.12
+    },
+    "variance_prior_shape": 3.0
+  },
+  "sensitivity": {
+    "interaction_tight": {"driver_team": 0.06},
+    "interaction_wide": {"driver_team": 0.24},
+    "chains": 4,
+    "iterations": 3000,
+    "warmup": 1500,
+    "thin": 5
+  },
+  "time_forward": {
+    "chains": 4,
+    "iterations": 5000,
+    "warmup": 2500,
+    "thin": 5
+  },
+  "influence_checks": {
+    "year": 2025,
+    "team": "Red Bull Racing",
+    "exclusions": {
+      "without_ver": ["VER"],
+      "without_other_rb_drivers": ["LAW", "TSU"]
+    },
+    "chains": 4,
+    "iterations": 3000,
+    "warmup": 1500,
+    "thin": 5
+  },
+  "counterfactuals": {
+    "car": "driver、driver_year、driver_team 全部固定为零参考；比较 team_year + 等赛道 team_circuit + 赛季内 team_event 均值",
+    "driver": "四队等权参考赛车且 driver_team 固定为零；比较 driver + driver_year",
+    "interaction": "driver_team 单独报告，不并入纯车手评分",
+    "reference_lap_seconds": 90.0
+  }
+}

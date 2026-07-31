@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { requireOfficialTeamIdentity } from "../frontend/src/official-team-colours.js";
 
 const ROOT = process.cwd();
 const RAW_DIR = path.join(ROOT, "data", "raw");
@@ -35,14 +36,43 @@ const DRIVER_NAME_TO_TLA = {
   "Lance Stroll": "STR",
   "Max Verstappen": "VER",
 };
-const TEAM_COLORS = {
-  RUS: "#27f4d2", HAM: "#e80020", LEC: "#e80020", VER: "#3671c6",
-  NOR: "#ff8000", PIA: "#ff8000", ANT: "#27f4d2", ALO: "#229971",
-  STR: "#229971", GAS: "#0093cc", COL: "#0093cc", SAI: "#64c4ff",
-  ALB: "#64c4ff", OCO: "#b6babd", BEA: "#b6babd", HUL: "#52e252",
-  BOR: "#52e252", LAW: "#6692ff", HAD: "#6692ff", PER: "#2b4562",
-  BOT: "#2b4562", LIN: "#8b5cf6",
-};
+const DRIVER_TEAMS_2026_AUSTRIA = Object.freeze({
+  ALB: "Williams",
+  ALO: "Aston Martin",
+  ANT: "Mercedes",
+  BEA: "Haas F1 Team",
+  BOR: "Audi",
+  BOT: "Cadillac",
+  COL: "Alpine",
+  GAS: "Alpine",
+  HAD: "Red Bull Racing",
+  HAM: "Ferrari",
+  HUL: "Audi",
+  LAW: "Racing Bulls",
+  LEC: "Ferrari",
+  LIN: "Racing Bulls",
+  NOR: "McLaren",
+  OCO: "Haas F1 Team",
+  PER: "Cadillac",
+  PIA: "McLaren",
+  RUS: "Mercedes",
+  SAI: "Williams",
+  STR: "Aston Martin",
+  VER: "Red Bull Racing",
+});
+
+function officialDriverIdentity(tla) {
+  const teamName = DRIVER_TEAMS_2026_AUSTRIA[tla];
+  if (!teamName) {
+    throw new Error(`2026 奥地利站缺少车手车队身份：${tla}`);
+  }
+  const identity = requireOfficialTeamIdentity(2026, teamName);
+  return {
+    tla,
+    team: identity.name,
+    team_key: identity.key,
+  };
+}
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -226,10 +256,11 @@ function main() {
 
   const payload = {
     generated_at: new Date().toISOString(),
+    year: 2026,
     title: "2026 Austrian Grand Prix",
     session: "Race",
     quality_note: "圈速/三段来自 MultiViewer Live Timing 文本快照重建；早段缺口通常来自采集启动时间，后段已兼容两段式倒计时。",
-    drivers: drivers.map((tla) => ({ tla, color: TEAM_COLORS[tla] ?? "#7f8aa0" })),
+    drivers: drivers.map(officialDriverIdentity),
     laps,
     lap_rows: lapRows,
     radios,

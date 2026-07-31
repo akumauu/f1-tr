@@ -1,0 +1,68 @@
+{
+  "schema_version": "reference-analysis-acceptance-manifest-v1",
+  "target_id": "gptempo-reverse-engineered-v1",
+  "run_id": "20260731T213000+0800-gptempo-reverse-engineered-v1",
+  "status": "PASS",
+  "base_manifest": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/manifest.json",
+    "sha256": "9752518d3b571a1f59c1216fab7f20fa82ef8db0ac1013897fb538cc51463377"
+  },
+  "report": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/gptempo_reverse_engineered_v1.json",
+    "sha256": "efc0f46f01c0250094acc606ba56479c6345d5c4bd278e6c2f2bd21736f31fcb"
+  },
+  "browser_acceptance": {
+    "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/browser_acceptance.json",
+    "sha256": "5dd4c3faabca126405abba4ccea668f62d395c741040b062c0ca23f9560298b7"
+  },
+  "commands": [
+    {
+      "command": "python -m pytest tests/test_reference_analysis_lab.py -q",
+      "result": "36 passed"
+    },
+    {
+      "command": "npm run build",
+      "cwd": "frontend",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "cwd": "frontend",
+      "result": "Frontend build contract OK"
+    }
+  ],
+  "screenshots": {
+    "desktop_visual": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\gptempo-ui-smoke\\gptempo-v1-desktop-visual.png",
+      "bytes": 1063431,
+      "sha256": "3cd76f892780a889eda4e3a05a22cebad7c8c6287b566203f862d69272618f86",
+      "width": 1425,
+      "height": 3596
+    },
+    "desktop_audit": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\gptempo-ui-smoke\\gptempo-v1-desktop-audit.png",
+      "bytes": 1285968,
+      "sha256": "6a774305c55152ef7e73a7e6a19f4dbd44b325eeec851b434d67afa3ed0add18",
+      "width": 1425,
+      "height": 2972
+    },
+    "mobile_visual_390": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\gptempo-ui-smoke\\gptempo-v1-mobile-390.png",
+      "bytes": 612308,
+      "sha256": "da8c1456d78f7c78f0ceca55b7b9df0f4b610a7a068d9d16345b2f763c6d2ad1",
+      "width": 390,
+      "height": 5123
+    }
+  },
+  "gates": {
+    "runtime_status": "PASS",
+    "hash_identity": "PASS",
+    "sector_endpoint_contract": "PASS",
+    "hover_track_link": "PASS",
+    "race_default_comparable": "PASS",
+    "cross_session_warning": "PASS",
+    "desktop_visual": "PASS",
+    "desktop_audit": "PASS",
+    "mobile_390_no_horizontal_overflow": "PASS"
+  }
+}

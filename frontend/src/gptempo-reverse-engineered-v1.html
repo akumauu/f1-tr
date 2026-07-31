@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="gptempo-reverse-engineered-v1.css?v=20260731-gpt-v1">
+    <title>GP Tempo 分段 Delta 复刻 v1 · F1 TR</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="reference-analysis-lab.html">
+        <span class="brandMark">Δ3</span>
+        <span>F1 TR · GP Tempo method lab</span>
+      </a>
+      <nav aria-label="本地导航">
+        <a href="f1pace-reverse-engineered-v2.html">F1pace</a>
+        <a href="track-validation-v3.html">23–25 验证</a>
+        <a href="f1telemetrydata-reverse-engineered-v1.html">F1TelemetryData</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="loadStatus">加载中</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">PUBLIC METHOD REIMPLEMENTATION · THREE HARD SECTORS</p>
+          <h1>段内可以估，端点必须真。</h1>
+          <p class="heroLead">
+            真实 2025 Abu Dhabi Qualifying / Race 遥测。每个 sector 内按距离线性对齐，
+            再把时间轴缩放到官方分段计时；约 4 Hz 只决定曲线形状，三个官方端点决定
+            Delta 真值。速度、油门、刹车、挡位、DRS 与赛道位置共享同一距离游标。
+          </p>
+        </div>
+        <div class="heroMeta">
+          <a href="https://gp-tempo.com/about" target="_blank" rel="noreferrer">GP Tempo 公开方法页 ↗</a>
+          <a href="https://x.com/f1_tempo_" target="_blank" rel="noreferrer">X @f1_tempo_ ↗</a>
+          <span>公开方法明确 · 视觉系统独立重画</span>
+          <span id="heroStatus">PUBLIC_METHOD_REIMPLEMENTED</span>
+        </div>
+      </section>
+
+      <section class="viewBar">
+        <span>
+          <strong>visual_replication</strong> 复现交互语义；
+          <strong>audited_analysis</strong> 验证端点、条件门和不可识别项。
+        </span>
+        <div class="tabs" role="tablist">
+          <button id="visualTab" aria-selected="true">visual_replication</button>
+          <button id="auditTab" aria-selected="false">audited_analysis</button>
+        </div>
+      </section>
+
+      <section id="metricGrid" class="metricGrid"></section>
+
+      <section id="visualPanel">
+        <article class="panel controlsPanel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">LAP SELECTION</p>
+              <h2>选择同 session 圈，或显式进入跨 session 模式</h2>
+            </div>
+            <span id="referencePill" class="pill ok">reference · 自动最快</span>
+          </div>
+          <div class="selectionGrid">
+            <label>
+              <span>比较模式</span>
+              <select id="sessionMode">
+                <option value="Qualifying">Qualifying · 默认同配方/胎龄</option>
+                <option value="Race">Race · 默认共同轮胎支持</option>
+                <option value="Cross-session">Cross-session · 条件警告</option>
+              </select>
+            </label>
+            <label><span>圈 A</span><select id="lapA"></select></label>
+            <label><span>圈 B</span><select id="lapB"></select></label>
+            <label><span>圈 C</span><select id="lapC"></select></label>
+          </div>
+          <div id="conditionBanner" class="conditionBanner"></div>
+          <div id="selectedLapCards" class="selectedLapCards"></div>
+        </article>
+
+        <article class="panel telemetryPanel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">SYNCHRONISED TELEMETRY</p>
+              <h2>Speed · Throttle · Brake · Gear · DRS</h2>
+            </div>
+            <span class="pill warn">≈ 4 Hz · 段内形状估计</span>
+          </div>
+          <div class="telemetryLayout">
+            <div>
+              <div id="telemetryChart" class="chartBox telemetryChart" role="img" aria-label="多车手同步遥测图"></div>
+              <div id="hoverReadout" class="hoverReadout">移动指针或点按图表查看同距离数据</div>
+            </div>
+            <div>
+              <div id="trackMap" class="trackMap" role="img" aria-label="与遥测距离联动的赛道位置"></div>
+              <div id="trackReadout" class="trackReadout"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">SECTOR-CONSTRAINED DELTA</p>
+              <h2>候选圈 − 最快所选参考圈</h2>
+            </div>
+            <span class="pill ok">S1 / S2 / S3 ENDPOINTS EXACT</span>
+          </div>
+          <p class="panelIntro">
+            正值表示候选圈在该处落后。虚线为官方 sector 端点；端点之外的曲线形状是
+            距离插值和时间缩放结果，不是高频实测真值。
+          </p>
+          <div id="deltaChart" class="chartBox deltaChart" role="img" aria-label="官方分段端点约束 Delta 图"></div>
+          <div id="endpointCards" class="endpointCards"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">METHOD CARD</p><h2>公开三步法与本次实现身份</h2></div>
+            <span class="pill ok">EXPLICIT PUBLIC METHOD</span>
+          </div>
+          <div class="methodSteps">
+            <article><span>01</span><h3>官方分段</h3><p>用三段官方时间切分每圈，sector 边界是硬约束。</p></article>
+            <article><span>02</span><h3>距离对齐</h3><p>每段内把候选圈距离线性映射到参考圈的距离样本。</p></article>
+            <article><span>03</span><h3>时间缩放</h3><p>每段时间做仿射缩放，首尾严格闭合到官方累计差。</p></article>
+            <article><span>04</span><h3>条件解释</h3><p>跨 session 的 Delta 混合轮胎、燃油、天气与赛道演化。</p></article>
+          </div>
+        </article>
+      </section>
+
+      <section id="auditPanel" hidden>
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">ENDPOINT ACCEPTANCE</p><h2>270 个官方 sector 端点逐一闭合</h2></div>
+            <span class="pill ok">PASS</span>
+          </div>
+          <div id="validationGrid" class="validationGrid"></div>
+          <div class="auditNote">
+            端点误差为零只证明分段约束正确，不证明段内每个制动点或油门点精确。
+            约 4 Hz 意味着事件时刻可能相差约一个采样间隔。
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">PAIR LEDGER</p><h2>全部 90 个有序圈对的端点与条件状态</h2></div>
+            <span class="pill warn">跨 session 50 对</span>
+          </div>
+          <div class="tableWrap"><table id="comparisonTable"></table></div>
+        </article>
+
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">SOURCE IDENTITY</p><h2>公开方法、原始通道与本地几何的冻结身份</h2></div>
+          </div>
+          <div id="sourceCards" class="sourceCards"></div>
+        </article>
+      </section>
+
+      <article class="panel">
+        <div class="panelHeader">
+          <div><p class="eyebrow">DATA-GAP AUDIT</p><h2>当前字段、补充来源和发布边界</h2></div>
+        </div>
+        <div class="tableWrap"><table id="dataGapTable"></table></div>
+      </article>
+
+      <footer>
+        <span id="identityFooter">实验身份读取中</span>
+        <span>独立实现逻辑 · 不复制 GP Tempo logo、品牌字体、截图或 CSS</span>
+      </footer>
+    </main>
+
+    <script
+      src="data-page-entry.js?v=20260726-runtime-v1"
+      data-page="gptempo-reverse-engineered-v1.html"
+      data-module="gptempo-reverse-engineered-v1.js?v=20260731-gpt-v1"
+    ></script>
+  </body>
+</html>

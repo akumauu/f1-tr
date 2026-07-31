@@ -1,0 +1,107 @@
+{
+  "experiment_name": "four_team_2025_contrast_stress_v1",
+  "validation_status": "post_hoc_outcome_selected_explanatory_stress_test",
+  "entity_alias_config": "research/configs/entity_aliases.json",
+  "historical_manifest": "research/artifacts/data_manifest.json",
+  "historical_file_role": "train",
+  "historical_year": 2024,
+  "historical_ridge_alpha": 10.0,
+  "target_manifest": "research/artifacts/data_manifest.json",
+  "target_file_role": "validation",
+  "target_year": 2025,
+  "session_name": "Race",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "model": {
+    "team_penalty": 10.0,
+    "driver_event_update_penalty": 100.0,
+    "team_penalty_sensitivity": [5.0, 10.0, 25.0],
+    "driver_event_update_penalty_sensitivity": [50.0, 100.0, 250.0],
+    "ceiling_quantile": 0.10,
+    "baseline_quantile": 0.50,
+    "floor_quantile": 0.90
+  },
+  "external_validation": {
+    "provider": "Jolpica Ergast-compatible API",
+    "fallback_reason": "OpenF1 returned HTTP 401 and FastF1 timing download failed on 2026-07-18",
+    "method": "mean_of_two_driver_official_fastest_laps"
+  },
+  "races": [
+    {
+      "meeting_name": "Miami Grand Prix",
+      "round": 6,
+      "location": "Miami",
+      "country_name": "United States",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "迈凯伦包揽前二，且冠军优势明显。",
+      "winner_driver": "PIA",
+      "winner_team": "McLaren",
+      "podium_teams": ["McLaren", "McLaren", "Mercedes"],
+      "result_source_url": "https://www.formula1.com/en/results/2025/races/1259/miami/race-result"
+    },
+    {
+      "meeting_name": "Spanish Grand Prix",
+      "round": 9,
+      "location": "Barcelona",
+      "country_name": "Spain",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "迈凯伦包揽前二，围场观感也是其赛车优势清晰。",
+      "winner_driver": "PIA",
+      "winner_team": "McLaren",
+      "podium_teams": ["McLaren", "McLaren", "Ferrari"],
+      "result_source_url": "https://www.formula1.com/en/racing/2025/spain"
+    },
+    {
+      "meeting_name": "Mexico City Grand Prix",
+      "round": 20,
+      "location": "Mexico City",
+      "country_name": "Mexico",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "诺里斯以约三十秒优势获胜，单车统治性观感很强。",
+      "winner_driver": "NOR",
+      "winner_team": "McLaren",
+      "podium_teams": ["McLaren", "Ferrari", "Red Bull Racing"],
+      "result_source_url": "https://www.formula1.com/en/racing/2025/mexico"
+    },
+    {
+      "meeting_name": "Canadian Grand Prix",
+      "round": 10,
+      "location": "Montréal",
+      "country_name": "Canada",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "梅赛德斯一三，迈凯伦仅第四且另一车退赛。",
+      "winner_driver": "RUS",
+      "winner_team": "Mercedes",
+      "podium_teams": ["Mercedes", "Red Bull Racing", "Mercedes"],
+      "result_source_url": "https://www.formula1.com/en/results/2025/races/1263/canada/race-result"
+    },
+    {
+      "meeting_name": "Japanese Grand Prix",
+      "round": 3,
+      "location": "Suzuka",
+      "country_name": "Japan",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "维斯塔潘击败两辆迈凯伦夺冠，但队友仅第十二。",
+      "winner_driver": "VER",
+      "winner_team": "Red Bull Racing",
+      "podium_teams": ["Red Bull Racing", "McLaren", "McLaren"],
+      "result_source_url": "https://www.formula1.com/en/results/2025/races/1256/japan/race-result"
+    },
+    {
+      "meeting_name": "Italian Grand Prix",
+      "round": 16,
+      "location": "Monza",
+      "country_name": "Italy",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "维斯塔潘以明显优势击败两辆迈凯伦，但队友未进入前列。",
+      "winner_driver": "VER",
+      "winner_team": "Red Bull Racing",
+      "podium_teams": ["Red Bull Racing", "McLaren", "McLaren"],
+      "result_source_url": "https://www.formula1.com/en/racing/2025/italy/news?page=12"
+    }
+  ],
+  "limitations": [
+    "六场比赛按已知赛果与公众观感事后挑选，只能用于解释和寻找反例，不能作为确认性准确率。",
+    "模型使用正赛有效圈，冠军与领奖台还受排位、赛道位置、策略、安全车、事故和可靠性影响。",
+    "Jolpica 官方最快圈代理未参与拟合，但单一最快圈受轮胎、燃油、交通和策略影响，且可能与上游共享官方计时源，不能视为车辆能力真值。"
+  ]
+}

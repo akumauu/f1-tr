@@ -1,0 +1,1973 @@
+{
+  "run_id": "four_team_car_driver_attribution_hungary_2025_v1-20260718T175425",
+  "created_at": "2026-07-18T17:55:08+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "four_team_car_driver_attribution_hungary_2025_v1",
+    "max_attempts": 3,
+    "validation_status": "exploratory_single_race_m0_m1",
+    "parent_config": "research/configs/2024_train_2025_validate.json",
+    "entity_alias_config": "research/configs/entity_aliases.json",
+    "historical_manifest": "research/artifacts/data_manifest.json",
+    "historical_file_role": "train",
+    "historical_year": 2024,
+    "historical_ridge_alpha": 10.0,
+    "target_manifest": "research/artifacts/data_manifest.json",
+    "target_file_role": "validation",
+    "target_year": 2025,
+    "session_name": "Race",
+    "reporting_teams": [
+      "McLaren",
+      "Red Bull Racing",
+      "Ferrari",
+      "Mercedes"
+    ],
+    "identification_scope": "all_teams",
+    "meeting_selection": {
+      "method": "complete_grid_then_maximize_minimum_driver_laps_times_one_minus_cv",
+      "selected_meeting": "Hungarian Grand Prix",
+      "selected_before_model_outcomes": true
+    },
+    "model": {
+      "team_penalty": 10.0,
+      "driver_event_update_penalty": 100.0,
+      "team_penalty_sensitivity": [
+        5.0,
+        10.0,
+        25.0
+      ],
+      "driver_event_update_penalty_sensitivity": [
+        50.0,
+        100.0,
+        250.0
+      ],
+      "ceiling_quantile": 0.1,
+      "baseline_quantile": 0.5,
+      "floor_quantile": 0.9
+    },
+    "bootstrap": {
+      "repetitions": 300,
+      "random_seed": 20250803,
+      "unit": "driver_then_stint_then_lap"
+    },
+    "external_validation": {
+      "provider": "OpenF1",
+      "year": 2025,
+      "country_name": "Hungary",
+      "session_name": "Race",
+      "fastest_fraction": 0.25,
+      "cache_dir": "research/cache/external/openf1_2025_hungary_race",
+      "fia_reference": "research/external/fia_hungary_2025_reference.json"
+    },
+    "cleaning": {
+      "minimum_lap_number": 3,
+      "minimum_lap_duration_seconds": 74.0,
+      "maximum_lap_duration_seconds": 95.0,
+      "robust_mad_multiplier": 6.0,
+      "dry_compounds": [
+        "SOFT",
+        "MEDIUM",
+        "HARD"
+      ]
+    },
+    "limitations": [
+      "单站车手当站更新与人车交互共线，只能作为强收缩代理。",
+      "bootstrap 区间不是贝叶斯后验区间。",
+      "当前只实现圈级 Race 原型，尚无赛段类型、排位、策略、可靠性和积分模型。",
+      "2025 已经被查看，因此本结果是探索性开发证据，不是确认性验证。"
+    ]
+  },
+  "config_hash": "fd472f3a0202decae9b245de811d38e7ebf67feb5da2ab769433dac5bcd4014d",
+  "methodological_status": "exploratory_single_race_m0_m1",
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.5.2"
+  },
+  "data_identity": {
+    "historical_manifest_path": "research/artifacts/data_manifest.json",
+    "historical_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "historical_file_sha256": "8a2b28213e01faa27552d82c87e229d55fb5d40039af31f192f171cdf41b5dce",
+    "target_manifest_path": "research/artifacts/data_manifest.json",
+    "target_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "target_file_sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671",
+    "target_source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6"
+  },
+  "meeting_selection": {
+    "method": "complete_grid_then_maximize_minimum_driver_laps_times_one_minus_cv",
+    "selected": {
+      "meeting_name": "Hungarian Grand Prix",
+      "drivers": 8,
+      "teams": 4,
+      "clean_laps": 519,
+      "minimum_driver_clean_laps": 64,
+      "maximum_driver_clean_laps": 66,
+      "driver_lap_count_cv": 0.009878534789389683,
+      "balance_score": 63.36777377347906,
+      "complete_four_team_grid": true
+    },
+    "ranking": [
+      {
+        "meeting_name": "Hungarian Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 519,
+        "minimum_driver_clean_laps": 64,
+        "maximum_driver_clean_laps": 66,
+        "driver_lap_count_cv": 0.009878534789389683,
+        "balance_score": 63.36777377347906,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Mexico City Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 495,
+        "minimum_driver_clean_laps": 59,
+        "maximum_driver_clean_laps": 64,
+        "driver_lap_count_cv": 0.030466131533383314,
+        "balance_score": 57.202498239530385,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Monaco Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 506,
+        "minimum_driver_clean_laps": 59,
+        "maximum_driver_clean_laps": 65,
+        "driver_lap_count_cv": 0.03755683602104098,
+        "balance_score": 56.78414667475858,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Canadian Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 472,
+        "minimum_driver_clean_laps": 57,
+        "maximum_driver_clean_laps": 61,
+        "driver_lap_count_cv": 0.02025811202261684,
+        "balance_score": 55.84528761471084,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Singapore Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 444,
+        "minimum_driver_clean_laps": 52,
+        "maximum_driver_clean_laps": 57,
+        "driver_lap_count_cv": 0.02889310723377561,
+        "balance_score": 50.49755842384367,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Abu Dhabi Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 421,
+        "minimum_driver_clean_laps": 50,
+        "maximum_driver_clean_laps": 55,
+        "driver_lap_count_cv": 0.030365602064739865,
+        "balance_score": 48.48171989676301,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Japanese Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 395,
+        "minimum_driver_clean_laps": 48,
+        "maximum_driver_clean_laps": 50,
+        "driver_lap_count_cv": 0.015068836640867746,
+        "balance_score": 47.27669584123835,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Chinese Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 403,
+        "minimum_driver_clean_laps": 48,
+        "maximum_driver_clean_laps": 51,
+        "driver_lap_count_cv": 0.023577864797328454,
+        "balance_score": 46.86826248972823,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Italian Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 385,
+        "minimum_driver_clean_laps": 46,
+        "maximum_driver_clean_laps": 49,
+        "driver_lap_count_cv": 0.020592856290184206,
+        "balance_score": 45.05272861065153,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Qatar Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 385,
+        "minimum_driver_clean_laps": 46,
+        "maximum_driver_clean_laps": 50,
+        "driver_lap_count_cv": 0.030290659194001562,
+        "balance_score": 44.60662967707593,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Spanish Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 425,
+        "minimum_driver_clean_laps": 46,
+        "maximum_driver_clean_laps": 55,
+        "driver_lap_count_cv": 0.05989610381815461,
+        "balance_score": 43.24477922436489,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "United States Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 372,
+        "minimum_driver_clean_laps": 44,
+        "maximum_driver_clean_laps": 49,
+        "driver_lap_count_cv": 0.038124957437759927,
+        "balance_score": 42.32250187273856,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Las Vegas Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 346,
+        "minimum_driver_clean_laps": 43,
+        "maximum_driver_clean_laps": 45,
+        "driver_lap_count_cv": 0.016349289738417285,
+        "balance_score": 42.296980541248054,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Emilia Romagna Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 386,
+        "minimum_driver_clean_laps": 40,
+        "maximum_driver_clean_laps": 51,
+        "driver_lap_count_cv": 0.07243304114122912,
+        "balance_score": 37.102678354350836,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Miami Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 232,
+        "minimum_driver_clean_laps": 27,
+        "maximum_driver_clean_laps": 31,
+        "driver_lap_count_cv": 0.04514852901434325,
+        "balance_score": 25.78098971661273,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Bahrain Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 362,
+        "minimum_driver_clean_laps": 30,
+        "maximum_driver_clean_laps": 49,
+        "driver_lap_count_cv": 0.14113523565750347,
+        "balance_score": 25.765942930274896,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Dutch Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 381,
+        "minimum_driver_clean_laps": 21,
+        "maximum_driver_clean_laps": 55,
+        "driver_lap_count_cv": 0.2451103920383481,
+        "balance_score": 15.852681767194689,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Belgian Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 230,
+        "minimum_driver_clean_laps": 16,
+        "maximum_driver_clean_laps": 32,
+        "driver_lap_count_cv": 0.18287469534984294,
+        "balance_score": 13.074004874402513,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Australian Grand Prix",
+        "drivers": 8,
+        "teams": 4,
+        "clean_laps": 16,
+        "minimum_driver_clean_laps": 2,
+        "maximum_driver_clean_laps": 2,
+        "driver_lap_count_cv": 0.0,
+        "balance_score": 2.0,
+        "complete_four_team_grid": true
+      },
+      {
+        "meeting_name": "Austrian Grand Prix",
+        "drivers": 6,
+        "teams": 4,
+        "clean_laps": 364,
+        "minimum_driver_clean_laps": 59,
+        "maximum_driver_clean_laps": 62,
+        "driver_lap_count_cv": 0.01702410262069194,
+        "balance_score": 43.49668345903438,
+        "complete_four_team_grid": false
+      },
+      {
+        "meeting_name": "Saudi Arabian Grand Prix",
+        "drivers": 7,
+        "teams": 4,
+        "clean_laps": 312,
+        "minimum_driver_clean_laps": 44,
+        "maximum_driver_clean_laps": 45,
+        "driver_lap_count_cv": 0.011992491624275453,
+        "balance_score": 38.0382890724654,
+        "complete_four_team_grid": false
+      },
+      {
+        "meeting_name": "Azerbaijan Grand Prix",
+        "drivers": 7,
+        "teams": 4,
+        "clean_laps": 291,
+        "minimum_driver_clean_laps": 41,
+        "maximum_driver_clean_laps": 43,
+        "driver_lap_count_cv": 0.018926359269024407,
+        "balance_score": 35.196016861223754,
+        "complete_four_team_grid": false
+      },
+      {
+        "meeting_name": "São Paulo Grand Prix",
+        "drivers": 7,
+        "teams": 4,
+        "clean_laps": 378,
+        "minimum_driver_clean_laps": 24,
+        "maximum_driver_clean_laps": 59,
+        "driver_lap_count_cv": 0.24497697324672135,
+        "balance_score": 15.855483561818852,
+        "complete_four_team_grid": false
+      },
+      {
+        "meeting_name": "British Grand Prix",
+        "drivers": 7,
+        "teams": 4,
+        "clean_laps": 53,
+        "minimum_driver_clean_laps": 6,
+        "maximum_driver_clean_laps": 9,
+        "driver_lap_count_cv": 0.1288924624649006,
+        "balance_score": 4.573314572059272,
+        "complete_four_team_grid": false
+      }
+    ]
+  },
+  "model_diagnostics": {
+    "historical_rows": 21047,
+    "historical_driver_count": 24,
+    "historical_feature_count": 65,
+    "target_rows": 1275,
+    "identification_team_count": 10,
+    "identification_driver_count": 20,
+    "reference_lap_seconds": 82.25700378417969,
+    "in_sample_metrics": {
+      "mae": 0.5980721979121204,
+      "rmse": 0.8052928813741344,
+      "r2": 0.7100251306708161,
+      "bias": 6.966105252550002e-19
+    },
+    "residual_median": -0.13906795770756486,
+    "residual_mad": 0.4494549374218888,
+    "unseen_historical_prior_drivers": [
+      "ANT",
+      "BOR",
+      "HAD"
+    ],
+    "bootstrap_repetitions": 300,
+    "sensitivity_grid": [
+      {
+        "team_penalty": 5.0,
+        "driver_update_penalty": 50.0,
+        "team_effect_z": {
+          "McLaren": -1.0637030148196716,
+          "Red Bull Racing": 0.4807195000518104,
+          "Ferrari": -0.002719904941951019,
+          "Mercedes": -0.3868479019012253
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 5.0,
+        "driver_update_penalty": 100.0,
+        "team_effect_z": {
+          "McLaren": -1.0606652858830887,
+          "Red Bull Racing": 0.48274337447494514,
+          "Ferrari": -0.000570180750635915,
+          "Mercedes": -0.3839630391658682
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 5.0,
+        "driver_update_penalty": 250.0,
+        "team_effect_z": {
+          "McLaren": -1.0578924249625332,
+          "Red Bull Racing": 0.4851315961594546,
+          "Ferrari": 0.0016712697301851085,
+          "Mercedes": -0.38113767890330463
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 10.0,
+        "driver_update_penalty": 50.0,
+        "team_effect_z": {
+          "McLaren": -1.029730233547021,
+          "Red Bull Racing": 0.46431955098192373,
+          "Ferrari": -0.0016185141440421122,
+          "Mercedes": -0.3738684261188911
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 10.0,
+        "driver_update_penalty": 100.0,
+        "team_effect_z": {
+          "McLaren": -1.0244280459126636,
+          "Red Bull Racing": 0.4651170778620243,
+          "Ferrari": 0.0005170627986224245,
+          "Mercedes": -0.37016870329189444
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 10.0,
+        "driver_update_penalty": 250.0,
+        "team_effect_z": {
+          "McLaren": -1.0202578408042142,
+          "Red Bull Racing": 0.46639692277012407,
+          "Ferrari": 0.0024742718912703814,
+          "Mercedes": -0.367079576036647
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 25.0,
+        "driver_update_penalty": 50.0,
+        "team_effect_z": {
+          "McLaren": -0.9531926695485056,
+          "Red Bull Racing": 0.4272919987499864,
+          "Ferrari": 0.00037701568480820225,
+          "Mercedes": -0.3450135980669577
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 25.0,
+        "driver_update_penalty": 100.0,
+        "team_effect_z": {
+          "McLaren": -0.9372044220990258,
+          "Red Bull Racing": 0.422541693672061,
+          "Ferrari": 0.0024300635810989755,
+          "Mercedes": -0.33760078899140716
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      },
+      {
+        "team_penalty": 25.0,
+        "driver_update_penalty": 250.0,
+        "team_effect_z": {
+          "McLaren": -0.925268387550263,
+          "Red Bull Racing": 0.42040956669589485,
+          "Ferrari": 0.004576763325294715,
+          "Mercedes": -0.3316730736633871
+        },
+        "car_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ]
+      }
+    ],
+    "unique_car_orders_in_sensitivity": [
+      "McLaren > Mercedes > Ferrari > Red Bull Racing"
+    ],
+    "identifiability_statement": "单站车手当站更新与人车交互不可分；当前以 2024 车手先验和差异化 ridge 收缩作识别约束。"
+  },
+  "cars": [
+    {
+      "team": "McLaren",
+      "rank": 1,
+      "car_ceiling_posterior": {
+        "estimate": -1.6898535785656557,
+        "interval_95": {
+          "low": -1.8956463894982867,
+          "high": -1.4722238794132865
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "usable_baseline_posterior": {
+        "estimate": -1.1232841259893624,
+        "interval_95": {
+          "low": -1.2781734806444995,
+          "high": -0.9333937437765687
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "performance_floor_posterior": {
+        "estimate": -0.522217345614395,
+        "interval_95": {
+          "low": -0.6906010179875199,
+          "high": -0.14188326137637122
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "drivability_width": {
+        "estimate": 1.1676362329512606,
+        "interval_95": {
+          "low": 0.9706371134211536,
+          "high": 1.5171495418143177
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "relative_pace_pct": {
+        "estimate": 0.0,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.0
+        },
+        "unit": "log_pace_pct_deficit_to_fastest",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "standard_90s_lap_delta_ms": {
+        "estimate": 0.0,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.0
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "real_track_lap_delta_ms": {
+        "estimate": 0.0,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.0
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_type_deltas_ms": {},
+      "development_state": "2025_hungary_single_race_update_from_2024_driver_prior",
+      "model_team_effect_z": -1.0244280459126636,
+      "data_coverage": {
+        "clean_laps": 131,
+        "drivers": {
+          "NOR": 66,
+          "PIA": 65
+        },
+        "driver_count": 2
+      },
+      "confidence_flags": [
+        "single_race_exploratory",
+        "bootstrap_interval_not_bayesian_posterior",
+        "lap_level_no_segment_decomposition",
+        "public_data_cannot_observe_setup_damage_or_fuel"
+      ]
+    },
+    {
+      "team": "Mercedes",
+      "rank": 2,
+      "car_ceiling_posterior": {
+        "estimate": -1.4256781356712398,
+        "interval_95": {
+          "low": -1.646815006912813,
+          "high": -0.8030082661453206
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "usable_baseline_posterior": {
+        "estimate": -0.606627673814543,
+        "interval_95": {
+          "low": -0.8297300106384417,
+          "high": -0.2322489218043429
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "performance_floor_posterior": {
+        "estimate": 0.7060790640691176,
+        "interval_95": {
+          "low": 0.33766359243757355,
+          "high": 1.3279346519754942
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "drivability_width": {
+        "estimate": 2.1317571997403575,
+        "interval_95": {
+          "low": 1.2614257088056706,
+          "high": 2.891156690333821
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "relative_pace_pct": {
+        "estimate": 0.5166564521748195,
+        "interval_95": {
+          "low": 0.2549370147731569,
+          "high": 0.9229676130443939
+        },
+        "unit": "log_pace_pct_deficit_to_fastest",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "standard_90s_lap_delta_ms": {
+        "estimate": 466.1940808319424,
+        "interval_95": {
+          "low": 229.73623628861867,
+          "high": 834.5166611562375
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "real_track_lap_delta_ms": {
+        "estimate": 426.0858696795028,
+        "interval_95": {
+          "low": 209.97127175284564,
+          "high": 762.7204461632181
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_type_deltas_ms": {},
+      "development_state": "2025_hungary_single_race_update_from_2024_driver_prior",
+      "model_team_effect_z": -0.37016870329189444,
+      "data_coverage": {
+        "clean_laps": 129,
+        "drivers": {
+          "ANT": 65,
+          "RUS": 64
+        },
+        "driver_count": 2
+      },
+      "confidence_flags": [
+        "single_race_exploratory",
+        "bootstrap_interval_not_bayesian_posterior",
+        "lap_level_no_segment_decomposition",
+        "public_data_cannot_observe_setup_damage_or_fuel"
+      ]
+    },
+    {
+      "team": "Ferrari",
+      "rank": 3,
+      "car_ceiling_posterior": {
+        "estimate": -1.1099224046594631,
+        "interval_95": {
+          "low": -1.3551278837322456,
+          "high": -0.5621106823626586
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "usable_baseline_posterior": {
+        "estimate": -0.12586562454439537,
+        "interval_95": {
+          "low": -0.6986946198680384,
+          "high": 0.41917165918591404
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "performance_floor_posterior": {
+        "estimate": 1.146088896945807,
+        "interval_95": {
+          "low": 0.1216320091817098,
+          "high": 1.6332241437473909
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "drivability_width": {
+        "estimate": 2.25601130160527,
+        "interval_95": {
+          "low": 1.407109320147819,
+          "high": 2.6593401485308954
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "relative_pace_pct": {
+        "estimate": 0.997418501444967,
+        "interval_95": {
+          "low": 0.36315147171182244,
+          "high": 1.5900495323676245
+        },
+        "unit": "log_pace_pct_deficit_to_fastest",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "standard_90s_lap_delta_ms": {
+        "estimate": 902.1683691227067,
+        "interval_95": {
+          "low": 327.43058229998627,
+          "high": 1442.4823295396088
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "real_track_lap_delta_ms": {
+        "estimate": 824.5518550321523,
+        "interval_95": {
+          "low": 299.2606516367348,
+          "high": 1318.3808271061328
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_type_deltas_ms": {},
+      "development_state": "2025_hungary_single_race_update_from_2024_driver_prior",
+      "model_team_effect_z": 0.0005170627986224245,
+      "data_coverage": {
+        "clean_laps": 130,
+        "drivers": {
+          "HAM": 65,
+          "LEC": 65
+        },
+        "driver_count": 2
+      },
+      "confidence_flags": [
+        "single_race_exploratory",
+        "bootstrap_interval_not_bayesian_posterior",
+        "lap_level_no_segment_decomposition",
+        "public_data_cannot_observe_setup_damage_or_fuel"
+      ]
+    },
+    {
+      "team": "Red Bull Racing",
+      "rank": 4,
+      "car_ceiling_posterior": {
+        "estimate": -0.2616791403633313,
+        "interval_95": {
+          "low": -0.7362548489512627,
+          "high": -0.018827946659803405
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "usable_baseline_posterior": {
+        "estimate": 0.3183853868605125,
+        "interval_95": {
+          "low": 0.1382057106086773,
+          "high": 0.4926403683141759
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "performance_floor_posterior": {
+        "estimate": 1.4341497545779778,
+        "interval_95": {
+          "low": 0.9135390649820723,
+          "high": 2.2545884541401957
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "drivability_width": {
+        "estimate": 1.6958288949413092,
+        "interval_95": {
+          "low": 1.0340492061077087,
+          "high": 2.5581039213762033
+        },
+        "unit": "target_log_pct",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "relative_pace_pct": {
+        "estimate": 1.4416695128498749,
+        "interval_95": {
+          "low": 1.1939879033262877,
+          "high": 1.624156944597384
+        },
+        "unit": "log_pace_pct_deficit_to_fastest",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "standard_90s_lap_delta_ms": {
+        "estimate": 1306.9005191808303,
+        "interval_95": {
+          "low": 1081.030094265742,
+          "high": 1473.6762753436337
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "real_track_lap_delta_ms": {
+        "estimate": 1194.4635661311552,
+        "interval_95": {
+          "low": 988.0255172758808,
+          "high": 1346.8910550844123
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_type_deltas_ms": {},
+      "development_state": "2025_hungary_single_race_update_from_2024_driver_prior",
+      "model_team_effect_z": 0.4651170778620243,
+      "data_coverage": {
+        "clean_laps": 129,
+        "drivers": {
+          "TSU": 64,
+          "VER": 65
+        },
+        "driver_count": 2
+      },
+      "confidence_flags": [
+        "single_race_exploratory",
+        "bootstrap_interval_not_bayesian_posterior",
+        "lap_level_no_segment_decomposition",
+        "public_data_cannot_observe_setup_damage_or_fuel"
+      ]
+    }
+  ],
+  "drivers": [
+    {
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "ceiling_extraction_percentile": {
+        "estimate": 136.3694637607574,
+        "interval_95": {
+          "low": 103.0387385089583,
+          "high": 165.97147162682907
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": -8.275662574119181,
+        "interval_95": {
+          "low": -188.03087086118126,
+          "high": 393.54689699077636
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 100.59329365687304,
+        "interval_95": {
+          "low": 74.39239081082188,
+          "high": 119.88656195257514
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 322.07488632149006,
+        "interval_95": {
+          "low": 134.78791563333965,
+          "high": 597.5569895798745
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.06153846153846154,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.1095890410958904
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.5984280345246111,
+      "driver_event_update_z": -0.012885675957737649,
+      "sample_size": 65,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "ceiling_extraction_percentile": {
+        "estimate": 128.3771937303365,
+        "interval_95": {
+          "low": 108.0928128601468,
+          "high": 145.0431568313144
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 223.71975488375517,
+        "interval_95": {
+          "low": -286.17682568653845,
+          "high": 749.5442134174258
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 87.9607271740424,
+        "interval_95": {
+          "low": 59.34523209807439,
+          "high": 120.24418996297487
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 799.1386389184289,
+        "interval_95": {
+          "low": 258.1180566172287,
+          "high": 1013.9943391729369
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.06153846153846154,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.12307692307692308
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.40716070488617834,
+      "driver_event_update_z": -0.09458841584386302,
+      "sample_size": 65,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "NOR",
+      "team": "McLaren",
+      "ceiling_extraction_percentile": {
+        "estimate": 134.43534725277328,
+        "interval_95": {
+          "low": 105.13862397617501,
+          "high": 153.55576676989338
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 138.97484461269318,
+        "interval_95": {
+          "low": -26.379799632208503,
+          "high": 332.7621261074867
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 85.54263548202009,
+        "interval_95": {
+          "low": 69.54678793283371,
+          "high": 102.7520799511843
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 285.2672406286912,
+        "interval_95": {
+          "low": 187.8176305452328,
+          "high": 512.7602774482901
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.06060606060606061,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.10714285714285714
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.4943889768478536,
+      "driver_event_update_z": 0.04219096134719342,
+      "sample_size": 66,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "RUS",
+      "team": "Mercedes",
+      "ceiling_extraction_percentile": {
+        "estimate": 108.57606873997936,
+        "interval_95": {
+          "low": 95.32819874024594,
+          "high": 144.09677655590897
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 294.22096124111425,
+        "interval_95": {
+          "low": -145.05018041142654,
+          "high": 461.7153846543452
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 83.25105573783488,
+        "interval_95": {
+          "low": 76.52013021212251,
+          "high": 113.2837341510713
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 353.16609315243204,
+        "interval_95": {
+          "low": 146.89577222419783,
+          "high": 545.6829579253781
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.0,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.03176719840478554
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.23676832954946242,
+      "driver_event_update_z": -0.13890538423677745,
+      "sample_size": 64,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "PIA",
+      "team": "McLaren",
+      "ceiling_extraction_percentile": {
+        "estimate": 123.09402891527748,
+        "interval_95": {
+          "low": 102.94281175695258,
+          "high": 134.81239361981417
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 167.58816014429982,
+        "interval_95": {
+          "low": 17.045001936514794,
+          "high": 432.85740782702965
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 82.56905835345235,
+        "interval_95": {
+          "low": 59.92624954308124,
+          "high": 98.1762592598768
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 450.1268893565967,
+        "interval_95": {
+          "low": 247.11067348646557,
+          "high": 584.9218935174073
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.06153846153846154,
+        "interval_95": {
+          "low": 0.0,
+          "high": 0.12121212121212122
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.1663140787361858,
+      "driver_event_update_z": -0.04219096134719341,
+      "sample_size": 65,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "TSU",
+      "team": "Red Bull Racing",
+      "ceiling_extraction_percentile": {
+        "estimate": 91.39949171805085,
+        "interval_95": {
+          "low": 76.95305404318762,
+          "high": 124.64800954046162
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 505.47428544003645,
+        "interval_95": {
+          "low": 275.08937151079493,
+          "high": 1014.5066029081953
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 63.874557875116814,
+        "interval_95": {
+          "low": 33.23908153522212,
+          "high": 77.12518285571745
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 443.4183186728645,
+        "interval_95": {
+          "low": 141.67225269403903,
+          "high": 896.2325806412786
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.125,
+        "interval_95": {
+          "low": 0.03480570734669096,
+          "high": 0.31201331967213114
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": -0.12331502573366183,
+      "driver_event_update_z": 0.012885675957737645,
+      "sample_size": 64,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "ceiling_extraction_percentile": {
+        "estimate": 97.84312930088439,
+        "interval_95": {
+          "low": 71.08388075619514,
+          "high": 120.2639687075799
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 994.2180281127851,
+        "interval_95": {
+          "low": 330.52576454847315,
+          "high": 1147.2630822876558
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 46.74553821261546,
+        "interval_95": {
+          "low": 27.225319175181863,
+          "high": 82.57339003874432
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 691.4633532287429,
+        "interval_95": {
+          "low": 373.50018810130825,
+          "high": 854.4658654909922
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.07692307692307693,
+        "interval_95": {
+          "low": 0.01282051282051282,
+          "high": 0.21355769230769223
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "known_2024_driver_prior",
+      "historical_driver_pace_advantage_pct": 0.22437176117445148,
+      "driver_event_update_z": 0.09458841584386302,
+      "sample_size": 65,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior"
+      ]
+    },
+    {
+      "driver": "ANT",
+      "team": "Mercedes",
+      "ceiling_extraction_percentile": {
+        "estimate": 100.71116761995256,
+        "interval_95": {
+          "low": 29.432486945578276,
+          "high": 109.37535668533515
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "typical_execution_loss_ms": {
+        "estimate": 1241.2363412099294,
+        "interval_95": {
+          "low": 664.1457817504742,
+          "high": 1418.8353273206285
+        },
+        "unit": "ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "extraction_percentile": {
+        "estimate": 29.743326855324757,
+        "interval_95": {
+          "low": 5.177862753314638,
+          "high": 68.87887239183004
+        },
+        "unit": "envelope_position_pct_unclipped",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "consistency_scale": {
+        "estimate": 947.9271700172083,
+        "interval_95": {
+          "low": 188.26012883873707,
+          "high": 1394.8541633235159
+        },
+        "unit": "robust_mad_ms",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "negative_tail_probability": {
+        "estimate": 0.2153846153846154,
+        "interval_95": {
+          "low": 0.13484817813765182,
+          "high": 0.38223684210526254
+        },
+        "unit": "probability",
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "segment_extraction": {},
+      "adaptation_state": "zero_prior_new_driver",
+      "historical_driver_pace_advantage_pct": 0.0,
+      "driver_event_update_z": 0.13890538423677745,
+      "sample_size": 65,
+      "confidence_flags": [
+        "single_race_driver_event_update_not_stable_interaction",
+        "lap_level_no_segment_extraction",
+        "bootstrap_interval_not_bayesian_posterior",
+        "unseen_2024_driver_zero_prior"
+      ]
+    }
+  ],
+  "value_attribution": [
+    {
+      "driver": "ANT",
+      "team": "Mercedes",
+      "vehicle_contribution": 0.37016870329189444,
+      "driver_contribution": 0.0,
+      "interaction_contribution": -0.13890538423677745,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": -0.30328687144354183,
+      "explained_pace_advantage": 0.231263319055117,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": 0.1811085369037649,
+          "high": 0.5630613633932806
+        },
+        "driver_contribution": {
+          "low": 0.0,
+          "high": 0.0,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.20552302711107803,
+          "high": -0.07587587307506977
+        },
+        "unexplained_contribution": {
+          "low": -0.48244341305833294,
+          "high": 0.35977740436855987
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "vehicle_contribution": -0.0005170627986224245,
+      "driver_contribution": 0.22437176117445148,
+      "interaction_contribution": -0.09458841584386302,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": -0.22077055440495807,
+      "explained_pace_advantage": 0.12926628253196604,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": -0.39987792423065044,
+          "high": 0.5654580113777304
+        },
+        "driver_contribution": {
+          "low": 0.22437176117445148,
+          "high": 0.22437176117445148,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.26669515281410056,
+          "high": 0.0774911937258202
+        },
+        "unexplained_contribution": {
+          "low": -0.40906198668017296,
+          "high": 0.3276172860183967
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "vehicle_contribution": -0.0005170627986224245,
+      "driver_contribution": 0.40716070488617834,
+      "interaction_contribution": 0.09458841584386302,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.33708299114334883,
+      "explained_pace_advantage": 0.5012320579314189,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": -0.39987792423065044,
+          "high": 0.5654580113777304
+        },
+        "driver_contribution": {
+          "low": 0.40716070488617834,
+          "high": 0.40716070488617834,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.0774911937258202,
+          "high": 0.2666951528141004
+        },
+        "unexplained_contribution": {
+          "low": -0.12260797081333466,
+          "high": 0.6232999406275866
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "NOR",
+      "team": "McLaren",
+      "vehicle_contribution": 1.0244280459126636,
+      "driver_contribution": 0.4943889768478536,
+      "interaction_contribution": -0.04219096134719342,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.04441809071055912,
+      "explained_pace_advantage": 1.4766260614133238,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": 0.847347421074813,
+          "high": 1.1460236823148962
+        },
+        "driver_contribution": {
+          "low": 0.4943889768478536,
+          "high": 0.4943889768478536,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.0940520256465187,
+          "high": 0.013012584761594448
+        },
+        "unexplained_contribution": {
+          "low": -0.03984313015898338,
+          "high": 0.15377411046255476
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "PIA",
+      "team": "McLaren",
+      "vehicle_contribution": 1.0244280459126636,
+      "driver_contribution": 0.1663140787361858,
+      "interaction_contribution": 0.04219096134719341,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.25339050215993164,
+      "explained_pace_advantage": 1.2329330859960428,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": 0.847347421074813,
+          "high": 1.1460236823148962
+        },
+        "driver_contribution": {
+          "low": 0.1663140787361858,
+          "high": 0.1663140787361858,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.013012584761594458,
+          "high": 0.09405202564651868
+        },
+        "unexplained_contribution": {
+          "low": -0.005873402888709096,
+          "high": 0.38325032047488927
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "RUS",
+      "team": "Mercedes",
+      "vehicle_contribution": 0.37016870329189444,
+      "driver_contribution": 0.23676832954946242,
+      "interaction_contribution": 0.13890538423677745,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.3227888934039014,
+      "explained_pace_advantage": 0.7458424170781343,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": 0.1811085369037649,
+          "high": 0.5630613633932806
+        },
+        "driver_contribution": {
+          "low": 0.23676832954946242,
+          "high": 0.23676832954946242,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": 0.07587587307506972,
+          "high": 0.20552302711107798
+        },
+        "unexplained_contribution": {
+          "low": 0.20698926650518074,
+          "high": 0.5262262738582012
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "TSU",
+      "team": "Red Bull Racing",
+      "vehicle_contribution": -0.4651170778620243,
+      "driver_contribution": -0.12331502573366183,
+      "interaction_contribution": -0.012885675957737645,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.25037123393768645,
+      "explained_pace_advantage": -0.6013177795534237,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": -0.6335855221763843,
+          "high": -0.2553907643837841
+        },
+        "driver_contribution": {
+          "low": -0.12331502573366183,
+          "high": -0.12331502573366183,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.08445499308954163,
+          "high": 0.0643247353426506
+        },
+        "unexplained_contribution": {
+          "low": -0.1396319519452212,
+          "high": 0.3961575057186176
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    },
+    {
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "vehicle_contribution": -0.4651170778620243,
+      "driver_contribution": 0.5984280345246111,
+      "interaction_contribution": 0.012885675957737649,
+      "strategy_operations_contribution": null,
+      "reliability_incident_contribution": null,
+      "unexplained_contribution": 0.12554375300811382,
+      "explained_pace_advantage": 0.1461966326203245,
+      "value_function": "V_pace_context_standardized_target_log_pct",
+      "reference_definition": "full_field_zero_mean_2025_hungary_car_and_2024_ridge_driver_prior",
+      "posterior_interval": {
+        "vehicle_contribution": {
+          "low": -0.6335855221763843,
+          "high": -0.2553907643837841
+        },
+        "driver_contribution": {
+          "low": 0.5984280345246111,
+          "high": 0.5984280345246111,
+          "note": "历史先验在本次 bootstrap 中固定"
+        },
+        "interaction_contribution": {
+          "low": -0.0643247353426506,
+          "high": 0.08445499308954153
+        },
+        "unexplained_contribution": {
+          "low": -0.10917793920757767,
+          "high": 0.35536971462503836
+        },
+        "method": "stratified_driver_stint_bootstrap_not_bayesian_posterior"
+      },
+      "confidence_flags": [
+        "signed_associational_contribution_not_causal",
+        "interaction_is_single_race_driver_event_update_proxy",
+        "strategy_reliability_and_points_not_modeled"
+      ]
+    }
+  ],
+  "external_validation": {
+    "status": "completed_directional_external_validation",
+    "model_input_source": "TracingInsights expanded v4 frozen laps",
+    "openf1": {
+      "independence_note": "OpenF1 未参与模型拟合，仅用于外部圈速代理比较。",
+      "session_key": 9928,
+      "urls": {
+        "sessions": "https://api.openf1.org/v1/sessions?year=2025&country_name=Hungary&session_name=Race",
+        "drivers": "https://api.openf1.org/v1/drivers?session_key=9928",
+        "laps": "https://api.openf1.org/v1/laps?session_key=9928",
+        "stints": "https://api.openf1.org/v1/stints?session_key=9928"
+      },
+      "response_sha256": {
+        "sessions": "dd26f5c412e13acf115b4e2ea2719c78b248a9d8f1628765a3826bf298ed8a96",
+        "drivers": "d9ab3255023bc5e4fd50ba7225aeeaec8eefcd32e8ad20a5ace19741b2d989fe",
+        "laps": "c2dc23034207160eee14210ce7a07d128ca0b47043cb3543fb62ff47308db17f",
+        "stints": "d33afe08c74508ba70da3741d66c9566b829756c0f5b0c136eceff69179132d2"
+      },
+      "row_counts": {
+        "sessions": 1,
+        "drivers": 20,
+        "laps": 1369,
+        "stints": 49
+      },
+      "pace_proxy": {
+        "method": "mean_of_driver_fastest_fraction_medians",
+        "fastest_fraction": 0.25,
+        "drivers": [
+          {
+            "driver_id": "ANT",
+            "team": "Mercedes",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 81.037
+          },
+          {
+            "driver_id": "HAM",
+            "team": "Ferrari",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.642
+          },
+          {
+            "driver_id": "LEC",
+            "team": "Ferrari",
+            "clean_laps": 65,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.904
+          },
+          {
+            "driver_id": "NOR",
+            "team": "McLaren",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.157
+          },
+          {
+            "driver_id": "PIA",
+            "team": "McLaren",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 79.664
+          },
+          {
+            "driver_id": "RUS",
+            "team": "Mercedes",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.237
+          },
+          {
+            "driver_id": "TSU",
+            "team": "Red Bull Racing",
+            "clean_laps": 65,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 81.45
+          },
+          {
+            "driver_id": "VER",
+            "team": "Red Bull Racing",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.778
+          }
+        ],
+        "teams": [
+          {
+            "team": "McLaren",
+            "driver_count": 2,
+            "pace_proxy_seconds": 79.9105,
+            "gap_to_fastest_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.637,
+            "gap_to_fastest_ms": 726.5000000000015
+          },
+          {
+            "team": "Ferrari",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.773,
+            "gap_to_fastest_ms": 862.4999999999972
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver_count": 2,
+            "pace_proxy_seconds": 81.114,
+            "gap_to_fastest_ms": 1203.5000000000055
+          }
+        ],
+        "clean_laps": 526
+      },
+      "comparison": {
+        "teams": [
+          "Ferrari",
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "model_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "external_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "spearman_rank_correlation": 1.0,
+        "pairwise_gap_mae_ms": 155.02568367674843
+      }
+    },
+    "fia": {
+      "source_url": "https://www.fia.com/system/files/decision-document/2025_hungarian_grand_prix_-_final_race_classification.pdf",
+      "source_sha256": "7b26f16f0e7431a66c573c49103ce51aaa81c2c8ff9f049480363a4b3a0f9c08",
+      "source_verified_at": "2026-07-18T17:53:41+08:00",
+      "document": "Doc 44 - Final Race Classification",
+      "published_at": "2025-08-03T19:05:00+02:00",
+      "pace_proxy": {
+        "method": "mean_of_two_driver_official_fastest_laps",
+        "teams": [
+          {
+            "team": "McLaren",
+            "driver_count": 2,
+            "pace_proxy_seconds": 79.665,
+            "best_classification": 1,
+            "gap_to_fastest_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.077,
+            "best_classification": 3,
+            "gap_to_fastest_ms": 411.9999999999919
+          },
+          {
+            "team": "Ferrari",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.231,
+            "best_classification": 4,
+            "gap_to_fastest_ms": 565.9999999999883
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.378,
+            "best_classification": 9,
+            "gap_to_fastest_ms": 712.9999999999939
+          }
+        ],
+        "drivers": [
+          {
+            "driver_id": "NOR",
+            "team": "McLaren",
+            "classification": 1,
+            "laps": 70,
+            "fastest_lap_seconds": 79.918,
+            "fastest_lap_number": 57
+          },
+          {
+            "driver_id": "PIA",
+            "team": "McLaren",
+            "classification": 2,
+            "laps": 70,
+            "fastest_lap_seconds": 79.412,
+            "fastest_lap_number": 56
+          },
+          {
+            "driver_id": "RUS",
+            "team": "Mercedes",
+            "classification": 3,
+            "laps": 70,
+            "fastest_lap_seconds": 79.409,
+            "fastest_lap_number": 45
+          },
+          {
+            "driver_id": "LEC",
+            "team": "Ferrari",
+            "classification": 4,
+            "laps": 70,
+            "fastest_lap_seconds": 80.44,
+            "fastest_lap_number": 47
+          },
+          {
+            "driver_id": "VER",
+            "team": "Red Bull Racing",
+            "classification": 9,
+            "laps": 70,
+            "fastest_lap_seconds": 79.576,
+            "fastest_lap_number": 50
+          },
+          {
+            "driver_id": "ANT",
+            "team": "Mercedes",
+            "classification": 10,
+            "laps": 69,
+            "fastest_lap_seconds": 80.745,
+            "fastest_lap_number": 54
+          },
+          {
+            "driver_id": "HAM",
+            "team": "Ferrari",
+            "classification": 12,
+            "laps": 69,
+            "fastest_lap_seconds": 80.022,
+            "fastest_lap_number": 55
+          },
+          {
+            "driver_id": "TSU",
+            "team": "Red Bull Racing",
+            "classification": 17,
+            "laps": 69,
+            "fastest_lap_seconds": 81.18,
+            "fastest_lap_number": 46
+          }
+        ]
+      },
+      "comparison": {
+        "teams": [
+          "Ferrari",
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "model_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "external_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "spearman_rank_correlation": 1.0,
+        "pairwise_gap_mae_ms": 281.4761139576895
+      },
+      "driver_order_concordance": {
+        "matched_teams": 2,
+        "total_teams": 4,
+        "details": [
+          {
+            "team": "Ferrari",
+            "model_faster_driver": "LEC",
+            "official_fastest_lap_driver": "HAM",
+            "concordant": false
+          },
+          {
+            "team": "McLaren",
+            "model_faster_driver": "NOR",
+            "official_fastest_lap_driver": "PIA",
+            "concordant": false
+          },
+          {
+            "team": "Mercedes",
+            "model_faster_driver": "RUS",
+            "official_fastest_lap_driver": "RUS",
+            "concordant": true
+          },
+          {
+            "team": "Red Bull Racing",
+            "model_faster_driver": "VER",
+            "official_fastest_lap_driver": "VER",
+            "concordant": true
+          }
+        ],
+        "limitation": "官方单一最快圈受燃油、轮胎、交通和策略影响，只作方向性核验。"
+      }
+    },
+    "interpretation_limit": "排序或毫秒差一致只支持外部表面效度，不识别因果人车贡献。"
+  },
+  "limitations": [
+    "单站车手当站更新与人车交互共线，只能作为强收缩代理。",
+    "bootstrap 区间不是贝叶斯后验区间。",
+    "当前只实现圈级 Race 原型，尚无赛段类型、排位、策略、可靠性和积分模型。",
+    "2025 已经被查看，因此本结果是探索性开发证据，不是确认性验证。"
+  ]
+}

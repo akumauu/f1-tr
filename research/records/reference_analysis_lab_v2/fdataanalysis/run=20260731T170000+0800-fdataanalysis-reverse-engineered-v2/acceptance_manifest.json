@@ -1,0 +1,65 @@
+{
+  "schema_version": "reference-analysis-acceptance-manifest-v1",
+  "target_id": "fdataanalysis-reverse-engineered-v2",
+  "run_id": "20260731T170000+0800-fdataanalysis-reverse-engineered-v2",
+  "status": "PASS",
+  "base_manifest": {
+    "path": "research/records/reference_analysis_lab_v2/fdataanalysis/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/manifest.json",
+    "sha256": "60c7b9bc20a994a63d4af6c33cc87b897e143a111639aeb59a7bde570a5f3063"
+  },
+  "report": {
+    "path": "research/records/reference_analysis_lab_v2/fdataanalysis/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/fdataanalysis_reverse_engineered_v2.json",
+    "sha256": "305b388a0ba43861d1335d43ab1c62b9c1f51efefb6fe0075ec7c039d21f4c4e"
+  },
+  "browser_acceptance": {
+    "path": "research/records/reference_analysis_lab_v2/fdataanalysis/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/browser_acceptance.json",
+    "sha256": "6adfa8f6977e68a2b01fe3447ff5825a3b1129089ed2db50ef9b4b01c5e3f899"
+  },
+  "commands": [
+    {
+      "command": "python -m pytest tests/test_reference_analysis_lab.py -q",
+      "result": "25 passed"
+    },
+    {
+      "command": "npm run build",
+      "cwd": "frontend",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "cwd": "frontend",
+      "result": "Frontend build contract OK"
+    }
+  ],
+  "screenshots": {
+    "desktop_visual": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\fdataanalysis-ui-smoke\\fdata-v2-desktop-visual.png",
+      "bytes": 1150681,
+      "sha256": "fd3d2639b770de0e4d0283e70d45328ef2b238d1433d7153b7f3e9a0dd91bf42",
+      "width": 1425,
+      "height": 5904
+    },
+    "desktop_audit": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\fdataanalysis-ui-smoke\\fdata-v2-desktop-audit.png",
+      "bytes": 696066,
+      "sha256": "15334a699c2db12a9f1eb9fc3d4ac68672b2e676320a14e0bbd700e269d01f89",
+      "width": 1425,
+      "height": 3378
+    },
+    "mobile_visual_390": {
+      "path": "D:\\vibe-coding\\F1 TR\\.runtime-cache\\reference-analysis-lab-v2\\fdataanalysis-ui-smoke\\fdata-v2-mobile-390.png",
+      "bytes": 773577,
+      "sha256": "b90c5c65133c57f0a5e0755368cfa4bf5937043f8d41ae9b3f556a8eb18d6fa2",
+      "width": 390,
+      "height": 7770
+    }
+  },
+  "gates": {
+    "runtime_status": "PASS",
+    "hash_identity": "PASS",
+    "desktop_visual": "PASS",
+    "desktop_audit": "PASS",
+    "mobile_390_no_horizontal_overflow": "PASS",
+    "cdp_errors": "PASS"
+  }
+}

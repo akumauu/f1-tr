@@ -31,13 +31,29 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const target = fs.existsSync(filePath) && fs.statSync(filePath).isFile()
+  const requestedFileExists = (
+    fs.existsSync(filePath)
+    && fs.statSync(filePath).isFile()
+  );
+  const acceptsHTML = String(req.headers.accept || "").includes("text/html");
+  const isPageRoute = !path.extname(rawPath) && acceptsHTML;
+  if (!requestedFileExists && !isPageRoute) {
+    res.writeHead(404, {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+    });
+    res.end(`Not found: ${url.pathname}`);
+    return;
+  }
+  const target = requestedFileExists
     ? filePath
     : path.join(dist, "index.html");
 
   res.writeHead(200, {
     "Content-Type": contentTypes.get(path.extname(target)) || "application/octet-stream",
     "Cache-Control": "no-store",
+    "X-Content-Type-Options": "nosniff",
   });
   fs.createReadStream(target).pipe(res);
 });

@@ -1,5 +1,7 @@
 # 基于公开数据分离 F1 车辆性能与车手能力的科研建模报告
 
+> 文档类型：长期研究设计与 2026-07-17 阶段快照。当前算法协议请先看 [`algorithm-models.md`](algorithm-models.md)，当前验证结果请看 [`implementation-results.md`](implementation-results.md)，任务状态请看 [`progress.md`](progress.md)。本文中的 PostgreSQL 行数和首轮旧 PG 指标只用于历史背景，不代表 2026-07-18 的当前存储或 v4 结果。
+
 **版本：** 0.1 研究方案稿
 **日期：** 2026-07-16
 **项目：** F1 TR

@@ -1,0 +1,3236 @@
+{
+  "run_id": "four_team_2025_contrast_stress_v1-20260718T184954",
+  "created_at": "2026-07-18T18:49:54+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "four_team_2025_contrast_stress_v1",
+    "validation_status": "post_hoc_outcome_selected_explanatory_stress_test",
+    "entity_alias_config": "research/configs/entity_aliases.json",
+    "historical_manifest": "research/artifacts/data_manifest.json",
+    "historical_file_role": "train",
+    "historical_year": 2024,
+    "historical_ridge_alpha": 10.0,
+    "target_manifest": "research/artifacts/data_manifest.json",
+    "target_file_role": "validation",
+    "target_year": 2025,
+    "session_name": "Race",
+    "reporting_teams": [
+      "McLaren",
+      "Red Bull Racing",
+      "Ferrari",
+      "Mercedes"
+    ],
+    "model": {
+      "team_penalty": 10.0,
+      "driver_event_update_penalty": 100.0,
+      "team_penalty_sensitivity": [
+        5.0,
+        10.0,
+        25.0
+      ],
+      "driver_event_update_penalty_sensitivity": [
+        50.0,
+        100.0,
+        250.0
+      ],
+      "ceiling_quantile": 0.1,
+      "baseline_quantile": 0.5,
+      "floor_quantile": 0.9
+    },
+    "external_validation": {
+      "provider": "Jolpica Ergast-compatible API",
+      "fallback_reason": "OpenF1 returned HTTP 401 and FastF1 timing download failed on 2026-07-18",
+      "method": "mean_of_two_driver_official_fastest_laps"
+    },
+    "races": [
+      {
+        "meeting_name": "Miami Grand Prix",
+        "round": 6,
+        "location": "Miami",
+        "country_name": "United States",
+        "category": "观感与赛果高度一致",
+        "selection_rationale": "迈凯伦包揽前二，且冠军优势明显。",
+        "winner_driver": "PIA",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "McLaren",
+          "Mercedes"
+        ],
+        "result_source_url": "https://www.formula1.com/en/results/2025/races/1259/miami/race-result"
+      },
+      {
+        "meeting_name": "Spanish Grand Prix",
+        "round": 9,
+        "location": "Barcelona",
+        "country_name": "Spain",
+        "category": "观感与赛果高度一致",
+        "selection_rationale": "迈凯伦包揽前二，围场观感也是其赛车优势清晰。",
+        "winner_driver": "PIA",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "McLaren",
+          "Ferrari"
+        ],
+        "result_source_url": "https://www.formula1.com/en/racing/2025/spain"
+      },
+      {
+        "meeting_name": "Mexico City Grand Prix",
+        "round": 20,
+        "location": "Mexico City",
+        "country_name": "Mexico",
+        "category": "观感与赛果高度一致",
+        "selection_rationale": "诺里斯以约三十秒优势获胜，单车统治性观感很强。",
+        "winner_driver": "NOR",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "result_source_url": "https://www.formula1.com/en/racing/2025/mexico"
+      },
+      {
+        "meeting_name": "Canadian Grand Prix",
+        "round": 10,
+        "location": "Montréal",
+        "country_name": "Canada",
+        "category": "观感与赛季印象明显错位",
+        "selection_rationale": "梅赛德斯一三，迈凯伦仅第四且另一车退赛。",
+        "winner_driver": "RUS",
+        "winner_team": "Mercedes",
+        "podium_teams": [
+          "Mercedes",
+          "Red Bull Racing",
+          "Mercedes"
+        ],
+        "result_source_url": "https://www.formula1.com/en/results/2025/races/1263/canada/race-result"
+      },
+      {
+        "meeting_name": "Japanese Grand Prix",
+        "round": 3,
+        "location": "Suzuka",
+        "country_name": "Japan",
+        "category": "观感与赛季印象明显错位",
+        "selection_rationale": "维斯塔潘击败两辆迈凯伦夺冠，但队友仅第十二。",
+        "winner_driver": "VER",
+        "winner_team": "Red Bull Racing",
+        "podium_teams": [
+          "Red Bull Racing",
+          "McLaren",
+          "McLaren"
+        ],
+        "result_source_url": "https://www.formula1.com/en/results/2025/races/1256/japan/race-result"
+      },
+      {
+        "meeting_name": "Italian Grand Prix",
+        "round": 16,
+        "location": "Monza",
+        "country_name": "Italy",
+        "category": "观感与赛季印象明显错位",
+        "selection_rationale": "维斯塔潘以明显优势击败两辆迈凯伦，但队友未进入前列。",
+        "winner_driver": "VER",
+        "winner_team": "Red Bull Racing",
+        "podium_teams": [
+          "Red Bull Racing",
+          "McLaren",
+          "McLaren"
+        ],
+        "result_source_url": "https://www.formula1.com/en/racing/2025/italy/news?page=12"
+      }
+    ],
+    "limitations": [
+      "六场比赛按已知赛果与公众观感事后挑选，只能用于解释和寻找反例，不能作为确认性准确率。",
+      "模型使用正赛有效圈，冠军与领奖台还受排位、赛道位置、策略、安全车、事故和可靠性影响。",
+      "Jolpica 官方最快圈代理未参与拟合，但单一最快圈受轮胎、燃油、交通和策略影响，且可能与上游共享官方计时源，不能视为车辆能力真值。"
+    ]
+  },
+  "config_hash": "e62a82867440e6be22d0cdc6e4ce682290c1f6490a652a6302dd88eaa404c360",
+  "data_identity": {
+    "historical_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "historical_file_sha256": "8a2b28213e01faa27552d82c87e229d55fb5d40039af31f192f171cdf41b5dce",
+    "target_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "target_file_sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671"
+  },
+  "races": [
+    {
+      "meeting_name": "Miami Grand Prix",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "迈凯伦包揽前二，且冠军优势明显。",
+      "official_result": {
+        "winner_driver": "PIA",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "McLaren",
+          "Mercedes"
+        ],
+        "distinct_podium_team_order": [
+          "McLaren",
+          "Mercedes"
+        ],
+        "source_url": "https://www.formula1.com/en/results/2025/races/1259/miami/race-result"
+      },
+      "sample": {
+        "all_field_clean_laps": 469,
+        "all_field_drivers": 19,
+        "four_team_clean_laps": 232,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 91.27400207519533
+      },
+      "model": {
+        "fastest_baseline_team": "McLaren",
+        "winner_team_matches_fastest_baseline": true,
+        "winner_team_baseline_rank": 1,
+        "cars": [
+          {
+            "team": "McLaren",
+            "ceiling_z": -1.2579907532217063,
+            "baseline_z": -0.7737432555236897,
+            "floor_z": -0.29117464778307106,
+            "clean_laps": 58,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 886.7313758840079,
+            "baseline_rank": 1
+          },
+          {
+            "team": "Mercedes",
+            "ceiling_z": -0.5533170116922078,
+            "baseline_z": -0.2794475740724003,
+            "floor_z": 0.35574296226796476,
+            "clean_laps": 58,
+            "ceiling_gap_ms": 645.4554320186443,
+            "baseline_gap_ms": 452.28033074354806,
+            "envelope_width_ms": 833.518269895439,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -0.4453751485338918,
+            "baseline_z": -0.03271037804164922,
+            "floor_z": 0.7098728712351761,
+            "clean_laps": 61,
+            "ceiling_gap_ms": 744.7285760586302,
+            "baseline_gap_ms": 678.8826290922934,
+            "envelope_width_ms": 1060.5553286552733,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -0.29081801482464237,
+            "baseline_z": -0.018805404317162586,
+            "floor_z": 0.28554888118436433,
+            "clean_laps": 55,
+            "ceiling_gap_ms": 887.0600520203075,
+            "baseline_gap_ms": 691.6695425372066,
+            "envelope_width_ms": 527.5921051994416,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.3802122891880239,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -0.2717961641687445,
+            "gap_to_faster_teammate_ms": 99.00939757805631
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -1.2062468310486916,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -1.03634549377985,
+            "gap_to_faster_teammate_ms": 155.20756263099526
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -0.5564946149979444,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -0.19900635039822545,
+            "gap_to_faster_teammate_ms": 326.87777276902165
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -0.5882159273156942,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": 0.022978725519665184,
+            "gap_to_faster_teammate_ms": 559.5701094708503
+          }
+        ],
+        "in_sample_mae": 0.32348539187176456,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "McLaren > Mercedes > Red Bull Racing > Ferrari",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "McLaren > Mercedes > Red Bull Racing > Ferrari"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.727597968688483,
+                "Red Bull Racing": -0.011303435115605805,
+                "Ferrari": 0.06854508422010049,
+                "Mercedes": -0.202241468188378
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.7263871957910185,
+                "Red Bull Racing": -0.011897284899897104,
+                "Ferrari": 0.06695942852299043,
+                "Mercedes": -0.20358689164462673
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.7261662776926578,
+                "Red Bull Racing": -0.01294636709417226,
+                "Ferrari": 0.06543760749262986,
+                "Mercedes": -0.2050113901148722
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.6744036617797484,
+                "Red Bull Racing": -0.0021763263546133857,
+                "Ferrari": 0.06407981318697994,
+                "Mercedes": -0.18899523339514687
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.6696415103565635,
+                "Red Bull Racing": -0.002045977092068793,
+                "Ferrari": 0.06252502396579196,
+                "Mercedes": -0.18914832196526338
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.6671461207478558,
+                "Red Bull Racing": -0.0025880471744334902,
+                "Ferrari": 0.061116114416045926,
+                "Mercedes": -0.1894749210973721
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.5702172902713916,
+                "Red Bull Racing": 0.011253075582761797,
+                "Ferrari": 0.055757636562055846,
+                "Mercedes": -0.16133063551627794
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.5524969478684406,
+                "Red Bull Racing": 0.013077910592149628,
+                "Ferrari": 0.053570224525233086,
+                "Mercedes": -0.15751539931657374
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.5407475930946758,
+                "Red Bull Racing": 0.013647014684792682,
+                "Ferrari": 0.05232946403268797,
+                "Mercedes": -0.15507778373505932
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Red Bull Racing",
+                "Ferrari"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/6/results.json",
+          "response_sha256": "f0796a375dbab754c8435f7a5185e72d5b079eb9a16004dc9848f0423de608b4",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 10,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 11,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 12,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 13,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Finished"
+            },
+            {
+              "position": 14,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Lapped"
+            },
+            {
+              "position": 15,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            },
+            {
+              "position": 16,
+              "driver": "STR",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            },
+            {
+              "position": 17,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Retired"
+            },
+            {
+              "position": 18,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Retired"
+            },
+            {
+              "position": 19,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Retired"
+            },
+            {
+              "position": 20,
+              "driver": "DOO",
+              "team": "Alpine",
+              "status": "Retired"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 89.822,
+              "fastest_lap_rank": 2
+            },
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 89.746,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 90.318,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 90.46600000000001,
+              "fastest_lap_rank": 5
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 90.795,
+              "fastest_lap_rank": 9
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 90.461,
+              "fastest_lap_rank": 4
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 90.562,
+              "fastest_lap_rank": 7
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 90.964,
+              "fastest_lap_rank": 10
+            }
+          ],
+          "teams": [
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 89.78399999999999,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 90.5115,
+              "gap_to_fastest_ms": 727.5000000000063
+            },
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 90.5565,
+              "gap_to_fastest_ms": 772.500000000008
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 90.715,
+              "gap_to_fastest_ms": 931.0000000000116
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "McLaren",
+            "Mercedes",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "spearman_rank_correlation": 0.7999999999999999,
+          "pairwise_gap_mae_ms": 191.89534905407865
+        },
+        "fastest_proxy_team": "McLaren",
+        "winner_team_matches_fastest_proxy": true
+      }
+    },
+    {
+      "meeting_name": "Spanish Grand Prix",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "迈凯伦包揽前二，围场观感也是其赛车优势清晰。",
+      "official_result": {
+        "winner_driver": "PIA",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "McLaren",
+          "Ferrari"
+        ],
+        "distinct_podium_team_order": [
+          "McLaren",
+          "Ferrari"
+        ],
+        "source_url": "https://www.formula1.com/en/racing/2025/spain"
+      },
+      "sample": {
+        "all_field_clean_laps": 980,
+        "all_field_drivers": 19,
+        "four_team_clean_laps": 425,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 81.03499984741211
+      },
+      "model": {
+        "fastest_baseline_team": "McLaren",
+        "winner_team_matches_fastest_baseline": true,
+        "winner_team_baseline_rank": 1,
+        "cars": [
+          {
+            "team": "McLaren",
+            "ceiling_z": -2.153316039561405,
+            "baseline_z": -1.186877823036665,
+            "floor_z": -0.6611624058072377,
+            "clean_laps": 110,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 1218.2330457223418,
+            "baseline_rank": 1
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -1.3495009639284434,
+            "baseline_z": -0.6864420117701535,
+            "floor_z": 0.10787860192774415,
+            "clean_laps": 110,
+            "ceiling_gap_ms": 653.9964851594907,
+            "baseline_gap_ms": 406.54455772943925,
+            "envelope_width_ms": 1189.635223269078,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Mercedes",
+            "ceiling_z": -1.0566667041066167,
+            "baseline_z": -0.610622929526745,
+            "floor_z": -0.08244631384213866,
+            "clean_laps": 101,
+            "ceiling_gap_ms": 893.5604444070985,
+            "baseline_gap_ms": 468.3162036506514,
+            "envelope_width_ms": 793.317547913664,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -1.2693059585491513,
+            "baseline_z": -0.32984360515595795,
+            "floor_z": 0.7812981603158412,
+            "clean_laps": 104,
+            "ceiling_gap_ms": 719.5332552584841,
+            "baseline_gap_ms": 697.482238664621,
+            "envelope_width_ms": 1678.8616179585722,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -1.0281272269452106,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.9557706565392555,
+            "gap_to_faster_teammate_ms": 58.65536466410178
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -1.621444290695274,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -1.5133894207773455,
+            "gap_to_faster_teammate_ms": 87.60958836217802
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -0.8279250939713725,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -0.6435785418923597,
+            "gap_to_faster_teammate_ms": 149.52300610461847
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -1.5169434113866813,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": 0.49135880039595586,
+            "gap_to_faster_teammate_ms": 1643.8794767153627
+          }
+        ],
+        "in_sample_mae": 0.5880985306267636,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "McLaren > Ferrari > Mercedes > Red Bull Racing",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "McLaren > Ferrari > Mercedes > Red Bull Racing"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -1.3159410252595118,
+                "Red Bull Racing": -0.27479238239958514,
+                "Ferrari": -0.6347836441077949,
+                "Mercedes": -0.5542155728745362
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -1.3171237616418705,
+                "Red Bull Racing": -0.2750709082889038,
+                "Ferrari": -0.6362384586051067,
+                "Mercedes": -0.556592959873493
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -1.3184964179644763,
+                "Red Bull Racing": -0.2751605033405911,
+                "Ferrari": -0.6375532854205641,
+                "Mercedes": -0.5589560353061285
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -1.266298593044811,
+                "Red Bull Racing": -0.2621846702267842,
+                "Ferrari": -0.6099284347571877,
+                "Mercedes": -0.5305482496368108
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -1.2639862250080882,
+                "Red Bull Racing": -0.2613109100899535,
+                "Ferrari": -0.6096193835338771,
+                "Mercedes": -0.5312056236357076
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -1.2631072090865871,
+                "Red Bull Racing": -0.26057862245632096,
+                "Ferrari": -0.609806520076613,
+                "Mercedes": -0.5324762061748936
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -1.1568396767906173,
+                "Red Bull Racing": -0.23548518166264903,
+                "Ferrari": -0.5555763583902595,
+                "Mercedes": -0.4788940634800903
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -1.1387659611377163,
+                "Red Bull Racing": -0.23048350834802614,
+                "Ferrari": -0.547647674184987,
+                "Mercedes": -0.47238098701389725
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -1.1268701651284623,
+                "Red Bull Racing": -0.22775485311565064,
+                "Ferrari": -0.5420496560598169,
+                "Mercedes": -0.46812329784741
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/9/results.json",
+          "response_sha256": "a89c492781c6e7ccd588fc5a73a904d03e3893b1ef9973c1aa771434bb2f5f6c",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Finished"
+            },
+            {
+              "position": 10,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 11,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 12,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 13,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 14,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 15,
+              "driver": "COL",
+              "team": "Alpine",
+              "status": "Finished"
+            },
+            {
+              "position": 16,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 17,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 18,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Retired"
+            },
+            {
+              "position": 19,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Retired"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 75.743,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 76.187,
+              "fastest_lap_rank": 2
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 77.259,
+              "fastest_lap_rank": 5
+            },
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 77.244,
+              "fastest_lap_rank": 4
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 77.706,
+              "fastest_lap_rank": 7
+            },
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 77.019,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 77.998,
+              "fastest_lap_rank": 10
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 78.255,
+              "fastest_lap_rank": 12
+            }
+          ],
+          "teams": [
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 75.965,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 77.4825,
+              "gap_to_fastest_ms": 1517.4999999999982
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 77.5085,
+              "gap_to_fastest_ms": 1543.4999999999945
+            },
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 77.7495,
+              "gap_to_fastest_ms": 1784.499999999994
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Red Bull Racing",
+            "Mercedes"
+          ],
+          "spearman_rank_correlation": 0.7999999999999999,
+          "pairwise_gap_mae_ms": 702.2481783305356
+        },
+        "fastest_proxy_team": "McLaren",
+        "winner_team_matches_fastest_proxy": true
+      }
+    },
+    {
+      "meeting_name": "Mexico City Grand Prix",
+      "category": "观感与赛果高度一致",
+      "selection_rationale": "诺里斯以约三十秒优势获胜，单车统治性观感很强。",
+      "official_result": {
+        "winner_driver": "NOR",
+        "winner_team": "McLaren",
+        "podium_teams": [
+          "McLaren",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "distinct_podium_team_order": [
+          "McLaren",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "source_url": "https://www.formula1.com/en/racing/2025/mexico"
+      },
+      "sample": {
+        "all_field_clean_laps": 1103,
+        "all_field_drivers": 20,
+        "four_team_clean_laps": 495,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 82.66100311279297
+      },
+      "model": {
+        "fastest_baseline_team": "McLaren",
+        "winner_team_matches_fastest_baseline": true,
+        "winner_team_baseline_rank": 1,
+        "cars": [
+          {
+            "team": "McLaren",
+            "ceiling_z": -1.0790784116823076,
+            "baseline_z": -0.5462840816769494,
+            "floor_z": 0.04792785186459921,
+            "clean_laps": 125,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 936.8640244696066,
+            "baseline_rank": 1
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -0.8609382437048327,
+            "baseline_z": -0.38336470769160197,
+            "floor_z": 0.372343150153527,
+            "clean_laps": 123,
+            "ceiling_gap_ms": 180.51366586770118,
+            "baseline_gap_ms": 134.78055080416135,
+            "envelope_width_ms": 1025.7549928371413,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Mercedes",
+            "ceiling_z": -0.8325182296431041,
+            "baseline_z": -0.37458217706118524,
+            "floor_z": 0.11477899180395673,
+            "clean_laps": 120,
+            "ceiling_gap_ms": 204.06058244515728,
+            "baseline_gap_ms": 142.0524351881729,
+            "envelope_width_ms": 786.7660084702633,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -0.5894129535999277,
+            "baseline_z": -0.18870540960516807,
+            "floor_z": 0.2747895699082924,
+            "clean_laps": 127,
+            "ceiling_gap_ms": 405.7549898229491,
+            "baseline_gap_ms": 296.10720985804824,
+            "envelope_width_ms": 717.4541380151076,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -0.6923477436194644,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.6679469606789283,
+            "gap_to_faster_teammate_ms": 20.172392956843627
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -1.1517163406172908,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -0.6234339111996594,
+            "gap_to_faster_teammate_ms": 437.8390505361067
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -0.5126098420328453,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -0.43753621859328407,
+            "gap_to_faster_teammate_ms": 62.07991011152483
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -0.8097130152438017,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": -0.03195425472020341,
+            "gap_to_faster_teammate_ms": 645.4098054513024
+          }
+        ],
+        "in_sample_mae": 0.4134599873302214,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "McLaren > Mercedes > Ferrari > Red Bull Racing",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "McLaren > Mercedes > Ferrari > Red Bull Racing"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.5093416993292608,
+                "Red Bull Racing": -0.15554219326220256,
+                "Ferrari": -0.27985477055300084,
+                "Mercedes": -0.3161704915075787
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.5082485610422331,
+                "Red Bull Racing": -0.1552570352886888,
+                "Ferrari": -0.2786758421848391,
+                "Mercedes": -0.3137905313539612
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.5077025238685174,
+                "Red Bull Racing": -0.15539604786308053,
+                "Ferrari": -0.277666188130605,
+                "Mercedes": -0.3118327894026194
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.48836250974111467,
+                "Red Bull Racing": -0.1458568774240906,
+                "Ferrari": -0.26627353494559597,
+                "Mercedes": -0.3011231095925457
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.4867338682004458,
+                "Red Bull Racing": -0.14565951760723728,
+                "Ferrari": -0.264702446595309,
+                "Mercedes": -0.29874081118960066
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.4858159773221829,
+                "Red Bull Racing": -0.14625214890591628,
+                "Ferrari": -0.263770306209516,
+                "Mercedes": -0.29653753326863164
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.44266305203297995,
+                "Red Bull Racing": -0.1260864647731537,
+                "Ferrari": -0.23693878278739383,
+                "Mercedes": -0.26893788192385554
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.4361981935727686,
+                "Red Bull Racing": -0.12499655476630572,
+                "Ferrari": -0.2330151540281005,
+                "Mercedes": -0.26354913465664004
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.4319985764540265,
+                "Red Bull Racing": -0.12473392626840857,
+                "Ferrari": -0.2304919630640349,
+                "Mercedes": -0.2597921519236547
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/20/results.json",
+          "response_sha256": "21c962a7864bd404e0775ec22f0021d4f45c9d9420018aaa803263702343ef74",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 10,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 11,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 12,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Lapped"
+            },
+            {
+              "position": 13,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Lapped"
+            },
+            {
+              "position": 14,
+              "driver": "STR",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            },
+            {
+              "position": 15,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 16,
+              "driver": "COL",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 17,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Retired"
+            },
+            {
+              "position": 18,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Retired"
+            },
+            {
+              "position": 19,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Retired"
+            },
+            {
+              "position": 20,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Retired"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 80.764,
+              "fastest_lap_rank": 8
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 81.588,
+              "fastest_lap_rank": 14
+            },
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 81.108,
+              "fastest_lap_rank": 10
+            },
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 80.422,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 80.826,
+              "fastest_lap_rank": 9
+            },
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 80.05199999999999,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 80.601,
+              "fastest_lap_rank": 6
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 81.486,
+              "fastest_lap_rank": 13
+            }
+          ],
+          "teams": [
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 80.439,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 80.59299999999999,
+              "gap_to_fastest_ms": 153.99999999999636
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.0945,
+              "gap_to_fastest_ms": 655.5000000000035
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.297,
+              "gap_to_fastest_ms": 858.0000000000041
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "Mercedes",
+            "McLaren",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "spearman_rank_correlation": 0.39999999999999997,
+          "pairwise_gap_mae_ms": 413.09252086437203
+        },
+        "fastest_proxy_team": "Mercedes",
+        "winner_team_matches_fastest_proxy": false
+      }
+    },
+    {
+      "meeting_name": "Canadian Grand Prix",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "梅赛德斯一三，迈凯伦仅第四且另一车退赛。",
+      "official_result": {
+        "winner_driver": "RUS",
+        "winner_team": "Mercedes",
+        "podium_teams": [
+          "Mercedes",
+          "Red Bull Racing",
+          "Mercedes"
+        ],
+        "distinct_podium_team_order": [
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "source_url": "https://www.formula1.com/en/results/2025/races/1263/canada/race-result"
+      },
+      "sample": {
+        "all_field_clean_laps": 1153,
+        "all_field_drivers": 20,
+        "four_team_clean_laps": 472,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 76.77799987792969
+      },
+      "model": {
+        "fastest_baseline_team": "Mercedes",
+        "winner_team_matches_fastest_baseline": true,
+        "winner_team_baseline_rank": 1,
+        "cars": [
+          {
+            "team": "Mercedes",
+            "ceiling_z": -1.7314282408978634,
+            "baseline_z": -1.335031214717084,
+            "floor_z": -0.5415158348171191,
+            "clean_laps": 117,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 919.0480350712079,
+            "baseline_rank": 1
+          },
+          {
+            "team": "McLaren",
+            "ceiling_z": -1.4105562545951515,
+            "baseline_z": -1.0008379164167198,
+            "floor_z": -0.2209709564706944,
+            "clean_laps": 120,
+            "ceiling_gap_ms": 246.75476499652765,
+            "baseline_gap_ms": 257.0161563387414,
+            "envelope_width_ms": 918.7938822613614,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -1.090702819632643,
+            "baseline_z": -0.5644895802609227,
+            "floor_z": 0.3833258731268854,
+            "clean_laps": 116,
+            "ceiling_gap_ms": 493.5155144837654,
+            "baseline_gap_ms": 593.8916077667186,
+            "envelope_width_ms": 1140.111892966711,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -0.8536592166784351,
+            "baseline_z": -0.2344832014276566,
+            "floor_z": 0.4095073219484727,
+            "clean_laps": 119,
+            "ceiling_gap_ms": 676.8999633103803,
+            "baseline_gap_ms": 849.645555158086,
+            "envelope_width_ms": 975.9851853955176,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -1.1009051457712915,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.6181338732190187,
+            "gap_to_faster_teammate_ms": 371.55829374942977
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -1.384292750496946,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -1.3616998903170823,
+            "gap_to_faster_teammate_ms": 17.348305826762584
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -1.5066428527490294,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -1.4161451572915278,
+            "gap_to_faster_teammate_ms": 69.51376994358415
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -1.353910182507045,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": 0.3647650463482566,
+            "gap_to_faster_teammate_ms": 1330.9692221346397
+          }
+        ],
+        "in_sample_mae": 0.5187772160535616,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "Mercedes > McLaren > Ferrari > Red Bull Racing",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "Mercedes > McLaren > Ferrari > Red Bull Racing"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.8829183198189948,
+                "Red Bull Racing": -0.17009480663420212,
+                "Ferrari": -0.4317400608125424,
+                "Mercedes": -1.2018070647273162
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.8787921785600709,
+                "Red Bull Racing": -0.16955838106806337,
+                "Ferrari": -0.42814618527102666,
+                "Mercedes": -1.1976432108865778
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.8748971321563922,
+                "Red Bull Racing": -0.16907276400819296,
+                "Ferrari": -0.4245318462155351,
+                "Mercedes": -1.1938360330160465
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.8482737080490305,
+                "Red Bull Racing": -0.16463983924075923,
+                "Ferrari": -0.4118620090482713,
+                "Mercedes": -1.1557183442420338
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.8419885111877607,
+                "Red Bull Racing": -0.16374228885464281,
+                "Ferrari": -0.4071166706241262,
+                "Mercedes": -1.1485893834670877
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.8368376504843587,
+                "Red Bull Racing": -0.16300851546213116,
+                "Ferrari": -0.4028991571829706,
+                "Mercedes": -1.1428775778092608
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.7722253913094091,
+                "Red Bull Racing": -0.15238374266932644,
+                "Ferrari": -0.3688929741571409,
+                "Mercedes": -1.0537928955207763
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.755868438078577,
+                "Red Bull Racing": -0.14976911283060954,
+                "Ferrari": -0.35873723495944265,
+                "Mercedes": -1.0328479111016617
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.7432839060504978,
+                "Red Bull Racing": -0.14759005419539606,
+                "Ferrari": -0.3509202158974461,
+                "Mercedes": -1.0181705841433475
+              },
+              "car_order_fast_to_slow": [
+                "Mercedes",
+                "McLaren",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/10/results.json",
+          "response_sha256": "0881dde6a84c820e839b17ff42516b54a32cd6848945776f162e66d23c87aae7",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Lapped"
+            },
+            {
+              "position": 10,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Lapped"
+            },
+            {
+              "position": 11,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Lapped"
+            },
+            {
+              "position": 12,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Lapped"
+            },
+            {
+              "position": 13,
+              "driver": "COL",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 14,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Lapped"
+            },
+            {
+              "position": 15,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 16,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Lapped"
+            },
+            {
+              "position": 17,
+              "driver": "STR",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            },
+            {
+              "position": 18,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Retired"
+            },
+            {
+              "position": 19,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Retired"
+            },
+            {
+              "position": 20,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Retired"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 74.119,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 74.287,
+              "fastest_lap_rank": 5
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 74.455,
+              "fastest_lap_rank": 7
+            },
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 74.255,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 74.261,
+              "fastest_lap_rank": 4
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 74.805,
+              "fastest_lap_rank": 9
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 75.358,
+              "fastest_lap_rank": 13
+            },
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 74.229,
+              "fastest_lap_rank": 2
+            }
+          ],
+          "teams": [
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 74.24199999999999,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 74.287,
+              "gap_to_fastest_ms": 45.000000000015916
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 74.533,
+              "gap_to_fastest_ms": 291.000000000011
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 74.8225,
+              "gap_to_fastest_ms": 580.5000000000149
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "Mercedes",
+            "McLaren",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "McLaren",
+            "Mercedes",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "spearman_rank_correlation": 0.7999999999999999,
+          "pairwise_gap_mae_ms": 175.96737035325006
+        },
+        "fastest_proxy_team": "McLaren",
+        "winner_team_matches_fastest_proxy": false
+      }
+    },
+    {
+      "meeting_name": "Japanese Grand Prix",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "维斯塔潘击败两辆迈凯伦夺冠，但队友仅第十二。",
+      "official_result": {
+        "winner_driver": "VER",
+        "winner_team": "Red Bull Racing",
+        "podium_teams": [
+          "Red Bull Racing",
+          "McLaren",
+          "McLaren"
+        ],
+        "distinct_podium_team_order": [
+          "Red Bull Racing",
+          "McLaren"
+        ],
+        "source_url": "https://www.formula1.com/en/results/2025/races/1256/japan/race-result"
+      },
+      "sample": {
+        "all_field_clean_laps": 989,
+        "all_field_drivers": 20,
+        "four_team_clean_laps": 395,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 93.1959991455078
+      },
+      "model": {
+        "fastest_baseline_team": "McLaren",
+        "winner_team_matches_fastest_baseline": false,
+        "winner_team_baseline_rank": 4,
+        "cars": [
+          {
+            "team": "McLaren",
+            "ceiling_z": -0.8827110767290826,
+            "baseline_z": -0.5618646539324236,
+            "floor_z": -0.2983612788682547,
+            "clean_laps": 99,
+            "ceiling_gap_ms": 47.16495563810141,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 546.1848935924205,
+            "baseline_rank": 1
+          },
+          {
+            "team": "Mercedes",
+            "ceiling_z": -0.9333066230970456,
+            "baseline_z": -0.5424475015312327,
+            "floor_z": -0.21565673767470053,
+            "clean_laps": 97,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 18.097766164453468,
+            "envelope_width_ms": 671.226628854452,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -0.5204606865797725,
+            "baseline_z": -0.17977570525663603,
+            "floor_z": 0.2665618852136802,
+            "clean_laps": 100,
+            "ceiling_gap_ms": 385.5512141124659,
+            "baseline_gap_ms": 356.7727739640208,
+            "envelope_width_ms": 736.3674373480923,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -0.40999913806790356,
+            "baseline_z": -0.16932114606863866,
+            "floor_z": 0.1427106893234378,
+            "clean_laps": 99,
+            "ceiling_gap_ms": 488.9799577402588,
+            "baseline_gap_ms": 366.5538151498153,
+            "envelope_width_ms": 516.5295859576831,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -0.6301185516895406,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.3656237758493886,
+            "gap_to_faster_teammate_ms": 246.8248245213827
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -0.9059544875728239,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -0.8800359678323975,
+            "gap_to_faster_teammate_ms": 24.15815401853594
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -0.7103897733349971,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -0.6380951305156819,
+            "gap_to_faster_teammate_ms": 67.40007509034744
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -0.9061971131915181,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": 0.10336842189810191,
+            "gap_to_faster_teammate_ms": 945.6400838410312
+          }
+        ],
+        "in_sample_mae": 0.30226406116123566,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "McLaren > Mercedes > Ferrari > Red Bull Racing",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "McLaren > Mercedes > Ferrari > Red Bull Racing"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.5301200171140478,
+                "Red Bull Racing": -0.1244982586259822,
+                "Ferrari": -0.1569031075497004,
+                "Mercedes": -0.4866918215766625
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.5254527563008665,
+                "Red Bull Racing": -0.12034635443465214,
+                "Ferrari": -0.1524956425701558,
+                "Mercedes": -0.4828827234170078
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.5213223142829665,
+                "Red Bull Racing": -0.11652353240983629,
+                "Ferrari": -0.14847306646913058,
+                "Mercedes": -0.4797614753832429
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.5085057858064056,
+                "Red Bull Racing": -0.1192202148966252,
+                "Ferrari": -0.15048161399671178,
+                "Mercedes": -0.4665914216829009
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.5025420579181586,
+                "Red Bull Racing": -0.11489290611176638,
+                "Ferrari": -0.14586526993634547,
+                "Mercedes": -0.46166286979321586
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.4976787278735835,
+                "Red Bull Racing": -0.11113277138636012,
+                "Ferrari": -0.14186699466663916,
+                "Mercedes": -0.4576795748987075
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.46130499682486636,
+                "Red Bull Racing": -0.10776423526523218,
+                "Ferrari": -0.13624995097725973,
+                "Mercedes": -0.4225787258672254
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.44936483869453137,
+                "Red Bull Racing": -0.10236081758677706,
+                "Ferrari": -0.13016023935501136,
+                "Mercedes": -0.4119977940954046
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.44046220977920797,
+                "Red Bull Racing": -0.0980094834785361,
+                "Ferrari": -0.12528326480827964,
+                "Mercedes": -0.404160860017454
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Mercedes",
+                "Ferrari",
+                "Red Bull Racing"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/3/results.json",
+          "response_sha256": "5b7ac115fb845185666ab28ae0573a617f3ae399822a6f59a2be640ffbad56fb",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 10,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 11,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Finished"
+            },
+            {
+              "position": 12,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 13,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Finished"
+            },
+            {
+              "position": 14,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 15,
+              "driver": "DOO",
+              "team": "Alpine",
+              "status": "Finished"
+            },
+            {
+              "position": 16,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 17,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 18,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 19,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 20,
+              "driver": "STR",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 91.041,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 91.116,
+              "fastest_lap_rank": 5
+            },
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 91.039,
+              "fastest_lap_rank": 2
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 91.469,
+              "fastest_lap_rank": 10
+            },
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 91.357,
+              "fastest_lap_rank": 8
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 90.965,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 91.406,
+              "fastest_lap_rank": 9
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 91.871,
+              "fastest_lap_rank": 13
+            }
+          ],
+          "teams": [
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 91.0775,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 91.161,
+              "gap_to_fastest_ms": 83.5000000000008
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 91.4375,
+              "gap_to_fastest_ms": 359.99999999999943
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 91.45599999999999,
+              "gap_to_fastest_ms": 378.4999999999883
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "McLaren",
+            "Mercedes",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "McLaren",
+            "Mercedes",
+            "Ferrari",
+            "Red Bull Racing"
+          ],
+          "spearman_rank_correlation": 1.0,
+          "pairwise_gap_mae_ms": 34.1542767201394
+        },
+        "fastest_proxy_team": "McLaren",
+        "winner_team_matches_fastest_proxy": false
+      }
+    },
+    {
+      "meeting_name": "Italian Grand Prix",
+      "category": "观感与赛季印象明显错位",
+      "selection_rationale": "维斯塔潘以明显优势击败两辆迈凯伦，但队友未进入前列。",
+      "official_result": {
+        "winner_driver": "VER",
+        "winner_team": "Red Bull Racing",
+        "podium_teams": [
+          "Red Bull Racing",
+          "McLaren",
+          "McLaren"
+        ],
+        "distinct_podium_team_order": [
+          "Red Bull Racing",
+          "McLaren"
+        ],
+        "source_url": "https://www.formula1.com/en/racing/2025/italy/news?page=12"
+      },
+      "sample": {
+        "all_field_clean_laps": 878,
+        "all_field_drivers": 19,
+        "four_team_clean_laps": 385,
+        "four_team_drivers": 8,
+        "reference_lap_seconds": 83.53900146484375
+      },
+      "model": {
+        "fastest_baseline_team": "McLaren",
+        "winner_team_matches_fastest_baseline": false,
+        "winner_team_baseline_rank": 4,
+        "cars": [
+          {
+            "team": "McLaren",
+            "ceiling_z": -0.9359798441469003,
+            "baseline_z": -0.5901595979290839,
+            "floor_z": -0.1118167382887189,
+            "clean_laps": 98,
+            "ceiling_gap_ms": 0.0,
+            "baseline_gap_ms": 0.0,
+            "envelope_width_ms": 691.3426111908287,
+            "baseline_rank": 1
+          },
+          {
+            "team": "Ferrari",
+            "ceiling_z": -0.4965729991845703,
+            "baseline_z": -0.21413890946178335,
+            "floor_z": 0.19664250631633953,
+            "clean_laps": 97,
+            "ceiling_gap_ms": 367.8837519236471,
+            "baseline_gap_ms": 314.71525486359053,
+            "envelope_width_ms": 581.1171813787961,
+            "baseline_rank": 2
+          },
+          {
+            "team": "Mercedes",
+            "ceiling_z": -0.49896904933815817,
+            "baseline_z": -0.17764465689858977,
+            "floor_z": 0.3052362980119394,
+            "clean_laps": 94,
+            "ceiling_gap_ms": 365.8733249570554,
+            "baseline_gap_ms": 345.3226266529886,
+            "envelope_width_ms": 674.5337999163798,
+            "baseline_rank": 3
+          },
+          {
+            "team": "Red Bull Racing",
+            "ceiling_z": -0.7392923159946664,
+            "baseline_z": -0.08477490401055802,
+            "floor_z": 0.48584364705241295,
+            "clean_laps": 96,
+            "ceiling_gap_ms": 164.4724924410313,
+            "baseline_gap_ms": 423.26197658764585,
+            "envelope_width_ms": 1029.7614588914237,
+            "baseline_rank": 4
+          }
+        ],
+        "drivers": [
+          {
+            "team": "Ferrari",
+            "driver": "LEC",
+            "median_on_car_z": -0.6132165649085224,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Ferrari",
+            "driver": "HAM",
+            "median_on_car_z": -0.44575324471876954,
+            "gap_to_faster_teammate_ms": 140.01438915748813
+          },
+          {
+            "team": "McLaren",
+            "driver": "NOR",
+            "median_on_car_z": -0.9575598244621912,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "McLaren",
+            "driver": "PIA",
+            "median_on_car_z": -0.8656379599702819,
+            "gap_to_faster_teammate_ms": 76.82591222028356
+          },
+          {
+            "team": "Mercedes",
+            "driver": "RUS",
+            "median_on_car_z": -0.45912271240188796,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver": "ANT",
+            "median_on_car_z": -0.09471573679424111,
+            "gap_to_faster_teammate_ms": 304.9772904621736
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "VER",
+            "median_on_car_z": -1.2583832869381895,
+            "gap_to_faster_teammate_ms": 0.0
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver": "TSU",
+            "median_on_car_z": 0.5249252149906275,
+            "gap_to_faster_teammate_ms": 1503.1209222863106
+          }
+        ],
+        "in_sample_mae": 0.300230951293727,
+        "sensitivity": {
+          "grid_size": 9,
+          "modal_team_effect_order": "McLaren > Ferrari > Mercedes > Red Bull Racing",
+          "modal_order_count": 9,
+          "unique_orders": [
+            "McLaren > Ferrari > Mercedes > Red Bull Racing"
+          ],
+          "details": [
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.5210780036431469,
+                "Red Bull Racing": -0.10356908729825834,
+                "Ferrari": -0.16290593915369442,
+                "Mercedes": -0.10784514063521172
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.5200128958172968,
+                "Red Bull Racing": -0.10504004892398136,
+                "Ferrari": -0.16526511058716994,
+                "Mercedes": -0.11071513880513353
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 5.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.5189905924682513,
+                "Red Bull Racing": -0.10628849312430164,
+                "Ferrari": -0.16719472001384855,
+                "Mercedes": -0.11320822958364887
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.4931452290642239,
+                "Red Bull Racing": -0.0973663110543474,
+                "Ferrari": -0.15241455591965655,
+                "Mercedes": -0.10144689223219136
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.4902464917277433,
+                "Red Bull Racing": -0.09851775492074244,
+                "Ferrari": -0.15415730168710076,
+                "Mercedes": -0.10403562621704292
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 10.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.4881015437125142,
+                "Red Bull Racing": -0.09952896456317208,
+                "Ferrari": -0.15568490938739932,
+                "Mercedes": -0.106294620193382
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 50.0,
+              "team_effect_z": {
+                "McLaren": -0.4345628398139235,
+                "Red Bull Racing": -0.08483439796803177,
+                "Ferrari": -0.13120451120259616,
+                "Mercedes": -0.08856026089553756
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 100.0,
+              "team_effect_z": {
+                "McLaren": -0.42435289727327014,
+                "Red Bull Racing": -0.08423946826398906,
+                "Ferrari": -0.13021156664298777,
+                "Mercedes": -0.08915860097041922
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            },
+            {
+              "team_penalty": 25.0,
+              "driver_update_penalty": 250.0,
+              "team_effect_z": {
+                "McLaren": -0.4171802446332836,
+                "Red Bull Racing": -0.08409183543491096,
+                "Ferrari": -0.1298742727909325,
+                "Mercedes": -0.09014007465954874
+              },
+              "car_order_fast_to_slow": [
+                "McLaren",
+                "Ferrari",
+                "Mercedes",
+                "Red Bull Racing"
+              ]
+            }
+          ]
+        }
+      },
+      "external_pace_proxy": {
+        "pace_proxy": {
+          "provider": "Jolpica Ergast-compatible API",
+          "method": "mean_of_two_driver_official_fastest_laps",
+          "url": "https://api.jolpi.ca/ergast/f1/2025/16/results.json",
+          "response_sha256": "fedcf2e20a00d433c149889e5e7f50df440d7da84adfcfa1acdc0f64a534a98c",
+          "classifications": [
+            {
+              "position": 1,
+              "driver": "VER",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 2,
+              "driver": "NOR",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 3,
+              "driver": "PIA",
+              "team": "McLaren",
+              "status": "Finished"
+            },
+            {
+              "position": 4,
+              "driver": "LEC",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 5,
+              "driver": "RUS",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 6,
+              "driver": "HAM",
+              "team": "Ferrari",
+              "status": "Finished"
+            },
+            {
+              "position": 7,
+              "driver": "ALB",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 8,
+              "driver": "BOR",
+              "team": "Kick Sauber",
+              "status": "Finished"
+            },
+            {
+              "position": 9,
+              "driver": "ANT",
+              "team": "Mercedes",
+              "status": "Finished"
+            },
+            {
+              "position": 10,
+              "driver": "HAD",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 11,
+              "driver": "SAI",
+              "team": "Williams",
+              "status": "Finished"
+            },
+            {
+              "position": 12,
+              "driver": "BEA",
+              "team": "Haas F1 Team",
+              "status": "Finished"
+            },
+            {
+              "position": 13,
+              "driver": "TSU",
+              "team": "Red Bull Racing",
+              "status": "Finished"
+            },
+            {
+              "position": 14,
+              "driver": "LAW",
+              "team": "RB",
+              "status": "Finished"
+            },
+            {
+              "position": 15,
+              "driver": "OCO",
+              "team": "Haas F1 Team",
+              "status": "Lapped"
+            },
+            {
+              "position": 16,
+              "driver": "GAS",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 17,
+              "driver": "COL",
+              "team": "Alpine",
+              "status": "Lapped"
+            },
+            {
+              "position": 18,
+              "driver": "STR",
+              "team": "Aston Martin",
+              "status": "Lapped"
+            },
+            {
+              "position": 19,
+              "driver": "ALO",
+              "team": "Aston Martin",
+              "status": "Retired"
+            },
+            {
+              "position": 20,
+              "driver": "HUL",
+              "team": "Kick Sauber",
+              "status": "Did not start"
+            }
+          ],
+          "drivers": [
+            {
+              "driver_id": "VER",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 81.003,
+              "fastest_lap_rank": 2
+            },
+            {
+              "driver_id": "NOR",
+              "team": "McLaren",
+              "fastest_lap_seconds": 80.901,
+              "fastest_lap_rank": 1
+            },
+            {
+              "driver_id": "PIA",
+              "team": "McLaren",
+              "fastest_lap_seconds": 81.245,
+              "fastest_lap_rank": 3
+            },
+            {
+              "driver_id": "LEC",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 81.294,
+              "fastest_lap_rank": 4
+            },
+            {
+              "driver_id": "RUS",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 81.8,
+              "fastest_lap_rank": 8
+            },
+            {
+              "driver_id": "HAM",
+              "team": "Ferrari",
+              "fastest_lap_seconds": 81.54599999999999,
+              "fastest_lap_rank": 6
+            },
+            {
+              "driver_id": "ANT",
+              "team": "Mercedes",
+              "fastest_lap_seconds": 81.968,
+              "fastest_lap_rank": 10
+            },
+            {
+              "driver_id": "TSU",
+              "team": "Red Bull Racing",
+              "fastest_lap_seconds": 82.712,
+              "fastest_lap_rank": 16
+            }
+          ],
+          "teams": [
+            {
+              "team": "McLaren",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.07300000000001,
+              "gap_to_fastest_ms": 0.0
+            },
+            {
+              "team": "Ferrari",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.41999999999999,
+              "gap_to_fastest_ms": 346.99999999998
+            },
+            {
+              "team": "Red Bull Racing",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.8575,
+              "gap_to_fastest_ms": 784.4999999999942
+            },
+            {
+              "team": "Mercedes",
+              "driver_count": 2,
+              "pace_proxy_seconds": 81.884,
+              "gap_to_fastest_ms": 810.9999999999928
+            }
+          ]
+        },
+        "comparison_to_model": {
+          "teams": [
+            "Ferrari",
+            "McLaren",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "model_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Mercedes",
+            "Red Bull Racing"
+          ],
+          "external_order_fast_to_slow": [
+            "McLaren",
+            "Ferrari",
+            "Red Bull Racing",
+            "Mercedes"
+          ],
+          "spearman_rank_correlation": 0.7999999999999999,
+          "pairwise_gap_mae_ms": 287.6642330528286
+        },
+        "fastest_proxy_team": "McLaren",
+        "winner_team_matches_fastest_proxy": false
+      }
+    }
+  ],
+  "aggregate": {
+    "race_count": 6,
+    "model_winner_matches": 4,
+    "external_winner_matches": 2,
+    "mean_model_external_spearman": 0.7666666666666666
+  },
+  "limitations": [
+    "六场比赛按已知赛果与公众观感事后挑选，只能用于解释和寻找反例，不能作为确认性准确率。",
+    "模型使用正赛有效圈，冠军与领奖台还受排位、赛道位置、策略、安全车、事故和可靠性影响。",
+    "Jolpica 官方最快圈代理未参与拟合，但单一最快圈受轮胎、燃油、交通和策略影响，且可能与上游共享官方计时源，不能视为车辆能力真值。"
+  ]
+}

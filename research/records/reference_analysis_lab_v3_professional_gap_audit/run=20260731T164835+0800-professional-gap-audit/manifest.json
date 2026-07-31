@@ -1,0 +1,299 @@
+{
+  "schema_version": "reference-analysis-lab-v3-professional-gap-audit-manifest-v1",
+  "run_id": "20260731T164835+0800-professional-gap-audit",
+  "created_at": "2026-07-31T17:16:55+08:00",
+  "status": "PASS_WITH_VERIFIED_GAPS_AND_UNKNOWN_BOUNDARIES",
+  "append_only": true,
+  "offline_only": true,
+  "audit_script": {
+    "version": "professional-gap-audit-v1.0.0",
+    "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_professional_gap.py",
+    "sha256": "13e2c02ad5f17116df02ee012c1cb18936f87c9dba343907db8a63a8b2f2d34c"
+  },
+  "run_commands": [
+    "python \"research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_professional_gap.py\"",
+    "python -m pytest \"research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/test_audit_outputs.py\" -q",
+    "python tools/audit_reference_analysis_lab_v3.py",
+    "python tools/audit_race_dossier_v17_release.py --manifest \"research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json\""
+  ],
+  "inputs": [
+    {
+      "input_id": "v3_manifest",
+      "path": "research/records/reference_analysis_lab_v3/run=20260731T235900+0800-track-validation-v3/manifest.json",
+      "sha256": "c0db603684f5dada772ca33edeb67b68d4d606254f30154f2cb20324a6b6f9ed",
+      "bytes": 37712
+    },
+    {
+      "input_id": "v3_browser_acceptance_index",
+      "path": "research/records/reference_analysis_lab_v3_browser_acceptance/manifest.json",
+      "sha256": "0454329da825615db46859827bf09da65f43565072e6c41d1ba15e43a60744c7",
+      "bytes": 1156
+    },
+    {
+      "input_id": "v2_index",
+      "path": "frontend/public/data/reference-analysis-lab/v2/manifest.json",
+      "sha256": "f18651003b493e9f7fa1d1ab57df98ca0820f0208b3d1fee72920399458e95d8",
+      "bytes": 2851
+    },
+    {
+      "input_id": "v17_manifest",
+      "path": "research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json",
+      "sha256": "9322064faee009e0e53d7ec345e9d25499f821658cdf05d497a74d233567658c",
+      "bytes": 94177
+    },
+    {
+      "input_id": "v3_config",
+      "path": "research/configs/reference_analysis_lab_track_validation_2023_2025_v3.json",
+      "sha256": "c3df9c890b9ac46a9562ed60e41d7a11c9a5b6fe5fb06a758c27839e3a03d232",
+      "bytes": 7461
+    },
+    {
+      "input_id": "f1pace_v1_validation_support",
+      "path": "research/records/reference_analysis_lab_v1/f1pace/run=20260730T154800+0800-f1pace-abu-dhabi-v1/validation.json",
+      "sha256": "c61af4c60d3cd74b7d9f6c60e3479ad47c0f21f5d776bbd40144789a9d77793f",
+      "bytes": 847
+    },
+    {
+      "input_id": "v3_generator_source",
+      "path": "research/run_reference_analysis_lab_track_validation_v3.py",
+      "sha256": "b23f5ed0d72753cc3e8e2eae93a0fb7edef27400c73e665433be0fd061f0fe4f",
+      "bytes": 117354
+    },
+    {
+      "input_id": "v3_generator_library",
+      "path": "research/reference_analysis_lab/track_validation_v3.py",
+      "sha256": "c3018d7a53e2628e6cadc9c4b372a062b6d974ce4d45c9d6a36178a620105df6",
+      "bytes": 31973
+    },
+    {
+      "input_id": "v3_frontend_source",
+      "path": "frontend/src/track-validation-v3.js",
+      "sha256": "1a65d3f6ced719afb27c24ec9c47c8f1fd27b19cb0a5607d8298a9389d0a1cdd",
+      "bytes": 27659
+    },
+    {
+      "input_id": "v2_report_f1pace-reverse-engineered-v2",
+      "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T120000+0800-f1pace-reverse-engineered-v2/f1pace_traffic_reverse_engineered_v2.json",
+      "sha256": "631e53996d372a710b73a30a5a83959f0d19ee3aa2c520d312c41c9c82969aff",
+      "bytes": 740130
+    },
+    {
+      "input_id": "v2_report_deltadata-reverse-engineered-v2",
+      "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T153000+0800-deltadata-reverse-engineered-v2/deltadata_reverse_engineered_v2.json",
+      "sha256": "888ec7315050b2e98f5342a6c91d4f62ffdf741f1163d9f5d3f53777222c4f22",
+      "bytes": 742181
+    },
+    {
+      "input_id": "v2_report_fdataanalysis-reverse-engineered-v2",
+      "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/report.json",
+      "sha256": "305b388a0ba43861d1335d43ab1c62b9c1f51efefb6fe0075ec7c039d21f4c4e",
+      "bytes": 471537
+    },
+    {
+      "input_id": "v2_report_f1telemetrydata-reverse-engineered-v1",
+      "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/f1telemetrydata_reverse_engineered_v1.json",
+      "sha256": "af132dd167f8da91ca30071fdcd1f5a4c9e7268ce7d4c267a93651441301aea5",
+      "bytes": 915614
+    },
+    {
+      "input_id": "v2_report_gptempo-reverse-engineered-v1",
+      "path": "frontend/public/data/reference-analysis-lab/v2/run=20260731T213000+0800-gptempo-reverse-engineered-v1/gptempo_reverse_engineered_v1.json",
+      "sha256": "efc0f46f01c0250094acc606ba56479c6345d5c4bd278e6c2f2bd21736f31fcb",
+      "bytes": 2549146
+    },
+    {
+      "input_id": "v3_browser_acceptance_manifest_1",
+      "path": "research/records/reference_analysis_lab_v3_browser_acceptance/run=20260731T235900+0800-track-validation-v3-browser/acceptance_manifest.json",
+      "sha256": "66f9e568de52b9394cb1cc64db08a2b1081c70fb2ea9dc076d6d3f2a39639237",
+      "bytes": 2403
+    },
+    {
+      "input_id": "v3_browser_acceptance_manifest_2",
+      "path": "research/records/reference_analysis_lab_v3_browser_acceptance/run=20260731T235900+0800-track-validation-v3-r2-cdp-css390-browser/acceptance_manifest.json",
+      "sha256": "13b8967809c44a8ac7f196350f96de82cdf0aa38c9b584ef47a5a4d7eff6a36f",
+      "bytes": 2602
+    },
+    {
+      "input_id": "v2_acceptance_manifest_deltadata",
+      "path": "research/records/reference_analysis_lab_v2/deltadata/run=20260731T153000+0800-deltadata-reverse-engineered-v2/acceptance_manifest.json",
+      "sha256": "675dbfd1f7b7d453f9d2ecc3fbbf63bb724f58bcf0634eb625a43cf67868c878",
+      "bytes": 488
+    },
+    {
+      "input_id": "v2_acceptance_manifest_f1telemetrydata",
+      "path": "research/records/reference_analysis_lab_v2/f1telemetrydata/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/acceptance_manifest.json",
+      "sha256": "5f16e1be8ce4d45eb2a5c3f0e6c3c553bed879a92f7a5d2603b0f56d3871f635",
+      "bytes": 2655
+    },
+    {
+      "input_id": "v2_acceptance_manifest_fdataanalysis",
+      "path": "research/records/reference_analysis_lab_v2/fdataanalysis/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/acceptance_manifest.json",
+      "sha256": "edd49066013b30ef76c424326e607ec63ee064e16214db4487efa2898ea2f88d",
+      "bytes": 2599
+    },
+    {
+      "input_id": "v2_acceptance_manifest_gptempo",
+      "path": "research/records/reference_analysis_lab_v2/gptempo/run=20260731T213000+0800-gptempo-reverse-engineered-v1/acceptance_manifest.json",
+      "sha256": "f8be61a2cbaa611f95475f0e45aa95222182d260123e1099f6c30a4b4fd3368f",
+      "bytes": 2659
+    },
+    {
+      "input_id": "v2_f1pace_browser_acceptance",
+      "path": "research/records/reference_analysis_lab_v2/f1pace/run=20260731T120000+0800-f1pace-reverse-engineered-v2/browser_acceptance.json",
+      "sha256": "cbdd0d511191fddc4ddd02042caadc4ee4d9ebf9e901b0f1a56255f9856269b5",
+      "bytes": 1505
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_matrix.csv",
+      "sha256": "44e0f5a818301cf2acf7e552595e1d9bc1d56a4abe98a0444dc304af109b83a9",
+      "bytes": 32341
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_matrix.json",
+      "sha256": "68a3bf806dd756bd7db6886581a3904b2692f220e13995e1d45313e2825c8184",
+      "bytes": 61744
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/problem_register.csv",
+      "sha256": "3b246c276a19d6d15a8ac9f26f91ddef2a64f316c3bcec751f4dd34916d6f0d4",
+      "bytes": 17111
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/problem_register.json",
+      "sha256": "51a056552957799c6d7b40874b77d295e9d705b95ece7c93706b138b75882788",
+      "bytes": 24753
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/improvement_backlog.csv",
+      "sha256": "2b848b51ff64663f51c36f910337fcdc9f6414339a3c98c8c7d5b0490dbcf159",
+      "bytes": 9075
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/improvement_backlog.json",
+      "sha256": "c4deedb037b9c6ccc435311b07fb2c287efda76726c8f54088782ec1c2717563",
+      "bytes": 14677
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/independent_recalculation.json",
+      "sha256": "a4303221b33ebd6952dfd5d31ac9e49c56478506179f16a2ac436d0f690ff182",
+      "bytes": 192736
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/improvement_roadmap.md",
+      "sha256": "0f1cbcd154d9df28d050339bd75630f6da86a9b5ff8450e8f414380009370e7e",
+      "bytes": 11009
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_report.md",
+      "sha256": "31584994f7c4050f56da1a2c50633e494c766b8f83df841ff417739281b4c421",
+      "bytes": 13942
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/audit_professional_gap.py",
+      "sha256": "13e2c02ad5f17116df02ee012c1cb18936f87c9dba343907db8a63a8b2f2d34c",
+      "bytes": 136070
+    },
+    {
+      "path": "research/records/reference_analysis_lab_v3_professional_gap_audit/run=20260731T164835+0800-professional-gap-audit/test_audit_outputs.py",
+      "sha256": "5908cea702ec6bca70526e2b56dde8622969a863e2b6bfd8b2492dbef1c94732",
+      "bytes": 7765
+    }
+  ],
+  "conclusion_counts": {
+    "by_platform": {
+      "F1pace": {
+        "leading": 0,
+        "parity": 5,
+        "behind": 1,
+        "unknown": 5,
+        "total": 11
+      },
+      "DeltaData": {
+        "leading": 0,
+        "parity": 4,
+        "behind": 2,
+        "unknown": 6,
+        "total": 12
+      },
+      "FDataAnalysis": {
+        "leading": 0,
+        "parity": 3,
+        "behind": 0,
+        "unknown": 7,
+        "total": 10
+      },
+      "F1TelemetryData": {
+        "leading": 0,
+        "parity": 6,
+        "behind": 3,
+        "unknown": 5,
+        "total": 14
+      },
+      "GP Tempo": {
+        "leading": 0,
+        "parity": 4,
+        "behind": 0,
+        "unknown": 6,
+        "total": 10
+      }
+    },
+    "overall": {
+      "leading": 0,
+      "parity": 22,
+      "behind": 6,
+      "unknown": 29,
+      "total": 57
+    },
+    "by_status": {
+      "FAIL": 11,
+      "NOT_TESTED": 9,
+      "PASS": 27,
+      "UNKNOWN": 10
+    },
+    "verified_accuracy_leads": 0,
+    "advantage_rate_denominator": 38,
+    "advantage_rate_numerator": 0
+  },
+  "problem_counts": {
+    "total": 18,
+    "P0": 3,
+    "P1": 13,
+    "P2": 2,
+    "top10": 10
+  },
+  "backlog_counts": {
+    "total": 15,
+    "by_category": {
+      "算法改进": 4,
+      "当前冻结数据即可完成": 5,
+      "需新增公开数据冻结": 3,
+      "可视化/产品改进": 3
+    },
+    "top5": 5
+  },
+  "network": {
+    "attempts": [],
+    "skipped": true,
+    "reason": "五目标本地冻结来源已包含 URL、抓取时间、页面/版本标识与 SHA-256；当前缺口是闭源或无逐点真值，联网不会使不同量纲变得可比。"
+  },
+  "audit_limitations": [
+    "只比较本地冻结的公开能力子集，不推断五个平台完整产品。",
+    "图片转录/颜色读取是真值代理，保留其读图误差。",
+    "A-C v3 指标主要是内部代理/自一致性，不能当平台 gap。",
+    "D Q phase 与 E segment point truth 保持 NOT_TESTED。",
+    "真实燃油、SOC、胎况、设定、损伤、动力模式和车队指令不可识别。",
+    "没有跨任务总复刻率；PAC/OVR 均为 null。"
+  ],
+  "boundaries": {
+    "unknown_not_tested_counted_as_advantage": false,
+    "transparency_is_prediction_accuracy": false,
+    "visual_similarity_is_numeric_accuracy": false,
+    "cross_task_total_score": null,
+    "pac": null,
+    "ovr": null
+  },
+  "manifest_self_hash": null,
+  "manifest_self_hash_reason": "避免递归自哈希；独立测试直接对 manifest 语义与其余文件哈希验收。"
+}

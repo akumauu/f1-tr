@@ -1,0 +1,536 @@
+:root {
+  color-scheme: dark;
+  --bg: #07090e;
+  --panel: #10141d;
+  --panel2: #151b26;
+  --line: #303848;
+  --text: #f4f7fb;
+  --muted: #929cad;
+  --blue: #54a7ff;
+  --cyan: #4ce5d1;
+  --pink: #ff6da9;
+  --amber: #ffc45f;
+  --danger: #ff6a72;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  min-width: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 22% -8%, rgba(84, 167, 255, .14), transparent 34rem),
+    radial-gradient(circle at 88% 16%, rgba(255, 109, 169, .08), transparent 30rem),
+    var(--bg);
+  font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+a { color: inherit; }
+
+.topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  min-height: 58px;
+  padding: 8px max(18px, calc((100vw - 1540px) / 2));
+  border-bottom: 1px solid rgba(84, 167, 255, .2);
+  background: rgba(7, 9, 14, .94);
+  backdrop-filter: blur(15px);
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  font-weight: 760;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brandMark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  color: var(--blue);
+  font: 800 12px/1 ui-monospace, Consolas, monospace;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+nav a:hover { color: var(--blue); }
+
+.loadStatus {
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font: 11px/1.2 ui-monospace, Consolas, monospace;
+}
+
+.shell {
+  width: min(1540px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, .45fr);
+  gap: 46px;
+  align-items: end;
+  min-height: 430px;
+  padding: 58px 4px 42px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font: 750 11px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .15em;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  max-width: 960px;
+  margin-bottom: 18px;
+  font-size: clamp(48px, 7.2vw, 104px);
+  line-height: .94;
+  letter-spacing: -.065em;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+
+.heroLead {
+  max-width: 960px;
+  margin: 0;
+  color: #bcc4d0;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.heroMeta {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.heroMeta a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.viewBar {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: var(--muted);
+  background: rgba(16, 20, 29, .86);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tabs {
+  display: flex;
+  flex: none;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 9px;
+  background: #080b11;
+}
+
+.tabs button {
+  border: 0;
+  border-radius: 7px;
+  padding: 8px 12px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+}
+
+.tabs button[aria-selected="true"] {
+  color: #07111a;
+  background: var(--blue);
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.metricCard, .validationCard, .sourceCard {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(21, 27, 38, .96), rgba(12, 16, 23, .96));
+}
+
+.metricLabel, .validationCard .label, .sourceCard .label {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.metricValue, .validationCard .value {
+  margin: 7px 0 5px;
+  color: var(--cyan);
+  font: 750 clamp(20px, 2vw, 28px)/1 ui-monospace, Consolas, monospace;
+}
+
+.metricDetail, .validationCard .detail, .sourceCard .detail {
+  color: #8c97a7;
+  font-size: 11px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  min-width: 0;
+  margin-bottom: 16px;
+  padding: clamp(18px, 2.5vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(17, 22, 31, .98), rgba(10, 13, 19, .98));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .24);
+}
+
+.panelHeader {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.panelIntro {
+  max-width: 1050px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.pill {
+  flex: none;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+  white-space: nowrap;
+}
+
+.pill.ok { border-color: rgba(76, 229, 209, .35); color: var(--cyan); }
+.pill.warn { border-color: rgba(255, 196, 95, .38); color: var(--amber); }
+
+.selectionGrid {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+label { min-width: 0; }
+
+label > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .06em;
+}
+
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--text);
+  background: #0a0e15;
+  font: 12px/1.2 ui-monospace, Consolas, monospace;
+}
+
+.conditionBanner {
+  margin-top: 13px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--cyan);
+  border-radius: 8px;
+  color: #b5c2cf;
+  background: rgba(76, 229, 209, .055);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.conditionBanner.warning {
+  border-left-color: var(--amber);
+  background: rgba(255, 196, 95, .06);
+}
+
+.selectedLapCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 13px;
+}
+
+.lapCard {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #0b0f16;
+}
+
+.lapCard .lapHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.lapCard strong { font-size: 18px; }
+.lapCard small { color: var(--muted); }
+.lapCard .lapMeta { color: #aab5c2; font: 11px/1.55 ui-monospace, Consolas, monospace; }
+
+.telemetryLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(290px, .5fr);
+  gap: 16px;
+}
+
+.chartBox, .trackMap {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(48, 56, 72, .8);
+  border-radius: 13px;
+  background: #080c12;
+}
+
+.chartBox svg, .trackMap svg { display: block; width: 100%; height: auto; }
+.telemetryChart { min-height: 680px; cursor: crosshair; }
+.deltaChart { min-height: 330px; cursor: crosshair; }
+.trackMap { display: grid; min-height: 490px; place-items: center; }
+
+.gridLine { stroke: #242b38; stroke-width: 1; }
+.axisText { fill: #778293; font: 10px ui-monospace, Consolas, monospace; }
+.channelLabel { fill: #aeb8c4; font: 700 11px ui-monospace, Consolas, monospace; }
+.sectorLine { stroke: var(--amber); stroke-width: 1; stroke-dasharray: 4 6; opacity: .75; }
+.zeroLine { stroke: #778293; stroke-width: 1; stroke-dasharray: 3 5; }
+.traceLine { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.discreteLine { fill: none; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.cursorLine { stroke: #f7fbff; stroke-width: 1; opacity: .8; vector-effect: non-scaling-stroke; }
+.cursorHit { fill: transparent; pointer-events: all; }
+.trackBase { fill: none; stroke: #333c4c; stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
+.trackRoute { fill: none; stroke: #67758a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.trackDot { stroke: #080c12; stroke-width: 2; }
+
+.hoverReadout, .trackReadout {
+  min-height: 38px;
+  padding: 10px 12px;
+  color: var(--muted);
+  font: 11px/1.6 ui-monospace, Consolas, monospace;
+}
+
+.trackReadout { text-align: center; }
+
+.endpointCards {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.endpointCard {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #0a0e15;
+}
+
+.endpointCard span { display: block; color: var(--muted); font-size: 10px; }
+.endpointCard strong { display: block; margin-top: 5px; font: 700 16px/1.1 ui-monospace, Consolas, monospace; }
+
+.methodSteps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.methodSteps article {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #0b0f16;
+}
+
+.methodSteps article > span {
+  color: var(--blue);
+  font: 800 28px/1 ui-monospace, Consolas, monospace;
+}
+
+.methodSteps h3 { margin: 18px 0 8px; }
+.methodSteps p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+.validationGrid, .sourceCards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sourceCard .hash {
+  display: block;
+  margin: 8px 0;
+  color: var(--blue);
+  font: 12px/1.4 ui-monospace, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+.auditNote {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--amber);
+  border-radius: 8px;
+  color: #b5c0cc;
+  background: rgba(255, 196, 95, .055);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.tableWrap {
+  width: 100%;
+  max-height: 720px;
+  overflow: auto;
+  border: 1px solid rgba(48, 56, 72, .8);
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th, td {
+  padding: 10px 11px;
+  border-bottom: 1px solid rgba(48, 56, 72, .58);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  color: #8490a2;
+  background: #090d13;
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .05em;
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+.tag {
+  display: inline-block;
+  padding: 3px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font: 10px/1.2 ui-monospace, Consolas, monospace;
+}
+
+.tag.ok { border-color: rgba(76, 229, 209, .35); color: var(--cyan); }
+.tag.warn { border-color: rgba(255, 196, 95, .38); color: var(--amber); }
+
+footer {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 16px 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+[hidden] { display: none !important; }
+
+@media (max-width: 1180px) {
+  .metricGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .selectionGrid { grid-template-columns: 1fr 1fr; }
+  .telemetryLayout { grid-template-columns: 1fr; }
+  .trackMap { min-height: 360px; }
+  .endpointCards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .methodSteps { grid-template-columns: 1fr 1fr; }
+  .validationGrid, .sourceCards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    position: static;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  nav { display: none; }
+  .brand { font-size: 13px; overflow: hidden; }
+  .brand span:last-child { overflow: hidden; text-overflow: ellipsis; }
+  .loadStatus { max-width: 84px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .shell { width: min(100% - 24px, 1540px); padding-top: 18px; }
+  .hero { grid-template-columns: 1fr; gap: 22px; min-height: 0; padding: 30px 2px; }
+  h1 { font-size: clamp(48px, 16vw, 76px); }
+  .heroLead { font-size: 14px; }
+
+  .viewBar { display: grid; }
+  .tabs { width: 100%; }
+  .tabs button { flex: 1; min-width: 0; padding-inline: 5px; font-size: 9px; }
+
+  .metricGrid { grid-template-columns: 1fr 1fr; }
+  .metricCard { padding: 13px; }
+  .panel { padding: 17px 14px; border-radius: 14px; }
+  .panelHeader { display: grid; gap: 10px; }
+  .pill { justify-self: start; white-space: normal; }
+  .selectionGrid, .selectedLapCards { grid-template-columns: 1fr; }
+  .telemetryChart { min-height: 0; }
+  .trackMap { min-height: 260px; }
+  .endpointCards { grid-template-columns: 1fr 1fr; }
+  .methodSteps { grid-template-columns: 1fr; }
+  .validationGrid, .sourceCards { grid-template-columns: 1fr; }
+  footer { display: grid; }
+}

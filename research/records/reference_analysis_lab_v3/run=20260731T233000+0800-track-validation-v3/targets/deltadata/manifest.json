@@ -1,0 +1,201 @@
+{
+  "schema_version": "reference-analysis-target-manifest-v3",
+  "run_id": "20260731T233000+0800-track-validation-v3",
+  "target_id": "deltadata",
+  "status": "PASS_WITH_MODEL_FALLBACKS",
+  "files": [
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/coverage_matrix.csv",
+      "sha256": "ebc14466464309115b5f775a110b5191ddbf89ba1f78010fa1e1c3aa65797e3a",
+      "bytes": 4462,
+      "rows": 24,
+      "columns": [
+        "track_key",
+        "meeting",
+        "years",
+        "events",
+        "v17_points",
+        "clean_air_points",
+        "kish_ess",
+        "traffic_ratio_mean",
+        "compounds",
+        "tyre_age_min",
+        "tyre_age_max",
+        "selected_model_type",
+        "fallback_reason"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/split_registry.csv",
+      "sha256": "355f9aeb63f5cd58afa218ae1f07b292b6b28b9b4005a02cc5c034f8faee00a7",
+      "bytes": 295499,
+      "rows": 210,
+      "columns": [
+        "task_id",
+        "test_event_id",
+        "model_type",
+        "status",
+        "training_event_count",
+        "training_events",
+        "validation_identity",
+        "test_events",
+        "training_rows",
+        "training_kish_ess",
+        "reason"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/model_comparison.csv",
+      "sha256": "87b48f001b7179d956b79fe12851b74aac4ceb1e35cd2b664a69cb10ab5d9614",
+      "bytes": 20257,
+      "rows": 72,
+      "columns": [
+        "task_id",
+        "track_key",
+        "meeting",
+        "model_type",
+        "status",
+        "unit",
+        "target_rows",
+        "predicted_rows",
+        "coverage",
+        "mae",
+        "p90_abs_error",
+        "max_abs_error",
+        "bias",
+        "direction_accuracy",
+        "test_events",
+        "training_kish_ess_min",
+        "fold_improvement_share",
+        "publication_gate_passed",
+        "gate_failures"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/sample_exclusion_ledger.csv",
+      "sha256": "9949ccd60b7c89c85035ac73078f85541bb4f9ac9de79b801812bd86d53ce576",
+      "bytes": 1569,
+      "rows": 24,
+      "columns": [
+        "track_key",
+        "all_v17_points",
+        "excluded_missing_traffic_ratio",
+        "excluded_first_lap",
+        "excluded_pit_boundary",
+        "excluded_non_green",
+        "excluded_low_quality",
+        "excluded_traffic_ratio_above_0_20",
+        "excluded_zero_weight_or_not_primary_fit",
+        "clean_air_model_rows",
+        "ledger_closed"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/event_predictions.csv",
+      "sha256": "444d2102e8378be6918018434159355f863c102c8cf011aeab319c30f2b7fe7c",
+      "bytes": 10048659,
+      "rows": 39939,
+      "columns": [
+        "event_id",
+        "track_key",
+        "observable_cluster",
+        "year",
+        "meeting",
+        "driver",
+        "team",
+        "lap",
+        "stint_key",
+        "compound",
+        "tyre_age_laps",
+        "raw_lap_duration_s",
+        "model_type",
+        "actual",
+        "predicted",
+        "evaluation_weight"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/model_coefficients.csv",
+      "sha256": "daaac3e3aac9e0b699f6de49ce7859255f2bbdd7f108ca3744034af4d9eb7e56",
+      "bytes": 254809,
+      "rows": 200,
+      "columns": [
+        "task_id",
+        "test_event_id",
+        "model_type",
+        "feature_columns",
+        "coefficients",
+        "intercept",
+        "scale",
+        "scaler_mean",
+        "scaler_scale",
+        "training_rows",
+        "training_events",
+        "training_kish_ess"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/degradation_direction.csv",
+      "sha256": "975d09fbbf5f5da5a24fcf55a195315d4a12305e6062adf95065a30af5ce7918",
+      "bytes": 366064,
+      "rows": 2319,
+      "columns": [
+        "track_key",
+        "event_id",
+        "model_type",
+        "stint_key",
+        "rows",
+        "tyre_age_span_laps",
+        "actual_slope_s_per_tyre_lap",
+        "predicted_slope_s_per_tyre_lap",
+        "direction_match"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/teammate_direction.csv",
+      "sha256": "81486a7927378ac085313eefad1adbd89f8fa3d7e0ee49931b32b8eb99d238c5",
+      "bytes": 175841,
+      "rows": 883,
+      "columns": [
+        "track_key",
+        "event_id",
+        "model_type",
+        "team",
+        "compound",
+        "left_driver",
+        "right_driver",
+        "left_minus_right_actual_s",
+        "left_minus_right_predicted_s",
+        "direction_match",
+        "reverse_antisymmetry_error_s",
+        "comparison_role"
+      ]
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/model_registry.json",
+      "sha256": "b6f977e75e68d79d1a7087a4894b927c3260ccae021d0fa3688e2ce9a27b06cb",
+      "bytes": 18526
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/method_card.md",
+      "sha256": "aad87bfcbf1ede344c0c692bc98781f9f70216c788afb4618c8b138ae1307021",
+      "bytes": 1717
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/data_gap_audit.md",
+      "sha256": "623cc3db348a9b0ad5c299a606f36cc9696bb5529cbf6fe33d93ac3c9fc21fbd",
+      "bytes": 419
+    },
+    {
+      "path": ".runtime-cache/reference-analysis-lab-v3/publish-staging/run=20260731T233000+0800-track-validation-v3/targets/deltadata/reference_difference.md",
+      "sha256": "4235d1881d60810922535ea364827ccf00653076f1c845188dc48dbcf7af4066",
+      "bytes": 361
+    }
+  ],
+  "selected_model_counts": {
+    "universal": 13,
+    "track": 6,
+    "cluster": 5
+  },
+  "visual_replication_and_audited_analysis_are_separate": true
+}

@@ -1,3 +1,7 @@
+import {
+  requireOfficialTeamIdentity,
+} from "./official-team-colours.js?v=20260726-official-v1";
+
 // F1 TR Review — static race-analysis dashboard.
 // Vanilla ES module, no dependencies. Reads the static JSON export described in
 // data/manifest.json and renders headline stats, four interactive canvas charts,
@@ -237,6 +241,7 @@ async function loadSelectedSession() {
 
 function buildDerived() {
   const drivers = dataset("drivers");
+  validateOfficialDriverColours(drivers);
   const byNumber = new Map(drivers.map((d) => [Number(d.driver_number), d]));
 
   const laps = dataset("laps");
@@ -399,11 +404,13 @@ function renderHero() {
 
   const winnerNum = [...d.finalPos.entries()].find(([, p]) => p === 1)?.[0];
   cards.push(heroCard("冠军", winnerNum != null ? driverAcr(winnerNum) : "—",
-    winnerNum != null ? driverFull(winnerNum) : "无位置数据", teamColorOf(winnerNum)));
+    winnerNum != null ? driverFull(winnerNum) : "无位置数据",
+    winnerNum != null ? teamColorOf(winnerNum) : MUTED));
 
   const poleNum = [...d.gridPos.entries()].find(([, p]) => p === 1)?.[0];
   cards.push(heroCard("P1 发车", poleNum != null ? driverAcr(poleNum) : "—",
-    poleNum != null ? driverFull(poleNum) : "—", teamColorOf(poleNum)));
+    poleNum != null ? driverFull(poleNum) : "—",
+    poleNum != null ? teamColorOf(poleNum) : MUTED));
 
   const f = d.fastest;
   cards.push(heroCard("最快圈", f ? formatLapTime(f.lap_duration) : "—",
@@ -495,7 +502,7 @@ function buildInsights() {
       label: "轮胎管理",
       value: formatSignedSeconds(deg.deg),
       detail: `${driverAcr(deg.n)} · ${compoundLabel(deg.compound)} · 第 ${deg.stint} 段 · ${deg.len} 圈`,
-      color: COMPOUND_COLORS[deg.compound] || teamColorOf(deg.n),
+      color: teamColorOf(deg.n),
       tone: deg.deg <= 0.03 ? "good" : "",
     });
   }
@@ -1453,10 +1460,15 @@ function teamColorOf(n) {
   return teamColor(driverByNumber(n));
 }
 function teamColor(driver) {
-  const raw = driver?.team_colour || "";
-  if (/^[0-9a-fA-F]{6}$/.test(raw)) return `#${raw}`;
-  const fallback = ["#e10600", "#00a19c", "#3b66ff", "#f7a600", "#7c3aed"];
-  return fallback[Math.abs(Number(driver?.driver_number || 0)) % fallback.length];
+  return requireOfficialTeamIdentity(
+    state.selectedYear,
+    driver?.team_name,
+  ).colour;
+}
+function validateOfficialDriverColours(drivers) {
+  for (const driver of drivers) {
+    requireOfficialTeamIdentity(state.selectedYear, driver?.team_name);
+  }
 }
 function flagColor(value) {
   const v = String(value || "").toUpperCase();

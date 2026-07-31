@@ -1,0 +1,4427 @@
+{
+  "run_id": "conditional_pair_prototype_validation_2023_2025_v1-2026-07-23T20:14:54+08:00",
+  "created_at": "2026-07-23T20:14:54+08:00",
+  "config_path": "research/configs/pac_validation_2023_2025_v1.json",
+  "config_hash": "0f606deef5761f69e2308f03d4eae6d87ed4bfe88d082137469178986d7dea85",
+  "config_validation_status": "retrospective_protocol_frozen_before_first_protocol_result_run",
+  "protocol_hash": "0f606deef5761f69e2308f03d4eae6d87ed4bfe88d082137469178986d7dea85",
+  "protocol_frozen_at": "2026-07-23T00:00:00+08:00",
+  "temporal_boundary": {
+    "historical_2023_2025": "retrospective_only_because_all_seasons_were_visible_when_protocol_was_designed",
+    "visible_2026_events_before_freeze": 4,
+    "visible_2026_events_role": "development_or_calibration_only_not_confirmatory",
+    "confirmatory_origin_definition": "complete_event_first_observed_after_protocol_frozen_at",
+    "minimum_post_freeze_interim_event_clusters": 8,
+    "minimum_post_freeze_confirmatory_event_clusters": 16,
+    "minimum_post_freeze_confirmatory_pair_events": 120
+  },
+  "data_identity": [
+    {
+      "year": 2023,
+      "path": "research/artifacts/data/dynamic_tune_train_2023.csv.gz",
+      "sha256": "40af0ea13425349fade09c3e02ecbcb4ed1edcf6cc1b9b8978e9bc860b3ff13b",
+      "rows": 20706
+    },
+    {
+      "year": 2024,
+      "path": "research/artifacts/data/dynamic_tune_validation_2024.csv.gz",
+      "sha256": "82078a356dcd1f031a8df6ee22b3fc4119e1f361dea349cef00c4f6312391111",
+      "rows": 23165
+    },
+    {
+      "year": 2025,
+      "path": "research/artifacts/data/validation_2025.csv.gz",
+      "sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671",
+      "rows": 22245
+    }
+  ],
+  "environment": {
+    "python": "3.11.7",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.15.2",
+    "sklearn": "1.5.2"
+  },
+  "target_contract": {
+    "name": "held_out_within_team_pair_gap_conditional_clean_pace_z",
+    "higher_is_better": true,
+    "construction": "下一完整分站的 target_log_pct 减去仅用过去分站拟合的无身份赛况头；只对同一 team-event 的车手差做 proper scoring",
+    "interpretation": "held-out pair-gap 混有未来 Event Delivery、单车状态及人车/赛道交互，只验证预测分布，不等同于 pooled PAC latent",
+    "minimum_clean_laps_per_driver_event": 5,
+    "minimum_drivers_per_team_event": 2,
+    "prohibited_fields": [
+      "actual_points",
+      "championship_points",
+      "finish_position",
+      "finishing_position",
+      "classification_proxy",
+      "classification_proxy_rank",
+      "championship_position",
+      "podiums",
+      "wins"
+    ],
+    "fields_used": [
+      "target_log_pct",
+      "lap_fraction",
+      "lap_fraction_sq",
+      "tyre_age",
+      "tyre_age_sq",
+      "compound",
+      "circuit_name",
+      "driver_id",
+      "team_name",
+      "meeting_key",
+      "stint_number"
+    ],
+    "prohibited_field_hits": []
+  },
+  "actual_design_audit": {
+    "fields": [
+      "circuit_name",
+      "compound",
+      "driver_id",
+      "lap_fraction",
+      "lap_fraction_sq",
+      "meeting_key",
+      "round_index",
+      "session_name",
+      "stint_number",
+      "target_log_pct",
+      "team_name",
+      "tyre_age",
+      "tyre_age_sq",
+      "year"
+    ],
+    "prohibited_field_hits": [],
+    "origin_manifests": [
+      {
+        "origin_index": 8,
+        "meeting_key": "2023|Austrian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "86febf453e259e947d130690be9e643f49be3cdd8cd7addeb6cfd13d854ec9e6"
+      },
+      {
+        "origin_index": 9,
+        "meeting_key": "2023|British Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "0bea1f64d03394caa0efc6c2f92581e76bc92e7d17f31c8763a3a595c65ce14c"
+      },
+      {
+        "origin_index": 10,
+        "meeting_key": "2023|Hungarian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "3a683d3a5124dbc5f3d8ae3869ca703ea40bcc55c18a4aecb5f68706cf3609f7"
+      },
+      {
+        "origin_index": 11,
+        "meeting_key": "2023|Belgian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "92483cd200128411015e64aceaa89a8690f519503f55d1703538afff2039f3ab"
+      },
+      {
+        "origin_index": 12,
+        "meeting_key": "2023|Dutch Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "13666e9d2f5295c7dcfe694fd98db40d672f20e8cff55bc07a247151b6a80150"
+      },
+      {
+        "origin_index": 13,
+        "meeting_key": "2023|Italian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "c2fbd3afad6ae7d4690bf742e9a63f86bc7c5fb38ce413da7ca5e39a33b2dfcf"
+      },
+      {
+        "origin_index": 14,
+        "meeting_key": "2023|Singapore Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5f50753f2aeefa531a7b7948587a64b4de9242f101657621dba59da933259fa4"
+      },
+      {
+        "origin_index": 15,
+        "meeting_key": "2023|Japanese Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "61f25ac5ef0d09cd895238ab2b4012fdffa1de026069030f69ea7ade2a65da20"
+      },
+      {
+        "origin_index": 16,
+        "meeting_key": "2023|Qatar Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "892b3e15faec9eb87ffff162b480b8a3079e6fd198b99aec707ea4dcf4007b2a"
+      },
+      {
+        "origin_index": 17,
+        "meeting_key": "2023|United States Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "528a5d36f1e2ca95eca6c8eebf8fc1b7d42b313062f4899db3465d3d82745d3b"
+      },
+      {
+        "origin_index": 18,
+        "meeting_key": "2023|Mexico City Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "a59a47a32c65c41d4a327c3235c216aec2861085fe11dc3586441f5c78734599"
+      },
+      {
+        "origin_index": 19,
+        "meeting_key": "2023|São Paulo Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "790760a286f29bc2d6829a718f1db1e2e461191537672ea9639f3f1adc7c3db5"
+      },
+      {
+        "origin_index": 20,
+        "meeting_key": "2023|Las Vegas Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "088d0c07b2a3eae692ac1f954597bef6ca0212644181dfa0d048b1dbe5c09a24"
+      },
+      {
+        "origin_index": 21,
+        "meeting_key": "2023|Abu Dhabi Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "b18849e944156ac624dbb2f4a9df559a257951af51971e2ab4c884c6d295c3e9"
+      },
+      {
+        "origin_index": 22,
+        "meeting_key": "2024|Bahrain Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5ea1069c9d593b8691157dd27fc20300d164242c34da647f52fcdf020ca7819a"
+      },
+      {
+        "origin_index": 23,
+        "meeting_key": "2024|Saudi Arabian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5ea1069c9d593b8691157dd27fc20300d164242c34da647f52fcdf020ca7819a"
+      },
+      {
+        "origin_index": 24,
+        "meeting_key": "2024|Australian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5ea1069c9d593b8691157dd27fc20300d164242c34da647f52fcdf020ca7819a"
+      },
+      {
+        "origin_index": 25,
+        "meeting_key": "2024|Japanese Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5ea1069c9d593b8691157dd27fc20300d164242c34da647f52fcdf020ca7819a"
+      },
+      {
+        "origin_index": 26,
+        "meeting_key": "2024|Chinese Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "5ea1069c9d593b8691157dd27fc20300d164242c34da647f52fcdf020ca7819a"
+      },
+      {
+        "origin_index": 27,
+        "meeting_key": "2024|Miami Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "c4e67a69eebd290fe32da1108fcfeda5d065ae7ba67db1a5310ec3b8b285a0a9"
+      },
+      {
+        "origin_index": 28,
+        "meeting_key": "2024|Emilia Romagna Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "c4e67a69eebd290fe32da1108fcfeda5d065ae7ba67db1a5310ec3b8b285a0a9"
+      },
+      {
+        "origin_index": 29,
+        "meeting_key": "2024|Monaco Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 30,
+        "meeting_key": "2024|Canadian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 31,
+        "meeting_key": "2024|Spanish Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 32,
+        "meeting_key": "2024|Austrian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 33,
+        "meeting_key": "2024|British Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 34,
+        "meeting_key": "2024|Hungarian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 35,
+        "meeting_key": "2024|Belgian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 36,
+        "meeting_key": "2024|Dutch Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 37,
+        "meeting_key": "2024|Italian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 38,
+        "meeting_key": "2024|Azerbaijan Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 39,
+        "meeting_key": "2024|Singapore Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 40,
+        "meeting_key": "2024|United States Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 41,
+        "meeting_key": "2024|Mexico City Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 42,
+        "meeting_key": "2024|Las Vegas Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 43,
+        "meeting_key": "2024|Qatar Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 44,
+        "meeting_key": "2024|Abu Dhabi Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 45,
+        "meeting_key": "2025|Australian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 46,
+        "meeting_key": "2025|Chinese Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 47,
+        "meeting_key": "2025|Japanese Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 48,
+        "meeting_key": "2025|Bahrain Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 49,
+        "meeting_key": "2025|Saudi Arabian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 50,
+        "meeting_key": "2025|Miami Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 51,
+        "meeting_key": "2025|Emilia Romagna Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 52,
+        "meeting_key": "2025|Monaco Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 53,
+        "meeting_key": "2025|Spanish Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 54,
+        "meeting_key": "2025|Canadian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 55,
+        "meeting_key": "2025|Austrian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 56,
+        "meeting_key": "2025|British Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 57,
+        "meeting_key": "2025|Belgian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 58,
+        "meeting_key": "2025|Hungarian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 59,
+        "meeting_key": "2025|Dutch Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 60,
+        "meeting_key": "2025|Italian Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 61,
+        "meeting_key": "2025|Azerbaijan Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 62,
+        "meeting_key": "2025|Singapore Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 63,
+        "meeting_key": "2025|United States Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 64,
+        "meeting_key": "2025|Mexico City Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 65,
+        "meeting_key": "2025|São Paulo Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 66,
+        "meeting_key": "2025|Las Vegas Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 67,
+        "meeting_key": "2025|Qatar Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      },
+      {
+        "origin_index": 68,
+        "meeting_key": "2025|Abu Dhabi Grand Prix",
+        "numeric_fields": [
+          "lap_fraction",
+          "lap_fraction_sq",
+          "tyre_age",
+          "tyre_age_sq"
+        ],
+        "categorical_design_fields": [
+          "compound",
+          "circuit_name"
+        ],
+        "encoded_features": [
+          "compound=HARD",
+          "compound=MEDIUM",
+          "compound=SOFT",
+          "circuit=Abu Dhabi Grand Prix",
+          "circuit=Australian Grand Prix",
+          "circuit=Austrian Grand Prix",
+          "circuit=Azerbaijan Grand Prix",
+          "circuit=Bahrain Grand Prix",
+          "circuit=Belgian Grand Prix",
+          "circuit=British Grand Prix",
+          "circuit=Canadian Grand Prix",
+          "circuit=Chinese Grand Prix",
+          "circuit=Dutch Grand Prix",
+          "circuit=Emilia Romagna Grand Prix",
+          "circuit=Hungarian Grand Prix",
+          "circuit=Italian Grand Prix",
+          "circuit=Japanese Grand Prix",
+          "circuit=Las Vegas Grand Prix",
+          "circuit=Mexico City Grand Prix",
+          "circuit=Miami Grand Prix",
+          "circuit=Monaco Grand Prix",
+          "circuit=Qatar Grand Prix",
+          "circuit=Saudi Arabian Grand Prix",
+          "circuit=Singapore Grand Prix",
+          "circuit=Spanish Grand Prix",
+          "circuit=São Paulo Grand Prix",
+          "circuit=United States Grand Prix"
+        ],
+        "target_field": "target_log_pct",
+        "filter_and_group_fields": [
+          "session_name",
+          "year",
+          "round_index",
+          "meeting_key",
+          "team_name",
+          "driver_id",
+          "stint_number"
+        ],
+        "manifest_hash": "d42747e1f101ff52bac3ae5d43e1ddaadb66a86f85bda9a79755995f2d16f190"
+      }
+    ],
+    "combined_manifest_hash": "6552c7896cc86f4c42fe3b6050e99dee75abe9153e0e243262c3949a10e51ab5",
+    "audit_source": "actual_fitted_design_export_not_config_feature_claim"
+  },
+  "rolling_origin_contract": {
+    "training_visibility": "strictly_prior_complete_events_only",
+    "horizon_events": 1,
+    "minimum_completed_events": 8,
+    "joint_lap_mae_is_acceptance_target": false,
+    "transfer_graph_visibility": "rebuilt_at_each_origin_from_prior_events_only",
+    "transfer_graph_team_node": "team_year",
+    "future_cross_team_rank_is_acceptance_target": false
+  },
+  "validation_metrics": {
+    "origins": 60,
+    "event_clusters": 60,
+    "teams": 10,
+    "origins_with_past_only_graph_audit": 61,
+    "future_driver_events": 1080,
+    "pairwise_comparisons": 512,
+    "repeated_pair_comparisons": 497,
+    "identifiable_novel_edge_comparisons": 3,
+    "not_identifiable_novel_edge_comparisons": 12,
+    "novel_edge_brier": 0.14883286115524683,
+    "novel_edge_direction_accuracy": 1.0,
+    "pairwise_direction_accuracy": 0.666015625,
+    "pairwise_balanced_accuracy": 0.6638951242231282,
+    "each_season_direction_accuracy": {
+      "2023": 0.7216494845360825,
+      "2024": 0.6602870813397129,
+      "2025": 0.6456310679611651
+    },
+    "pair_margin_spearman": 0.4298632747679701,
+    "event_block_bootstrap_95_low": {
+      "balanced_accuracy": null,
+      "pair_margin_spearman": null,
+      "brier_skill_vs_best_baseline": null
+    },
+    "pairwise_brier": 0.2128521825646447,
+    "neutral_brier": 0.25,
+    "brier_improvement_vs_neutral": 0.03714781743535531,
+    "negative_control_brier": 0.3013877776843233,
+    "brier_margin_vs_negative_control": 0.0885355951196786,
+    "pairwise_log_score": 0.6110567953406364,
+    "neutral_log_score": 0.6931471805599453,
+    "pair_gap_mae_z": 0.36576604711046046,
+    "neutral_pair_gap_mae_z": 0.41706467210034687,
+    "pair_gap_mae_improvement_fraction": 0.12299920952677532,
+    "negative_control_pair_gap_mae_z": 0.48010070773688585,
+    "pair_gap_mae_improvement_vs_negative_control": 0.23814724449247282,
+    "component_conditional_cross_origin_rank_stability": 1.0,
+    "pair_gap_predictive_interval_coverage": {
+      "80": 0.76171875,
+      "95": 0.939453125
+    },
+    "predictive_distribution_calibration": "prior_origin_oos_pair_gap_residual_empirical_conformal",
+    "rank_boundary": "无 future 跨队 rank 标签；稳定性仅在相邻 origin 的过去期识别图分量内计算且不参与通过判定。",
+    "wis_improvement_vs_best_baseline": null,
+    "benchmark_suite": {
+      "neutral_zero_gap": "TESTED",
+      "rolling_climatology": "NOT_TESTED",
+      "ewma": "NOT_TESTED",
+      "bradley_terry": "TESTED_AS_PRIMARY_NOT_INDEPENDENT_BASELINE",
+      "novel_edge": "TESTED"
+    },
+    "negative_control_suite": {
+      "odd_even_lap_pseudo_pair": "NOT_TESTED",
+      "label_permutation": "NOT_TESTED",
+      "reference_shift_invariance": "NOT_TESTED",
+      "semi_synthetic_known_effect_coverage": "NOT_TESTED"
+    },
+    "post_freeze_confirmatory_origins": 0,
+    "post_freeze_confirmatory_pair_events": 0,
+    "frozen_0_100_mapping_validated": false,
+    "actual_design_prohibited_field_hits": []
+  },
+  "baselines": {
+    "neutral": "所有未来同队条件优势预测为 0",
+    "negative_control": "在每个训练期内按车手代码排序循环错位历史车手分数",
+    "negative_control_seed": 20260723,
+    "required_benchmark_suite": [
+      "neutral_zero_gap",
+      "rolling_climatology",
+      "ewma",
+      "bradley_terry",
+      "novel_edge"
+    ],
+    "required_negative_controls": [
+      "odd_even_lap_pseudo_pair",
+      "label_permutation",
+      "reference_shift_invariance",
+      "semi_synthetic_known_effect_coverage"
+    ]
+  },
+  "identification": {
+    "connected": false,
+    "n_components": 5,
+    "components": [
+      [
+        "D:ALB",
+        "D:ANT",
+        "D:BEA",
+        "D:BOR",
+        "D:COL",
+        "D:DOO",
+        "D:GAS",
+        "D:HAM",
+        "D:HUL",
+        "D:LEC",
+        "D:MAG",
+        "D:OCO",
+        "D:RUS",
+        "D:SAI",
+        "D:SAR",
+        "TY:2023|Alpine",
+        "TY:2023|Ferrari",
+        "TY:2023|Haas F1 Team",
+        "TY:2023|Mercedes",
+        "TY:2023|Williams",
+        "TY:2024|Alpine",
+        "TY:2024|Ferrari",
+        "TY:2024|Haas F1 Team",
+        "TY:2024|Mercedes",
+        "TY:2024|Williams",
+        "TY:2025|Alpine",
+        "TY:2025|Ferrari",
+        "TY:2025|Haas F1 Team",
+        "TY:2025|Kick Sauber",
+        "TY:2025|Mercedes",
+        "TY:2025|Williams"
+      ],
+      [
+        "D:DEV",
+        "D:HAD",
+        "D:LAW",
+        "D:PER",
+        "D:RIC",
+        "D:TSU",
+        "D:VER",
+        "TY:2023|RB",
+        "TY:2023|Red Bull Racing",
+        "TY:2024|RB",
+        "TY:2024|Red Bull Racing",
+        "TY:2025|RB",
+        "TY:2025|Red Bull Racing"
+      ],
+      [
+        "D:ALO",
+        "D:STR",
+        "TY:2023|Aston Martin",
+        "TY:2024|Aston Martin",
+        "TY:2025|Aston Martin"
+      ],
+      [
+        "D:NOR",
+        "D:PIA",
+        "TY:2023|McLaren",
+        "TY:2024|McLaren",
+        "TY:2025|McLaren"
+      ],
+      [
+        "D:BOT",
+        "D:ZHO",
+        "TY:2023|Kick Sauber",
+        "TY:2024|Kick Sauber"
+      ]
+    ],
+    "weakly_anchored_drivers": [
+      "ALO",
+      "BOT",
+      "NOR",
+      "PIA",
+      "STR",
+      "ZHO"
+    ],
+    "boundary": "断连分量之间的绝对 driver_base_z 不可识别；长期单队且仅一位稳定队友者不得获得全局 PAC。"
+  },
+  "joint_identity_collinearity_audit": [
+    {
+      "driver": "ALB",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "ALO",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "ANT",
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team",
+        "driver==driver_year"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "BEA",
+      "distinct_teams": 2,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "BOR",
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team",
+        "driver==driver_year"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "BOT",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "COL",
+      "distinct_teams": 2,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "DEV",
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team",
+        "driver==driver_year"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "DOO",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "GAS",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "HAD",
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team",
+        "driver==driver_year"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "HAM",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "HUL",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "LAW",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "LEC",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "MAG",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "NOR",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "OCO",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "PER",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "PIA",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "RIC",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "RUS",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "SAI",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "SAR",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "STR",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "TSU",
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [],
+      "joint_driver_base_uniquely_identified": true
+    },
+    {
+      "driver": "VER",
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    },
+    {
+      "driver": "ZHO",
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "exact_duplicate_identity_columns": [
+        "driver==driver_team"
+      ],
+      "joint_driver_base_uniquely_identified": false
+    }
+  ],
+  "estimator_identity_contract": {
+    "estimator_id": "conditional_pair_laplacian_v1",
+    "point_estimator": "ridge_laplacian_on_past_within_team_pair_margins",
+    "interval_estimator": "same_ridge_laplacian_under_event_driver_stint_bootstrap",
+    "predictive_distribution": "empirical_conformal_from_strictly_prior_origin_pair_gap_residuals",
+    "legacy_joint_blocks_reused": false,
+    "legacy_pooled_driver_base_z_binding": false,
+    "legacy_driver_card_binding": false,
+    "frozen_0_100_mapping_validated": false
+  },
+  "conditional_pair_latent_intervals": [
+    {
+      "driver": "ALB",
+      "driver_events": 64,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.14046034579294364,
+      "ci80_low": 0.01539340582733467,
+      "ci80_high": 0.2531573555595373,
+      "ci95_low": -0.051455239278206624,
+      "ci95_high": 0.3081291097161958,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.14623646981003743,
+        "5.0": 0.1289136443116922,
+        "10.0": 0.11119511219171593
+      },
+      "shrinkage_grid_range_z": 0.0350413576183215,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "ALO",
+      "driver_events": 67,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.1733667909559698,
+      "ci80_low": 0.12088173004068159,
+      "ci80_high": 0.23558120152190073,
+      "ci95_low": 0.09421192770636301,
+      "ci95_high": 0.2653986420175365,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.18582061496372818,
+        "5.0": 0.1822194402551292,
+        "10.0": 0.1754202074097884
+      },
+      "shrinkage_grid_range_z": 0.010400407553939783,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    },
+    {
+      "driver": "ANT",
+      "driver_events": 21,
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "conditional_pair_latent_z": -0.23507148077995843,
+      "ci80_low": -0.419497832761666,
+      "ci80_high": -0.06635021334097481,
+      "ci95_low": -0.5007251420759699,
+      "ci95_high": 0.023390232564008524,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.2865685847072617,
+        "5.0": -0.24482391100635265,
+        "10.0": -0.19224206875699973
+      },
+      "shrinkage_grid_range_z": 0.09432651595026198,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "BEA",
+      "driver_events": 24,
+      "distinct_teams": 2,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.008859746825871661,
+      "ci80_low": -0.12577316151961185,
+      "ci80_high": 0.10364960010725276,
+      "ci95_low": -0.1882368567417862,
+      "ci95_high": 0.15717466048866144,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.021841409784083776,
+        "5.0": -0.027885159419205566,
+        "10.0": -0.03109104772205359
+      },
+      "shrinkage_grid_range_z": 0.009249637937969814,
+      "leave_team_out_max_shift_z": 0.0721695230924677,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "BOR",
+      "driver_events": 19,
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "conditional_pair_latent_z": 0.06845889724093858,
+      "ci80_low": -0.04143721748309831,
+      "ci80_high": 0.18635283443773862,
+      "ci95_low": -0.10980764827104751,
+      "ci95_high": 0.2431548397167232,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.04175211921032846,
+        "5.0": 0.03427476865533407,
+        "10.0": 0.025790967885084365
+      },
+      "shrinkage_grid_range_z": 0.015961151325244095,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "BOT",
+      "driver_events": 44,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.04074403924338174,
+      "ci80_low": -0.11377926167280002,
+      "ci80_high": 0.057443095485980734,
+      "ci95_low": -0.1538766778834176,
+      "ci95_high": 0.10135450030809358,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.03827360702588095,
+        "5.0": -0.0372221343053897,
+        "10.0": -0.03528348147698401
+      },
+      "shrinkage_grid_range_z": 0.002990125548896938,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    },
+    {
+      "driver": "COL",
+      "driver_events": 24,
+      "distinct_teams": 2,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": 0.014770115865564199,
+      "ci80_low": -0.10985743932379409,
+      "ci80_high": 0.14476334735413252,
+      "ci95_low": -0.1816610294854103,
+      "ci95_high": 0.24148235638752116,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.057406380163333916,
+        "5.0": 0.04095908557540332,
+        "10.0": 0.022715226123448444
+      },
+      "shrinkage_grid_range_z": 0.03469115403988547,
+      "leave_team_out_max_shift_z": 0.03814871683257527,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "DEV",
+      "driver_events": 10,
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "conditional_pair_latent_z": -0.40865465013465596,
+      "ci80_low": -0.5290257852701394,
+      "ci80_high": -0.2800507103963855,
+      "ci95_low": -0.573323644895618,
+      "ci95_high": -0.20168959974793302,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.5374697230277349,
+        "5.0": -0.44284410796012236,
+        "10.0": -0.32484629263307696
+      },
+      "shrinkage_grid_range_z": 0.21262343039465792,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "DOO",
+      "driver_events": 5,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.17676970265925843,
+      "ci80_low": -0.30597723806894167,
+      "ci80_high": -0.04350080523193026,
+      "ci95_low": -0.3939764794337604,
+      "ci95_high": 0.0009152828901046548,
+      "bootstrap_draws": 492,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.23106177586308355,
+        "5.0": -0.17233972841433032,
+        "10.0": -0.11565941258538524
+      },
+      "shrinkage_grid_range_z": 0.1154023632776983,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "GAS",
+      "driver_events": 63,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.15336589401557557,
+      "ci80_low": 0.054895661115689824,
+      "ci80_high": 0.2572844394874523,
+      "ci95_low": 0.006396996107239348,
+      "ci95_high": 0.294619563622579,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.15808744544828518,
+        "5.0": 0.1457984422935527,
+        "10.0": 0.12875488717694758
+      },
+      "shrinkage_grid_range_z": 0.0293325582713376,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "HAD",
+      "driver_events": 22,
+      "distinct_teams": 1,
+      "distinct_seasons": 1,
+      "conditional_pair_latent_z": -0.03014443605868721,
+      "ci80_low": -0.20126164091569607,
+      "ci80_high": 0.13213382606043417,
+      "ci95_low": -0.2643077284063168,
+      "ci95_high": 0.17896085276118293,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.06362115624177415,
+        "5.0": -0.03477718177785644,
+        "10.0": -0.008117732421278593
+      },
+      "shrinkage_grid_range_z": 0.055503423820495564,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "HAM",
+      "driver_events": 66,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.0034039504069190156,
+      "ci80_low": -0.10328980086206838,
+      "ci80_high": 0.09991616534202394,
+      "ci95_low": -0.15530333918982442,
+      "ci95_high": 0.14539301602148547,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.014019745832709839,
+        "5.0": 0.01706112114912749,
+        "10.0": 0.017162788257403718
+      },
+      "shrinkage_grid_range_z": 0.0031430424246938794,
+      "leave_team_out_max_shift_z": 0.11714234873844494,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "HUL",
+      "driver_events": 65,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.08479662626614029,
+      "ci80_low": 0.01348269949834994,
+      "ci80_high": 0.15510886859648573,
+      "ci95_low": -0.025782172945520893,
+      "ci95_high": 0.20078119341354642,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.09531919679318655,
+        "5.0": 0.09156370986323933,
+        "10.0": 0.08788745551377704
+      },
+      "shrinkage_grid_range_z": 0.007431741279409515,
+      "leave_team_out_max_shift_z": 0.07059231721773629,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "LAW",
+      "driver_events": 30,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.1344769002809847,
+      "ci80_low": -0.2791684268255246,
+      "ci80_high": 0.018781244940591177,
+      "ci95_low": -0.39123760778630584,
+      "ci95_high": 0.08557872379322787,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.16888276178405742,
+        "5.0": -0.13969984182884573,
+        "10.0": -0.1075248947165287
+      },
+      "shrinkage_grid_range_z": 0.06135786706752873,
+      "leave_team_out_max_shift_z": 0.17068142651429213,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "LEC",
+      "driver_events": 64,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.22976974574687764,
+      "ci80_low": 0.12057728402044446,
+      "ci80_high": 0.329298395346152,
+      "ci95_low": 0.06070777237685665,
+      "ci95_high": 0.3924416477743286,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.2517663431579449,
+        "5.0": 0.22869802287605207,
+        "10.0": 0.19514193751711673
+      },
+      "shrinkage_grid_range_z": 0.05662440564082816,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "MAG",
+      "driver_events": 42,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.14975611729769928,
+      "ci80_low": -0.24990185900547857,
+      "ci80_high": -0.04801341328720827,
+      "ci95_low": -0.30355526175675923,
+      "ci95_high": 0.0010894606810325136,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.12209789251382056,
+        "5.0": -0.11880941931476158,
+        "10.0": -0.11011685719229383
+      },
+      "shrinkage_grid_range_z": 0.011981035321526723,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "NOR",
+      "driver_events": 67,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.10888547534309945,
+      "ci80_low": 0.0675278596349232,
+      "ci80_high": 0.1568517210054805,
+      "ci95_low": 0.04185585764869185,
+      "ci95_high": 0.185088330208611,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.1211811918024874,
+        "5.0": 0.11893709565799665,
+        "10.0": 0.1146893422416397
+      },
+      "shrinkage_grid_range_z": 0.0064918495608477095,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    },
+    {
+      "driver": "OCO",
+      "driver_events": 63,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.007949960986699724,
+      "ci80_low": -0.10001749887882991,
+      "ci80_high": 0.09537753414125372,
+      "ci95_low": -0.14190604208533614,
+      "ci95_high": 0.13443782044610028,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -1.148686194032183e-05,
+        "5.0": -0.009240962164981287,
+        "10.0": -0.01884067396882052
+      },
+      "shrinkage_grid_range_z": 0.018829187106880196,
+      "leave_team_out_max_shift_z": 0.040882288387641574,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "PER",
+      "driver_events": 42,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": 0.1302071905857871,
+      "ci80_low": -0.05932426413513806,
+      "ci80_high": 0.318259089631254,
+      "ci95_low": -0.16784515278221737,
+      "ci95_high": 0.4018732396366762,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.2507364805517722,
+        "5.0": 0.15743943555684425,
+        "10.0": 0.04829046423266204
+      },
+      "shrinkage_grid_range_z": 0.2024460163191102,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "PIA",
+      "driver_events": 66,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.10888547534309942,
+      "ci80_low": -0.15685172100548087,
+      "ci80_high": -0.06752785963492326,
+      "ci95_low": -0.1850883302086111,
+      "ci95_high": -0.04185585764869193,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.12118119180248696,
+        "5.0": -0.11893709565799672,
+        "10.0": -0.11468934224163962
+      },
+      "shrinkage_grid_range_z": 0.006491849560847335,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    },
+    {
+      "driver": "RIC",
+      "driver_events": 24,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.15598328975769127,
+      "ci80_low": -0.2866605509255837,
+      "ci80_high": -0.02444522118390221,
+      "ci95_low": -0.346777234933924,
+      "ci95_high": 0.03977203210850894,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.18189290859928342,
+        "5.0": -0.15943344131637754,
+        "10.0": -0.12511951798048154
+      },
+      "shrinkage_grid_range_z": 0.05677339061880188,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "RUS",
+      "driver_events": 68,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.0464281334398607,
+      "ci80_low": -0.15998231120560955,
+      "ci80_high": 0.06834100617644362,
+      "ci95_low": -0.22871186507990968,
+      "ci95_high": 0.12176137863488494,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.08192572846861325,
+        "5.0": -0.06435715444692365,
+        "10.0": -0.04502774708034382
+      },
+      "shrinkage_grid_range_z": 0.03689798138826943,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "SAI",
+      "driver_events": 64,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.08126439108920724,
+      "ci80_low": -0.02758406107413138,
+      "ci80_high": 0.1991259393383666,
+      "ci95_low": -0.07194241318524601,
+      "ci95_high": 0.26901400617689963,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.14545878417955815,
+        "5.0": 0.12045637346456033,
+        "10.0": 0.08782800084202909
+      },
+      "shrinkage_grid_range_z": 0.057630783337529065,
+      "leave_team_out_max_shift_z": 0.06707061798333251,
+      "individual_identification_passed": true,
+      "eligible_for_card": true,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "SAR",
+      "driver_events": 35,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": -0.15558589083863486,
+      "ci80_low": -0.2887377883914967,
+      "ci80_high": -0.012553667216589333,
+      "ci95_low": -0.37236979676757404,
+      "ci95_high": 0.04976677213019969,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.16653960639657947,
+        "5.0": -0.17026883342240648,
+        "10.0": -0.1634985682016257
+      },
+      "shrinkage_grid_range_z": 0.00677026522078078,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "STR",
+      "driver_events": 63,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.17336679095596969,
+      "ci80_low": -0.2355812015219009,
+      "ci80_high": -0.12088173004068145,
+      "ci95_low": -0.26539864201753643,
+      "ci95_high": -0.09421192770636314,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.1858206149637288,
+        "5.0": -0.18221944025512896,
+        "10.0": -0.17542020740978853
+      },
+      "shrinkage_grid_range_z": 0.010400407553940255,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    },
+    {
+      "driver": "TSU",
+      "driver_events": 63,
+      "distinct_teams": 2,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": -0.237738751519184,
+      "ci80_low": -0.3426902891998367,
+      "ci80_high": -0.13210096364512067,
+      "ci95_low": -0.4138564956561134,
+      "ci95_high": -0.06721457787382244,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": -0.23658224871467248,
+        "5.0": -0.22901125687018745,
+        "10.0": -0.21443768019615783
+      },
+      "shrinkage_grid_range_z": 0.02214456851851465,
+      "leave_team_out_max_shift_z": 0.35144379257180736,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "VER",
+      "driver_events": 66,
+      "distinct_teams": 1,
+      "distinct_seasons": 3,
+      "conditional_pair_latent_z": 0.8322718935971792,
+      "ci80_low": 0.7060684816064496,
+      "ci80_high": 0.9701677830164702,
+      "ci95_low": 0.6391679670205268,
+      "ci95_high": 1.0427043238910942,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.9377123178157477,
+        "5.0": 0.8483263941965463,
+        "10.0": 0.7317556537148616
+      },
+      "shrinkage_grid_range_z": 0.2059566641008861,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": false
+    },
+    {
+      "driver": "ZHO",
+      "driver_events": 44,
+      "distinct_teams": 1,
+      "distinct_seasons": 2,
+      "conditional_pair_latent_z": 0.040744039243381755,
+      "ci80_low": -0.05744309548598068,
+      "ci80_high": 0.11377926167279989,
+      "ci95_low": -0.10135450030809366,
+      "ci95_high": 0.15387667788341747,
+      "bootstrap_draws": 500,
+      "shrinkage_grid_scores_z": {
+        "2.5": 0.03827360702588097,
+        "5.0": 0.03722213430538976,
+        "10.0": 0.03528348147698401
+      },
+      "shrinkage_grid_range_z": 0.002990125548896959,
+      "leave_team_out_max_shift_z": null,
+      "individual_identification_passed": false,
+      "eligible_for_card": false,
+      "global_pac": null,
+      "identification_scope": "within_transfer_component_centered_only",
+      "weakly_anchored": true
+    }
+  ],
+  "publication_gate": {
+    "passed": false,
+    "checks": {
+      "minimum_event_clusters": true,
+      "minimum_pairwise_comparisons": true,
+      "minimum_teams": true,
+      "minimum_pairwise_balanced_accuracy": true,
+      "minimum_block_bootstrap_balanced_accuracy_95_low": false,
+      "minimum_pair_margin_spearman": true,
+      "minimum_block_bootstrap_pair_margin_spearman_95_low": false,
+      "minimum_each_season_direction_accuracy": true,
+      "minimum_brier_skill_vs_best_baseline": false,
+      "minimum_block_bootstrap_brier_skill_95_low": false,
+      "minimum_log_loss_improvement_vs_best_baseline": false,
+      "coverage_80": true,
+      "coverage_95": true,
+      "minimum_wis_improvement_vs_best_baseline": false,
+      "minimum_origins_with_past_only_graph_audit": true,
+      "minimum_post_freeze_confirmatory_event_clusters": false,
+      "minimum_post_freeze_confirmatory_pair_events": false,
+      "minimum_identifiable_novel_edges": false,
+      "maximum_novel_edge_brier": true,
+      "minimum_novel_edge_direction_accuracy": true,
+      "actual_design_manifest_leakage_free": true,
+      "frozen_0_100_mapping_validation": false,
+      "complete_benchmark_suite": false,
+      "complete_negative_control_suite": false,
+      "connected_transfer_graph": false,
+      "no_weakly_anchored_published_drivers": true
+    },
+    "failed_gates": [
+      "minimum_block_bootstrap_balanced_accuracy_95_low",
+      "minimum_block_bootstrap_pair_margin_spearman_95_low",
+      "minimum_brier_skill_vs_best_baseline",
+      "minimum_block_bootstrap_brier_skill_95_low",
+      "minimum_log_loss_improvement_vs_best_baseline",
+      "minimum_wis_improvement_vs_best_baseline",
+      "minimum_post_freeze_confirmatory_event_clusters",
+      "minimum_post_freeze_confirmatory_pair_events",
+      "minimum_identifiable_novel_edges",
+      "frozen_0_100_mapping_validation",
+      "complete_benchmark_suite",
+      "complete_negative_control_suite",
+      "connected_transfer_graph"
+    ],
+    "thresholds": {
+      "minimum_event_clusters": 30,
+      "minimum_pairwise_comparisons": 150,
+      "minimum_teams": 8,
+      "minimum_pairwise_balanced_accuracy": 0.6,
+      "minimum_block_bootstrap_balanced_accuracy_95_low": 0.5,
+      "minimum_pair_margin_spearman": 0.3,
+      "minimum_block_bootstrap_pair_margin_spearman_95_low": 0.0,
+      "minimum_each_season_direction_accuracy": 0.5,
+      "minimum_brier_skill_vs_best_baseline": 0.05,
+      "minimum_block_bootstrap_brier_skill_95_low": 0.0,
+      "minimum_log_loss_improvement_vs_best_baseline": 0.02,
+      "coverage_80_low": 0.72,
+      "coverage_80_high": 0.88,
+      "coverage_95_low": 0.9,
+      "coverage_95_high": 0.99,
+      "minimum_wis_improvement_vs_best_baseline": 0.05,
+      "minimum_origins_with_past_only_graph_audit": 30,
+      "minimum_post_freeze_confirmatory_event_clusters": 16,
+      "minimum_post_freeze_confirmatory_pair_events": 120,
+      "minimum_identifiable_novel_edges": 5,
+      "maximum_novel_edge_brier": 0.3,
+      "minimum_novel_edge_direction_accuracy": 0.6,
+      "require_actual_design_manifest_leakage_free": true,
+      "require_complete_benchmark_suite": true,
+      "require_complete_negative_control_suite": true,
+      "require_frozen_0_100_mapping_validation": true,
+      "require_connected_transfer_graph_for_global_pac": true,
+      "require_no_weakly_anchored_published_drivers": true
+    }
+  },
+  "pac_status": "conditional_pair_prototype_keep_null",
+  "pac": null
+}

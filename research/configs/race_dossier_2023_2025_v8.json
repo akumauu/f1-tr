@@ -1,0 +1,104 @@
+{
+  "experiment_name": "race_dossier_2023_2025_v8",
+  "method_version": "v8",
+  "schema_version": "race-dossier-v8",
+  "validation_status": "retrospective_full_race_audit_protocol_frozen_before_first_v8_real_run",
+  "protocol_frozen_at": "2026-07-25T00:00:00+08:00",
+  "offline_only": true,
+  "scope": {
+    "years": [2023, 2024, 2025],
+    "session": "Race",
+    "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+    "expected_events": 70
+  },
+  "inputs": {
+    "telemetry_schema_root": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4",
+    "qualifying_manifest": "research/artifacts/four_team_qualifying_2023_2025_manifest.json",
+    "race_by_race_v5_result": "research/records/four_team_race_by_race_2023_2026_v5.json",
+    "event_stint_v4_result": "research/records/four_team_event_stint_attribution_2023_2025.json",
+    "explanatory_depth_v6_result": "research/records/four_team_explanatory_depth_2023_2025_v6.json",
+    "pac_v1_result": "research/records/conditional_pair_prototype_validation_2023_2025_v1.json",
+    "pac_v2_result": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json"
+  },
+  "coverage_gate": {
+    "minimum_race_laps": 20,
+    "minimum_reporting_teams": 4,
+    "minimum_drivers_per_team": 2,
+    "minimum_clean_laps_per_team": 24,
+    "minimum_valid_stints_per_team": 2,
+    "minimum_modelable_lap_fraction": 0.4
+  },
+  "lap_filter": {
+    "dry_compounds": ["SOFT", "MEDIUM", "HARD"],
+    "minimum_distance_coverage": 0.95,
+    "minimum_samples_per_lap": 80,
+    "dirty_air_gap_seconds": 2.5,
+    "clean_air_gap_seconds": 4.0,
+    "slow_lap_mad": 3.5
+  },
+  "stint_gate": {
+    "minimum_observed_laps": 8,
+    "minimum_modelable_laps": 6,
+    "minimum_modelable_fraction": 0.6,
+    "minimum_tyre_age_span": 5.0,
+    "stint_validity_independent_of_baseline": false,
+    "warmup_laps": 2,
+    "late_stint_fraction": 0.25
+  },
+  "baseline": {
+    "minimum_laps_per_cell": 6,
+    "minimum_teams_per_cell": 3,
+    "tyre_age_bin_laps": 3,
+    "lap_fraction_bin": 0.1
+  },
+  "strategy_envelope": {
+    "minimum_valid_stints_per_compound": 4,
+    "minimum_drivers_per_stop_pattern": 3,
+    "minimum_historical_stints_per_compound": 12,
+    "minimum_historical_events_per_compound": 4,
+    "history_rule": "strictly_prior_events_only",
+    "post_race_envelope_role": "audit_only"
+  },
+  "materiality": {
+    "pit_window_seconds": 2.0,
+    "require_adjacent_gap_proxy": true,
+    "major_factor_requires_fia_final_adjacent_gap": true
+  },
+  "publication_contract": {
+    "analysis_unit": "complete_race",
+    "qualifying_race_independent": true,
+    "publish_pac": false,
+    "publish_ovr": false,
+    "classification_or_points_used_for_fit": false,
+    "claim_real_fuel_load": false,
+    "claim_pirelli_internal_simulation": false,
+    "publish_expected_points": false,
+    "publish_expected_championship_rank": false
+  },
+  "bootstrap": {
+    "repetitions": 200,
+    "seed": 20260725
+  },
+  "runtime": {
+    "execution_policy": "foreground_serial_low_resource",
+    "duckdb_threads": 1,
+    "file_batch_size": 1,
+    "duckdb_memory_limit": "768MB",
+    "batch_cooldown_seconds": 0.25,
+    "project_cache": ".runtime-cache/race-dossier-v8"
+  },
+  "outputs": {
+    "records_base": "research/records/race_dossier_v8",
+    "artifacts_base": "research/artifacts/race_dossier_v8",
+    "frontend_base": "frontend/public/data/race-dossier/v8"
+  },
+  "boundaries": {
+    "matched_laps_are_primary_evidence": false,
+    "track_phase_is_race_timeline": false,
+    "classification_proxy_is_fia_final": false,
+    "single_stint_tyre_management_is_driver_skill": false,
+    "season_results_can_tune_event_model": false,
+    "historical_v1_to_v7_outputs_may_be_overwritten": false
+  },
+  "freeze_note": "v8 门槛在首次真实运行前冻结。真实数据未通过时只输出 audit_only；不得降低门槛以制造完整赛事结论。"
+}

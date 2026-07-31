@@ -1,0 +1,966 @@
+{
+  "schema_version": "race-dossier-run-manifest-v9",
+  "run_id": "20260725T103758+0800-6b91c3a67cab",
+  "created_at": "2026-07-25T10:40:27+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config_hash": "6b91c3a67cab759b2868ace6898114dfd9999274ec28e833907ad66154be4ec4",
+  "methodological_status": "v9_separates_intrinsic_stint_and_cross_team_baseline_identifiability_after_v8_fail_closed_audit",
+  "offline_only": true,
+  "network_calls": [],
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "project_cache": ".runtime-cache/race-dossier-v9"
+  },
+  "input_identities": {
+    "config": {
+      "path": "research/configs/race_dossier_2023_2025_v9.json",
+      "sha256": "3672dc077299ccde9c67e2284aa9e5ccd3af72ed425896ac51fc5c86dd2a604f",
+      "bytes": 4236
+    },
+    "event_stint_v4_result": {
+      "path": "research/records/four_team_event_stint_attribution_2023_2025.json",
+      "sha256": "0994d3ff7e6a6eb30ea8f135ce5a15da9469e28fa57751cc3f86b9d62402e356",
+      "bytes": 2907096
+    },
+    "explanatory_depth_v6_result": {
+      "path": "research/records/four_team_explanatory_depth_2023_2025_v6.json",
+      "sha256": "c8fbb84cac7bb7d51127038e0535f67d20ef71f3f2ce6cc53b8600424c1e8d99",
+      "bytes": 1626019
+    },
+    "pac_v1_result": {
+      "path": "research/records/conditional_pair_prototype_validation_2023_2025_v1.json",
+      "sha256": "9f5bb730ebf8ef5b9fc9ea7b0c23d4dc5913365d307da81e8d91ea29301ada49",
+      "bytes": 150472
+    },
+    "pac_v2_result": {
+      "path": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json",
+      "sha256": "7835262bd4ff679d4df0e97519022a06cbdf394aacc362f3a6a02efc5f007087",
+      "bytes": 567909
+    },
+    "qualifying": {
+      "manifest": {
+        "path": "research/artifacts/four_team_qualifying_2023_2025_manifest.json",
+        "sha256": "b4af9a995f9cb1465a6c8d43339bd684e937e4c4cf87213f3ab4cb20d3ffb0c6",
+        "bytes": 3724
+      },
+      "data": {
+        "path": "research/artifacts/data/qualifying_2023_2025_v4.csv.gz",
+        "sha256": "b73dbe6d2713983606056f38c55b5bc0b50145bc40e4d6cc354508f482a1d7a5",
+        "bytes": 339148
+      },
+      "coverage": {
+        "rows": 7401,
+        "years": [
+          2023,
+          2024,
+          2025
+        ],
+        "meetings": 67,
+        "sessions": 67,
+        "drivers": 28,
+        "summary_by_year": [
+          {
+            "year": 2023,
+            "rows": 2522,
+            "meetings": 22,
+            "drivers": 22
+          },
+          {
+            "year": 2024,
+            "rows": 2515,
+            "meetings": 22,
+            "drivers": 24
+          },
+          {
+            "year": 2025,
+            "rows": 2364,
+            "meetings": 23,
+            "drivers": 21
+          }
+        ]
+      },
+      "boundaries": {
+        "accurate_flag_role": "FastF1 accurate lap proxy for push-lap eligibility",
+        "q1_q2_q3_phase": "not_available_in_current_freeze",
+        "setup_identity": "not_observed"
+      }
+    },
+    "race_by_race_v5_result": {
+      "path": "research/records/four_team_race_by_race_2023_2026_v5.json",
+      "sha256": "40937855648ffa1cf45094d6e39c5d82fac010242302973efd205a1394f5accd",
+      "bytes": 6182226
+    },
+    "lap_universe_reuse": {
+      "manifest": {
+        "path": "research/artifacts/race_dossier_v8/run=20260725T003934+0800-476316f80d23/manifest.json",
+        "sha256": "771e133355873f55bce0a676a42f2fc22b38e9d19ec0129732e5ef59f15a88ac",
+        "bytes": 2055
+      },
+      "data": {
+        "path": "research/artifacts/race_dossier_v8/run=20260725T003934+0800-476316f80d23/race_lap_universe.csv.gz",
+        "sha256": "b3837398ce1a80c9f3c8eb8fc6b0ffce9f9ea1375d00761aa95d80efc0a39db3",
+        "bytes": 3441796
+      },
+      "source_run_id": "20260725T003934+0800-476316f80d23",
+      "identity_verified": true
+    },
+    "telemetry_sources": [
+      {
+        "year": 2023,
+        "source_commit": "e4b7468f2cdc1a2f86ba94a1eb8f1477719ea582",
+        "manifest": "year=2023/commit=e4b7468f2cdc/manifest.json",
+        "selected_partitions": 22,
+        "selected_rows": 17816224
+      },
+      {
+        "year": 2024,
+        "source_commit": "869496da863e00e4b060e98d52b9826d0ac4005c",
+        "manifest": "year=2024/commit=869496da863e/manifest.json",
+        "selected_partitions": 24,
+        "selected_rows": 18998812
+      },
+      {
+        "year": 2025,
+        "source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6",
+        "manifest": "year=2025/commit=f7a5324cae58/manifest.json",
+        "selected_partitions": 24,
+        "selected_rows": 18433170
+      },
+      {
+        "selected_file_count": 70,
+        "selected_file_set_sha256": "fc7fad42671a8482c15f5c3161666ebd1aabd8c6b8e5bb827bc50d795beefc1b"
+      }
+    ]
+  },
+  "historical_v7_identity_audit": {
+    "role": "audit_only_not_v8_input",
+    "v7_outputs_immutable": true,
+    "australia_report": {
+      "registered_sha256": null,
+      "current_sha256": "593d6b4caf413fa46f6e9e270b8a3e3028c401be06a590a9631672f1c6d2c1fb",
+      "identity_matches": null
+    },
+    "four_event_batch": {
+      "current_config_hash": "26fe30e0273a5db29e031b93c3316afdfd006a7cf76881a6c4cdb8dd80f3a663",
+      "recorded_result_config_hash": "fc0ed2d002c173bbda702d65fc484250f942161ffaf2fdf956b017dc3d7ca75e",
+      "identity_matches": false,
+      "current_required_events": 16,
+      "recorded_required_events": 8
+    }
+  },
+  "coverage": {
+    "events": 70,
+    "publication_gate_passed": 0,
+    "audit_only": 70,
+    "seasons": 3
+  },
+  "events": [
+    {
+      "year": 2023,
+      "round": 1,
+      "meeting": "Bahrain Grand Prix",
+      "event_order": 202301,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=01/meeting=bahrain-grand-prix/race_dossier.json",
+      "sha256": "be2cf1d79a81681636e19fa1b41adde609fbbe6e38c5922777664f9ff2e07fb3",
+      "bytes": 186348,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 2,
+      "meeting": "Saudi Arabian Grand Prix",
+      "event_order": 202302,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=02/meeting=saudi-arabian-grand-prix/race_dossier.json",
+      "sha256": "4a48f162c1eb4bdebce2357e2664cb07b2f884ce4bd409b2e1cfa91940fd7c9d",
+      "bytes": 133959,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 3,
+      "meeting": "Australian Grand Prix",
+      "event_order": 202303,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=03/meeting=australian-grand-prix/race_dossier.json",
+      "sha256": "1e940ce51a6250254df79512901701327fb8d724eb1387fd0ff95ef107362bef",
+      "bytes": 213821,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 4,
+      "meeting": "Azerbaijan Grand Prix",
+      "event_order": 202304,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=04/meeting=azerbaijan-grand-prix/race_dossier.json",
+      "sha256": "23f523a490293567adfc66e49031b656548605dd114d0aa365f6b6009e4f12de",
+      "bytes": 133339,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 5,
+      "meeting": "Miami Grand Prix",
+      "event_order": 202305,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=05/meeting=miami-grand-prix/race_dossier.json",
+      "sha256": "b72ae1160854b14347a11414db61a6125e9447f763da57c79fdc82d67eac5ece",
+      "bytes": 121355,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 6,
+      "meeting": "Monaco Grand Prix",
+      "event_order": 202306,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=06/meeting=monaco-grand-prix/race_dossier.json",
+      "sha256": "5f958690abbaf86c9532dfdf8b576bfbe388fa66eaaa29a8c0f21c58477b0145",
+      "bytes": 168789,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 7,
+      "meeting": "Spanish Grand Prix",
+      "event_order": 202307,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=07/meeting=spanish-grand-prix/race_dossier.json",
+      "sha256": "a159afa9fa28c68b2c3512c40ed14a6b01e11f3c657269bc6e9fc356946f1558",
+      "bytes": 167359,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 8,
+      "meeting": "Canadian Grand Prix",
+      "event_order": 202308,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=08/meeting=canadian-grand-prix/race_dossier.json",
+      "sha256": "d40745ecb69cd7afa2d621f816dd0a17fcb7668662f0b00abe2bcf564af46db2",
+      "bytes": 157300,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 9,
+      "meeting": "Austrian Grand Prix",
+      "event_order": 202309,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=09/meeting=austrian-grand-prix/race_dossier.json",
+      "sha256": "5e1a056cd6c5ca5b851ee1f442a2dddec88670bbfd66fc3dd87c629e44036ecc",
+      "bytes": 213084,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 10,
+      "meeting": "British Grand Prix",
+      "event_order": 202310,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=10/meeting=british-grand-prix/race_dossier.json",
+      "sha256": "0864c1ef283a41646e3656cea5646a7fc8f402c5e60cc49235ddb09312123ea3",
+      "bytes": 131718,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 11,
+      "meeting": "Hungarian Grand Prix",
+      "event_order": 202311,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=11/meeting=hungarian-grand-prix/race_dossier.json",
+      "sha256": "e4f026478a452255bde23ba138270aae56a7516922c0f7a348d2600e33fea2df",
+      "bytes": 162449,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 12,
+      "meeting": "Belgian Grand Prix",
+      "event_order": 202312,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=12/meeting=belgian-grand-prix/race_dossier.json",
+      "sha256": "038dfcbb53c0b6311495f7a8c42026bd775452f8021a84fa046e6a087a6e53e2",
+      "bytes": 158619,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 13,
+      "meeting": "Dutch Grand Prix",
+      "event_order": 202313,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=13/meeting=dutch-grand-prix/race_dossier.json",
+      "sha256": "39251fb64ec8fd4838669e7db7f6bddef1afcc2ec1c06bc59fbbec29422fd3a5",
+      "bytes": 281570,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 14,
+      "meeting": "Italian Grand Prix",
+      "event_order": 202314,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=14/meeting=italian-grand-prix/race_dossier.json",
+      "sha256": "e818c7cb0d6e87fa75718430589685e909403e051f1618bcb09e61af46302d0b",
+      "bytes": 128137,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 15,
+      "meeting": "Singapore Grand Prix",
+      "event_order": 202315,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=15/meeting=singapore-grand-prix/race_dossier.json",
+      "sha256": "ab890b4da391747a4f65ccd8ebb5365b4aa434038e6f2cf52c805a65bc6f480d",
+      "bytes": 142474,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 16,
+      "meeting": "Japanese Grand Prix",
+      "event_order": 202316,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=16/meeting=japanese-grand-prix/race_dossier.json",
+      "sha256": "dbe23191500668449c1f5bed702c8a7ca388600b8fdfb918aa27762cd4b3c90a",
+      "bytes": 173897,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 17,
+      "meeting": "Qatar Grand Prix",
+      "event_order": 202317,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=17/meeting=qatar-grand-prix/race_dossier.json",
+      "sha256": "84535890f960e1a83f1147c88cb2fd211d4b6119db005f4bb410d0d05a89cc2e",
+      "bytes": 191737,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 18,
+      "meeting": "United States Grand Prix",
+      "event_order": 202318,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=18/meeting=united-states-grand-prix/race_dossier.json",
+      "sha256": "019159a533a8d5e7753de1be8519d6bd7d0e509077e702a79500fd930c68eb92",
+      "bytes": 156304,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 19,
+      "meeting": "Mexico City Grand Prix",
+      "event_order": 202319,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=19/meeting=mexico-city-grand-prix/race_dossier.json",
+      "sha256": "6af85e599c598fa61b98250d081f3fee6e679f25174d7f66f775c770e7dc44e0",
+      "bytes": 169851,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 20,
+      "meeting": "São Paulo Grand Prix",
+      "event_order": 202320,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=20/meeting=sao-paulo-grand-prix/race_dossier.json",
+      "sha256": "ebe3db4913659dbc31897a82f49bf90872a77a00254d0ec4969d6e66fa2dbcc1",
+      "bytes": 213200,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 21,
+      "meeting": "Las Vegas Grand Prix",
+      "event_order": 202321,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=21/meeting=las-vegas-grand-prix/race_dossier.json",
+      "sha256": "1e8843575dc271cd10d3808871de2e7a49577195243bfe99c9d7d3e7fc0fb24f",
+      "bytes": 149428,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2023,
+      "round": 22,
+      "meeting": "Abu Dhabi Grand Prix",
+      "event_order": 202322,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/round=22/meeting=abu-dhabi-grand-prix/race_dossier.json",
+      "sha256": "10ca6f331144bf9545e3cc1b8180e9d2a62472bcab37f30cd8c5bcd64b9bc7cf",
+      "bytes": 155386,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 1,
+      "meeting": "Bahrain Grand Prix",
+      "event_order": 202401,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=01/meeting=bahrain-grand-prix/race_dossier.json",
+      "sha256": "7817d7124568ecd37420d71b504f3d3c4c5903fd944cfc99148ca906adf7d85f",
+      "bytes": 174420,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 2,
+      "meeting": "Saudi Arabian Grand Prix",
+      "event_order": 202402,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=02/meeting=saudi-arabian-grand-prix/race_dossier.json",
+      "sha256": "d17f6aa1d5ae2590b7b6607c5b07d0752a33a76f883e7f8561a45b7652610ba2",
+      "bytes": 124472,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 3,
+      "meeting": "Australian Grand Prix",
+      "event_order": 202403,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=03/meeting=australian-grand-prix/race_dossier.json",
+      "sha256": "e4d21faa7325f6927c590405ecc5998c0b5f903111d4cc4c7931ee673feefe05",
+      "bytes": 156433,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 4,
+      "meeting": "Japanese Grand Prix",
+      "event_order": 202404,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=04/meeting=japanese-grand-prix/race_dossier.json",
+      "sha256": "8d392024333f82ef96dae0c7cbcacd3b04b6916c5166c27c03038b2df1181c7b",
+      "bytes": 191000,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 5,
+      "meeting": "Chinese Grand Prix",
+      "event_order": 202405,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=05/meeting=chinese-grand-prix/race_dossier.json",
+      "sha256": "944a33c1b7d9134f3e4463f7b3c66e136d829c35ba2c6c59d5d626ac271be8ae",
+      "bytes": 166181,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 6,
+      "meeting": "Miami Grand Prix",
+      "event_order": 202406,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=06/meeting=miami-grand-prix/race_dossier.json",
+      "sha256": "3b0f94781e1ea12576fd5e9bdfc095e3dcceda6dc2de228b0356fe0c3786ad97",
+      "bytes": 141929,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 7,
+      "meeting": "Emilia Romagna Grand Prix",
+      "event_order": 202407,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=07/meeting=emilia-romagna-grand-prix/race_dossier.json",
+      "sha256": "63bebba906d500fb3bb0b1199954cd37b59078ed386bb04667be88710782b37f",
+      "bytes": 137763,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 8,
+      "meeting": "Monaco Grand Prix",
+      "event_order": 202408,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=08/meeting=monaco-grand-prix/race_dossier.json",
+      "sha256": "8a815ca139ef9c6f7acb8f628744a708a2f4963c41f9a2632589de0d928eeed9",
+      "bytes": 129319,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 9,
+      "meeting": "Canadian Grand Prix",
+      "event_order": 202409,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=09/meeting=canadian-grand-prix/race_dossier.json",
+      "sha256": "d58c5ec3280f3f15d1d547cd6335db5b8e8a25f85b8c6bd1a87d4f17544bc766",
+      "bytes": 172064,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 10,
+      "meeting": "Spanish Grand Prix",
+      "event_order": 202410,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=10/meeting=spanish-grand-prix/race_dossier.json",
+      "sha256": "a7fbc72e3da826c4c8c2fe19fc9d1596c7ecf3212e1c62e474f4d494cf7689a8",
+      "bytes": 165884,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 11,
+      "meeting": "Austrian Grand Prix",
+      "event_order": 202411,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=11/meeting=austrian-grand-prix/race_dossier.json",
+      "sha256": "5e11459e922844c4a93b585a0043eb5fe4331830466daf31e2cc15fab80d0a61",
+      "bytes": 179871,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 12,
+      "meeting": "British Grand Prix",
+      "event_order": 202412,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=12/meeting=british-grand-prix/race_dossier.json",
+      "sha256": "2cd9f0b590a1954acde4b8d5ce7da983c3b4003a2b6799eaa7b12724508b089d",
+      "bytes": 165155,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 13,
+      "meeting": "Hungarian Grand Prix",
+      "event_order": 202413,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=13/meeting=hungarian-grand-prix/race_dossier.json",
+      "sha256": "88c38075693e4237674815a90b16f28ed2f772a8e32e28885ca28c3047cb2038",
+      "bytes": 169081,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 14,
+      "meeting": "Belgian Grand Prix",
+      "event_order": 202414,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=14/meeting=belgian-grand-prix/race_dossier.json",
+      "sha256": "567d06cc54a3c258531902fc8a518610fd246194abd0832ac4da06b5829e5cb7",
+      "bytes": 147194,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 15,
+      "meeting": "Dutch Grand Prix",
+      "event_order": 202415,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=15/meeting=dutch-grand-prix/race_dossier.json",
+      "sha256": "2a2ac841f49c650f98e2e80fc7e4d6a71a2e7c450dc48a0e8e2771fb13975479",
+      "bytes": 137195,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 16,
+      "meeting": "Italian Grand Prix",
+      "event_order": 202416,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=16/meeting=italian-grand-prix/race_dossier.json",
+      "sha256": "5cbdfaec440e6353089a84d1e2626c1b5f766602bd61fa305a5b8d8a464b9b99",
+      "bytes": 139913,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 17,
+      "meeting": "Azerbaijan Grand Prix",
+      "event_order": 202417,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=17/meeting=azerbaijan-grand-prix/race_dossier.json",
+      "sha256": "3610a45b4ce2353a6c8875fc5904895de55714923e0bc6923f7b0ab6eea5aa11",
+      "bytes": 135669,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 18,
+      "meeting": "Singapore Grand Prix",
+      "event_order": 202418,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=18/meeting=singapore-grand-prix/race_dossier.json",
+      "sha256": "f994200acae327644c2e2de04d5bbebb3a3d98a59f49a5fe2d7b8cb155d830ee",
+      "bytes": 129990,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 19,
+      "meeting": "United States Grand Prix",
+      "event_order": 202419,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=19/meeting=united-states-grand-prix/race_dossier.json",
+      "sha256": "6b233b4ac66bc8ef305e6ae7b95f183079d5c292bc0b9edb0274acbd92c47478",
+      "bytes": 142202,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 20,
+      "meeting": "Mexico City Grand Prix",
+      "event_order": 202420,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=20/meeting=mexico-city-grand-prix/race_dossier.json",
+      "sha256": "6d3d6e0d44d2f5f5582db0dd74b733275874f3198542010278494e7f3762c76a",
+      "bytes": 131031,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 21,
+      "meeting": "São Paulo Grand Prix",
+      "event_order": 202421,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=21/meeting=sao-paulo-grand-prix/race_dossier.json",
+      "sha256": "564d649759f0151011eecb808ad6d2facadf87f13b158e43e1196fff708d7a6d",
+      "bytes": 148626,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 22,
+      "meeting": "Las Vegas Grand Prix",
+      "event_order": 202422,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=22/meeting=las-vegas-grand-prix/race_dossier.json",
+      "sha256": "5fd87b01b79218b63d24ff129df2faf73503e465aba1e49b5d70267bc5b58810",
+      "bytes": 157687,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 23,
+      "meeting": "Qatar Grand Prix",
+      "event_order": 202423,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=23/meeting=qatar-grand-prix/race_dossier.json",
+      "sha256": "0e47ea71b5122319791e6a16122c0bb0583f48cf34001baa86ed0633b4c6ef68",
+      "bytes": 198235,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2024,
+      "round": 24,
+      "meeting": "Abu Dhabi Grand Prix",
+      "event_order": 202424,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/round=24/meeting=abu-dhabi-grand-prix/race_dossier.json",
+      "sha256": "56212a250b6c72c9cfb63677fd6782ada5556320c4f9c67ee77952c5cfe2580d",
+      "bytes": 147053,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 1,
+      "meeting": "Australian Grand Prix",
+      "event_order": 202501,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=01/meeting=australian-grand-prix/race_dossier.json",
+      "sha256": "6e44d91f2ca2ccbe782ca5c14cf254ee86c8398c7bcd393b9f7b019f9ce8429b",
+      "bytes": 229154,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 2,
+      "meeting": "Chinese Grand Prix",
+      "event_order": 202502,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=02/meeting=chinese-grand-prix/race_dossier.json",
+      "sha256": "913d17b7a3d869f3c526c624a65c658d68a12b52f98062d949a41d91f0db5ee3",
+      "bytes": 138108,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 3,
+      "meeting": "Japanese Grand Prix",
+      "event_order": 202503,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=03/meeting=japanese-grand-prix/race_dossier.json",
+      "sha256": "18b65e6983cf8818e4c77f1bf757a1595dadd77a550d0f40a6d9ae455c2e9651",
+      "bytes": 116407,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 4,
+      "meeting": "Bahrain Grand Prix",
+      "event_order": 202504,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=04/meeting=bahrain-grand-prix/race_dossier.json",
+      "sha256": "baeff34f3715ba21c78460cc22fbcfa62cf9687e158e6ef497c17fd9914a26cc",
+      "bytes": 169309,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 5,
+      "meeting": "Saudi Arabian Grand Prix",
+      "event_order": 202505,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=05/meeting=saudi-arabian-grand-prix/race_dossier.json",
+      "sha256": "b3471f5cddef2216d37414a669238fe9ca7c705fe19c96a264059447456c3c9f",
+      "bytes": 123105,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 6,
+      "meeting": "Miami Grand Prix",
+      "event_order": 202506,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=06/meeting=miami-grand-prix/race_dossier.json",
+      "sha256": "cc99661db1dfcb00df6ffe5a3b51e309a66ba37f61e14e35d259a21e3149f853",
+      "bytes": 116870,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 7,
+      "meeting": "Emilia Romagna Grand Prix",
+      "event_order": 202507,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=07/meeting=emilia-romagna-grand-prix/race_dossier.json",
+      "sha256": "939f7c816dd3cead9075e60b38bb4fcd8ab53a6efec48dc2606f2e0ca5e4c809",
+      "bytes": 159859,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 8,
+      "meeting": "Monaco Grand Prix",
+      "event_order": 202508,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=08/meeting=monaco-grand-prix/race_dossier.json",
+      "sha256": "973b6c7c36a9320737d6bdf724baf3043704636679b8d1de0be89e0ff0659e29",
+      "bytes": 166208,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 9,
+      "meeting": "Spanish Grand Prix",
+      "event_order": 202509,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=09/meeting=spanish-grand-prix/race_dossier.json",
+      "sha256": "bbcc12e910c655337bd1d0e0f0fb740d47afe8111529c5640a8fcbc1d0dd2f32",
+      "bytes": 191399,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 10,
+      "meeting": "Canadian Grand Prix",
+      "event_order": 202510,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=10/meeting=canadian-grand-prix/race_dossier.json",
+      "sha256": "ca40468b424a41bc1ae9802b31597a5a670fc8b36ddecee8b080277dc1d5f8e9",
+      "bytes": 242758,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 11,
+      "meeting": "Austrian Grand Prix",
+      "event_order": 202511,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=11/meeting=austrian-grand-prix/race_dossier.json",
+      "sha256": "eeb11f9345386c3a63e925875cc3861e6651f960417a4f09db0c6195aaaa5514",
+      "bytes": 150021,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 12,
+      "meeting": "British Grand Prix",
+      "event_order": 202512,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=12/meeting=british-grand-prix/race_dossier.json",
+      "sha256": "59cc825308514749f4890688d10de8df5600d9e4f72899c1a63f90e9c1574cdb",
+      "bytes": 153035,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 13,
+      "meeting": "Belgian Grand Prix",
+      "event_order": 202513,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=13/meeting=belgian-grand-prix/race_dossier.json",
+      "sha256": "008d09ba8bab0cf3eb5172188b2e5fcd00ca530f5387496319a18d63d130dcaa",
+      "bytes": 135156,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 14,
+      "meeting": "Hungarian Grand Prix",
+      "event_order": 202514,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=14/meeting=hungarian-grand-prix/race_dossier.json",
+      "sha256": "3daaaafb05cfdc8f576047a3ef00d495a57455f11265315ea98b174d326ca34e",
+      "bytes": 138865,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 15,
+      "meeting": "Dutch Grand Prix",
+      "event_order": 202515,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=15/meeting=dutch-grand-prix/race_dossier.json",
+      "sha256": "8a93e3d5f4b4db07ac7b400c6119937f1acaf0d6f8e256363bff0ee2824791d0",
+      "bytes": 167134,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 16,
+      "meeting": "Italian Grand Prix",
+      "event_order": 202516,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=16/meeting=italian-grand-prix/race_dossier.json",
+      "sha256": "465effcf8669869d1f46163cf18d1c6e3df374757ffaca94eca1dc60d104f8e1",
+      "bytes": 127402,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 17,
+      "meeting": "Azerbaijan Grand Prix",
+      "event_order": 202517,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=17/meeting=azerbaijan-grand-prix/race_dossier.json",
+      "sha256": "34d0d572cdaca4ee9399496d7f3667627bdbf9159e1a7a85a46ae929186c4baa",
+      "bytes": 128223,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 18,
+      "meeting": "Singapore Grand Prix",
+      "event_order": 202518,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=18/meeting=singapore-grand-prix/race_dossier.json",
+      "sha256": "2c96c9881dd2d19b10563d34256b6e892d673c38c1a56956329bd75b36f167bb",
+      "bytes": 139929,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 19,
+      "meeting": "United States Grand Prix",
+      "event_order": 202519,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=19/meeting=united-states-grand-prix/race_dossier.json",
+      "sha256": "66d8f00be38d9cb18037d7b43e26f1475bcbf99f1426709da02a60b783da4e9a",
+      "bytes": 134892,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 20,
+      "meeting": "Mexico City Grand Prix",
+      "event_order": 202520,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=20/meeting=mexico-city-grand-prix/race_dossier.json",
+      "sha256": "468fa0613e4fd23bd8319c8657dbc08718a4f41c6bc02a6f0c3538a02873a3de",
+      "bytes": 147194,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 21,
+      "meeting": "São Paulo Grand Prix",
+      "event_order": 202521,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=21/meeting=sao-paulo-grand-prix/race_dossier.json",
+      "sha256": "fc8d6756156ae8f1adc1e373cd46b19c7255e72ff24c3968d3fa47fc7b0b6f79",
+      "bytes": 159724,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 22,
+      "meeting": "Las Vegas Grand Prix",
+      "event_order": 202522,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=22/meeting=las-vegas-grand-prix/race_dossier.json",
+      "sha256": "14d72c6275ce2d2dbc8d7670a59c14e9b44ee2fe81081417b548f01f46a5f754",
+      "bytes": 133138,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 23,
+      "meeting": "Qatar Grand Prix",
+      "event_order": 202523,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=23/meeting=qatar-grand-prix/race_dossier.json",
+      "sha256": "cfc3438974a0b63d1358ccbd15138051398632d2fd12b94557a55c5d2a845012",
+      "bytes": 161236,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    },
+    {
+      "year": 2025,
+      "round": 24,
+      "meeting": "Abu Dhabi Grand Prix",
+      "event_order": 202524,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/round=24/meeting=abu-dhabi-grand-prix/race_dossier.json",
+      "sha256": "e7f54d9552795edecdd268f99cad21876d1c2121f3ee7f4e3daf23a4880c8955",
+      "bytes": 132109,
+      "release_status": "audit_only",
+      "publication_gate_passed": false
+    }
+  ],
+  "season_audits": [
+    {
+      "year": 2023,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2023/season_audit.json",
+      "sha256": "51a4d126565967bf76d75941b8f33eec07bae9a07a826bb5ad7c12751141f3e7",
+      "bytes": 109968
+    },
+    {
+      "year": 2024,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2024/season_audit.json",
+      "sha256": "61387b8024af42665a50c15c4c4c7e0fef0f1f276dd84d25fa0cad5e598c8674",
+      "bytes": 118403
+    },
+    {
+      "year": 2025,
+      "path": "research/records/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/year=2025/season_audit.json",
+      "sha256": "7894138831736aac885ae023a91a542274626c500c3b480e2a8478f9bcb5bfc8",
+      "bytes": 111337
+    }
+  ],
+  "artifact_manifest": "research/artifacts/race_dossier_v9/run=20260725T103758+0800-6b91c3a67cab/manifest.json",
+  "publication_contract": {
+    "analysis_unit": "complete_race",
+    "qualifying_race_independent": true,
+    "publish_pac": false,
+    "publish_ovr": false,
+    "classification_or_points_used_for_fit": false,
+    "claim_real_fuel_load": false,
+    "claim_pirelli_internal_simulation": false,
+    "publish_expected_points": false,
+    "publish_expected_championship_rank": false,
+    "PAC": null,
+    "OVR": null,
+    "expected_points_interval": null,
+    "expected_championship_rank_interval": null
+  }
+}

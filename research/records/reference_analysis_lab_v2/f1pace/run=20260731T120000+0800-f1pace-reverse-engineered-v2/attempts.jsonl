@@ -1,0 +1,2 @@
+{"attempt": 1, "issue": "整数阈值列名被格式化为 cur_2 而非冻结身份 cur_2.0", "hypothesis": "通用浮点格式删除了语义身份中的 .0", "action": "引入稳定阈值标签函数并添加单元测试", "output": "RESOLVED", "next_step": "复跑事件外验证"}
+{"attempt": 2, "issue": "首圈有限 headway 样本被重新归一化，领跑车交通比例虚高", "hypothesis": "缺失区间被错误移出整圈时间分母", "action": "分母固定为全部可观测逐点时间，missing 单独披露", "output": "RESOLVED; Qatar external MAE=2.238pp", "next_step": "冻结 v2 并进行浏览器验收"}

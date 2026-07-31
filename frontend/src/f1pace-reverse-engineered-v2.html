@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="f1pace-reverse-engineered-v2.css?v=20260731-v2">
+    <title>F1pace 交通算法倒推 v2 · F1 TR</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="reference-analysis-lab.html">
+        <span class="brandMark">F1</span>
+        <span>F1 TR <small>参考分析复刻实验室</small></span>
+      </a>
+      <nav aria-label="本地导航">
+        <a href="reference-analysis-lab.html">F1pace v1</a>
+        <a href="track-validation-v3.html">23–25 验证</a>
+        <a href="deltadata-reverse-engineered-v2.html">DeltaData v2</a>
+        <a href="fdataanalysis-reverse-engineered-v2.html">FDataAnalysis v2</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="loadStatus">读取冻结产物…</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">REVERSE-ENGINEERED · EXTERNALLY VALIDATED · V2</p>
+          <h1>F1pace 逐圈交通算法倒推</h1>
+          <p class="heroLead">
+            阿布扎比只用于校准，卡塔尔用于零重拟合外部验证。视觉层用稳健 Huber
+            模型复刻公开图效果；审计层只执行可解释的“最近物理前车同位置时间差
+            ≤ 2 秒”，两者不混成同一个真值。
+          </p>
+        </div>
+        <div class="heroSide">
+          <span class="statusPill" id="runStatus">读取中</span>
+          <a href="https://f1pace.com/p/2025-abu-dhabi-gp-race-pace/" target="_blank" rel="noreferrer">阿布扎比参考页 ↗</a>
+          <a href="https://f1pace.com/p/2025-qatar-gp-race-pace/" target="_blank" rel="noreferrer">卡塔尔验证页 ↗</a>
+          <small>原图仅用于语义、颜色校准与验收，不作为本站资产。</small>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="实验视图控制">
+        <label>
+          <span>事件</span>
+          <select id="eventSelect">
+            <option value="abu">2025 Abu Dhabi · 校准事件</option>
+            <option value="qatar">2025 Qatar · 外部验证</option>
+          </select>
+        </label>
+        <label>
+          <span>视图</span>
+          <select id="viewSelect">
+            <option value="visual">visual_replication · 稳健视觉校准</option>
+            <option value="audit">audited_analysis · 纯物理 2 秒模型</option>
+          </select>
+        </label>
+        <label>
+          <span>单元标签</span>
+          <select id="labelSelect">
+            <option value="percent">显示百分比</option>
+            <option value="compact">只显示异常/阈值</option>
+          </select>
+        </label>
+        <p id="viewNote"></p>
+      </section>
+
+      <section id="metricGrid" class="metricGrid" aria-label="算法验收指标"></section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">DRIVER × LAP</p>
+            <h2 id="heatmapTitle">交通比例热图</h2>
+          </div>
+          <div class="legend">
+            <span>0%</span><i class="heat h0"></i><i class="heat h25"></i><i class="heat h50"></i><i class="heat h75"></i><i class="heat h100"></i><span>100%</span>
+            <b>虚线：&gt;33%</b>
+          </div>
+        </div>
+        <p id="heatmapIntro" class="panelIntro"></p>
+        <div id="trafficHeatmap" class="heatmapWrap"></div>
+      </section>
+
+      <section id="residualPanel" class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">REFERENCE DIFFERENCE</p>
+            <h2>与公开图颜色读数的单元差</h2>
+          </div>
+          <div class="residualLegend"><span>低估</span><i></i><span>0</span><i></i><span>高估</span></div>
+        </div>
+        <p class="panelIntro">
+          参考值是背景色反解代理，不是原作者机器可读导出。单元残差 =
+          本模型 − 参考图；首圈、事故/退赛末圈和进出站相位误差通常形成长尾。
+        </p>
+        <div id="residualHeatmap" class="heatmapWrap"></div>
+      </section>
+
+      <section class="twoColumn">
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">DRIVER LEDGER</p><h2>逐车手误差与缺失账本</h2></div>
+          </div>
+          <div class="tableWrap"><table id="driverTable"></table></div>
+        </article>
+        <article class="panel">
+          <div class="panelHeader">
+            <div><p class="eyebrow">MODEL</p><h2>标准化 Huber 特征权重</h2></div>
+          </div>
+          <p class="panelIntro">
+            权重只用于解释校准方向，不等于因果贡献。模型不使用车手身份、图像坐标或事件标签。
+          </p>
+          <div class="tableWrap"><table id="coefficientTable"></table></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div><p class="eyebrow">METHOD CARD</p><h2>公开口径、倒推部分与边界</h2></div>
+          <span class="statusPill warning">不是源码一比一复现</span>
+        </div>
+        <div class="methodGrid">
+          <article>
+            <h3>公开方法</h3>
+            <ul>
+              <li>交通包含回退车。</li>
+              <li>一圈中超过 33% 时间处于前车 2 秒内，标记为 in traffic。</li>
+              <li>公开页面称该功能仍在测试，可能存在不准确。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>可靠倒推实现</h3>
+            <ul>
+              <li>重建全车共同绝对时间与累计赛道相位。</li>
+              <li>反插值最近物理前车上一次通过本车当前位置的时间。</li>
+              <li>使用逐点时间权重；无法重建区间保留在分母并单列 missing。</li>
+              <li>18 个阈值比例特征进入 Huber，按整名车手交叉验证。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>不可识别 / 不发布</h3>
+            <ul id="boundaryList"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div><p class="eyebrow">VALIDATION PROTOCOL</p><h2>校准、留出与事件外证据</h2></div>
+        </div>
+        <div id="validationFlow" class="validationFlow"></div>
+        <div class="tableWrap"><table id="foldTable"></table></div>
+      </section>
+
+      <footer>
+        <span id="identityFooter">身份读取中…</span>
+        <span>真实冻结遥测 · 0 个合成样本 · 与 Race Dossier 真相层隔离</span>
+      </footer>
+    </main>
+
+    <script
+      src="data-page-entry.js?v=20260726-runtime-v1"
+      data-page="f1pace-reverse-engineered-v2.html"
+      data-module="f1pace-reverse-engineered-v2.js?v=20260731-v2"
+    ></script>
+  </body>
+</html>

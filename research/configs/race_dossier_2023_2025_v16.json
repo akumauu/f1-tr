@@ -1,0 +1,43 @@
+{
+  "extends": "research/configs/race_dossier_2023_2025_v15.json",
+  "experiment_name": "race_dossier_2023_2025_v16",
+  "method_version": "v16",
+  "schema_version": "race-dossier-v16",
+  "validation_status": "v16_one_reference_pace_per_stint_synthetic_gate_passed_real_data_not_run",
+  "protocol_frozen_at": "2026-07-25T21:38:39+08:00",
+  "stint_reference_pace": {
+    "enabled": true,
+    "model": "weighted_theil_sen_within_stint_reference_v1",
+    "reference_tyre_age": "within_stint_weighted_median",
+    "allow_reference_age_extrapolation": false,
+    "maximum_direct_comparison_tyre_age_gap_laps": 2.0,
+    "fuel_sensitivity": "low_base_high_scenarios_with_non_fuel_nuisance_held_fixed",
+    "claim": "fuel_and_observed_condition_adjusted_tyre_age_conditional_proxy"
+  },
+  "model_registry_append": [
+    {
+      "id": "single_stint_reference_pace",
+      "source": "synthetic fuel-drift counterexample plus weighted Theil-Sen projection",
+      "role": "one fuel-and-condition-adjusted pace per stint at an in-support tyre age",
+      "direct_truth_available": false
+    }
+  ],
+  "runtime": {
+    "execution_policy": "foreground_serial_low_resource",
+    "duckdb_threads": 1,
+    "file_batch_size": 1,
+    "duckdb_memory_limit": "768MB",
+    "batch_cooldown_seconds": 0.25,
+    "project_cache": ".runtime-cache/race-dossier-v16"
+  },
+  "outputs": {
+    "records_base": "research/records/race_dossier_v16",
+    "artifacts_base": "research/artifacts/race_dossier_v16",
+    "frontend_base": "frontend/public/data/race-dossier/v16"
+  },
+  "boundaries": {
+    "representative_stint_pace_is_an_observed_lap": false,
+    "representative_stint_pace_removes_tyre_age_effect": false
+  },
+  "freeze_note": "v16 不再把初段、稳态和末段圈速并列为 Stint 主产品。每个 Stint 先沿用 v15 的公开燃油质量敏感性代理与样本外稳健条件修正，再以有效圈的加权中位胎龄为参考，用加权 Theil-Sen 斜率将全部有效圈投影到该胎龄，只发布一个代表配速和一个胎龄斜率。参考胎龄必须位于该 Stint 实际支持区间内，禁止外推。不同 Stint 仅在同配方、参考胎龄差不超过 2 圈且赛道条件相近时直接比较。低/高燃油情景保持非燃油扰动修正不变，只是敏感性区间，不是真实油量、胎温、胎压、磨损量或车队内部模拟。"
+}

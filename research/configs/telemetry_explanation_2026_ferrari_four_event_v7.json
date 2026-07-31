@@ -1,0 +1,60 @@
+{
+  "experiment_name": "telemetry_explanation_2026_ferrari_four_event_v7",
+  "validation_status": "exploratory_2026_rules_reset_four_event_snapshot",
+  "offline_only": true,
+  "base_config": "research/configs/telemetry_explanation_2026_australia_ferrari_v7.json",
+  "scope_contract": {
+    "year": 2026,
+    "session": "Race",
+    "team": "Ferrari",
+    "target_driver": "HAM",
+    "reference_driver": "LEC"
+  },
+  "confirmatory_event_threshold": 16,
+  "events": [
+    {
+      "event_id": "australia",
+      "meeting": "Australian Grand Prix",
+      "meeting_partition": "Australian_Grand_Prix",
+      "raw_corners": "data/raw/tracinginsights/2026/Australian Grand Prix/Race/corners.json",
+      "result": "research/records/telemetry_explanation_2026_australia_ferrari_v7.json",
+      "summary": "research/records/telemetry_explanation_2026_australia_ferrari_v7.md"
+    },
+    {
+      "event_id": "china",
+      "meeting": "Chinese Grand Prix",
+      "meeting_partition": "Chinese_Grand_Prix",
+      "raw_corners": "data/raw/tracinginsights/2026/Chinese Grand Prix/Race/corners.json",
+      "result": "research/records/telemetry_explanation_2026_china_ferrari_v7.json",
+      "summary": "research/records/telemetry_explanation_2026_china_ferrari_v7.md"
+    },
+    {
+      "event_id": "japan",
+      "meeting": "Japanese Grand Prix",
+      "meeting_partition": "Japanese_Grand_Prix",
+      "raw_corners": "data/raw/tracinginsights/2026/Japanese Grand Prix/Race/corners.json",
+      "result": "research/records/telemetry_explanation_2026_japan_ferrari_v7.json",
+      "summary": "research/records/telemetry_explanation_2026_japan_ferrari_v7.md"
+    },
+    {
+      "event_id": "miami",
+      "meeting": "Miami Grand Prix",
+      "meeting_partition": "Miami_Grand_Prix",
+      "raw_corners": "data/raw/tracinginsights/2026/Miami Grand Prix/Race/corners.json",
+      "result": "research/records/telemetry_explanation_2026_miami_ferrari_v7.json",
+      "summary": "research/records/telemetry_explanation_2026_miami_ferrari_v7.md"
+    }
+  ],
+  "outputs": {
+    "result": "research/records/telemetry_explanation_2026_ferrari_four_event_v7.json",
+    "summary": "research/records/telemetry_explanation_2026_ferrari_four_event_v7.md"
+  },
+  "publication_contract": {
+    "exploratory_only": true,
+    "result_labels_used": false,
+    "publish_ability_ovr": false,
+    "publish_event_delivery": false,
+    "publish_expected_points": false,
+    "reason": "四站均早于 PAC 协议冻结，只属开发/校准期；确认性窗口须冻结后至少 16 个比赛集群和 120 个 pair-event，且能力模块与全场反事实积分模拟尚未冻结验证。"
+  }
+}

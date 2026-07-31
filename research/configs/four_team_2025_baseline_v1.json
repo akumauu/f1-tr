@@ -1,0 +1,58 @@
+{
+  "experiment_name": "four_team_car_driver_attribution_hungary_2025_v1",
+  "max_attempts": 3,
+  "validation_status": "exploratory_single_race_m0_m1",
+  "parent_config": "research/configs/2024_train_2025_validate.json",
+  "entity_alias_config": "research/configs/entity_aliases.json",
+  "historical_manifest": "research/artifacts/data_manifest.json",
+  "historical_file_role": "train",
+  "historical_year": 2024,
+  "historical_ridge_alpha": 10.0,
+  "target_manifest": "research/artifacts/data_manifest.json",
+  "target_file_role": "validation",
+  "target_year": 2025,
+  "session_name": "Race",
+  "reporting_teams": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+  "identification_scope": "all_teams",
+  "meeting_selection": {
+    "method": "complete_grid_then_maximize_minimum_driver_laps_times_one_minus_cv",
+    "selected_meeting": "Hungarian Grand Prix",
+    "selected_before_model_outcomes": true
+  },
+  "model": {
+    "team_penalty": 10.0,
+    "driver_event_update_penalty": 100.0,
+    "team_penalty_sensitivity": [5.0, 10.0, 25.0],
+    "driver_event_update_penalty_sensitivity": [50.0, 100.0, 250.0],
+    "ceiling_quantile": 0.10,
+    "baseline_quantile": 0.50,
+    "floor_quantile": 0.90
+  },
+  "bootstrap": {
+    "repetitions": 300,
+    "random_seed": 20250803,
+    "unit": "driver_then_stint_then_lap"
+  },
+  "external_validation": {
+    "provider": "OpenF1",
+    "year": 2025,
+    "country_name": "Hungary",
+    "session_name": "Race",
+    "fastest_fraction": 0.25,
+    "cache_dir": "research/cache/external/openf1_2025_hungary_race",
+    "fia_reference": "research/external/fia_hungary_2025_reference.json"
+  },
+  "cleaning": {
+    "minimum_lap_number": 3,
+    "minimum_lap_duration_seconds": 74.0,
+    "maximum_lap_duration_seconds": 95.0,
+    "robust_mad_multiplier": 6.0,
+    "dry_compounds": ["SOFT", "MEDIUM", "HARD"]
+  },
+  "limitations": [
+    "单站车手当站更新与人车交互共线，只能作为强收缩代理。",
+    "bootstrap 区间不是贝叶斯后验区间。",
+    "当前只实现圈级 Race 原型，尚无赛段类型、排位、策略、可靠性和积分模型。",
+    "2025 已经被查看，因此本结果是探索性开发证据，不是确认性验证。"
+  ]
+}

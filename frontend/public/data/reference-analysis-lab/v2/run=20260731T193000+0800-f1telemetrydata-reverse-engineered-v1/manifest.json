@@ -1,0 +1,377 @@
+{
+  "schema_version": "reference-analysis-lab-target-manifest-v2",
+  "target_id": "f1telemetrydata-reverse-engineered-v1",
+  "status": "METHOD_EQUIVALENT_REFERENCE_BENCHMARKED",
+  "run_id": "20260731T193000+0800-f1telemetrydata-reverse-engineered-v1",
+  "report": {
+    "path": "data/reference-analysis-lab/v2/run=20260731T193000+0800-f1telemetrydata-reverse-engineered-v1/f1telemetrydata_reverse_engineered_v1.json",
+    "sha256": "af132dd167f8da91ca30071fdcd1f5a4c9e7268ce7d4c267a93651441301aea5",
+    "bytes": 915614
+  },
+  "source_identity": {
+    "run_id": "20260731T193000+0800-f1telemetrydata-reverse-engineered-v1",
+    "created_at": "2026-07-31T03:56:50.424929+00:00",
+    "primary_sources": {
+      "qualifying_telemetry": {
+        "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Qualifying/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+        "sha256": "6f8412fefdbeec7f5a27790c6d2063cfc9ab1f1dc0b7266fd2e5297088161451",
+        "rows": 395840,
+        "columns": [
+          "year",
+          "meeting",
+          "session",
+          "driver_acronym",
+          "driver_number",
+          "lap",
+          "sample_index",
+          "time",
+          "distance",
+          "rel_distance",
+          "speed",
+          "throttle",
+          "brake",
+          "gear",
+          "rpm",
+          "drs",
+          "x",
+          "y",
+          "z",
+          "acc_x",
+          "acc_y",
+          "acc_z",
+          "driver_ahead",
+          "distance_to_driver_ahead",
+          "lap_duration",
+          "compound",
+          "stint",
+          "tyre_life",
+          "fresh_tyre",
+          "team",
+          "position",
+          "track_status",
+          "deleted",
+          "is_accurate",
+          "lap_start_raw",
+          "data_key",
+          "source_file",
+          "source_commit"
+        ],
+        "source_commit": "f7a5324cae58",
+        "sample_role": "expanded_v4_point_level_primary"
+      },
+      "race_telemetry": {
+        "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Race/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+        "sha256": "1fb05bd10f89a492ee1797040b2b4c23cb60eea709c44df747d4e9f2e0259601",
+        "rows": 784424,
+        "columns": [
+          "year",
+          "meeting",
+          "session",
+          "driver_acronym",
+          "driver_number",
+          "lap",
+          "sample_index",
+          "time",
+          "distance",
+          "rel_distance",
+          "speed",
+          "throttle",
+          "brake",
+          "gear",
+          "rpm",
+          "drs",
+          "x",
+          "y",
+          "z",
+          "acc_x",
+          "acc_y",
+          "acc_z",
+          "driver_ahead",
+          "distance_to_driver_ahead",
+          "lap_duration",
+          "compound",
+          "stint",
+          "tyre_life",
+          "fresh_tyre",
+          "team",
+          "position",
+          "track_status",
+          "deleted",
+          "is_accurate",
+          "lap_start_raw",
+          "data_key",
+          "source_file",
+          "source_commit"
+        ],
+        "source_commit": "f7a5324cae58",
+        "sample_role": "expanded_v4_point_level_primary"
+      },
+      "qualifying_freeze": {
+        "path": "research/artifacts/data/qualifying_2023_2025_v4.csv.gz",
+        "sha256": "b73dbe6d2713983606056f38c55b5bc0b50145bc40e4d6cc354508f482a1d7a5",
+        "all_rows": 7401,
+        "abu_dhabi_rows": 88,
+        "abu_dhabi_drivers": 20,
+        "global_phase_status": "not_available_in_current_freeze"
+      }
+    },
+    "openf1_frozen_supplement": {
+      "api_contract": "OpenF1 REST v1",
+      "docs_url": "https://openf1.org/docs/",
+      "source_manifest": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/source-manifest.json",
+        "sha256": "bee2b7cf6679525dcbf6afbec57613e209cd0c7588da40f8ef5e44de585684df"
+      },
+      "fastest_lap_car_manifest": {
+        "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/source-manifest-fastest-lap-car-data.json",
+        "sha256": "003202443a85fc1af83536f58d7b13d4838cebd77dc5a93998f75af25e412e7a",
+        "rows": 6319,
+        "drivers": 20
+      },
+      "meeting_key": 1276,
+      "qualifying_session_key": 9835,
+      "race_session_key": 9839,
+      "role": "sector timing, Q phase result arrays, speed traps, stints and pit-lane durations only; local frozen telemetry remains primary point-level source",
+      "limitations": [
+        "OpenF1 is unofficial and not affiliated with Formula 1/FIA",
+        "Q phase result arrays do not label every frozen qualifying push lap",
+        "lane_duration is pit-lane transit, not stationary stop_duration",
+        "source responses are frozen by exact URL and SHA-256"
+      ],
+      "entries": {
+        "sessions": {
+          "url": "https://api.openf1.org/v1/sessions?year=2025&country_code=UAE",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/sessions.json",
+          "sha256": "ce2c3ddf513a2aeaff206cbbce3c572163471d0f6ed833d547a03a84d877600a",
+          "bytes": 1943,
+          "rows": 5,
+          "fields": [
+            "circuit_key",
+            "circuit_short_name",
+            "country_code",
+            "country_key",
+            "country_name",
+            "date_end",
+            "date_start",
+            "gmt_offset",
+            "is_cancelled",
+            "location",
+            "meeting_key",
+            "session_key",
+            "session_name",
+            "session_type",
+            "year"
+          ]
+        },
+        "qualifying_drivers": {
+          "url": "https://api.openf1.org/v1/drivers?session_key=9835",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_drivers.json",
+          "sha256": "376892e2fdcc4bb09c6f4d737f02a52b374f5ab54abe64656e8068d3fc8d1b23",
+          "bytes": 8184,
+          "rows": 20,
+          "fields": [
+            "broadcast_name",
+            "country_code",
+            "driver_number",
+            "first_name",
+            "full_name",
+            "headshot_url",
+            "last_name",
+            "meeting_key",
+            "name_acronym",
+            "session_key",
+            "team_colour",
+            "team_name"
+          ]
+        },
+        "qualifying_laps": {
+          "url": "https://api.openf1.org/v1/laps?session_key=9835",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_laps.json",
+          "sha256": "cb9d78874809074c0402c182a24b0fcd11eb83bfa543fcee5a0ecc455367eecb",
+          "bytes": 136380,
+          "rows": 286,
+          "fields": [
+            "date_start",
+            "driver_number",
+            "duration_sector_1",
+            "duration_sector_2",
+            "duration_sector_3",
+            "i1_speed",
+            "i2_speed",
+            "is_pit_out_lap",
+            "lap_duration",
+            "lap_number",
+            "meeting_key",
+            "segments_sector_1",
+            "segments_sector_2",
+            "segments_sector_3",
+            "session_key",
+            "st_speed"
+          ]
+        },
+        "qualifying_results": {
+          "url": "https://api.openf1.org/v1/session_result?session_key=9835",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_results.json",
+          "sha256": "ce4505bcfb27c30d4f6b3588dfcc943b2ab925d3457dd5b6a64ed3ec59ff7ebf",
+          "bytes": 3900,
+          "rows": 20,
+          "fields": [
+            "dnf",
+            "dns",
+            "driver_number",
+            "dsq",
+            "duration",
+            "gap_to_leader",
+            "meeting_key",
+            "number_of_laps",
+            "position",
+            "session_key"
+          ]
+        },
+        "qualifying_race_control": {
+          "url": "https://api.openf1.org/v1/race_control?session_key=9835",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/qualifying_race_control.json",
+          "sha256": "57af0e7627b47fa26654eb80ea929e2f35fd272e5fb358628d2a14ac6f1691b7",
+          "bytes": 8619,
+          "rows": 31,
+          "fields": [
+            "category",
+            "date",
+            "driver_number",
+            "flag",
+            "lap_number",
+            "meeting_key",
+            "message",
+            "qualifying_phase",
+            "scope",
+            "sector",
+            "session_key"
+          ]
+        },
+        "race_drivers": {
+          "url": "https://api.openf1.org/v1/drivers?session_key=9839",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_drivers.json",
+          "sha256": "8032440666859103d5cf486e23a31ef87dba4e653f8cd9ee6eee35e086296ede",
+          "bytes": 8184,
+          "rows": 20,
+          "fields": [
+            "broadcast_name",
+            "country_code",
+            "driver_number",
+            "first_name",
+            "full_name",
+            "headshot_url",
+            "last_name",
+            "meeting_key",
+            "name_acronym",
+            "session_key",
+            "team_colour",
+            "team_name"
+          ]
+        },
+        "race_laps": {
+          "url": "https://api.openf1.org/v1/laps?session_key=9839",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_laps.json",
+          "sha256": "8a6a850686c75cde7620c8bea5f7882cc8205173941db7a03f21adde8d6afca2",
+          "bytes": 553912,
+          "rows": 1156,
+          "fields": [
+            "date_start",
+            "driver_number",
+            "duration_sector_1",
+            "duration_sector_2",
+            "duration_sector_3",
+            "i1_speed",
+            "i2_speed",
+            "is_pit_out_lap",
+            "lap_duration",
+            "lap_number",
+            "meeting_key",
+            "segments_sector_1",
+            "segments_sector_2",
+            "segments_sector_3",
+            "session_key",
+            "st_speed"
+          ]
+        },
+        "race_pit": {
+          "url": "https://api.openf1.org/v1/pit?session_key=9839",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_pit.json",
+          "sha256": "c57bfee7eabafcc2da3bddef5a3cbac7ecad2498bfa63171c33fb312683101f5",
+          "bytes": 4904,
+          "rows": 27,
+          "fields": [
+            "date",
+            "driver_number",
+            "lane_duration",
+            "lap_number",
+            "meeting_key",
+            "pit_duration",
+            "session_key",
+            "stop_duration"
+          ]
+        },
+        "race_stints": {
+          "url": "https://api.openf1.org/v1/stints?session_key=9839",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_stints.json",
+          "sha256": "c5b52daff941ef2680698daa68640341619511ad295be593c9ca01a18c9ae1d8",
+          "bytes": 6780,
+          "rows": 47,
+          "fields": [
+            "compound",
+            "driver_number",
+            "lap_end",
+            "lap_start",
+            "meeting_key",
+            "session_key",
+            "stint_number",
+            "tyre_age_at_start"
+          ]
+        },
+        "race_results": {
+          "url": "https://api.openf1.org/v1/session_result?session_key=9839",
+          "status": 200,
+          "path": ".runtime-cache/reference-analysis-lab-v2/f1telemetrydata/openf1/race_results.json",
+          "sha256": "fafe2397cd5e6b6e74b3dd14d164c5d655b33f344106640d75f5167598eed04c",
+          "bytes": 3679,
+          "rows": 20,
+          "fields": [
+            "dnf",
+            "dns",
+            "driver_number",
+            "dsq",
+            "duration",
+            "gap_to_leader",
+            "meeting_key",
+            "number_of_laps",
+            "points",
+            "position",
+            "session_key"
+          ]
+        }
+      }
+    },
+    "audit_references": {
+      "f1pace_report": {
+        "path": "research/records/reference_analysis_lab_v1/f1pace/run=20260730T154800+0800-f1pace-abu-dhabi-v1/f1pace_2025_abu_dhabi.json",
+        "sha256": "f916c9974707b35442df48db31f495e1aa4c00ffd4be578d0b83b30e8ae40171",
+        "role": "identical_public_race_pace_lap_universe_and_audit_companion"
+      },
+      "v17_manifest": {
+        "path": "research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json",
+        "sha256": "9322064faee009e0e53d7ec345e9d25499f821658cdf05d497a74d233567658c",
+        "run_id": "20260726T124625+0800-ce93134a40b8",
+        "role": "full_coverage_truth_and_gate_reference_only"
+      }
+    }
+  }
+}

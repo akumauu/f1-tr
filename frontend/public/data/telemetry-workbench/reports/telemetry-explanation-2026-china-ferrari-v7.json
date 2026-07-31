@@ -1,0 +1,3678 @@
+{
+  "report_id": "telemetry_explanation_2026_china_ferrari_v7",
+  "run_id": "telemetry_explanation_2026_china_ferrari_v7-20260723T194016+0800",
+  "created_at": "2026-07-23T19:40:16+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "scope": {
+    "year": 2026,
+    "meeting": "Chinese Grand Prix",
+    "meeting_partition": "Chinese_Grand_Prix",
+    "session": "Race",
+    "team": "Ferrari",
+    "target_driver": "HAM",
+    "reference_driver": "LEC"
+  },
+  "release_status": "exploratory_2026_rules_reset_insufficient_season_exposure",
+  "methodological_status": "exploratory_2026_rules_reset_four_event_snapshot",
+  "config_hash": "4a60941ee1e0e4aa23466168d8d05223a7dd4fe3684bbc1044264c599ec92673",
+  "data_identity": {
+    "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v5/year=2026/commit=81b90e61051a/session=Race/meeting=Chinese_Grand_Prix/telemetry.parquet",
+    "sha256": "7eda4d5650f6841cccf334318e0e61205d14a653920244a4ca9f3e574997bb85",
+    "bytes": 56010730,
+    "schema": "tracinginsights-expanded-v5",
+    "schema_preference_rank": 1,
+    "same_schema_candidates": 1,
+    "commit_partition": "81b90e61051a"
+  },
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "duckdb": "1.5.4"
+  },
+  "network_calls": [],
+  "data_quality": {
+    "sample_rows": 706701,
+    "drivers": 22,
+    "driver_laps": 924,
+    "eligible_clean_laps": 709,
+    "team_clean_laps": 91,
+    "team_analysis_laps": 32,
+    "field_reference_laps": 42,
+    "distance_grid_step_m": 5.0,
+    "segment_coverage": 0.9986385107040405,
+    "phase_annotation_coverage": 0.9985831658287025,
+    "response_baseline_coverage": 1.0,
+    "available_columns": [
+      "year",
+      "meeting",
+      "session",
+      "driver_acronym",
+      "driver_number",
+      "lap",
+      "sample_index",
+      "time",
+      "distance",
+      "rel_distance",
+      "speed",
+      "throttle",
+      "brake",
+      "gear",
+      "rpm",
+      "drs",
+      "x",
+      "y",
+      "z",
+      "acc_x",
+      "acc_y",
+      "acc_z",
+      "driver_ahead",
+      "distance_to_driver_ahead",
+      "lap_duration",
+      "compound",
+      "stint",
+      "tyre_life",
+      "fresh_tyre",
+      "team",
+      "position",
+      "track_status",
+      "deleted",
+      "is_accurate",
+      "lap_start_raw",
+      "data_key",
+      "source_file",
+      "source_commit",
+      "drs_raw",
+      "drs_raw_source",
+      "track_status_raw",
+      "lap_start_time",
+      "sample_time",
+      "absolute_time_source",
+      "session_time",
+      "lap_start_session_time",
+      "sector_1_duration",
+      "sector_2_duration",
+      "sector_3_duration",
+      "sector_1_session_time",
+      "sector_2_session_time",
+      "sector_3_session_time",
+      "speed_i1",
+      "speed_i2",
+      "speed_finish_line",
+      "speed_trap",
+      "pit_out_session_time",
+      "pit_in_session_time",
+      "weather_sample_session_time",
+      "air_temperature",
+      "humidity",
+      "pressure",
+      "rainfall",
+      "track_temperature",
+      "wind_direction",
+      "wind_speed",
+      "deleted_reason",
+      "fastf1_generated",
+      "extra_telemetry_json",
+      "commit",
+      "schema"
+    ],
+    "drs_observed_values": [
+      0
+    ],
+    "drs_raw_observed_values": [
+      0
+    ],
+    "drs_raw_sources": [
+      "tel.drs"
+    ],
+    "raw_state_preserved": true,
+    "raw_state_informative": false,
+    "absolute_time_preserved": true,
+    "limitations": [
+      "v5 保留原始状态码，但原始字段语义仍需逐场审计。",
+      "当前归档的 drs_raw 仍全部为 0，且来源为上游 tel.drs；v5 只能保留收到的值，不能恢复上游入库前已丢失的新状态。",
+      "acc_x/y/z 是速度与插值位置的派生低频代理，不是原始 IMU。",
+      "公开数据没有直接 SOC、ERS-K 实际功率、主动翼位置和 Overtake 按钮状态。"
+    ]
+  },
+  "team_difference": {
+    "orientation": "HAM - LEC",
+    "comparability": {
+      "status": "comparable",
+      "matched_pairs": 16,
+      "minimum_required": 3,
+      "median_match_quality": 1.0,
+      "target_eligible_laps": 47,
+      "reference_eligible_laps": 44,
+      "segment_coverage": 0.9986385107040405,
+      "phase_annotation_coverage": 0.9985831658287025,
+      "rule": "same session/compound/traffic/stint phase + tyre/lap calipers",
+      "covariate_balance": {
+        "numeric": {
+          "tyre_life": {
+            "n": 16,
+            "mean_delta": 0.0625,
+            "median_delta": 0.0,
+            "mean_absolute_delta": 0.5625,
+            "maximum_absolute_delta": 2.0,
+            "caliper": 2.0,
+            "mean_absolute_fraction_of_caliper": 0.28125
+          },
+          "lap_fraction": {
+            "n": 16,
+            "mean_delta": 0.001116071428571428,
+            "median_delta": 0.0,
+            "mean_absolute_delta": 0.01004464285714286,
+            "maximum_absolute_delta": 0.035714285714285754,
+            "caliper": 0.08,
+            "mean_absolute_fraction_of_caliper": 0.12555803571428575
+          },
+          "lap_context": {
+            "n": 16,
+            "mean_delta": 0.0625,
+            "median_delta": 0.0,
+            "mean_absolute_delta": 0.5625,
+            "maximum_absolute_delta": 2.0,
+            "caliper": 8.0,
+            "mean_absolute_fraction_of_caliper": 0.0703125
+          }
+        },
+        "exact_mismatches": {
+          "compound": 0,
+          "track_status": 0,
+          "traffic_state": 0,
+          "stint_phase": 0
+        },
+        "all_within_declared_calipers": true,
+        "all_exact_blocks_equal": true,
+        "maximum_mean_absolute_fraction_of_caliper": 0.28125
+      },
+      "balance_warning_threshold": 0.65,
+      "balance_reject_threshold": 0.9
+    },
+    "segment_profiles": [
+      {
+        "phase_id": 1,
+        "label": "过渡段 X1",
+        "phase": "transition",
+        "distance_start_m": 5.0,
+        "distance_end_m": 60.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 0.871199661795774,
+        "delta_time_interval_80_ms": [
+          -1.2769313380863734,
+          7.436550144510168
+        ],
+        "input_adjusted_response_gap_ms": -0.07205616578576102,
+        "target_entry_speed_gap_kmh": -0.4470477561464463,
+        "target_exit_speed_gap_kmh": -0.2586898095277377,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 2,
+        "label": "直道 S2",
+        "phase": "straight",
+        "distance_start_m": 65.0,
+        "distance_end_m": 340.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 4.11083732254891,
+        "delta_time_interval_80_ms": [
+          -38.77591688788762,
+          54.61939184473508
+        ],
+        "input_adjusted_response_gap_ms": -11.675784516456122,
+        "target_entry_speed_gap_kmh": -0.13446947571307533,
+        "target_exit_speed_gap_kmh": 0.5905389521901725,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 3,
+        "label": "弯道段 C3",
+        "phase": "corner",
+        "distance_start_m": 345.0,
+        "distance_end_m": 410.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 0.1806216316415643,
+        "delta_time_interval_80_ms": [
+          -10.428414170792543,
+          14.819166780428382
+        ],
+        "input_adjusted_response_gap_ms": 0.6595750063014827,
+        "target_entry_speed_gap_kmh": 0.3430143492961406,
+        "target_exit_speed_gap_kmh": -0.13394096694597124,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 4,
+        "label": "T1 前直道",
+        "phase": "straight",
+        "distance_start_m": 415.0,
+        "distance_end_m": 445.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 0.7535171029693366,
+        "delta_time_interval_80_ms": [
+          -3.6068129941477234,
+          4.724133557950094
+        ],
+        "input_adjusted_response_gap_ms": 0.25316915990486466,
+        "target_entry_speed_gap_kmh": -0.07660467867106036,
+        "target_exit_speed_gap_kmh": -2.380761278320449,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 5,
+        "label": "T1",
+        "phase": "corner",
+        "distance_start_m": 450.0,
+        "distance_end_m": 680.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 112.66619243804098,
+        "delta_time_interval_80_ms": [
+          79.8879515502,
+          196.90718884200464
+        ],
+        "input_adjusted_response_gap_ms": -8.56948323567952,
+        "target_entry_speed_gap_kmh": -2.5400595633503826,
+        "target_exit_speed_gap_kmh": -8.089823559082078,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 6,
+        "label": "T2",
+        "phase": "corner",
+        "distance_start_m": 685.0,
+        "distance_end_m": 850.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 74.65636324316671,
+        "delta_time_interval_80_ms": [
+          -3.264010409339768,
+          120.99799004481238
+        ],
+        "input_adjusted_response_gap_ms": 21.477322724340997,
+        "target_entry_speed_gap_kmh": -7.982959649498824,
+        "target_exit_speed_gap_kmh": -1.8276905690835292,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 7,
+        "label": "T3",
+        "phase": "corner",
+        "distance_start_m": 855.0,
+        "distance_end_m": 985.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -35.93117778667221,
+        "delta_time_interval_80_ms": [
+          -42.568094405115886,
+          18.052238932702913
+        ],
+        "input_adjusted_response_gap_ms": -7.628306192747569,
+        "target_entry_speed_gap_kmh": -2.3063747557018743,
+        "target_exit_speed_gap_kmh": 4.72455648990433,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 8,
+        "label": "T4",
+        "phase": "corner",
+        "distance_start_m": 990.0,
+        "distance_end_m": 1135.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -72.00370011956348,
+        "delta_time_interval_80_ms": [
+          -194.115505410827,
+          1.4759912104409523
+        ],
+        "input_adjusted_response_gap_ms": -6.786019796614751,
+        "target_entry_speed_gap_kmh": 6.431573723192059,
+        "target_exit_speed_gap_kmh": 2.6734426980148527,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 9,
+        "label": "过渡段 X9",
+        "phase": "transition",
+        "distance_start_m": 1140.0,
+        "distance_end_m": 1190.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -9.24599658709424,
+        "delta_time_interval_80_ms": [
+          -13.495484475488318,
+          -5.6650407947044235
+        ],
+        "input_adjusted_response_gap_ms": 1.7632081602967364,
+        "target_entry_speed_gap_kmh": 2.852053097698544,
+        "target_exit_speed_gap_kmh": 2.4267780084478545,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 10,
+        "label": "过渡段 X10",
+        "phase": "transition",
+        "distance_start_m": 1195.0,
+        "distance_end_m": 1420.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -34.838980109730855,
+        "delta_time_interval_80_ms": [
+          -64.91051295660455,
+          -19.833899863648824
+        ],
+        "input_adjusted_response_gap_ms": -13.756592711372084,
+        "target_entry_speed_gap_kmh": 2.7492017273027187,
+        "target_exit_speed_gap_kmh": 3.1415431527314013,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 11,
+        "label": "弯道段 C11",
+        "phase": "corner",
+        "distance_start_m": 1425.0,
+        "distance_end_m": 1475.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -25.288994932457733,
+        "delta_time_interval_80_ms": [
+          -32.060562661073824,
+          -15.10749616903595
+        ],
+        "input_adjusted_response_gap_ms": 16.940007726264582,
+        "target_entry_speed_gap_kmh": 4.601274589519335,
+        "target_exit_speed_gap_kmh": 9.116873229211407,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 12,
+        "label": "T6",
+        "phase": "corner",
+        "distance_start_m": 1480.0,
+        "distance_end_m": 1825.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -18.663105957922532,
+        "delta_time_interval_80_ms": [
+          -62.13471538197268,
+          13.331114712759273
+        ],
+        "input_adjusted_response_gap_ms": 68.40873678783943,
+        "target_entry_speed_gap_kmh": 3.838172724669434,
+        "target_exit_speed_gap_kmh": -0.2595753562079466,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 13,
+        "label": "过渡段 X13",
+        "phase": "transition",
+        "distance_start_m": 1830.0,
+        "distance_end_m": 1830.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -0.004029564340000957,
+        "delta_time_interval_80_ms": [
+          -0.5318998843352463,
+          0.3876042469300317
+        ],
+        "input_adjusted_response_gap_ms": -0.016408104544812785,
+        "target_entry_speed_gap_kmh": 0.29481809281483606,
+        "target_exit_speed_gap_kmh": 0.29481809281483606,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 14,
+        "label": "过渡段 X14",
+        "phase": "transition",
+        "distance_start_m": 1835.0,
+        "distance_end_m": 2155.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -12.469385504579211,
+        "delta_time_interval_80_ms": [
+          -25.183904927875478,
+          28.63497979736085
+        ],
+        "input_adjusted_response_gap_ms": -28.82521107723557,
+        "target_entry_speed_gap_kmh": 0.06336985131194695,
+        "target_exit_speed_gap_kmh": 0.13942873637390107,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 15,
+        "label": "弯道段 C15",
+        "phase": "corner",
+        "distance_start_m": 2160.0,
+        "distance_end_m": 2210.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 0.5491906068994523,
+        "delta_time_interval_80_ms": [
+          -2.296081101525127,
+          4.563810912845634
+        ],
+        "input_adjusted_response_gap_ms": -0.37803493699090085,
+        "target_entry_speed_gap_kmh": 0.19629578411833393,
+        "target_exit_speed_gap_kmh": 0.1537358137094884,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 16,
+        "label": "T8",
+        "phase": "corner",
+        "distance_start_m": 2215.0,
+        "distance_end_m": 2445.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 41.773831618465266,
+        "delta_time_interval_80_ms": [
+          -37.6918954845884,
+          78.95713287925955
+        ],
+        "input_adjusted_response_gap_ms": -36.781457999646165,
+        "target_entry_speed_gap_kmh": -0.8796327542003581,
+        "target_exit_speed_gap_kmh": 0.1556095562871178,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 17,
+        "label": "T9",
+        "phase": "corner",
+        "distance_start_m": 2450.0,
+        "distance_end_m": 2590.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -13.881241548938883,
+        "delta_time_interval_80_ms": [
+          -25.550686250962684,
+          -4.75285026466052
+        ],
+        "input_adjusted_response_gap_ms": 12.938326664948763,
+        "target_entry_speed_gap_kmh": -0.793198763346183,
+        "target_exit_speed_gap_kmh": -3.60798132118056,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 18,
+        "label": "T10",
+        "phase": "corner",
+        "distance_start_m": 2595.0,
+        "distance_end_m": 2795.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -28.927302246083194,
+        "delta_time_interval_80_ms": [
+          -63.55361069108678,
+          0.9613682439320037
+        ],
+        "input_adjusted_response_gap_ms": -15.3326139957084,
+        "target_entry_speed_gap_kmh": -2.171038912547459,
+        "target_exit_speed_gap_kmh": 2.7607831865903165,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 19,
+        "label": "过渡段 X19",
+        "phase": "transition",
+        "distance_start_m": 2800.0,
+        "distance_end_m": 2885.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -14.684933650667476,
+        "delta_time_interval_80_ms": [
+          -34.7653296848891,
+          5.46176412296151
+        ],
+        "input_adjusted_response_gap_ms": -2.387292424445464,
+        "target_entry_speed_gap_kmh": 2.9489233552806837,
+        "target_exit_speed_gap_kmh": 2.3894576145311532,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 20,
+        "label": "过渡段 X20",
+        "phase": "transition",
+        "distance_start_m": 2890.0,
+        "distance_end_m": 2970.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -11.033328099106399,
+        "delta_time_interval_80_ms": [
+          -25.894021092049524,
+          -7.49425925867353
+        ],
+        "input_adjusted_response_gap_ms": -1.4667834330425178,
+        "target_entry_speed_gap_kmh": 1.7530312172918059,
+        "target_exit_speed_gap_kmh": 3.011577312818673,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 21,
+        "label": "T11",
+        "phase": "corner",
+        "distance_start_m": 2975.0,
+        "distance_end_m": 3160.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -187.84711791219297,
+        "delta_time_interval_80_ms": [
+          -392.0682034909815,
+          -102.95319656406488
+        ],
+        "input_adjusted_response_gap_ms": -52.7198167713987,
+        "target_entry_speed_gap_kmh": 3.5798579624167246,
+        "target_exit_speed_gap_kmh": 3.5531619544606556,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 22,
+        "label": "T12",
+        "phase": "corner",
+        "distance_start_m": 3165.0,
+        "distance_end_m": 3290.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 1.9451426727803423,
+        "delta_time_interval_80_ms": [
+          -111.45946453963296,
+          79.87869342646815
+        ],
+        "input_adjusted_response_gap_ms": -28.721674709479394,
+        "target_entry_speed_gap_kmh": 1.6486673855385803,
+        "target_exit_speed_gap_kmh": 5.46130884996623,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 23,
+        "label": "T13",
+        "phase": "corner",
+        "distance_start_m": 3295.0,
+        "distance_end_m": 3475.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -22.13240366863434,
+        "delta_time_interval_80_ms": [
+          -206.4185531358549,
+          89.8334030097625
+        ],
+        "input_adjusted_response_gap_ms": -9.969735607689323,
+        "target_entry_speed_gap_kmh": 6.858501258413881,
+        "target_exit_speed_gap_kmh": -3.6026603406794067,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 24,
+        "label": "过渡段 X24",
+        "phase": "transition",
+        "distance_start_m": 3480.0,
+        "distance_end_m": 3655.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 39.533883151883884,
+        "delta_time_interval_80_ms": [
+          12.714423938589903,
+          84.9379545638267
+        ],
+        "input_adjusted_response_gap_ms": 2.3425080731149794,
+        "target_entry_speed_gap_kmh": -3.856662766123989,
+        "target_exit_speed_gap_kmh": -4.356781617383433,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 25,
+        "label": "直道 S25",
+        "phase": "straight",
+        "distance_start_m": 3660.0,
+        "distance_end_m": 4070.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 35.942192476595025,
+        "delta_time_interval_80_ms": [
+          5.091592868236461,
+          73.87074519666292
+        ],
+        "input_adjusted_response_gap_ms": 23.829808906878913,
+        "target_entry_speed_gap_kmh": -3.8248110845659653,
+        "target_exit_speed_gap_kmh": -1.1663837499894782,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 26,
+        "label": "直道 S26",
+        "phase": "straight",
+        "distance_start_m": 4075.0,
+        "distance_end_m": 4580.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 8.03359397535397,
+        "delta_time_interval_80_ms": [
+          -57.65408593382881,
+          42.291006944083165
+        ],
+        "input_adjusted_response_gap_ms": -8.630696940591598,
+        "target_entry_speed_gap_kmh": -1.0808290641364522,
+        "target_exit_speed_gap_kmh": 5.356392690708901,
+        "confidence": "low",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 27,
+        "label": "T14",
+        "phase": "corner",
+        "distance_start_m": 4585.0,
+        "distance_end_m": 4800.0,
+        "matched_pairs": 16,
+        "delta_time_ms": -246.25902990215255,
+        "delta_time_interval_80_ms": [
+          -392.10549083803505,
+          -91.20790397108979
+        ],
+        "input_adjusted_response_gap_ms": -5.409784799796036,
+        "target_entry_speed_gap_kmh": 5.039708508225971,
+        "target_exit_speed_gap_kmh": -3.7713563117731326,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 28,
+        "label": "T15",
+        "phase": "corner",
+        "distance_start_m": 4805.0,
+        "distance_end_m": 4985.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 103.60614291237248,
+        "delta_time_interval_80_ms": [
+          12.684324442443273,
+          189.9230220932755
+        ],
+        "input_adjusted_response_gap_ms": 60.024686283000506,
+        "target_entry_speed_gap_kmh": -3.6433968820658436,
+        "target_exit_speed_gap_kmh": -0.6366274349930876,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 29,
+        "label": "T16",
+        "phase": "corner",
+        "distance_start_m": 4990.0,
+        "distance_end_m": 5275.0,
+        "matched_pairs": 16,
+        "delta_time_ms": 111.34312604567143,
+        "delta_time_interval_80_ms": [
+          72.33094877832791,
+          124.00822185352834
+        ],
+        "input_adjusted_response_gap_ms": 173.22610442842424,
+        "target_entry_speed_gap_kmh": -1.0771483484058706,
+        "target_exit_speed_gap_kmh": -9.378372977870697,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      },
+      {
+        "phase_id": 30,
+        "label": "过渡段 X30",
+        "phase": "transition",
+        "distance_start_m": 5280.0,
+        "distance_end_m": 5385.0,
+        "matched_pairs": 13,
+        "delta_time_ms": 166.40475004427736,
+        "delta_time_interval_80_ms": [
+          146.99364093260448,
+          222.2444039833824
+        ],
+        "input_adjusted_response_gap_ms": 123.64139315211142,
+        "target_entry_speed_gap_kmh": -6.690292193202282,
+        "target_exit_speed_gap_kmh": -0.16011175129187905,
+        "confidence": "medium",
+        "interpretation_scope": "matched_public_telemetry_difference",
+        "positive_direction": "target_driver_slower",
+        "comparability_warning": false,
+        "alternative_explanations": [
+          "未完全观测的交通与尾流",
+          "设定、规格或车辆状态差异",
+          "驾驶操作与比赛目标差异",
+          "事件内外场响应模型误差"
+        ]
+      }
+    ],
+    "anomaly_episodes": [],
+    "anomaly_audit": {
+      "hypotheses": 477,
+      "fdr_rejections": 0,
+      "persistent_passes": 0,
+      "final_triggers": 0,
+      "three_baselines": [
+        "self",
+        "teammate",
+        "field"
+      ],
+      "minimum_feature_families": 2,
+      "fdr_alpha": 0.1,
+      "balance_gate_passed": true
+    }
+  },
+  "strategy_mode_fingerprints": [
+    {
+      "driver_acronym": "HAM",
+      "status": "ok",
+      "mode_label": "early_gain_mode",
+      "confidence": "medium",
+      "confidence_score": 0.6627510583784083,
+      "interpretation": "符合直道早段收益相对集中的公开遥测模式",
+      "mode_distribution": {
+        "early_gain_mode": 9,
+        "late_gain_mode": 5,
+        "save_like_mode": 2
+      },
+      "exposure": {
+        "rows": 16,
+        "dominant_rows": 9,
+        "dominant_share": 0.5625
+      },
+      "feature_columns": [
+        "early_straight_speed_kmh",
+        "late_straight_speed_kmh",
+        "peak_straight_speed_kmh",
+        "save_like_proxy",
+        "mean_straight_rpm",
+        "response_proxy"
+      ],
+      "evidence": {
+        "early_straight_speed_kmh": 305.7062382672873,
+        "late_straight_speed_kmh": 320.058090931756,
+        "peak_straight_speed_kmh": 330.9937348342537,
+        "save_like_proxy": 0.1393946467475879,
+        "mean_straight_rpm": 11048.281111470851,
+        "response_proxy": -0.03167224563450262
+      },
+      "directness_level": "public_telemetry_proxy_not_direct_state",
+      "alternative_explanations": [
+        "出弯初速、尾流和前车距离改变了直道速度曲线",
+        "燃油、轮胎、天气与赛道演化未被公开频道完全观测",
+        "车手操作、车辆设定与单车状态可能产生相似指纹",
+        "采样频率、距离插值和公开频道缺口可能改变派生特征"
+      ],
+      "forbidden_claims": [
+        "确认电池 SOC、剩余能量或每圈能量收支",
+        "确认 ERS-K 实际功率、回收功率或部署功率",
+        "确认主动翼处于 Corner/Straight Mode 或具体翼面位置",
+        "确认 Overtake、Boost 或其他车手按钮状态",
+        "把模式差异直接断言为车辆故障、损伤或设定原因"
+      ],
+      "method": "deterministic_fallback_kmeans"
+    },
+    {
+      "driver_acronym": "LEC",
+      "status": "ok",
+      "mode_label": "early_gain_mode",
+      "confidence": "high",
+      "confidence_score": 0.7014921576554679,
+      "interpretation": "符合直道早段收益相对集中的公开遥测模式",
+      "mode_distribution": {
+        "early_gain_mode": 5,
+        "high_response_mode": 3,
+        "late_gain_mode": 5,
+        "save_like_mode": 3
+      },
+      "exposure": {
+        "rows": 16,
+        "dominant_rows": 5,
+        "dominant_share": 0.3125
+      },
+      "feature_columns": [
+        "early_straight_speed_kmh",
+        "late_straight_speed_kmh",
+        "peak_straight_speed_kmh",
+        "save_like_proxy",
+        "mean_straight_rpm",
+        "response_proxy"
+      ],
+      "evidence": {
+        "early_straight_speed_kmh": 303.6917709385367,
+        "late_straight_speed_kmh": 322.208875874344,
+        "peak_straight_speed_kmh": 333.1808210433388,
+        "save_like_proxy": 0.07457983193277311,
+        "mean_straight_rpm": 11018.010687215967,
+        "response_proxy": 0.28807737465034056
+      },
+      "directness_level": "public_telemetry_proxy_not_direct_state",
+      "alternative_explanations": [
+        "出弯初速、尾流和前车距离改变了直道速度曲线",
+        "燃油、轮胎、天气与赛道演化未被公开频道完全观测",
+        "车手操作、车辆设定与单车状态可能产生相似指纹",
+        "采样频率、距离插值和公开频道缺口可能改变派生特征"
+      ],
+      "forbidden_claims": [
+        "确认电池 SOC、剩余能量或每圈能量收支",
+        "确认 ERS-K 实际功率、回收功率或部署功率",
+        "确认主动翼处于 Corner/Straight Mode 或具体翼面位置",
+        "确认 Overtake、Boost 或其他车手按钮状态",
+        "把模式差异直接断言为车辆故障、损伤或设定原因"
+      ],
+      "method": "deterministic_fallback_kmeans"
+    }
+  ],
+  "strategy_mode_comparison": {
+    "status": "comparable",
+    "target_driver": "HAM",
+    "reference_driver": "LEC",
+    "target_mode_label": "early_gain_mode",
+    "reference_mode_label": "early_gain_mode",
+    "same_dominant_mode": true,
+    "mode_distribution_total_variation": 0.25,
+    "target_minus_reference_feature_differences": {
+      "early_straight_speed_kmh": 2.014467328750584,
+      "late_straight_speed_kmh": -2.150784942588018,
+      "mean_straight_rpm": 30.270424254884347,
+      "peak_straight_speed_kmh": -2.1870862090851233,
+      "response_proxy": -0.31974962028484316,
+      "save_like_proxy": 0.06481481481481478
+    },
+    "interpretation": "两车主导中性模式相同；差异主要体现在同类模式内的公开特征强度。",
+    "directness_level": "public_telemetry_proxy_not_direct_state",
+    "alternative_explanations": [
+      "出弯初速与尾流",
+      "燃油、轮胎和比赛目标",
+      "驾驶操作、车辆设定或单车状态",
+      "公开采样及插值误差"
+    ]
+  },
+  "episode_summary": [
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "episode_type": "attack_opportunity",
+      "opportunities": 17,
+      "evaluable_outcomes": 17,
+      "observed_successes": 1
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "episode_type": "defense_opportunity",
+      "opportunities": 17,
+      "evaluable_outcomes": 17,
+      "observed_successes": 14
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "episode_type": "race_start_window",
+      "opportunities": 1,
+      "evaluable_outcomes": 0,
+      "observed_successes": null
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "episode_type": "restart_window",
+      "opportunities": 6,
+      "evaluable_outcomes": 0,
+      "observed_successes": null
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "episode_type": "attack_opportunity",
+      "opportunities": 17,
+      "evaluable_outcomes": 17,
+      "observed_successes": 2
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "episode_type": "defense_opportunity",
+      "opportunities": 21,
+      "evaluable_outcomes": 21,
+      "observed_successes": 19
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "episode_type": "race_start_window",
+      "opportunities": 1,
+      "evaluable_outcomes": 0,
+      "observed_successes": null
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "episode_type": "restart_window",
+      "opportunities": 6,
+      "evaluable_outcomes": 0,
+      "observed_successes": null
+    }
+  ],
+  "episodes": [
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 2,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "GAS",
+        "gap_seconds_proxy": 0.06258463859558105,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 2,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "ANT",
+        "gap_seconds_proxy": 0.49603694677352905,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 3,
+      "lap_end": 3,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "ANT",
+        "gap_seconds_proxy": 0.2834741473197937,
+        "position": 2.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 3,
+      "lap_end": 3,
+      "opportunity": true,
+      "observed_outcome": "position_loss_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.1991363763809204,
+        "position": 2.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 4,
+      "lap_end": 4,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 0.5804519653320312,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 4,
+      "lap_end": 4,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "ANT",
+        "gap_seconds_proxy": 0.044006943702697754,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 6,
+      "lap_end": 6,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 1.1236177682876587,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 9,
+      "lap_end": 9,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.9746097326278687,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "position_gain_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "COL",
+        "gap_seconds_proxy": 0.3174041211605072,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "COL",
+        "gap_seconds_proxy": 0.24844299256801605,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 15,
+      "lap_end": 15,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "ANT",
+        "gap_seconds_proxy": 0.860173225402832,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 15,
+      "lap_end": 15,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "COL",
+        "gap_seconds_proxy": 0.47635751962661743,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 16,
+      "lap_end": 16,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "ANT",
+        "gap_seconds_proxy": 0.32350483536720276,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 16,
+      "lap_end": 16,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "ANT",
+        "gap_seconds_proxy": 0.017648223787546158,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 17,
+      "lap_end": 17,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "ANT",
+        "gap_seconds_proxy": 1.0020424127578735,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 21,
+      "lap_end": 21,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 1.169071078300476,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 22,
+      "lap_end": 22,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 1.065536618232727,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 23,
+      "lap_end": 23,
+      "opportunity": true,
+      "observed_outcome": "position_loss_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.7405272722244263,
+        "position": 2.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 24,
+      "lap_end": 24,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.634394645690918,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 25,
+      "lap_end": 25,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.3147974908351898,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 25,
+      "lap_end": 25,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.3504738211631775,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 26,
+      "lap_end": 26,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.6565566062927246,
+        "position": 2.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 27,
+      "lap_end": 27,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.6334115266799927,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 29,
+      "lap_end": 29,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 0.9638592600822449,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 30,
+      "lap_end": 30,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.5908988118171692,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 31,
+      "lap_end": 31,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.6779012680053711,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 32,
+      "lap_end": 32,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.7989543080329895,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 34,
+      "lap_end": 34,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 1.129586100578308,
+        "position": 4.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 35,
+      "lap_end": 35,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 1.1657153367996216,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 36,
+      "lap_end": 36,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.3954271376132965,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 38,
+      "lap_end": 38,
+      "opportunity": true,
+      "observed_outcome": "position_loss_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.6914619207382202,
+        "position": 3.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 39,
+      "lap_end": 39,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 0.6218776702880859,
+        "position": 4.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 40,
+      "lap_end": 40,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LEC",
+        "gap_seconds_proxy": 0.4583042562007904,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 41,
+      "lap_end": 41,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "LEC",
+        "gap_seconds_proxy": 1.0234906673431396,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 3,
+      "lap_end": 3,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 0.8045474290847778,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 3,
+      "lap_end": 3,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "GAS",
+        "gap_seconds_proxy": 0.7294933199882507,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 4,
+      "lap_end": 4,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.8696945905685425,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 6,
+      "lap_end": 6,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 1.1236177682876587,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 6,
+      "lap_end": 6,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "GAS",
+        "gap_seconds_proxy": 0.7733055949211121,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 9,
+      "lap_end": 9,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.9746097326278687,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "position_gain_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "LIN",
+        "gap_seconds_proxy": 0.444411963224411,
+        "position": 6.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.4438518285751343,
+        "position": 6.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 15,
+      "lap_end": 15,
+      "opportunity": true,
+      "observed_outcome": "position_gain_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "OCO",
+        "gap_seconds_proxy": 0.3851284086704254,
+        "position": 4.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 15,
+      "lap_end": 15,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.43983420729637146,
+        "position": 4.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 16,
+      "lap_end": 16,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "COL",
+        "gap_seconds_proxy": 0.31527093052864075,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 17,
+      "lap_end": 17,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 1.0088564157485962,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 17,
+      "lap_end": 17,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "COL",
+        "gap_seconds_proxy": 0.856454074382782,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 20,
+      "lap_end": 20,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 1.0296213626861572,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 21,
+      "lap_end": 21,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 1.169071078300476,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 21,
+      "lap_end": 21,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.606312096118927,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 22,
+      "lap_end": 22,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 1.065536618232727,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 22,
+      "lap_end": 22,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.899486243724823,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 23,
+      "lap_end": 23,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.7405272722244263,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 23,
+      "lap_end": 23,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.7993600368499756,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 24,
+      "lap_end": 24,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.634394645690918,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 24,
+      "lap_end": 24,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.5907026529312134,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 25,
+      "lap_end": 25,
+      "opportunity": true,
+      "observed_outcome": "position_loss_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.3147974908351898,
+        "position": 2.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 26,
+      "lap_end": 26,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.6565566062927246,
+        "position": 3.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 27,
+      "lap_end": 27,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.6334115266799927,
+        "position": 2.0,
+        "next_position": 2.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 29,
+      "lap_end": 29,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "RUS",
+        "gap_seconds_proxy": 0.6764658689498901,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 30,
+      "lap_end": 30,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 0.8218399286270142,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 30,
+      "lap_end": 30,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.5908988118171692,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 31,
+      "lap_end": 31,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "RUS",
+        "gap_seconds_proxy": 1.1713480949401855,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 31,
+      "lap_end": 31,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.6779012680053711,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 32,
+      "lap_end": 32,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.7989543080329895,
+        "position": 3.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 34,
+      "lap_end": 34,
+      "opportunity": true,
+      "observed_outcome": "position_loss_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 1.129586100578308,
+        "position": 3.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 35,
+      "lap_end": 35,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 1.1657153367996216,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 36,
+      "lap_end": 36,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.3954271376132965,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 38,
+      "lap_end": 38,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.6914619207382202,
+        "position": 4.0,
+        "next_position": 3.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 39,
+      "lap_end": 39,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 0.6218776702880859,
+        "position": 3.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "defense_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 40,
+      "lap_end": 40,
+      "opportunity": true,
+      "observed_outcome": "position_held_proxy",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "attacker": "HAM",
+        "gap_seconds_proxy": 0.4583042562007904,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "攻击者主动放弃",
+        "对手进站或退赛",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "attack_opportunity",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 41,
+      "lap_end": 41,
+      "opportunity": true,
+      "observed_outcome": "no_position_gain_observed",
+      "directness_level": "proxy",
+      "confidence": "medium",
+      "evidence": {
+        "target": "HAM",
+        "gap_seconds_proxy": 1.0234906673431396,
+        "position": 4.0,
+        "next_position": 4.0
+      },
+      "alternative_explanations": [
+        "对手进站或退赛",
+        "计时位置边界",
+        "赛会控制"
+      ],
+      "forbidden_claims": [
+        "不得由位置变化直接断言超车技巧",
+        "不得把观测机会代理当成比赛控制官方判定"
+      ]
+    },
+    {
+      "episode_type": "race_start_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 1,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "start_window_observed",
+      "directness_level": "proxy",
+      "confidence": "low",
+      "evidence": {
+        "opening_position": 1.0
+      },
+      "alternative_explanations": [
+        "发车位缺失",
+        "事故",
+        "第一圈计时粒度"
+      ],
+      "forbidden_claims": [
+        "不得推断起步反应时间"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 2,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 19,
+      "lap_end": 19,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 29,
+      "lap_end": 29,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 34,
+      "lap_end": 34,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "HAM",
+      "team": "Ferrari",
+      "lap_start": 54,
+      "lap_end": 54,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "race_start_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 1,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "start_window_observed",
+      "directness_level": "proxy",
+      "confidence": "low",
+      "evidence": {
+        "opening_position": 3.0
+      },
+      "alternative_explanations": [
+        "发车位缺失",
+        "事故",
+        "第一圈计时粒度"
+      ],
+      "forbidden_claims": [
+        "不得推断起步反应时间"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 2,
+      "lap_end": 2,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 14,
+      "lap_end": 14,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 19,
+      "lap_end": 19,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 29,
+      "lap_end": 29,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 34,
+      "lap_end": 34,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    },
+    {
+      "episode_type": "restart_window",
+      "driver": "LEC",
+      "team": "Ferrari",
+      "lap_start": 54,
+      "lap_end": 54,
+      "opportunity": true,
+      "observed_outcome": "green_transition_observed",
+      "directness_level": "derived",
+      "confidence": "medium",
+      "evidence": {
+        "track_status_transition": "non_green_to_green"
+      },
+      "alternative_explanations": [
+        "track_status 组合编码"
+      ],
+      "forbidden_claims": [
+        "不得称为官方重启时刻而不核对 race control"
+      ]
+    }
+  ],
+  "stint_dossiers": [
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "stint": 1,
+      "lap_start": 1,
+      "lap_end": 10,
+      "laps": 10,
+      "clean_laps": 8,
+      "phase_lap_counts": {
+        "steady": 5,
+        "late": 3,
+        "warmup": 2
+      },
+      "median_clean_lap_s": 98.22750091552734,
+      "traffic_state_counts": {
+        "attack_window": 4,
+        "traffic": 4,
+        "intermediate_gap": 1,
+        "clean_air": 1
+      },
+      "episode_count": 10,
+      "vehicle_state_assessment": "not_identified_from_public_telemetry_alone",
+      "ability_assessment": "not_scored_from_single_stint",
+      "confidence": "medium"
+    },
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "stint": 2,
+      "lap_start": 11,
+      "lap_end": 56,
+      "laps": 46,
+      "clean_laps": 39,
+      "phase_lap_counts": {
+        "steady": 32,
+        "late": 12,
+        "warmup": 2
+      },
+      "median_clean_lap_s": 96.6969985961914,
+      "traffic_state_counts": {
+        "clean_air": 20,
+        "attack_window": 18,
+        "traffic": 7,
+        "intermediate_gap": 1
+      },
+      "episode_count": 31,
+      "vehicle_state_assessment": "not_identified_from_public_telemetry_alone",
+      "ability_assessment": "not_scored_from_single_stint",
+      "confidence": "medium"
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint": 1,
+      "lap_start": 1,
+      "lap_end": 10,
+      "laps": 10,
+      "clean_laps": 5,
+      "phase_lap_counts": {
+        "steady": 5,
+        "late": 3,
+        "warmup": 2
+      },
+      "median_clean_lap_s": 98.12999725341797,
+      "traffic_state_counts": {
+        "attack_window": 7,
+        "traffic": 3
+      },
+      "episode_count": 8,
+      "vehicle_state_assessment": "not_identified_from_public_telemetry_alone",
+      "ability_assessment": "not_scored_from_single_stint",
+      "confidence": "low"
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stint": 2,
+      "lap_start": 11,
+      "lap_end": 56,
+      "laps": 46,
+      "clean_laps": 39,
+      "phase_lap_counts": {
+        "steady": 32,
+        "late": 12,
+        "warmup": 2
+      },
+      "median_clean_lap_s": 96.79499816894531,
+      "traffic_state_counts": {
+        "intermediate_gap": 16,
+        "attack_window": 15,
+        "traffic": 11,
+        "clean_air": 4
+      },
+      "episode_count": 37,
+      "vehicle_state_assessment": "not_identified_from_public_telemetry_alone",
+      "ability_assessment": "not_scored_from_single_stint",
+      "confidence": "medium"
+    }
+  ],
+  "race_value_ledger": {
+    "status": "physical_time_only_expected_points_not_identified",
+    "target_minus_reference_median_s_per_comparable_lap": -0.04937600404949327,
+    "interval_80_s_per_comparable_lap": [
+      -4.291584741635479,
+      0.42154130403710116
+    ],
+    "delta_expected_points": null,
+    "reason": "单队匹配遥测不足以构造全场反事实位置与积分概率。"
+  },
+  "ratings": [
+    {
+      "code": "HAM.PAC",
+      "driver": "HAM",
+      "module_id": "PAC",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "rating_mean": null,
+      "rating_interval_95": null,
+      "reason": "联合圈速时间前推尚未证明池化 PAC 的车手级排序稳定性与区间覆盖。",
+      "uncertainty_note": "pooled_driver_base_interval_not_exported"
+    },
+    {
+      "code": "HAM.TYM",
+      "driver": "HAM",
+      "module_id": "TYM",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.EXT",
+      "driver": "HAM",
+      "module_id": "EXT",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.ATK",
+      "driver": "HAM",
+      "module_id": "ATK",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.DEF",
+      "driver": "HAM",
+      "module_id": "DEF",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.AWA",
+      "driver": "HAM",
+      "module_id": "AWA",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.STR",
+      "driver": "HAM",
+      "module_id": "STR",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.ADP",
+      "driver": "HAM",
+      "module_id": "ADP",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.OVR",
+      "driver": "HAM",
+      "module_id": "OVR",
+      "status": "insufficient",
+      "maturity": "insufficient",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "HAM.EventDelivery",
+      "driver": "HAM",
+      "module_id": "EventDelivery",
+      "status": "prototype_not_publishable",
+      "rating_mean": null,
+      "physical_delta_ms_per_lap": null,
+      "physical_delta_ci95": null,
+      "exposure": {
+        "season_events_observed": 4,
+        "season_events_required": 8.0,
+        "clean_laps": 47,
+        "comparable_pairs": 16,
+        "observed_episode_rows": 86,
+        "independent_episodes": null
+      },
+      "reason": "2026 era 尚无冻结且验证过的全场 Event Delivery 参考分布。"
+    },
+    {
+      "code": "LEC.PAC",
+      "driver": "LEC",
+      "module_id": "PAC",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "rating_mean": null,
+      "rating_interval_95": null,
+      "reason": "联合圈速时间前推尚未证明池化 PAC 的车手级排序稳定性与区间覆盖。",
+      "uncertainty_note": "pooled_driver_base_interval_not_exported"
+    },
+    {
+      "code": "LEC.TYM",
+      "driver": "LEC",
+      "module_id": "TYM",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.EXT",
+      "driver": "LEC",
+      "module_id": "EXT",
+      "status": "insufficient",
+      "maturity": "prototype",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.ATK",
+      "driver": "LEC",
+      "module_id": "ATK",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.DEF",
+      "driver": "LEC",
+      "module_id": "DEF",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.AWA",
+      "driver": "LEC",
+      "module_id": "AWA",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.STR",
+      "driver": "LEC",
+      "module_id": "STR",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.ADP",
+      "driver": "LEC",
+      "module_id": "ADP",
+      "status": "insufficient",
+      "maturity": "missing",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.OVR",
+      "driver": "LEC",
+      "module_id": "OVR",
+      "status": "insufficient",
+      "maturity": "insufficient",
+      "reason": "能力模块尚未通过冻结时间外验证，不能由本场赛果或同队差反推。"
+    },
+    {
+      "code": "LEC.EventDelivery",
+      "driver": "LEC",
+      "module_id": "EventDelivery",
+      "status": "prototype_not_publishable",
+      "rating_mean": null,
+      "physical_delta_ms_per_lap": null,
+      "physical_delta_ci95": null,
+      "exposure": {
+        "season_events_observed": 4,
+        "season_events_required": 8.0,
+        "clean_laps": 44,
+        "comparable_pairs": 16,
+        "observed_episode_rows": 86,
+        "independent_episodes": null
+      },
+      "reason": "2026 era 尚无冻结且验证过的全场 Event Delivery 参考分布。"
+    }
+  ],
+  "rating_release_gate": {
+    "historical_core_passed": true,
+    "full_driver_card_ready": false,
+    "season_2026_confirmatory": {
+      "gate_id": "2026_confirmatory_exposure",
+      "passed": false,
+      "value": 4,
+      "threshold": 8.0,
+      "role": "future_release",
+      "note": "不足时仍可生成逐场探索报告，但不得发布确认性赛季评分。"
+    },
+    "ability_ovr_published": false,
+    "event_delivery_published": false,
+    "race_value_score_published": false
+  },
+  "boundaries": {
+    "allowed_claims": [
+      "距离域赛段时间差",
+      "匹配条件下的可观测车辆响应差异",
+      "中性操作模式及策略兼容代理",
+      "按机会暴露统计的攻防 Episode"
+    ],
+    "forbidden_claims": [
+      "具体机械部件故障",
+      "真实 SOC、回收或部署功率",
+      "主动空力或 Overtake 的实际开启状态",
+      "把位置变化直接称为纯车手能力",
+      "把四站探索结果称为完整 2026 赛季评分"
+    ]
+  },
+  "claim_contract": {
+    "module_boundaries": [
+      "速度或时间差只表示公开输入条件下的统计差异。",
+      "不得把遥测差异直接解释为车辆物理故障。",
+      "不得由公开遥测推断电池荷电状态或具体能量存量。",
+      "弯道与直道标签是赛道位置代理，不是驾驶意图标签。"
+    ],
+    "external_condition_matched_gap": "控制可观测外部条件后仍保留操作、策略与未观测状态的直接差。",
+    "input_adjusted_response_gap": "再控制入段速度、油门、制动、挡位和 RPM 后的事件内统计残差；不是因果效应。"
+  }
+}

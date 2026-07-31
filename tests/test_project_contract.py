@@ -38,7 +38,7 @@ class ProjectContractTests(unittest.TestCase):
                 read("backend/migrations/002_create_views.up.sql"),
             ]
         )
-        docs = read("docs/technical-overview.md")
+        docs = read("docs/database.md")
 
         tables = re.findall(r"CREATE TABLE IF NOT EXISTS\s+([a-z_]+)", migrations)
         views = re.findall(r"CREATE OR REPLACE VIEW\s+([a-z_]+)", migrations)
@@ -54,7 +54,7 @@ class ProjectContractTests(unittest.TestCase):
         go_mod = read("backend/go.mod")
         deepseek = read("backend/internal/translator/deepseek_client.go")
         database = read("backend/internal/database/postgres.go")
-        docs = read("docs/technical-overview.md")
+        docs = read("docs/progress.md")
 
         if "json.Unmarshal" in handlers and '"encoding/json"' not in handlers:
             self.assertIn("P0-01", docs)
@@ -68,10 +68,10 @@ class ProjectContractTests(unittest.TestCase):
         if async_context_pattern.search(handlers):
             self.assertIn("P0-03", docs)
 
-        retry_reuses_request = (
-            "NewRequestWithContext" in deepseek
-            and "for attempt := 0; attempt < 3; attempt++" in deepseek
-            and "Do(req)" in deepseek
+        retry_reuses_request = re.search(
+            r"NewRequestWithContext.*?for attempt := 0; attempt < 3; attempt\+\+.*?Do\(req\)",
+            deepseek,
+            re.DOTALL,
         )
         if retry_reuses_request:
             self.assertIn("P1-01", docs)
@@ -140,14 +140,34 @@ class ProjectContractTests(unittest.TestCase):
         for phrase in required_phrases:
             self.assertIn(phrase, docs)
 
-    def test_test_strategy_and_readme_point_to_canonical_docs(self):
+    def test_document_map_and_readme_point_to_canonical_docs(self):
         readme = read("README.md")
+        document_map = read("docs/README.md")
         strategy = read("docs/test-strategy.md")
 
+        self.assertIn("docs/README.md", readme)
         self.assertIn("docs/technical-overview.md", readme)
+        self.assertIn("docs/database.md", readme)
+        self.assertIn("docs/algorithm-models.md", readme)
+        self.assertIn("docs/implementation-results.md", readme)
+        self.assertIn("docs/progress.md", readme)
         self.assertIn("docs/test-strategy.md", readme)
+        for name in [
+            "technical-overview.md",
+            "database.md",
+            "algorithm-models.md",
+            "implementation-results.md",
+            "progress.md",
+        ]:
+            self.assertIn(name, document_map)
         self.assertIn("python3 -m unittest discover -s tests", strategy)
         self.assertIn("go test ./...", strategy)
+
+    def test_agents_file_routes_to_document_map(self):
+        agents = read("AGENTS.md")
+
+        self.assertIn("docs/README.md", agents)
+        self.assertIn("先阅读", agents)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,271 @@
+{
+  "schema_version": "reference-analysis-lab-target-manifest-v2",
+  "target_id": "fdataanalysis-reverse-engineered-v2",
+  "status": "METHOD_EQUIVALENT_INTERNALLY_VALIDATED",
+  "run_id": "20260731T170000+0800-fdataanalysis-reverse-engineered-v2",
+  "report": {
+    "path": "data/reference-analysis-lab/v2/run=20260731T170000+0800-fdataanalysis-reverse-engineered-v2/report.json",
+    "sha256": "305b388a0ba43861d1335d43ab1c62b9c1f51efefb6fe0075ec7c039d21f4c4e",
+    "bytes": 471537
+  },
+  "source_identity": {
+    "run_id": "20260731T170000+0800-fdataanalysis-reverse-engineered-v2",
+    "created_at": "2026-07-31T02:54:56.019333+00:00",
+    "source_kind": "real_tracinginsights_expanded_v4",
+    "year": 2025,
+    "meeting": "Abu Dhabi Grand Prix",
+    "session": "Race",
+    "telemetry": {
+      "path": "data/normalized/tracinginsights/schema=tracinginsights-expanded-v4/year=2025/commit=f7a5324cae58/session=Race/meeting=Abu_Dhabi_Grand_Prix/telemetry.parquet",
+      "sha256": "1fb05bd10f89a492ee1797040b2b4c23cb60eea709c44df747d4e9f2e0259601",
+      "rows": 784424,
+      "columns": [
+        "year",
+        "meeting",
+        "session",
+        "driver_acronym",
+        "driver_number",
+        "lap",
+        "sample_index",
+        "time",
+        "distance",
+        "rel_distance",
+        "speed",
+        "throttle",
+        "brake",
+        "gear",
+        "rpm",
+        "drs",
+        "x",
+        "y",
+        "z",
+        "acc_x",
+        "acc_y",
+        "acc_z",
+        "driver_ahead",
+        "distance_to_driver_ahead",
+        "lap_duration",
+        "compound",
+        "stint",
+        "tyre_life",
+        "fresh_tyre",
+        "team",
+        "position",
+        "track_status",
+        "deleted",
+        "is_accurate",
+        "lap_start_raw",
+        "data_key",
+        "source_file",
+        "source_commit"
+      ],
+      "source_commit": "f7a5324cae58"
+    },
+    "traffic_features": {
+      "path": ".runtime-cache/reference-analysis-lab-v2/deltadata/traffic-features/2025-abu-dhabi-race.parquet",
+      "sha256": "863680122f2fbf4727439fb3c31451d7eb464446f004ce41e68209ec1360f21b",
+      "identity_path": ".runtime-cache/reference-analysis-lab-v2/deltadata/traffic-features/2025-abu-dhabi-race.identity.json",
+      "identity_sha256": "5609fba800d9ee61cb7519330949fc60319c15f93ceeab11d16413e523aa4e0c",
+      "rows": 1156,
+      "definition": "nearest_physical_car_same_track_location_crossing_headway_le_2s",
+      "role": "reused_f1pace_v2_point_level_physical_headway_cache"
+    },
+    "v17_manifest": {
+      "path": "research/records/race_dossier_v17/run=20260726T124625+0800-ce93134a40b8/manifest.json",
+      "sha256": "9322064faee009e0e53d7ec345e9d25499f821658cdf05d497a74d233567658c",
+      "run_id": "20260726T124625+0800-ce93134a40b8",
+      "role": "coverage_and_audit_reference_only_no_v17_rewrite"
+    }
+  },
+  "reference_identity": {
+    "source_profile_url": "https://x.com/FDataAnalysis",
+    "source_profile_cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/source.html",
+    "source_profile_sha256": "efaf66b20029af6d244ee3a5cc9038907ec41c004033efbe63819118f138ec08",
+    "source_profile_fetch_status": "HTTP_200_METADATA_ONLY",
+    "captured_at": "2026-07-31T16:30:00+08:00",
+    "evidence_snapshot_path": ".runtime-cache/reference-analysis-lab-v2/fdataanalysis/public-method-evidence.json",
+    "evidence_snapshot_sha256": "a2886ec8e6c112a531791fd715a3b18d96534336e9eb99cb8eaff5a2bc7043c6",
+    "images": [
+      {
+        "name": "2026 Hungarian Grand Prix Race Pace",
+        "post_url": "https://x.com/FDataAnalysis/status/2081706503862378548",
+        "cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/reference-images/race-pace-hungarian-v2.jpg",
+        "sha256": "c2ce1c32e9fcdc9a64fd1001f5115242cc77e3aab8642e808614fb7738cb45e0",
+        "status": "REFERENCE_ONLY_DIFFERENT_EVENT_SESSION",
+        "manual_transcription": {
+          "chart_semantics": [
+            "pit-equated driver gap table",
+            "box/mean/median distribution",
+            "smoothed lap-by-lap race pace"
+          ],
+          "leading_rows": [
+            {
+              "driver": "NOR",
+              "gap_s": 0.0
+            },
+            {
+              "driver": "VER",
+              "gap_s": 0.11
+            },
+            {
+              "driver": "ANT",
+              "gap_s": 0.15
+            },
+            {
+              "driver": "HAM",
+              "gap_s": 0.29
+            }
+          ]
+        }
+      },
+      {
+        "name": "2026 Hungarian Grand Prix FP2 Long Runs",
+        "post_url": "https://x.com/FDataAnalysis/status/2081027167987634407",
+        "cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/reference-images/long-runs-fp2-hungarian.jpg",
+        "sha256": "519573a2ca23aa102c97116871fd065d2a1eb3e3bc4b3a5d533b0f62cb479f3a",
+        "status": "REFERENCE_ONLY_DIFFERENT_EVENT_SESSION",
+        "manual_transcription": {
+          "chart_semantics": [
+            "lap time versus tyre age",
+            "driver violin distribution",
+            "compound point colour",
+            "fastest/mean gap/standard deviation/push laps"
+          ],
+          "rows": [
+            {
+              "driver": "ANT",
+              "gap_s": 0.0,
+              "displayed_lap_time_s": 83.946,
+              "sd_s": 0.188,
+              "push_laps": 6
+            },
+            {
+              "driver": "VER",
+              "gap_s": 0.604,
+              "displayed_lap_time_s": 84.55,
+              "sd_s": 0.824,
+              "push_laps": 12
+            },
+            {
+              "driver": "LEC",
+              "gap_s": 0.847,
+              "displayed_lap_time_s": 84.793,
+              "sd_s": 1.119,
+              "push_laps": 7
+            },
+            {
+              "driver": "HAM",
+              "gap_s": 0.89,
+              "displayed_lap_time_s": 84.836,
+              "sd_s": 0.326,
+              "push_laps": 5
+            },
+            {
+              "driver": "NOR",
+              "gap_s": 0.897,
+              "displayed_lap_time_s": 84.843,
+              "sd_s": 0.714,
+              "push_laps": 11
+            },
+            {
+              "driver": "RUS",
+              "gap_s": 1.004,
+              "displayed_lap_time_s": 84.95,
+              "sd_s": 0.919,
+              "push_laps": 12
+            },
+            {
+              "driver": "PIA",
+              "gap_s": 1.554,
+              "displayed_lap_time_s": 85.5,
+              "sd_s": 0.315,
+              "push_laps": 8
+            }
+          ]
+        }
+      }
+    ],
+    "invalid_cached_asset": {
+      "cache_path": ".runtime-cache/reference-analysis-lab-v1/fdataanalysis/reference-images/race-pace-hungarian.jpg",
+      "sha256": "aa499fc95e55a6d42607d200416a8db60381b2738b3e057db05edfdaf6ad7e6a",
+      "status": "INVALID_REFERENCE_ASSET_SUBJECT_MISMATCH",
+      "reason": "图片是 Stefano Domenicali 引语海报，不是 FDataAnalysis race-pace 或 telemetry 图，禁止进入方法证据和产品资产。"
+    },
+    "same_event_numeric_reference_available": false,
+    "reference_event": "2026 Hungarian Grand Prix",
+    "pilot_event": "2025 Abu Dhabi Grand Prix Race",
+    "numeric_comparison_status": "NOT_COMPARABLE_DIFFERENT_EVENT_AND_SESSION",
+    "license_or_republication_boundary": "只重新实现公开逻辑和布局语义；不复制原图、logo、品牌字体或人物照片。"
+  },
+  "validation": {
+    "status": "PASS",
+    "real_source_only": true,
+    "synthetic_points": 0,
+    "raw_points": 784424,
+    "valid_points": 728315,
+    "axis_interpolated_laps": 1082,
+    "axis_intervals": 1000,
+    "corner_proxy_count": 16,
+    "straight_proxy_count": 6,
+    "sample_frequency": {
+      "median_interval_s": 0.13000011444091797,
+      "approx_hz": 7.692300920661703,
+      "role": "public_feed_sampling_approximation"
+    },
+    "lap_time_reconstruction": {
+      "mean_signed_error_s": -0.13420913634443882,
+      "mae_s": 0.15472798252449957,
+      "p90_abs_error_s": 0.3047971966382036,
+      "max_abs_error_s": 0.8365586726810221,
+      "gate": "mae<=0.25s_and_p90<=0.50s",
+      "status": "PASS"
+    },
+    "segmentation_stability": {
+      "status": "PASS",
+      "baseline_corner_count": 16,
+      "runs": [
+        {
+          "axis_intervals": 800,
+          "corner_count": 16,
+          "matched_to_baseline_within_1_5pct": 16,
+          "median_peak_drift_fraction": 0.0004999999999999727,
+          "max_peak_drift_fraction": 0.0010000000000000009
+        },
+        {
+          "axis_intervals": 1000,
+          "corner_count": 16,
+          "matched_to_baseline_within_1_5pct": 16,
+          "median_peak_drift_fraction": 0.0,
+          "max_peak_drift_fraction": 0.0
+        },
+        {
+          "axis_intervals": 1200,
+          "corner_count": 16,
+          "matched_to_baseline_within_1_5pct": 16,
+          "median_peak_drift_fraction": 0.00024999999999998634,
+          "max_peak_drift_fraction": 0.000500000000000056
+        }
+      ],
+      "gate": "at_least_80pct_baseline_peaks_matched_within_0.015_lap_and_count_difference_le_2"
+    },
+    "top_speed_formula_gap": {
+      "driver_mae_faithful_top15_vs_audited_p99_kph": 22.04052425,
+      "driver_max_abs_gap_kph": 35.5552,
+      "interpretation": "公开 top15 样本会集中在单条直道；逐圈 P99 中位数更稳健。"
+    },
+    "full_throttle_weighting_gap": {
+      "driver_mae_sample_vs_time_pp": 0.30872734999999996,
+      "driver_max_abs_gap_pp": 0.590111
+    },
+    "teammate_matching": {
+      "teams": 10,
+      "comparable_pairs": 2,
+      "matched_lap_pairs": 34,
+      "max_antisymmetry_error": 0.0,
+      "status": "PASS"
+    },
+    "direct_physical_claims_allowed": false,
+    "direct_total_vehicle_order_allowed": false
+  },
+  "frontend_page": "fdataanalysis-reverse-engineered-v2.html"
+}

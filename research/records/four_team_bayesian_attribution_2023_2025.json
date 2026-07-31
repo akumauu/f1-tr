@@ -1,0 +1,3687 @@
+{
+  "run_id": "four_team_bayesian_counterfactual_2023_2025_v3-20260718T233835+0800",
+  "created_at": "2026-07-18T23:38:35+08:00",
+  "git_head": "fee9cdae3523cdf600d45efe9fc79f3c125a35bb",
+  "config": {
+    "experiment_name": "four_team_bayesian_counterfactual_2023_2025_v3",
+    "validation_status": "retrospective_bayesian_cross_check",
+    "offline_only": true,
+    "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+    "reporting_teams": [
+      "McLaren",
+      "Red Bull Racing",
+      "Ferrari",
+      "Mercedes"
+    ],
+    "context_model": {
+      "candidate_id": "balanced_v1",
+      "blocks": [
+        "compound",
+        "circuit"
+      ],
+      "purpose": "只去除轮胎、赛道与圈次阶段上下文，不含车队或车手标签"
+    },
+    "aggregation": {
+      "unit": "driver_event",
+      "location": "huber_all_clean_laps",
+      "huber_k": 1.5,
+      "iterations": 8,
+      "standard_error_floor_z": 0.04,
+      "maximum_relative_precision": 8.0
+    },
+    "posterior": {
+      "blocks": [
+        "team_year",
+        "team_circuit",
+        "team_event",
+        "driver",
+        "driver_year",
+        "driver_team"
+      ],
+      "chains": 4,
+      "iterations": 6000,
+      "warmup": 3000,
+      "thin": 5,
+      "random_seed": 20260718,
+      "intercept_prior_sd_z": 2.0,
+      "noise_prior": {
+        "shape": 3.0,
+        "scale_sd_z": 0.7
+      },
+      "block_prior_sd_z": {
+        "team_year": 0.5,
+        "team_circuit": 0.24,
+        "team_event": 0.28,
+        "driver": 0.4,
+        "driver_year": 0.2,
+        "driver_team": 0.12
+      },
+      "variance_prior_shape": 3.0
+    },
+    "sensitivity": {
+      "interaction_tight": {
+        "driver_team": 0.06
+      },
+      "interaction_wide": {
+        "driver_team": 0.24
+      },
+      "chains": 4,
+      "iterations": 3000,
+      "warmup": 1500,
+      "thin": 5
+    },
+    "time_forward": {
+      "chains": 4,
+      "iterations": 5000,
+      "warmup": 2500,
+      "thin": 5
+    },
+    "influence_checks": {
+      "year": 2025,
+      "team": "Red Bull Racing",
+      "exclusions": {
+        "without_ver": [
+          "VER"
+        ],
+        "without_other_rb_drivers": [
+          "LAW",
+          "TSU"
+        ]
+      },
+      "chains": 4,
+      "iterations": 3000,
+      "warmup": 1500,
+      "thin": 5
+    },
+    "counterfactuals": {
+      "car": "driver、driver_year、driver_team 全部固定为零参考；比较 team_year + 等赛道 team_circuit + 赛季内 team_event 均值",
+      "driver": "四队等权参考赛车且 driver_team 固定为零；比较 driver + driver_year",
+      "interaction": "driver_team 单独报告，不并入纯车手评分",
+      "reference_lap_seconds": 90.0
+    }
+  },
+  "config_hash": "1adfdef6971f507d97048ccda270f70031da549e1fa98b78adc7be6ba1c236e4",
+  "methodological_status": "retrospective_bayesian_cross_check",
+  "environment": {
+    "python": "3.11.7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.15.2",
+    "sampler": "custom_conjugate_hierarchical_gibbs"
+  },
+  "network_calls": [],
+  "coverage": {
+    "clean_laps": 61351,
+    "driver_event_rows": 1324,
+    "events": 69,
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "input_identity": [
+      {
+        "year": 2023,
+        "path": "research/artifacts/data/dynamic_tune_train_2023.csv.gz",
+        "sha256": "40af0ea13425349fade09c3e02ecbcb4ed1edcf6cc1b9b8978e9bc860b3ff13b",
+        "rows_before_race_filter": 20706
+      },
+      {
+        "year": 2024,
+        "path": "research/artifacts/data/dynamic_tune_validation_2024.csv.gz",
+        "sha256": "82078a356dcd1f031a8df6ee22b3fc4119e1f361dea349cef00c4f6312391111",
+        "rows_before_race_filter": 23165
+      },
+      {
+        "year": 2025,
+        "path": "research/artifacts/data/validation_2025.csv.gz",
+        "sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671",
+        "rows_before_race_filter": 22245
+      }
+    ]
+  },
+  "observation_summary": {
+    "median_laps_per_driver_event": 48.0,
+    "median_standard_error_z": 0.08435623571346354,
+    "weight_min": 0.0032542552071559453,
+    "weight_max": 3.698906242420402
+  },
+  "posterior_diagnostics": {
+    "chains": 4,
+    "draws_per_chain": 600,
+    "sigma_z": {
+      "mean": 0.27187367465848494,
+      "rhat": 0.9996900407154967
+    },
+    "tau_z": {
+      "team_year": {
+        "mean": 0.37660775679425823,
+        "rhat": 1.0143684377998818
+      },
+      "team_circuit": {
+        "mean": 0.1201008746224573,
+        "rhat": 1.0014591675118913
+      },
+      "team_event": {
+        "mean": 0.3255463364923194,
+        "rhat": 1.0012846425411845
+      },
+      "driver": {
+        "mean": 0.3061478857766549,
+        "rhat": 1.0112589325689025
+      },
+      "driver_year": {
+        "mean": 0.11553985360949681,
+        "rhat": 1.0000029456496013
+      },
+      "driver_team": {
+        "mean": 0.11809348045071348,
+        "rhat": 1.006056048204675
+      }
+    },
+    "maximum_scale_rhat": 1.0143684377998818
+  },
+  "time_forward_validation": {
+    "unit": "driver_event_context_adjusted_z",
+    "warning": "这是车手—分站聚合层的时间外复验，不能与 v2 逐圈 MAE 直接比较。",
+    "years": {
+      "2024": {
+        "role": "tuning_recheck",
+        "adaptation_races": 5,
+        "train_events": 27,
+        "validation_events": 18,
+        "zero": {
+          "mae_z": 0.7668587462020741,
+          "rmse_z": 1.0231381303402218,
+          "event_balanced_mae_z": 0.7792332802094764,
+          "bias_z": 0.04179563564055914,
+          "driver_event_rows": 347,
+          "events": 18
+        },
+        "bayesian_joint": {
+          "mae_z": 0.5149018647200437,
+          "rmse_z": 0.8090797811364394,
+          "event_balanced_mae_z": 0.5252366442350573,
+          "bias_z": -0.03220716631862671,
+          "driver_event_rows": 347,
+          "events": 18,
+          "interval_80_coverage": 0.6945244956772334,
+          "interval_80_mean_width_z": 1.346699307672542,
+          "interval_95_coverage": 0.861671469740634,
+          "interval_95_mean_width_z": 2.061670891687229
+        },
+        "diagnostics": {
+          "chains": 4,
+          "draws_per_chain": 500,
+          "sigma_z": {
+            "mean": 0.25460580447259173,
+            "rhat": 1.000142973664132
+          },
+          "tau_z": {
+            "team_year": {
+              "mean": 0.4501110877317115,
+              "rhat": 1.0096604711924317
+            },
+            "team_circuit": {
+              "mean": 0.14185659109103263,
+              "rhat": 1.002115176496903
+            },
+            "team_event": {
+              "mean": 0.17321555935689673,
+              "rhat": 1.011448462774734
+            },
+            "driver": {
+              "mean": 0.2890842467533465,
+              "rhat": 1.013646189704792
+            },
+            "driver_year": {
+              "mean": 0.1271470991327116,
+              "rhat": 1.0005056179987497
+            },
+            "driver_team": {
+              "mean": 0.10522669149800484,
+              "rhat": 0.9997909988952745
+            }
+          },
+          "maximum_scale_rhat": 1.013646189704792
+        }
+      },
+      "2025": {
+        "role": "locked_recheck",
+        "adaptation_races": 5,
+        "train_events": 50,
+        "validation_events": 19,
+        "zero": {
+          "mae_z": 0.7173791963986876,
+          "rmse_z": 0.9533254473541521,
+          "event_balanced_mae_z": 0.7337325991576675,
+          "bias_z": -0.10498214908848194,
+          "driver_event_rows": 364,
+          "events": 19
+        },
+        "bayesian_joint": {
+          "mae_z": 0.5815732146985961,
+          "rmse_z": 0.8276184607219256,
+          "event_balanced_mae_z": 0.6032162767234993,
+          "bias_z": -0.23226489223169933,
+          "driver_event_rows": 364,
+          "events": 19,
+          "interval_80_coverage": 0.7087912087912088,
+          "interval_80_mean_width_z": 1.3713256733556045,
+          "calibrated_80_inflation_z": 0.18488890068192765,
+          "calibrated_80_coverage": 0.8021978021978022,
+          "calibrated_80_mean_width_z": 1.7411034747194596,
+          "interval_95_coverage": 0.8681318681318682,
+          "interval_95_mean_width_z": 2.0998898475790244,
+          "calibrated_95_inflation_z": 0.3477865829858098,
+          "calibrated_95_coverage": 0.9395604395604396,
+          "calibrated_95_mean_width_z": 2.795463013550644
+        },
+        "diagnostics": {
+          "chains": 4,
+          "draws_per_chain": 500,
+          "sigma_z": {
+            "mean": 0.2633521745778238,
+            "rhat": 1.0002170517464772
+          },
+          "tau_z": {
+            "team_year": {
+              "mean": 0.4273506868306553,
+              "rhat": 1.0164167921186984
+            },
+            "team_circuit": {
+              "mean": 0.15800072331481857,
+              "rhat": 1.0022384038146852
+            },
+            "team_event": {
+              "mean": 0.274286926695538,
+              "rhat": 0.9993756337014774
+            },
+            "driver": {
+              "mean": 0.27724203388735164,
+              "rhat": 1.0242484587957013
+            },
+            "driver_year": {
+              "mean": 0.1153212947957804,
+              "rhat": 1.0024021510934766
+            },
+            "driver_team": {
+              "mean": 0.1034783922875363,
+              "rhat": 1.0047663470424515
+            }
+          },
+          "maximum_scale_rhat": 1.0242484587957013
+        }
+      }
+    }
+  },
+  "counterfactual_ratings": {
+    "cars": [
+      {
+        "year": 2023,
+        "team": "Red Bull Racing",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.2572227842144874,
+          "median": 0.2593035242393293,
+          "ci80_low": 0.07686130398062418,
+          "ci80_high": 0.4304533291235397,
+          "ci95_low": -0.02260814136404014,
+          "ci95_high": 0.5127365362063939,
+          "rhat": 0.9997872549931591
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 231.11917238512183,
+          "median": 233.0708606554685,
+          "ci80_low": 69.14859487854565,
+          "ci80_high": 386.57538587585066,
+          "ci95_low": -20.34962756138489,
+          "ci95_high": 460.2818575617004,
+          "rhat": 0.9997880688213205
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.031943253218298724,
+          "median": 0.0,
+          "ci80_low": 0.0,
+          "ci80_high": 0.12827827305890843,
+          "ci95_low": 0.0,
+          "ci95_high": 0.26915399352974917,
+          "rhat": 0.9994104627002593
+        },
+        "expected_rank": 1.3291666666666666,
+        "p_rank_1": 0.74625,
+        "event_count": 22
+      },
+      {
+        "year": 2023,
+        "team": "Mercedes",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.06263221023922419,
+          "median": 0.0675539942519687,
+          "ci80_low": -0.11178048299552623,
+          "ci80_high": 0.232959034828356,
+          "ci95_low": -0.20285974909752227,
+          "ci95_high": 0.32315132798750096,
+          "rhat": 1.0039089356925028
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 56.26872495184012,
+          "median": 60.778063503681224,
+          "ci80_low": -100.65868271212042,
+          "ci80_high": 209.41910626728216,
+          "ci95_low": -182.75908383303522,
+          "ci95_high": 290.36678040488636,
+          "rhat": 1.0039033059017892
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.22653382719356197,
+          "median": 0.20515555523271367,
+          "ci80_low": 0.0,
+          "ci80_high": 0.4838789895474241,
+          "ci95_low": 0.0,
+          "ci95_high": 0.6500958362078043,
+          "rhat": 1.0000947478135525
+        },
+        "expected_rank": 2.27,
+        "p_rank_1": 0.16125,
+        "event_count": 22
+      },
+      {
+        "year": 2023,
+        "team": "Ferrari",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.021811705739706394,
+          "median": 0.01834500915803909,
+          "ci80_low": -0.13776098437076426,
+          "ci80_high": 0.17966861969362619,
+          "ci95_low": -0.2211999127453042,
+          "ci95_high": 0.2636618673069605,
+          "rhat": 1.0001167526203494
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 19.559579339483566,
+          "median": 16.508993907467158,
+          "ci80_low": -124.07032657894912,
+          "ci80_high": 161.5565808934224,
+          "ci95_low": -199.30026627958648,
+          "ci95_high": 236.9831261257315,
+          "rhat": 1.000117608489484
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.26735433169307976,
+          "median": 0.25352819805630666,
+          "ci80_low": 0.008303264600632696,
+          "ci80_high": 0.5154081595353317,
+          "ci95_low": 0.0,
+          "ci95_high": 0.6536598712558623,
+          "rhat": 1.0004407830089344
+        },
+        "expected_rank": 2.4908333333333332,
+        "p_rank_1": 0.09166666666666666,
+        "event_count": 22
+      },
+      {
+        "year": 2023,
+        "team": "McLaren",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.341666700193418,
+          "median": -0.3403909346384706,
+          "ci80_low": -0.5244467271672553,
+          "ci80_high": -0.16266920507303662,
+          "ci95_low": -0.6264290691961224,
+          "ci95_high": -0.06796974831876082,
+          "rhat": 1.0050602437178229
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -308.11560353494974,
+          "median": -306.8738302442862,
+          "ci80_low": -473.2419206455865,
+          "ci80_high": -146.5214248918456,
+          "ci95_low": -565.5557155884693,
+          "ci95_high": -61.19356847123152,
+          "rhat": 1.005069666453032
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.6308327376262042,
+          "median": 0.6260601392578871,
+          "ci80_low": 0.37204937561934903,
+          "ci80_high": 0.8976311961645015,
+          "ci95_low": 0.23400194763178372,
+          "ci95_high": 1.0461959495700979,
+          "rhat": 1.0043252096645272
+        },
+        "expected_rank": 3.91,
+        "p_rank_1": 0.0008333333333333334,
+        "event_count": 22
+      },
+      {
+        "year": 2024,
+        "team": "Ferrari",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.12948712806573223,
+          "median": 0.12681695327868872,
+          "ci80_low": -0.03558542153564381,
+          "ci80_high": 0.29614178711604855,
+          "ci95_low": -0.11190365551630224,
+          "ci95_high": 0.3807151576086074,
+          "rhat": 1.0012608402392598
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 116.38998368402599,
+          "median": 114.06291708517347,
+          "ci80_low": -32.03257851194967,
+          "ci80_high": 266.13334765617606,
+          "ci95_low": -100.76966192134977,
+          "ci95_high": 341.9922206517392,
+          "rhat": 1.0012602299307858
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.0923955412488553,
+          "median": 0.02147198677755985,
+          "ci80_low": 0.0,
+          "ci80_high": 0.2806001405658777,
+          "ci95_low": 0.0,
+          "ci95_high": 0.4170033412339503,
+          "rhat": 0.9996079743662755
+        },
+        "expected_rank": 1.7525,
+        "p_rank_1": 0.45125,
+        "event_count": 23
+      },
+      {
+        "year": 2024,
+        "team": "McLaren",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.11079828639222145,
+          "median": 0.11390434676025235,
+          "ci80_low": -0.08447593846803911,
+          "ci80_high": 0.29513129781368114,
+          "ci95_low": -0.17340069810158992,
+          "ci95_high": 0.39863494811183203,
+          "rhat": 1.0058374050051522
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 99.56684122915239,
+          "median": 102.45555034134482,
+          "ci80_low": -76.06046656733814,
+          "ci80_high": 265.22659216867714,
+          "ci95_low": -156.19601271994907,
+          "ci95_high": 358.0573083555911,
+          "rhat": 1.0058387346746547
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.11108438292236611,
+          "median": 0.04862423159347817,
+          "ci80_low": 0.0,
+          "ci80_high": 0.3302721181053909,
+          "ci95_low": 0.0,
+          "ci95_high": 0.4640314213274504,
+          "rhat": 1.003116979174971
+        },
+        "expected_rank": 1.8995833333333334,
+        "p_rank_1": 0.4083333333333333,
+        "event_count": 23
+      },
+      {
+        "year": 2024,
+        "team": "Mercedes",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.0274305401996428,
+          "median": -0.02643100767663198,
+          "ci80_low": -0.19865296460462029,
+          "ci80_high": 0.14831613131319057,
+          "ci95_low": -0.3031157326238879,
+          "ci95_high": 0.2421852748970948,
+          "rhat": 1.0093691037161823
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -24.77415476178409,
+          "median": -23.791050887251483,
+          "ci80_low": -178.96536930572714,
+          "ci80_high": 133.3855775629359,
+          "ci95_low": -273.2180336078641,
+          "ci95_high": 217.7030186118737,
+          "rhat": 1.0093664797495554
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.24931320951423033,
+          "median": 0.23384712208139558,
+          "ci80_low": 0.0,
+          "ci80_high": 0.4997915812960786,
+          "ci95_low": 0.0,
+          "ci95_high": 0.6485610232639072,
+          "rhat": 1.0089065873149035
+        },
+        "expected_rank": 2.6841666666666666,
+        "p_rank_1": 0.13,
+        "event_count": 23
+      },
+      {
+        "year": 2024,
+        "team": "Red Bull Racing",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.21285487425831087,
+          "median": -0.21136218705235207,
+          "ci80_low": -0.3903459133187408,
+          "ci80_high": -0.039374141356573515,
+          "ci95_low": -0.4933927184214422,
+          "ci95_high": 0.05169811286252878,
+          "rhat": 1.000173357044713
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -191.85883518541257,
+          "median": -190.4271429422834,
+          "ci80_low": -351.99787971015115,
+          "ci80_high": -35.443704592306084,
+          "ci95_low": -445.1507141359128,
+          "ci95_high": 46.51627652157704,
+          "rhat": 1.0001740955405243
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.43473754357289845,
+          "median": 0.4275164764190065,
+          "ci80_low": 0.1859279181351536,
+          "ci80_high": 0.6911968955394238,
+          "ci95_low": 0.06756244299048157,
+          "ci95_high": 0.8642155452210445,
+          "rhat": 1.001789528050388
+        },
+        "expected_rank": 3.66375,
+        "p_rank_1": 0.010416666666666666,
+        "event_count": 23
+      },
+      {
+        "year": 2025,
+        "team": "McLaren",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": 0.3373732697502155,
+          "median": 0.33115125461664546,
+          "ci80_low": 0.14886681048430878,
+          "ci80_high": 0.5286696413222014,
+          "ci95_low": 0.04924401828656446,
+          "ci95_high": 0.6335702539452558,
+          "rhat": 1.0054875517593973
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": 303.0252659980001,
+          "median": 297.5431981393192,
+          "ci80_low": 133.8804528845352,
+          "ci80_high": 474.5471780043454,
+          "ci95_low": 44.308705866865836,
+          "ci95_high": 568.4106859206454,
+          "rhat": 1.0054907644345572
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.008800873076140402,
+          "median": 0.0,
+          "ci80_low": 0.0,
+          "ci80_high": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.13325159851759827,
+          "rhat": 1.0032369122071785
+        },
+        "expected_rank": 1.1025,
+        "p_rank_1": 0.9108333333333334,
+        "event_count": 24
+      },
+      {
+        "year": 2025,
+        "team": "Mercedes",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.026043084487881608,
+          "median": -0.02774051566490887,
+          "ci80_low": -0.1964738693478423,
+          "ci80_high": 0.15269408852679361,
+          "ci95_low": -0.3051116784634392,
+          "ci95_high": 0.25167172982060393,
+          "rhat": 1.0015130382192678
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -23.52877955810111,
+          "median": -24.96992738439472,
+          "ci80_low": -177.0003051644296,
+          "ci80_high": 137.31981329763835,
+          "ci95_low": -275.0198562216389,
+          "ci95_high": 226.21977149491332,
+          "rhat": 1.0015137806347956
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.3722172273142375,
+          "median": 0.359997036381034,
+          "ci80_low": 0.06147873103705527,
+          "ci80_high": 0.6698734925692772,
+          "ci95_low": 0.0,
+          "ci95_high": 0.8478823569247927,
+          "rhat": 1.0040161865903106
+        },
+        "expected_rank": 2.513333333333333,
+        "p_rank_1": 0.059583333333333335,
+        "event_count": 24
+      },
+      {
+        "year": 2025,
+        "team": "Ferrari",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.06442398023120145,
+          "median": -0.06523906455363203,
+          "ci80_low": -0.22684718764521847,
+          "ci80_high": 0.09692784964171766,
+          "ci95_low": -0.3072217188608781,
+          "ci95_high": 0.19232244755448413,
+          "rhat": 1.0038599788087745
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -58.0706278868405,
+          "median": -58.73431487406907,
+          "ci80_low": -204.394212493284,
+          "ci80_high": 87.1928007975975,
+          "ci95_low": -276.92471561771833,
+          "ci95_high": 172.92386377330226,
+          "rhat": 1.0038595941964776
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.41059812305755744,
+          "median": 0.3990278576709866,
+          "ci80_low": 0.1320111781458563,
+          "ci80_high": 0.6999923830369635,
+          "ci95_low": 0.0,
+          "ci95_high": 0.8601620603615315,
+          "rhat": 1.003298153891619
+        },
+        "expected_rank": 2.714166666666667,
+        "p_rank_1": 0.029166666666666667,
+        "event_count": 24
+      },
+      {
+        "year": 2025,
+        "team": "Red Bull Racing",
+        "reference_driver": "zero driver + zero driver-year + zero driver-team",
+        "car_pace_advantage_z": {
+          "mean": -0.24690620503113242,
+          "median": -0.24857438772050633,
+          "ci80_low": -0.4141318942448712,
+          "ci80_high": -0.0780180395801014,
+          "ci95_low": -0.49644792785407277,
+          "ci95_high": -0.0031366530049352992,
+          "rhat": 1.0041010149171095
+        },
+        "car_pace_advantage_90s_ms": {
+          "mean": -222.56565597188387,
+          "median": -223.9952314833753,
+          "ci80_low": -373.49154512810475,
+          "ci80_high": -70.24363341971423,
+          "ci95_low": -447.91404512481176,
+          "ci95_high": -2.823032040438941,
+          "rhat": 1.0041032428819783
+        },
+        "delta_to_fastest_z": {
+          "mean": 0.5930803478574883,
+          "median": 0.5860755756695477,
+          "ci80_low": 0.30887346703178614,
+          "ci80_high": 0.8785802032686634,
+          "ci95_low": 0.17542867177157576,
+          "ci95_high": 1.027593083912241,
+          "rhat": 1.0043391474670869
+        },
+        "expected_rank": 3.67,
+        "p_rank_1": 0.0004166666666666667,
+        "event_count": 24
+      }
+    ],
+    "drivers": [
+      {
+        "year": 2023,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.36263244851032456,
+          "median": 0.3595976259879137,
+          "ci80_low": 0.15219548797333418,
+          "ci80_high": 0.5696923572460505,
+          "ci95_low": 0.054117966133233386,
+          "ci95_high": 0.6888245106471623,
+          "rhat": 1.0020577862241804
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 325.65804546614027,
+          "median": 323.05666309241167,
+          "ci80_low": 136.8717564356865,
+          "ci80_high": 511.26541874308083,
+          "ci95_low": 48.69299233511162,
+          "ci95_high": 617.8117971724761,
+          "rhat": 1.0020588195383142
+        },
+        "expected_rank": 1.37625,
+        "p_rank_1": 0.75625,
+        "sample_count": 1077
+      },
+      {
+        "year": 2023,
+        "driver": "NOR",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.11905186655650275,
+          "median": 0.12231884780093975,
+          "ci80_low": -0.08421783757563117,
+          "ci80_high": 0.323755003507391,
+          "ci95_low": -0.19571850223021942,
+          "ci95_high": 0.4306696240727851,
+          "rhat": 1.0005273476760266
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 106.96553815600512,
+          "median": 110.01966188592576,
+          "ci80_low": -75.82797969151632,
+          "ci80_high": 290.90833390873786,
+          "ci95_low": -176.31914040730038,
+          "ci95_high": 386.7692149097597,
+          "rhat": 1.00052586849175
+        },
+        "expected_rank": 3.05875,
+        "p_rank_1": 0.15083333333333335,
+        "sample_count": 1016
+      },
+      {
+        "year": 2023,
+        "driver": "PER",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.0272721392713157,
+          "median": 0.02464537922678861,
+          "ci80_low": -0.17434754562738655,
+          "ci80_high": 0.23427011202339326,
+          "ci95_low": -0.27658885025323887,
+          "ci95_high": 0.3511259158009435,
+          "rhat": 1.0006179153254184
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 24.42375021725797,
+          "median": 22.178108239923077,
+          "ci80_low": -157.04965739939635,
+          "ci80_high": 210.59632238363986,
+          "ci95_low": -249.27453911405803,
+          "ci95_high": 315.45916974214117,
+          "rhat": 1.000618480279289
+        },
+        "expected_rank": 4.147916666666666,
+        "p_rank_1": 0.01625,
+        "sample_count": 957
+      },
+      {
+        "year": 2023,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.01778907233141733,
+          "median": -0.013440620646905446,
+          "ci80_low": -0.21589193725120556,
+          "ci80_high": 0.17664402750871444,
+          "ci95_low": -0.3359788962651258,
+          "ci95_high": 0.27977153171927266,
+          "rhat": 1.0009503712598755
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -16.117305540569625,
+          "median": -12.09737154502924,
+          "ci80_low": -194.51263653835312,
+          "ci80_high": 158.83929330133407,
+          "ci95_low": -302.8895441940502,
+          "ci95_high": 251.4424822862751,
+          "rhat": 1.000950742610752
+        },
+        "expected_rank": 4.439166666666667,
+        "p_rank_1": 0.028333333333333332,
+        "sample_count": 931
+      },
+      {
+        "year": 2023,
+        "driver": "HAM",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.07309984781770959,
+          "median": -0.07671890549961774,
+          "ci80_low": -0.26134803339413526,
+          "ci80_high": 0.12063170961140664,
+          "ci95_low": -0.3574496650045085,
+          "ci95_high": 0.2398372779493175,
+          "rhat": 1.0054909756241297
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -65.9135891723346,
+          "median": -69.0735077865636,
+          "ci80_low": -235.52086056752654,
+          "ci80_high": 108.50308092744663,
+          "ci95_low": -322.2803503773922,
+          "ci95_high": 215.59490824556948,
+          "rhat": 1.005491920068883
+        },
+        "expected_rank": 5.1258333333333335,
+        "p_rank_1": 0.02125,
+        "sample_count": 1022
+      },
+      {
+        "year": 2023,
+        "driver": "PIA",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.09988363696688063,
+          "median": -0.10188150364438207,
+          "ci80_low": -0.31230991869195085,
+          "ci80_high": 0.11675402417501704,
+          "ci95_low": -0.41136462133695617,
+          "ci95_high": 0.2300471035137932,
+          "rhat": 1.0042341143957927
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -90.0638170778954,
+          "median": -91.7400784505457,
+          "ci80_low": -281.5183028994507,
+          "ci80_high": 105.01730359388658,
+          "ci95_low": -370.9906983030079,
+          "ci95_high": 206.80442808615345,
+          "rhat": 1.0042272132784964
+        },
+        "expected_rank": 5.535416666666666,
+        "p_rank_1": 0.011666666666666667,
+        "sample_count": 944
+      },
+      {
+        "year": 2023,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.15644291346740538,
+          "median": -0.15366786807708926,
+          "ci80_low": -0.36958824831941245,
+          "ci80_high": 0.04507327336764745,
+          "ci95_low": -0.48316773879440417,
+          "ci95_high": 0.14526572849852382,
+          "rhat": 1.0070217749450199
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -141.0290320992271,
+          "median": -138.4073978841904,
+          "ci80_low": -333.24486108020983,
+          "ci80_high": 40.55680482530098,
+          "ci95_low": -435.90318868885373,
+          "ci95_high": 130.6442419632957,
+          "rhat": 1.0070325764773498
+        },
+        "expected_rank": 6.06875,
+        "p_rank_1": 0.010416666666666666,
+        "sample_count": 1017
+      },
+      {
+        "year": 2023,
+        "driver": "SAI",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.16174098375473003,
+          "median": -0.16165034331839842,
+          "ci80_low": -0.32983746389681545,
+          "ci80_high": 0.011204776433643713,
+          "ci95_low": -0.4213992973370779,
+          "ci95_high": 0.103134835041316,
+          "rhat": 1.0005551214353834
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -145.76648168280943,
+          "median": -145.60296123001064,
+          "ci80_low": -297.3438239073655,
+          "ci80_high": 10.083733753369017,
+          "ci95_low": -380.0595898955776,
+          "ci95_high": 92.77350215305647,
+          "rhat": 1.0005523217047556
+        },
+        "expected_rank": 6.247916666666667,
+        "p_rank_1": 0.005,
+        "sample_count": 1007
+      },
+      {
+        "year": 2024,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.42923141108068763,
+          "median": 0.4309172307272271,
+          "ci80_low": 0.21973524698067443,
+          "ci80_high": 0.6382222917840102,
+          "ci95_low": 0.11496557038133609,
+          "ci95_high": 0.7492453416818378,
+          "rhat": 1.002642010862071
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 385.35978597301596,
+          "median": 386.99110313372773,
+          "ci80_low": 197.54460493337726,
+          "ci80_high": 572.570981239775,
+          "ci95_low": 103.40955910050924,
+          "ci95_high": 671.8009458704731,
+          "rhat": 1.0026443748312337
+        },
+        "expected_rank": 1.3275,
+        "p_rank_1": 0.7695833333333333,
+        "sample_count": 1098
+      },
+      {
+        "year": 2024,
+        "driver": "NOR",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.1983942857056536,
+          "median": 0.19775194080315137,
+          "ci80_low": -0.017444718837707752,
+          "ci80_high": 0.41120309378557945,
+          "ci95_low": -0.1254234708962767,
+          "ci95_high": 0.5442263338288884,
+          "rhat": 1.0011003063587873
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 178.25124731901138,
+          "median": 177.80088642857163,
+          "ci80_low": -15.701616539658358,
+          "ci80_high": 369.3229301374401,
+          "ci95_low": -112.95194313576502,
+          "ci95_high": 488.47329455180716,
+          "rhat": 1.00110041495555
+        },
+        "expected_rank": 2.7720833333333332,
+        "p_rank_1": 0.17291666666666666,
+        "sample_count": 1131
+      },
+      {
+        "year": 2024,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.004045466248490834,
+          "median": 0.004904110227345021,
+          "ci80_low": -0.19374382357069733,
+          "ci80_high": 0.20232813168266103,
+          "ci95_low": -0.29434762549620114,
+          "ci95_high": 0.2957869124761096,
+          "rhat": 1.0033911009315575
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 3.5350760312512626,
+          "median": 4.413590976259579,
+          "ci80_low": -174.53846536537012,
+          "ci80_high": 181.911227644754,
+          "ci95_low": -265.30312852498537,
+          "ci95_high": 265.8149045053636,
+          "rhat": 1.0033891794256649
+        },
+        "expected_rank": 4.816666666666666,
+        "p_rank_1": 0.01875,
+        "sample_count": 1130
+      },
+      {
+        "year": 2024,
+        "driver": "PER",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.0012059535667738534,
+          "median": -0.001707727456403324,
+          "ci80_low": -0.20829573216995179,
+          "ci80_high": 0.21862170674436812,
+          "ci95_low": -0.326177189857643,
+          "ci95_high": 0.3312476799070217,
+          "rhat": 1.0001998381322053
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 0.9609035252569011,
+          "median": -1.5369678758681242,
+          "ci80_low": -187.66153675390638,
+          "ci80_high": 196.5446131919541,
+          "ci95_low": -294.03875385176144,
+          "ci95_high": 297.6296940425598,
+          "rhat": 1.000198212900483
+        },
+        "expected_rank": 4.969166666666666,
+        "p_rank_1": 0.0025,
+        "sample_count": 986
+      },
+      {
+        "year": 2024,
+        "driver": "PIA",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.034790756482769095,
+          "median": -0.03323106419399298,
+          "ci80_low": -0.2566312414514492,
+          "ci80_high": 0.18504863190968418,
+          "ci95_low": -0.3663946948700261,
+          "ci95_high": 0.30191635688220836,
+          "rhat": 1.004755993429411
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -31.448878787638836,
+          "median": -29.91292796766725,
+          "ci80_low": -231.2647391706512,
+          "ci80_high": 166.3897702032212,
+          "ci95_low": -330.3600670841426,
+          "ci95_high": 271.31494289051477,
+          "rhat": 1.0047485074655136
+        },
+        "expected_rank": 5.428333333333334,
+        "p_rank_1": 0.01,
+        "sample_count": 1137
+      },
+      {
+        "year": 2024,
+        "driver": "SAI",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.06154179420061863,
+          "median": -0.06161993884813237,
+          "ci80_low": -0.23923307262424545,
+          "ci80_high": 0.11352262688018297,
+          "ci95_low": -0.3284960620267683,
+          "ci95_high": 0.20222732338558827,
+          "rhat": 0.9993879199778509
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -55.49024668311657,
+          "median": -55.475035055109444,
+          "ci80_low": -215.5675170423523,
+          "ci80_high": 102.11239282499706,
+          "ci95_low": -296.1325820775231,
+          "ci95_high": 181.82068266856834,
+          "rhat": 0.9993882226731375
+        },
+        "expected_rank": 5.682916666666666,
+        "p_rank_1": 0.008333333333333333,
+        "sample_count": 1098
+      },
+      {
+        "year": 2024,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.07581560313465915,
+          "median": -0.06799964900298722,
+          "ci80_low": -0.29790329737458165,
+          "ci80_high": 0.12755625997026357,
+          "ci95_low": -0.40249946618767907,
+          "ci95_high": 0.23372538344176927,
+          "rhat": 1.0126056985773229
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -68.38660071137497,
+          "median": -61.22049672892534,
+          "ci80_low": -268.5127233934108,
+          "ci80_high": 114.72744739056125,
+          "ci95_low": -362.9795249301332,
+          "ci95_high": 210.1072125057873,
+          "rhat": 1.0126120764514235
+        },
+        "expected_rank": 5.766666666666667,
+        "p_rank_1": 0.01125,
+        "sample_count": 1125
+      },
+      {
+        "year": 2024,
+        "driver": "HAM",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.08324718862856532,
+          "median": -0.08717165242835728,
+          "ci80_low": -0.27192525618247726,
+          "ci80_high": 0.10902767837558996,
+          "ci95_low": -0.3649822033139679,
+          "ci95_high": 0.22713700109374219,
+          "rhat": 1.014690409736017
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -75.05526506397763,
+          "median": -78.48869216677902,
+          "ci80_low": -245.0657774281533,
+          "ci80_high": 98.07143819721072,
+          "ci95_low": -329.08416699039947,
+          "ci95_high": 204.19131618065785,
+          "rhat": 1.0146930279217927
+        },
+        "expected_rank": 5.9245833333333335,
+        "p_rank_1": 0.00625,
+        "sample_count": 1049
+      },
+      {
+        "year": 2024,
+        "driver": "BEA",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.37748177415499373,
+          "median": -0.3770029392327754,
+          "ci80_low": -0.6391059868912606,
+          "ci80_high": -0.11388474207366724,
+          "ci95_low": -0.7836149208334511,
+          "ci95_high": 0.014215591791732589,
+          "rhat": 1.005665932969928
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -340.5649139686606,
+          "median": -339.94304034295385,
+          "ci80_low": -577.0373642705069,
+          "ci80_high": -102.55465387379388,
+          "ci95_low": -708.02389694586,
+          "ci95_high": 12.793123271335151,
+          "rhat": 1.0056730416093596
+        },
+        "expected_rank": 8.312083333333334,
+        "p_rank_1": 0.0004166666666666667,
+        "sample_count": 45
+      },
+      {
+        "year": 2025,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.5648018034410567,
+          "median": 0.5674692381927628,
+          "ci80_low": 0.36574867199625316,
+          "ci80_high": 0.7650389267495548,
+          "ci95_low": 0.25170249841951325,
+          "ci95_high": 0.8578066191213303,
+          "rhat": 1.0046185611159395
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 506.7788898228071,
+          "median": 509.2759555153217,
+          "ci80_low": 328.5725635873794,
+          "ci80_high": 685.9079569946168,
+          "ci95_low": 226.2473930105269,
+          "ci95_high": 768.7241598225824,
+          "rhat": 1.0046148809981512
+        },
+        "expected_rank": 1.18,
+        "p_rank_1": 0.8716666666666667,
+        "sample_count": 1066
+      },
+      {
+        "year": 2025,
+        "driver": "NOR",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.18522434446385114,
+          "median": 0.18412027390958546,
+          "ci80_low": -0.03080687749150319,
+          "ci80_high": 0.4088828935658102,
+          "ci95_low": -0.1524703868481501,
+          "ci95_high": 0.5163707519298255,
+          "rhat": 1.0023123578106397
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 166.41536500079926,
+          "median": 165.55578885505213,
+          "ci80_low": -27.73046102282618,
+          "ci80_high": 367.24329503206957,
+          "ci95_low": -137.32801473096066,
+          "ci95_high": 463.5358648747496,
+          "rhat": 1.002308367977975
+        },
+        "expected_rank": 3.27375,
+        "p_rank_1": 0.05583333333333333,
+        "sample_count": 1124
+      },
+      {
+        "year": 2025,
+        "driver": "PIA",
+        "team": "McLaren",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.1486145149958134,
+          "median": 0.15152240807464934,
+          "ci80_low": -0.07650793148659926,
+          "ci80_high": 0.37375172717508426,
+          "ci95_low": -0.19211015573761558,
+          "ci95_high": 0.48102472738329455,
+          "rhat": 1.0081757008878494
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 133.51632048673218,
+          "median": 136.2669037139044,
+          "ci80_low": -68.88348610171667,
+          "ci80_high": 335.7487302030792,
+          "ci95_low": -173.06532553086097,
+          "ci95_high": 431.88269061248235,
+          "rhat": 1.008166751748926
+        },
+        "expected_rank": 3.7075,
+        "p_rank_1": 0.04375,
+        "sample_count": 1086
+      },
+      {
+        "year": 2025,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.13843758639763812,
+          "median": 0.1404892277798308,
+          "ci80_low": -0.05933669466940276,
+          "ci80_high": 0.3362014448331734,
+          "ci95_low": -0.18825622087958746,
+          "ci95_high": 0.43927945719728617,
+          "rhat": 1.0049466093965558
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 124.39550735921168,
+          "median": 126.35152907606155,
+          "ci80_low": -53.41887213234694,
+          "ci80_high": 302.0732284474114,
+          "ci95_low": -169.59018077587928,
+          "ci95_high": 394.48443182410386,
+          "rhat": 1.0049404926603724
+        },
+        "expected_rank": 3.64125,
+        "p_rank_1": 0.022916666666666665,
+        "sample_count": 1056
+      },
+      {
+        "year": 2025,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": 0.0024737834870768105,
+          "median": 0.0042123240583586685,
+          "ci80_low": -0.2134280286009397,
+          "ci80_high": 0.21050314448197394,
+          "ci95_low": -0.31712977140005044,
+          "ci95_high": 0.32160270608372904,
+          "rhat": 1.0049041401918908
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": 2.106745612514588,
+          "median": 3.791011807079774,
+          "ci80_low": -192.29035351984828,
+          "ci80_high": 189.25356778734778,
+          "ci95_low": -285.86984396647244,
+          "ci95_high": 288.9775064204902,
+          "rhat": 1.004908297663542
+        },
+        "expected_rank": 4.864166666666667,
+        "p_rank_1": 0.005,
+        "sample_count": 1108
+      },
+      {
+        "year": 2025,
+        "driver": "HAM",
+        "team": "Ferrari",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.0330147840473745,
+          "median": -0.03379872253678629,
+          "ci80_low": -0.2095973890648119,
+          "ci80_high": 0.14895600613537316,
+          "ci95_low": -0.30415045952015457,
+          "ci95_high": 0.24296016927631442,
+          "rhat": 1.0144277545500378
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -29.80541668367388,
+          "median": -30.42399147448824,
+          "ci80_low": -188.83547823736575,
+          "ci80_high": 133.9606095643323,
+          "ci95_low": -274.15211973628845,
+          "ci95_high": 218.39873394375667,
+          "rhat": 1.0144247701323452
+        },
+        "expected_rank": 5.340833333333333,
+        "p_rank_1": 0.0004166666666666667,
+        "sample_count": 1053
+      },
+      {
+        "year": 2025,
+        "driver": "ANT",
+        "team": "Mercedes",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.1748944398579898,
+          "median": -0.17174980609987023,
+          "ci80_low": -0.38988079434593587,
+          "ci80_high": 0.03959827311014994,
+          "ci95_low": -0.5073090181370086,
+          "ci95_high": 0.15508489999276737,
+          "rhat": 1.0037012328225077
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -157.66962950006263,
+          "median": -154.70764250906103,
+          "ci80_low": -351.57763645957016,
+          "ci80_high": 35.631390549684895,
+          "ci95_low": -457.7382082798112,
+          "ci95_high": 139.46823495371848,
+          "rhat": 1.0036956043101262
+        },
+        "expected_rank": 6.6120833333333335,
+        "p_rank_1": 0.0004166666666666667,
+        "sample_count": 1009
+      },
+      {
+        "year": 2025,
+        "driver": "LAW",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.4080722174357923,
+          "median": -0.4041926072626509,
+          "ci80_low": -0.6365934757844914,
+          "ci80_high": -0.1928085367048268,
+          "ci95_low": -0.7596067045445319,
+          "ci95_high": -0.0821678425568302,
+          "rhat": 1.0088916028893415
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -368.1502139439852,
+          "median": -364.50951056582153,
+          "ci80_low": -574.7616348703428,
+          "ci80_high": -173.69507873335968,
+          "ci95_low": -686.2491323337033,
+          "ci95_high": -73.98144862655654,
+          "rhat": 1.0088986630635632
+        },
+        "expected_rank": 8.1025,
+        "p_rank_1": 0.0,
+        "sample_count": 50
+      },
+      {
+        "year": 2025,
+        "driver": "TSU",
+        "team": "Red Bull Racing",
+        "reference_car": "four-team equal-weight car + zero driver-team",
+        "driver_pace_advantage_z": {
+          "mean": -0.42357059144427966,
+          "median": -0.42667068569184063,
+          "ci80_low": -0.6074360446821959,
+          "ci80_high": -0.2301978727661188,
+          "ci95_low": -0.7052999540656211,
+          "ci95_high": -0.141239588173373,
+          "rhat": 1.003927969821055
+        },
+        "driver_pace_advantage_90s_ms": {
+          "mean": -382.11591727221116,
+          "median": -384.8239989551431,
+          "ci80_low": -548.3562107655883,
+          "ci80_high": -207.4167287076384,
+          "ci95_low": -637.0137471744974,
+          "ci95_high": -127.20544047422996,
+          "rhat": 1.0039334220675726
+        },
+        "expected_rank": 8.277916666666666,
+        "p_rank_1": 0.0,
+        "sample_count": 1021
+      }
+    ],
+    "combinations": [
+      {
+        "year": 2023,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.10736604596064862,
+          "median": 0.09203407565698175,
+          "ci80_low": -0.03646556032445518,
+          "ci80_high": 0.27185615380762995,
+          "ci95_low": -0.09820228486085168,
+          "ci95_high": 0.3971503341784568,
+          "rhat": 1.0070129461030495
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.7272212786854606,
+          "median": 0.723094562910759,
+          "ci80_low": 0.637424534718641,
+          "ci80_high": 0.8179060909390512,
+          "ci95_low": 0.5946459563906461,
+          "ci95_high": 0.8879584861598443,
+          "rhat": 1.0046104051323577
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 652.1007634694552,
+          "median": 648.4378716321999,
+          "ci80_low": 571.8575647748359,
+          "ci80_high": 733.1133057322053,
+          "ci95_low": 533.5932929284381,
+          "ci95_high": 795.6249999758918,
+          "rhat": 1.0046088926816146
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "PER",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.05674597533511501,
+          "median": 0.0466908409973293,
+          "ci80_low": -0.08990830914817678,
+          "ci80_high": 0.212283820195383,
+          "ci95_low": -0.1596153652216339,
+          "ci95_high": 0.3451532045116013,
+          "rhat": 1.0097113303682261
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.3412408988209181,
+          "median": 0.3356855974868952,
+          "ci80_low": 0.2427144210970632,
+          "ci80_high": 0.44345196630757333,
+          "ci95_low": 0.19327174217945342,
+          "ci95_high": 0.5105106938919358,
+          "rhat": 1.0018402250808207
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 306.5649632976804,
+          "median": 301.610522970249,
+          "ci80_low": 218.17809696977508,
+          "ci80_high": 398.22315280154106,
+          "ci95_low": 173.7765833506289,
+          "ci95_high": 458.2888222566203,
+          "rhat": 1.001837785802452
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06228231268666465,
+          "median": 0.05267904093016739,
+          "ci80_low": -0.08588974984035341,
+          "ci80_high": 0.22073257566567087,
+          "ci95_low": -0.1703047939653121,
+          "ci95_high": 0.33592377920561095,
+          "rhat": 1.0018880297924915
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.06630494609495372,
+          "median": 0.06258936037533452,
+          "ci80_low": -0.03061730678540613,
+          "ci80_high": 0.17137701082514029,
+          "ci95_low": -0.08150701245356129,
+          "ci95_high": 0.23459643288113538,
+          "rhat": 1.0031146013799297
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 59.624720920656934,
+          "median": 56.312799588529344,
+          "ci80_low": -27.559794927779155,
+          "ci80_high": 154.10721982170944,
+          "ci95_low": -73.38621462571486,
+          "ci95_high": 210.88932343592015,
+          "rhat": 1.0031136710329533
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "HAM",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.05695748072410262,
+          "median": 0.054686761084129856,
+          "ci80_low": -0.07563126634771905,
+          "ci80_high": 0.19196378647059037,
+          "ci95_low": -0.14840697520129797,
+          "ci95_high": 0.28890019005454814,
+          "rhat": 1.0066738991738537
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.04648984314561723,
+          "median": 0.04353233120568904,
+          "ci80_low": -0.05319926731320451,
+          "ci80_high": 0.15208921641804127,
+          "ci95_low": -0.10143011953664656,
+          "ci95_high": 0.21606897753927953,
+          "rhat": 1.004834196230715
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 41.800576953501405,
+          "median": 39.17057152229244,
+          "ci80_low": -47.892078586653255,
+          "ci80_high": 136.7762573768638,
+          "ci95_low": -91.33341955099682,
+          "ci95_high": 194.25214379175884,
+          "rhat": 1.0048306648188603
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "SAI",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": 0.09117700570701469,
+          "median": 0.07881738432049896,
+          "ci80_low": -0.047790040104429686,
+          "ci80_high": 0.23635082454892675,
+          "ci95_low": -0.112696187116984,
+          "ci95_high": 0.3594512685640574,
+          "rhat": 1.0029593237668137
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.04875227230800896,
+          "median": -0.05226422644217989,
+          "ci80_low": -0.14663944628562905,
+          "ci80_high": 0.05338875655898229,
+          "ci95_low": -0.1909703674972906,
+          "ci95_high": 0.13058037249729496,
+          "rhat": 1.0025675323669698
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -43.916084698183504,
+          "median": -47.050097927524604,
+          "ci80_low": -132.0723130524552,
+          "ci80_high": 48.03705656527429,
+          "ci95_low": -172.0375488390532,
+          "ci95_high": 117.44563808266395,
+          "rhat": 1.0025661803503774
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.04401030690937726,
+          "median": 0.041628886932103815,
+          "ci80_low": -0.10393583784400572,
+          "ci80_high": 0.1965500516727842,
+          "ci95_low": -0.17776721712759155,
+          "ci95_high": 0.2799859577790037,
+          "rhat": 1.0021469188103813
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.04980039631880394,
+          "median": -0.05349965791977853,
+          "ci80_low": -0.14680408798518357,
+          "ci80_high": 0.05399103199349779,
+          "ci95_low": -0.1953860158625645,
+          "ci95_high": 0.11856188808220261,
+          "rhat": 1.0038850039581262
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -44.860178428260774,
+          "median": -48.162574385310975,
+          "ci80_low": -132.22070815089748,
+          "ci80_high": 48.57881348229361,
+          "ci95_low": -176.0193168517833,
+          "ci95_high": 106.64246811968397,
+          "rhat": 1.003883026388087
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "NOR",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06509396727037203,
+          "median": 0.05397238062819047,
+          "ci80_low": -0.08007543035311546,
+          "ci80_high": 0.22317232329571315,
+          "ci95_low": -0.15171228646967455,
+          "ci95_high": 0.3555937385641808,
+          "rhat": 1.0007116815158044
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.15752086636654325,
+          "median": -0.16124492405003735,
+          "ci80_low": -0.2565579594970506,
+          "ci80_high": -0.05486685700935594,
+          "ci95_low": -0.30561842918961857,
+          "ci95_high": 0.010962120236104966,
+          "rhat": 1.0051664648264778
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -141.90965778087568,
+          "median": -145.2374942275767,
+          "ci80_low": -231.1986159740121,
+          "ci80_high": -49.39372046097045,
+          "ci95_low": -275.47732663315463,
+          "ci95_high": 9.865367447816578,
+          "rhat": 1.0051623762012731
+        }
+      },
+      {
+        "year": 2023,
+        "driver": "PIA",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.03313493034965394,
+          "median": 0.029212963782864337,
+          "ci80_low": -0.1044434883632442,
+          "ci80_high": 0.1708879382633101,
+          "ci95_low": -0.18878308954673634,
+          "ci95_high": 0.2808020309562498,
+          "rhat": 1.0022876764993065
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.4084154068106447,
+          "median": -0.4144915514945252,
+          "ci80_low": -0.5073058130544404,
+          "ci80_high": -0.3032116629303353,
+          "ci95_low": -0.5529472555639862,
+          "ci95_high": -0.23758020896265902,
+          "rhat": 1.0037171752863763
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -368.3557747444166,
+          "median": -373.8165802262054,
+          "ci80_low": -457.73530897957744,
+          "ci80_high": -273.3046330579008,
+          "ci95_low": -499.0309474824937,
+          "ci95_high": -214.07638923076155,
+          "rhat": 1.0037118893424437
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "NOR",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06509396727037203,
+          "median": 0.05397238062819047,
+          "ci80_low": -0.08007543035311546,
+          "ci80_high": 0.22317232329571315,
+          "ci95_low": -0.15171228646967455,
+          "ci95_high": 0.3555937385641808,
+          "rhat": 1.0007116815158044
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.3742865393682471,
+          "median": 0.37057300942456306,
+          "ci80_low": 0.2824308741351656,
+          "ci80_high": 0.4698997300934923,
+          "ci95_low": 0.23729671017742052,
+          "ci95_high": 0.5373232528716213,
+          "rhat": 1.00740667527121
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 336.2023864548083,
+          "median": 332.89851149734085,
+          "ci80_low": 253.82917201636556,
+          "ci80_high": 421.91768569333595,
+          "ci95_low": 213.31384565745444,
+          "ci95_high": 482.2940281887092,
+          "rhat": 1.007404356144718
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.10736604596064862,
+          "median": 0.09203407565698175,
+          "ci80_low": -0.03646556032445518,
+          "ci80_high": 0.27185615380762995,
+          "ci95_low": -0.09820228486085168,
+          "ci95_high": 0.3971503341784568,
+          "rhat": 1.0070129461030495
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.3237425827830254,
+          "median": 0.32271516934893624,
+          "ci80_low": 0.22931827252900222,
+          "ci80_high": 0.4211178916913428,
+          "ci95_low": 0.1790798142995377,
+          "ci95_high": 0.4897154937588663,
+          "rhat": 1.004117415376984
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 290.8695611457249,
+          "median": 289.97550328099175,
+          "ci80_low": 206.14998507955687,
+          "ci80_high": 378.2091903059346,
+          "ci95_low": 161.0276058643446,
+          "ci95_high": 439.6665081405129,
+          "rhat": 1.0041144104847766
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06228231268666465,
+          "median": 0.05267904093016739,
+          "ci80_low": -0.08588974984035341,
+          "ci80_high": 0.22073257566567087,
+          "ci95_low": -0.1703047939653121,
+          "ci95_high": 0.33592377920561095,
+          "rhat": 1.0018880297924915
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.19581490700088774,
+          "median": 0.19192049127827232,
+          "ci80_low": 0.10297858522392836,
+          "ci80_high": 0.29238255361237203,
+          "ci95_low": 0.05764562380608339,
+          "ci95_high": 0.35475274861997236,
+          "rhat": 1.0048338785671822
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 176.035010051987,
+          "median": 172.56279749867787,
+          "ci80_low": 92.63302216602274,
+          "ci80_high": 262.75997888543026,
+          "ci95_low": 51.866110717571196,
+          "ci95_high": 318.7118200077461,
+          "rhat": 1.0048282290404853
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "SAI",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": 0.09117700570701469,
+          "median": 0.07881738432049896,
+          "ci80_low": -0.047790040104429686,
+          "ci80_high": 0.23635082454892675,
+          "ci95_low": -0.112696187116984,
+          "ci95_high": 0.3594512685640574,
+          "rhat": 1.0029593237668137
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.15912233957212826,
+          "median": 0.15406422291252758,
+          "ci80_low": 0.06822237847403824,
+          "ci80_high": 0.25478614822817697,
+          "ci95_low": 0.0158121762685538,
+          "ci95_high": 0.3187923009689361,
+          "rhat": 1.0083967159966158
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 143.0692597362816,
+          "median": 138.55104442095507,
+          "ci80_low": 61.37920107020926,
+          "ci80_high": 229.01565942129622,
+          "ci95_low": 14.229833581262838,
+          "ci95_high": 286.45622792277004,
+          "rhat": 1.0083923909608945
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "PIA",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.03313493034965394,
+          "median": 0.029212963782864337,
+          "ci80_low": -0.1044434883632442,
+          "ci80_high": 0.1708879382633101,
+          "ci95_low": -0.18878308954673634,
+          "ci95_high": 0.2808020309562498,
+          "rhat": 1.0022876764993065
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.10914246025910632,
+          "median": 0.10578645828614922,
+          "ci80_low": 0.013084355269099417,
+          "ci80_high": 0.20983924908779686,
+          "ci95_low": -0.03134232037724603,
+          "ci95_high": 0.2736032627395468,
+          "rhat": 1.0079240612952174
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 98.1473196843871,
+          "median": 95.1574717068228,
+          "ci80_low": 11.775149370799959,
+          "ci80_high": 188.65731640428095,
+          "ci95_low": -28.212509501896857,
+          "ci95_high": 245.90637896980093,
+          "rhat": 1.0079210167588386
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "HAM",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.05695748072410262,
+          "median": 0.054686761084129856,
+          "ci80_low": -0.07563126634771905,
+          "ci80_high": 0.19196378647059037,
+          "ci95_low": -0.14840697520129797,
+          "ci95_high": 0.28890019005454814,
+          "rhat": 1.0066738991738537
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.05372024810410551,
+          "median": -0.05865404873651587,
+          "ci80_low": -0.15902912046292694,
+          "ci80_high": 0.05573064318511967,
+          "ci95_low": -0.20584426879910503,
+          "ci95_high": 0.12306411385592035,
+          "rhat": 1.0099502570806045
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -48.39304673559848,
+          "median": -52.804128229739064,
+          "ci80_low": -143.24007494443345,
+          "ci80_high": 50.143604550187725,
+          "ci95_low": -185.45064626937435,
+          "ci95_high": 110.68957878342896,
+          "rhat": 1.0099456519729364
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.04401030690937726,
+          "median": 0.041628886932103815,
+          "ci80_low": -0.10393583784400572,
+          "ci80_high": 0.1965500516727842,
+          "ci95_low": -0.17776721712759155,
+          "ci95_high": 0.2799859577790037,
+          "rhat": 1.0021469188103813
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.05923583642492469,
+          "median": -0.06415171290167426,
+          "ci80_low": -0.15653613246448392,
+          "ci80_high": 0.0413616001269657,
+          "ci95_low": -0.20575543768948884,
+          "ci95_high": 0.11614051041396858,
+          "rhat": 1.0052202349138644
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -53.35691742284971,
+          "median": -57.75506507338309,
+          "ci80_low": -140.9928427994853,
+          "ci80_high": 37.21774265482116,
+          "ci95_low": -185.37053353559463,
+          "ci95_high": 104.46578273963374,
+          "rhat": 1.0052175111783739
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "PER",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.05674597533511501,
+          "median": 0.0466908409973293,
+          "ci80_low": -0.08990830914817678,
+          "ci80_high": 0.212283820195383,
+          "ci95_low": -0.1596153652216339,
+          "ci95_high": 0.3451532045116013,
+          "rhat": 1.0097113303682261
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.15490294535642204,
+          "median": -0.15770098126971493,
+          "ci80_low": -0.25758774508580234,
+          "ci80_high": -0.05029302184032429,
+          "ci95_low": -0.3104599882398343,
+          "ci95_high": 0.018370740007392312,
+          "rhat": 1.006007323587241
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -139.55190506462463,
+          "median": -142.04285520156876,
+          "ci80_low": -232.1278086395121,
+          "ci80_high": -45.275103813391695,
+          "ci95_low": -279.84817294215355,
+          "ci95_high": 16.532147363489653,
+          "rhat": 1.0060028943010835
+        }
+      },
+      {
+        "year": 2024,
+        "driver": "BEA",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": -0.010802927312633735,
+          "median": -0.010121318738529145,
+          "ci80_low": -0.1577854262335269,
+          "ci80_high": 0.13785026583332263,
+          "ci95_low": -0.24810308142331713,
+          "ci95_high": 0.2167690211933134,
+          "rhat": 0.999637095823095
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.25879757340189524,
+          "median": -0.25361290247027124,
+          "ci80_low": -0.5665126980531654,
+          "ci80_high": 0.05827776657850204,
+          "ci95_low": -0.744891265666594,
+          "ci95_high": 0.19801538864025517,
+          "rhat": 1.003375771011999
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -233.48509193485143,
+          "median": -228.54129483347577,
+          "ci80_low": -511.30837420170224,
+          "ci80_high": 52.4347095426269,
+          "ci95_low": -672.9052338540446,
+          "ci95_high": 178.03752013703783,
+          "rhat": 1.0033827657843533
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "NOR",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06509396727037203,
+          "median": 0.05397238062819047,
+          "ci80_low": -0.08007543035311546,
+          "ci80_high": 0.22317232329571315,
+          "ci95_low": -0.15171228646967455,
+          "ci95_high": 0.3555937385641808,
+          "rhat": 1.0007116815158044
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.5876915814844387,
+          "median": 0.5862622030462199,
+          "ci80_low": 0.5002887044064155,
+          "ci80_high": 0.6763803169881466,
+          "ci95_low": 0.45590123358334583,
+          "ci95_high": 0.7291479526851338,
+          "rhat": 1.003604384409596
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 527.3491863833221,
+          "median": 526.0923356490217,
+          "ci80_low": 449.13541031954844,
+          "ci80_high": 606.6882125136398,
+          "ci95_low": 409.37722269150163,
+          "ci95_high": 653.8465063492815,
+          "rhat": 1.0036034646486907
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "PIA",
+        "team": "McLaren",
+        "interaction_pace_advantage_z": {
+          "mean": 0.03313493034965394,
+          "median": 0.029212963782864337,
+          "ci80_low": -0.1044434883632442,
+          "ci80_high": 0.1708879382633101,
+          "ci95_low": -0.18878308954673634,
+          "ci95_high": 0.2808020309562498,
+          "rhat": 1.0022876764993065
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.5191227150956828,
+          "median": 0.5165126311361958,
+          "ci80_low": 0.4285085387249791,
+          "ci80_high": 0.6128696088463337,
+          "ci95_low": 0.38800677852681037,
+          "ci95_high": 0.6670816025424295,
+          "rhat": 1.0038412901209144
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 465.97707683161735,
+          "median": 463.6628984109951,
+          "ci80_low": 384.8325757689569,
+          "ci80_high": 549.8958544586437,
+          "ci95_low": 348.52950436520996,
+          "ci95_high": 598.3753967745741,
+          "rhat": 1.0038416065198739
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "VER",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.10736604596064862,
+          "median": 0.09203407565698175,
+          "ci80_low": -0.03646556032445518,
+          "ci80_high": 0.27185615380762995,
+          "ci95_low": -0.09820228486085168,
+          "ci95_high": 0.3971503341784568,
+          "rhat": 1.0070129461030495
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.42526164437057296,
+          "median": 0.42367963013930743,
+          "ci80_low": 0.3368167908075455,
+          "ci80_high": 0.5167541150444445,
+          "ci95_low": 0.28968998267790796,
+          "ci95_high": 0.5701352586661613,
+          "rhat": 1.0050802625805442
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 381.89996744226016,
+          "median": 380.50503676345386,
+          "ci80_low": 302.6251794172155,
+          "ci80_high": 463.8791140648723,
+          "ci95_low": 260.3437074753463,
+          "ci95_high": 511.66176475465215,
+          "rhat": 1.0050814067940896
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "LEC",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": 0.06228231268666465,
+          "median": 0.05267904093016739,
+          "ci80_low": -0.08588974984035341,
+          "ci80_high": 0.22073257566567087,
+          "ci95_low": -0.1703047939653121,
+          "ci95_high": 0.33592377920561095,
+          "rhat": 1.0018880297924915
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.1362959188531013,
+          "median": 0.13522306999331668,
+          "ci80_low": 0.04292930120900027,
+          "ci80_high": 0.2328655428899116,
+          "ci95_low": -0.004758485715699392,
+          "ci95_high": 0.2835913989385578,
+          "rhat": 1.000323607479518
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 122.55805208524697,
+          "median": 121.61851631635699,
+          "ci80_low": 38.62807911264457,
+          "ci80_high": 209.3351592694418,
+          "ci95_low": -4.282739040084292,
+          "ci95_high": 254.87069249991745,
+          "rhat": 1.0003228174655294
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "RUS",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.04401030690937726,
+          "median": 0.041628886932103815,
+          "ci80_low": -0.10393583784400572,
+          "ci80_high": 0.1965500516727842,
+          "ci95_low": -0.17776721712759155,
+          "ci95_high": 0.2799859577790037,
+          "rhat": 1.0021469188103813
+        },
+        "actual_combination_advantage_z": {
+          "mean": 0.020441005908572462,
+          "median": 0.019096798990881823,
+          "ci80_low": -0.06588955552192774,
+          "ci80_high": 0.10908358111967062,
+          "ci95_low": -0.1043376747223648,
+          "ci95_high": 0.16130951083752385,
+          "rhat": 1.004294666905367
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": 18.373884733060518,
+          "median": 17.185478099483397,
+          "ci80_low": -59.32014073422528,
+          "ci80_high": 98.12169591136247,
+          "ci95_low": -93.95291291138851,
+          "ci95_high": 145.06152927702863,
+          "rhat": 1.0042947569277014
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "HAM",
+        "team": "Ferrari",
+        "interaction_pace_advantage_z": {
+          "mean": -0.020678632657524846,
+          "median": -0.021481911751454707,
+          "ci80_low": -0.16339129080237136,
+          "ci80_high": 0.11941697480147369,
+          "ci95_low": -0.24130630299736194,
+          "ci95_high": 0.21156775443094614,
+          "rhat": 1.0030967513671936
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.1181173969361008,
+          "median": -0.11805525203701922,
+          "ci80_low": -0.21481419214370154,
+          "ci80_high": -0.02166476219866917,
+          "ci95_low": -0.2602543298742441,
+          "ci95_high": 0.031105146358713295,
+          "rhat": 1.0017787492893473
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -106.39370179677681,
+          "median": -106.31246821212568,
+          "ci80_low": -193.54057486585847,
+          "ci80_high": -19.50039830876765,
+          "ci95_low": -234.53395703314018,
+          "ci95_high": 27.99027771062453,
+          "rhat": 1.0017784678318686
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "ANT",
+        "team": "Mercedes",
+        "interaction_pace_advantage_z": {
+          "mean": 0.006956222668965564,
+          "median": 0.007223580584578432,
+          "ci80_low": -0.13575296790418476,
+          "ci80_high": 0.1489838754852799,
+          "ci95_low": -0.22029776307745497,
+          "ci95_high": 0.23055426711523344,
+          "rhat": 0.9995977962707341
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.19398130167690586,
+          "median": -0.19537102717779797,
+          "ci80_low": -0.28960580710224937,
+          "ci80_high": -0.09966691611465364,
+          "ci95_low": -0.338385980970444,
+          "ci95_high": -0.046322222952901615,
+          "rhat": 1.0019924513564078
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -174.77819733550763,
+          "median": -176.00580064920422,
+          "ci80_low": -261.02301287441514,
+          "ci80_high": -89.74494008496397,
+          "ci95_low": -305.06323739488727,
+          "ci95_high": -41.69965802877139,
+          "rhat": 1.0019924203887303
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "LAW",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": 0.011220710439835664,
+          "median": 0.012211777554452321,
+          "ci80_low": -0.12922818336167152,
+          "ci80_high": 0.15840106488193345,
+          "ci95_low": -0.2314606871880501,
+          "ci95_high": 0.2451474487373398,
+          "rhat": 0.9993673512735358
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.6437577120270891,
+          "median": -0.6477557437913491,
+          "ci80_low": -0.8872565569732429,
+          "ci80_high": -0.4030690628099677,
+          "ci95_low": -1.0125926061776813,
+          "ci95_high": -0.26519757141984074,
+          "rhat": 1.0029653995672285
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -581.418152579749,
+          "median": -584.8723966482842,
+          "ci80_low": -802.0839104969767,
+          "ci80_high": -363.4942309576884,
+          "ci95_low": -915.9630061868954,
+          "ci95_high": -238.99457815016163,
+          "rhat": 1.0029692127711318
+        }
+      },
+      {
+        "year": 2025,
+        "driver": "TSU",
+        "team": "Red Bull Racing",
+        "interaction_pace_advantage_z": {
+          "mean": -0.0804347561979481,
+          "median": -0.07649879888235869,
+          "ci80_low": -0.22662039716277002,
+          "ci80_high": 0.059001126180697534,
+          "ci95_low": -0.3236139814279061,
+          "ci95_high": 0.13298882657779013,
+          "rhat": 1.0003331955461248
+        },
+        "actual_combination_advantage_z": {
+          "mean": -0.7509115526733602,
+          "median": -0.7526107149628629,
+          "ci80_low": -0.8493992179598152,
+          "ci80_high": -0.6520104561046792,
+          "ci95_low": -0.8972050252812042,
+          "ci95_high": -0.5961435646295197,
+          "rhat": 1.0006326561396606
+        },
+        "actual_combination_advantage_90s_ms": {
+          "mean": -678.3910435587771,
+          "median": -679.9049530132916,
+          "ci80_low": -767.7151637233114,
+          "ci80_high": -588.726604355244,
+          "ci95_low": -811.1177764408386,
+          "ci95_high": -538.1316330156775,
+          "rhat": 1.0006332602599313
+        }
+      }
+    ]
+  },
+  "ridge_v2_comparison": {
+    "available": true,
+    "ridge_run_id": "four_team_seasonal_attribution_2023_2025_v2-20260718T222427+0800",
+    "warning": "两者共享同一冻结圈速数据和上下文定义，是方法复验，不是独立数据复验。",
+    "cars": [
+      {
+        "year": 2023,
+        "team": "Red Bull Racing",
+        "ridge_advantage_z": 0.3194408230491912,
+        "bayesian_advantage_z": 0.2572227842144874,
+        "difference_z": -0.06221803883470378,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "team": "Mercedes",
+        "ridge_advantage_z": 0.03938942737740242,
+        "bayesian_advantage_z": 0.06263221023922419,
+        "difference_z": 0.02324278286182177,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "team": "Ferrari",
+        "ridge_advantage_z": -0.02343958100189486,
+        "bayesian_advantage_z": 0.021811705739706394,
+        "difference_z": 0.045251286741601254,
+        "same_direction": false
+      },
+      {
+        "year": 2023,
+        "team": "McLaren",
+        "ridge_advantage_z": -0.3353906694246987,
+        "bayesian_advantage_z": -0.341666700193418,
+        "difference_z": -0.0062760307687192984,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "team": "McLaren",
+        "ridge_advantage_z": 0.15572143821207685,
+        "bayesian_advantage_z": 0.11079828639222145,
+        "difference_z": -0.0449231518198554,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "team": "Mercedes",
+        "ridge_advantage_z": 0.009307329668163056,
+        "bayesian_advantage_z": -0.0274305401996428,
+        "difference_z": -0.036737869867805854,
+        "same_direction": false
+      },
+      {
+        "year": 2024,
+        "team": "Ferrari",
+        "ridge_advantage_z": 0.007386664069460314,
+        "bayesian_advantage_z": 0.12948712806573223,
+        "difference_z": 0.12210046399627192,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "team": "Red Bull Racing",
+        "ridge_advantage_z": -0.1724154319497005,
+        "bayesian_advantage_z": -0.21285487425831087,
+        "difference_z": -0.04043944230861038,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "team": "McLaren",
+        "ridge_advantage_z": 0.39983699317475324,
+        "bayesian_advantage_z": 0.3373732697502155,
+        "difference_z": -0.062463723424537765,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "team": "Red Bull Racing",
+        "ridge_advantage_z": -0.12749911892750423,
+        "bayesian_advantage_z": -0.24690620503113242,
+        "difference_z": -0.11940708610362818,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "team": "Mercedes",
+        "ridge_advantage_z": -0.1348674004735682,
+        "bayesian_advantage_z": -0.026043084487881608,
+        "difference_z": 0.1088243159856866,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "team": "Ferrari",
+        "ridge_advantage_z": -0.13747047377368074,
+        "bayesian_advantage_z": -0.06442398023120145,
+        "difference_z": 0.07304649354247929,
+        "same_direction": true
+      }
+    ],
+    "drivers": [
+      {
+        "year": 2023,
+        "driver": "VER",
+        "ridge_advantage_z": 0.34820222108820664,
+        "bayesian_advantage_z": 0.36263244851032456,
+        "difference_z": 0.014430227422117914,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "driver": "NOR",
+        "ridge_advantage_z": 0.1735068748947574,
+        "bayesian_advantage_z": 0.11905186655650275,
+        "difference_z": -0.05445500833825466,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "driver": "LEC",
+        "ridge_advantage_z": 0.005023060254158385,
+        "bayesian_advantage_z": -0.01778907233141733,
+        "difference_z": -0.022812132585575715,
+        "same_direction": false
+      },
+      {
+        "year": 2023,
+        "driver": "HAM",
+        "ridge_advantage_z": -0.015018605304023103,
+        "bayesian_advantage_z": -0.07309984781770959,
+        "difference_z": -0.05808124251368649,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "driver": "PER",
+        "ridge_advantage_z": -0.09863680669993735,
+        "bayesian_advantage_z": 0.0272721392713157,
+        "difference_z": 0.12590894597125304,
+        "same_direction": false
+      },
+      {
+        "year": 2023,
+        "driver": "SAI",
+        "ridge_advantage_z": -0.11811587966501255,
+        "bayesian_advantage_z": -0.16174098375473003,
+        "difference_z": -0.04362510408971748,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "driver": "PIA",
+        "ridge_advantage_z": -0.12885692912451308,
+        "bayesian_advantage_z": -0.09988363696688063,
+        "difference_z": 0.028973292157632446,
+        "same_direction": true
+      },
+      {
+        "year": 2023,
+        "driver": "RUS",
+        "ridge_advantage_z": -0.16610393544363647,
+        "bayesian_advantage_z": -0.15644291346740538,
+        "difference_z": 0.009661021976231088,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "VER",
+        "ridge_advantage_z": 0.430418642108778,
+        "bayesian_advantage_z": 0.42923141108068763,
+        "difference_z": -0.0011872310280903742,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "NOR",
+        "ridge_advantage_z": 0.24098463438608186,
+        "bayesian_advantage_z": 0.1983942857056536,
+        "difference_z": -0.04259034868042827,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "LEC",
+        "ridge_advantage_z": 0.05999266068154119,
+        "bayesian_advantage_z": 0.004045466248490834,
+        "difference_z": -0.05594719443305035,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "RUS",
+        "ridge_advantage_z": -0.009741244727754117,
+        "bayesian_advantage_z": -0.07581560313465915,
+        "difference_z": -0.06607435840690504,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "PIA",
+        "ridge_advantage_z": -0.03691658550708968,
+        "bayesian_advantage_z": -0.034790756482769095,
+        "difference_z": 0.002125829024320583,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "SAI",
+        "ridge_advantage_z": -0.04056674285390954,
+        "bayesian_advantage_z": -0.06154179420061863,
+        "difference_z": -0.020975051346709087,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "HAM",
+        "ridge_advantage_z": -0.08077319181821849,
+        "bayesian_advantage_z": -0.08324718862856532,
+        "difference_z": -0.0024739968103468374,
+        "same_direction": true
+      },
+      {
+        "year": 2024,
+        "driver": "PER",
+        "ridge_advantage_z": -0.15268196553170416,
+        "bayesian_advantage_z": 0.0012059535667738534,
+        "difference_z": 0.15388791909847802,
+        "same_direction": false
+      },
+      {
+        "year": 2024,
+        "driver": "BEA",
+        "ridge_advantage_z": -0.4107162067377247,
+        "bayesian_advantage_z": -0.37748177415499373,
+        "difference_z": 0.033234432582730955,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "VER",
+        "ridge_advantage_z": 0.5117705940729786,
+        "bayesian_advantage_z": 0.5648018034410567,
+        "difference_z": 0.053031209368078036,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "NOR",
+        "ridge_advantage_z": 0.20127346443403363,
+        "bayesian_advantage_z": 0.18522434446385114,
+        "difference_z": -0.01604911997018249,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "LEC",
+        "ridge_advantage_z": 0.17267991537692154,
+        "bayesian_advantage_z": 0.13843758639763812,
+        "difference_z": -0.03424232897928342,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "PIA",
+        "ridge_advantage_z": 0.1547886008827847,
+        "bayesian_advantage_z": 0.1486145149958134,
+        "difference_z": -0.006174085886971298,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "RUS",
+        "ridge_advantage_z": 0.018751822678303692,
+        "bayesian_advantage_z": 0.0024737834870768105,
+        "difference_z": -0.016278039191226883,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "HAM",
+        "ridge_advantage_z": -0.04128289894215059,
+        "bayesian_advantage_z": -0.0330147840473745,
+        "difference_z": 0.008268114894776094,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "LAW",
+        "ridge_advantage_z": -0.20458430167735775,
+        "bayesian_advantage_z": -0.4080722174357923,
+        "difference_z": -0.20348791575843456,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "ANT",
+        "ridge_advantage_z": -0.2191293413790422,
+        "bayesian_advantage_z": -0.1748944398579898,
+        "difference_z": 0.04423490152105239,
+        "same_direction": true
+      },
+      {
+        "year": 2025,
+        "driver": "TSU",
+        "ridge_advantage_z": -0.5942678554464719,
+        "bayesian_advantage_z": -0.42357059144427966,
+        "difference_z": 0.1706972640021922,
+        "same_direction": true
+      }
+    ]
+  },
+  "local_result_comparison": {
+    "available": true,
+    "source_run_id": "four_team_seasonal_attribution_2023_2025_v2-20260718T222427+0800",
+    "source": "本地 Live Timing 赛道内分类/积分代理",
+    "points_are_official": false,
+    "uses_network": false,
+    "role": "external_construct_check_only_not_training_or_truth_label",
+    "warning": "分类代理混合车辆、车手、策略和可靠性；车手相关性尤其不能当纯能力真值。",
+    "years": [
+      {
+        "year": 2023,
+        "bayesian_car_order": [
+          "Red Bull Racing",
+          "Mercedes",
+          "Ferrari",
+          "McLaren"
+        ],
+        "classification_proxy_team_order": [
+          "Red Bull Racing",
+          "Mercedes",
+          "Ferrari",
+          "McLaren"
+        ],
+        "car_rank_spearman": 1.0,
+        "bayesian_driver_order": [
+          "VER",
+          "NOR",
+          "PER",
+          "LEC",
+          "HAM",
+          "PIA",
+          "RUS",
+          "SAI"
+        ],
+        "classification_proxy_driver_order": [
+          "VER",
+          "PER",
+          "HAM",
+          "LEC",
+          "SAI",
+          "NOR",
+          "RUS",
+          "PIA"
+        ],
+        "driver_rank_spearman": 0.5952380952380953
+      },
+      {
+        "year": 2024,
+        "bayesian_car_order": [
+          "Ferrari",
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "classification_proxy_team_order": [
+          "McLaren",
+          "Ferrari",
+          "Red Bull Racing",
+          "Mercedes"
+        ],
+        "car_rank_spearman": 0.6000000000000001,
+        "bayesian_driver_order": [
+          "VER",
+          "NOR",
+          "LEC",
+          "PER",
+          "PIA",
+          "SAI",
+          "RUS",
+          "HAM",
+          "BEA"
+        ],
+        "classification_proxy_driver_order": [
+          "VER",
+          "NOR",
+          "LEC",
+          "SAI",
+          "PIA",
+          "RUS",
+          "HAM",
+          "PER",
+          "BEA"
+        ],
+        "driver_rank_spearman": 0.8166666666666667
+      },
+      {
+        "year": 2025,
+        "bayesian_car_order": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "classification_proxy_team_order": [
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing",
+          "Ferrari"
+        ],
+        "car_rank_spearman": 0.7999999999999999,
+        "bayesian_driver_order": [
+          "VER",
+          "NOR",
+          "PIA",
+          "LEC",
+          "RUS",
+          "HAM",
+          "ANT",
+          "LAW",
+          "TSU"
+        ],
+        "classification_proxy_driver_order": [
+          "NOR",
+          "VER",
+          "PIA",
+          "RUS",
+          "LEC",
+          "HAM",
+          "ANT",
+          "LAW",
+          "TSU"
+        ],
+        "driver_rank_spearman": 0.9666666666666667
+      }
+    ]
+  },
+  "prior_sensitivity": [
+    {
+      "name": "interaction_tight",
+      "driver_team_prior_sd_z": 0.06,
+      "diagnostics": {
+        "chains": 4,
+        "draws_per_chain": 300,
+        "sigma_z": {
+          "mean": 0.2722143163706132,
+          "rhat": 0.9985090436919904
+        },
+        "tau_z": {
+          "team_year": {
+            "mean": 0.3916799083826491,
+            "rhat": 1.0358464122073194
+          },
+          "team_circuit": {
+            "mean": 0.12017609326816031,
+            "rhat": 1.0033297317815895
+          },
+          "team_event": {
+            "mean": 0.3250652382916305,
+            "rhat": 0.9988701130385265
+          },
+          "driver": {
+            "mean": 0.30439799805102247,
+            "rhat": 1.01821012327735
+          },
+          "driver_year": {
+            "mean": 0.12022880740920357,
+            "rhat": 1.0047488814790577
+          },
+          "driver_team": {
+            "mean": 0.05769151702595435,
+            "rhat": 1.0286206891734535
+          }
+        },
+        "maximum_scale_rhat": 1.0358464122073194
+      },
+      "cars_2025": [
+        {
+          "year": 2025,
+          "team": "McLaren",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": 0.35874481317787477,
+            "median": 0.3642458199389645,
+            "ci80_low": 0.1628965588617043,
+            "ci80_high": 0.5490257985645463,
+            "ci95_low": 0.07692700144022253,
+            "ci95_high": 0.6434767330806712,
+            "rhat": 1.0305598472873083
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": 322.1846613855071,
+            "median": 327.2249245766684,
+            "ci80_low": 146.48755881308887,
+            "ci80_high": 492.7692651696147,
+            "ci95_low": 69.2076279209048,
+            "ci95_high": 577.2697695650986,
+            "rhat": 1.0305493094654863
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.010484723782813643,
+            "median": 0.0,
+            "ci80_low": 0.0,
+            "ci80_high": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.13711144127770525,
+            "rhat": 1.0059839743727947
+          },
+          "expected_rank": 1.1058333333333332,
+          "p_rank_1": 0.9125,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Mercedes",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.009562138639313971,
+            "median": -0.013448887765015988,
+            "ci80_low": -0.17789027360237603,
+            "ci80_high": 0.16663627650591883,
+            "ci95_low": -0.26563494837602286,
+            "ci95_high": 0.2743590584836886,
+            "rhat": 1.0102585080609245
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -8.690066879226638,
+            "median": -12.10481300035652,
+            "ci80_low": -160.24373330594685,
+            "ci80_high": 149.8477636683043,
+            "ci95_low": -239.38926354786466,
+            "ci95_high": 246.58473414990397,
+            "rhat": 1.010267869586717
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.37879167560000243,
+            "median": 0.3709528285263025,
+            "ci80_low": 0.06135469275124331,
+            "ci80_high": 0.6850217974484303,
+            "ci95_low": 0.0,
+            "ci95_high": 0.8563185014099964,
+            "rhat": 1.0223339326164247
+          },
+          "expected_rank": 2.43,
+          "p_rank_1": 0.059166666666666666,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Ferrari",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.07219926729807663,
+            "median": -0.07699853342803661,
+            "ci80_low": -0.22622916422243272,
+            "ci80_high": 0.08084653456645617,
+            "ci95_low": -0.31268340809532613,
+            "ci95_high": 0.1690624158928861,
+            "rhat": 1.0030293295088812
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -65.06843661148892,
+            "median": -69.32536695643012,
+            "ci80_low": -203.83673008743062,
+            "ci80_high": 72.73247627589204,
+            "ci95_low": -281.85549590527967,
+            "ci95_high": 152.027627283513,
+            "rhat": 1.003026295519146
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.441428804258765,
+            "median": 0.4470481496455103,
+            "ci80_low": 0.14696942110979513,
+            "ci80_high": 0.7108061457951281,
+            "ci95_low": 0.0,
+            "ci95_high": 0.8961964014229349,
+            "rhat": 1.015905483988474
+          },
+          "expected_rank": 2.7158333333333333,
+          "p_rank_1": 0.028333333333333332,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Red Bull Racing",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.27698340724048415,
+            "median": -0.27194496151105385,
+            "ci80_low": -0.4358849426759347,
+            "ci80_high": -0.11745056659649611,
+            "ci95_low": -0.5071445712988356,
+            "ci95_high": -0.04996476339051749,
+            "rhat": 1.0110981114794797
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -249.69372389075963,
+            "median": -245.08356062388432,
+            "ci80_low": -393.15267258662004,
+            "ci80_high": -105.76761020359758,
+            "ci95_low": -457.5894535778896,
+            "ci95_high": -44.97952310454925,
+            "rhat": 1.0111027122508396
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.6462129442011726,
+            "median": 0.6344096143449152,
+            "ci80_low": 0.37467375512509127,
+            "ci80_high": 0.9196792211603109,
+            "ci95_low": 0.2574635346578028,
+            "ci95_high": 1.0812917941291975,
+            "rhat": 1.0304616458681737
+          },
+          "expected_rank": 3.7483333333333335,
+          "p_rank_1": 0.0,
+          "event_count": 24
+        }
+      ],
+      "drivers_2025": [
+        {
+          "year": 2025,
+          "driver": "VER",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.642730632348478,
+            "median": 0.6422829275828217,
+            "ci80_low": 0.4822459232986181,
+            "ci80_high": 0.8061417860927219,
+            "ci95_low": 0.39543154568335404,
+            "ci95_high": 0.9079191782954316,
+            "rhat": 1.0255045228066542
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 576.5224147627174,
+            "median": 576.2022296884879,
+            "ci80_low": 432.97648581742254,
+            "ci80_high": 722.6110592903749,
+            "ci95_low": 355.1856701893255,
+            "ci95_high": 813.4290329121172,
+            "rhat": 1.025515696518545
+          },
+          "expected_rank": 1.0541666666666667,
+          "p_rank_1": 0.9675,
+          "sample_count": 1066
+        },
+        {
+          "year": 2025,
+          "driver": "NOR",
+          "team": "McLaren",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.19401697705967533,
+            "median": 0.19024980431021477,
+            "ci80_low": -0.016659339577265623,
+            "ci80_high": 0.4133450270652731,
+            "ci95_low": -0.12346015590765605,
+            "ci95_high": 0.49754886123154896,
+            "rhat": 1.0364492346431238
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 174.32607866559917,
+            "median": 171.06204965315396,
+            "ci80_low": -14.99465471968258,
+            "ci80_high": 371.2427389733333,
+            "ci95_low": -111.18275960789192,
+            "ci95_high": 446.68182298772,
+            "rhat": 1.0364594388002326
+          },
+          "expected_rank": 3.1908333333333334,
+          "p_rank_1": 0.015833333333333335,
+          "sample_count": 1124
+        },
+        {
+          "year": 2025,
+          "driver": "LEC",
+          "team": "Ferrari",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.17257233284138157,
+            "median": 0.17948129313716324,
+            "ci80_low": 0.0030863448619640995,
+            "ci80_high": 0.3364538975739301,
+            "ci95_low": -0.07760737614134526,
+            "ci95_high": 0.4201464805518913,
+            "rhat": 1.0046549140136158
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 155.10446658884942,
+            "median": 161.38828955304976,
+            "ci80_low": 2.777667510146168,
+            "ci80_high": 302.2996728284441,
+            "ci95_low": -69.87374865752768,
+            "ci95_high": 377.3385899596458,
+            "rhat": 1.004653665646035
+          },
+          "expected_rank": 3.1675,
+          "p_rank_1": 0.005,
+          "sample_count": 1056
+        },
+        {
+          "year": 2025,
+          "driver": "PIA",
+          "team": "McLaren",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.1316436995497219,
+            "median": 0.1272879834716292,
+            "ci80_low": -0.07804138524680776,
+            "ci80_high": 0.3512349674558997,
+            "ci95_low": -0.19267377003382188,
+            "ci95_high": 0.4464932651839654,
+            "rhat": 1.0323276794484542
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 118.27684703129839,
+            "median": 114.48630541085105,
+            "ci80_low": -70.26466151276377,
+            "ci80_high": 315.55697302504404,
+            "ci95_low": -173.57355487203333,
+            "ci95_high": 400.9481637803707,
+            "rhat": 1.0323387938585968
+          },
+          "expected_rank": 3.966666666666667,
+          "p_rank_1": 0.006666666666666667,
+          "sample_count": 1086
+        },
+        {
+          "year": 2025,
+          "driver": "RUS",
+          "team": "Mercedes",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.0011515942894352452,
+            "median": 0.000778175166229321,
+            "ci80_low": -0.19573923442449773,
+            "ci80_high": 0.19341775062232808,
+            "ci95_low": -0.28916242438728385,
+            "ci95_high": 0.286058550698004,
+            "rhat": 1.004270363384559
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 0.9372394293595593,
+            "median": 0.7003545046483425,
+            "ci80_low": -176.33783586303548,
+            "ci80_high": 173.90773517336993,
+            "ci95_low": -260.6228120051714,
+            "ci95_high": 257.08481377215753,
+            "rhat": 1.0042631526910486
+          },
+          "expected_rank": 4.703333333333333,
+          "p_rank_1": 0.005,
+          "sample_count": 1108
+        },
+        {
+          "year": 2025,
+          "driver": "HAM",
+          "team": "Ferrari",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.05587588856502016,
+            "median": -0.05385200811241536,
+            "ci80_low": -0.2165540689116369,
+            "ci80_high": 0.09751389289239998,
+            "ci95_low": -0.310761621337416,
+            "ci95_high": 0.18037614074572578,
+            "rhat": 1.0016855780371137
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -50.37402435355235,
+            "median": -48.47985988995717,
+            "ci80_low": -195.10984497118605,
+            "ci80_high": 87.71972717633008,
+            "ci95_low": -280.1204872543461,
+            "ci95_high": 162.19219841173864,
+            "rhat": 1.0016852223524781
+          },
+          "expected_rank": 5.52,
+          "p_rank_1": 0.0,
+          "sample_count": 1053
+        },
+        {
+          "year": 2025,
+          "driver": "ANT",
+          "team": "Mercedes",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.20794015268355684,
+            "median": -0.20707526150021688,
+            "ci80_low": -0.4160216062293247,
+            "ci80_high": -0.01545887100306438,
+            "ci95_low": -0.5128658184868354,
+            "ci95_high": 0.06414026482580333,
+            "rhat": 1.0102964692116667
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -187.44675472256606,
+            "median": -186.56083151209074,
+            "ci80_low": -375.19936061852144,
+            "ci80_high": -13.914059353631652,
+            "ci95_low": -462.7649045666366,
+            "ci95_high": 57.707729198316635,
+            "rhat": 1.0102849002605139
+          },
+          "expected_rank": 6.859166666666667,
+          "p_rank_1": 0.0,
+          "sample_count": 1009
+        },
+        {
+          "year": 2025,
+          "driver": "LAW",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.4286462616151953,
+            "median": -0.42557417977094514,
+            "ci80_low": -0.6216873423977369,
+            "ci80_high": -0.24099868619600953,
+            "ci95_low": -0.7185075680331494,
+            "ci95_high": -0.15182057191542592,
+            "rhat": 1.0183965837302416
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -386.70888430243775,
+            "median": -383.8329320177601,
+            "ci80_low": -561.2614461394023,
+            "ci80_high": -217.16038962260075,
+            "ci95_low": -648.9855247906954,
+            "ci95_high": -136.74229110288437,
+            "rhat": 1.0183875061359193
+          },
+          "expected_rank": 8.179166666666667,
+          "p_rank_1": 0.0,
+          "sample_count": 50
+        },
+        {
+          "year": 2025,
+          "driver": "TSU",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.44965293322491995,
+            "median": -0.4509196540436604,
+            "ci80_low": -0.6002192633713676,
+            "ci80_high": -0.2984723351497202,
+            "ci95_low": -0.6949549036269781,
+            "ci95_high": -0.2102276876905837,
+            "rhat": 1.0064038528640267
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -405.6631490037753,
+            "median": -406.7440439126201,
+            "ci80_low": -541.8217697126713,
+            "ci80_high": -269.026387134708,
+            "ci95_low": -627.637787216515,
+            "ci95_high": -189.40394087984632,
+            "rhat": 1.0064029998841766
+          },
+          "expected_rank": 8.359166666666667,
+          "p_rank_1": 0.0,
+          "sample_count": 1021
+        }
+      ]
+    },
+    {
+      "name": "interaction_wide",
+      "driver_team_prior_sd_z": 0.24,
+      "diagnostics": {
+        "chains": 4,
+        "draws_per_chain": 300,
+        "sigma_z": {
+          "mean": 0.27217141518176236,
+          "rhat": 0.9997665948328153
+        },
+        "tau_z": {
+          "team_year": {
+            "mean": 0.37135677225437597,
+            "rhat": 1.0012393614037782
+          },
+          "team_circuit": {
+            "mean": 0.11843079767946231,
+            "rhat": 1.0008841082349094
+          },
+          "team_event": {
+            "mean": 0.325771096954191,
+            "rhat": 1.000931645214987
+          },
+          "driver": {
+            "mean": 0.2917834614951302,
+            "rhat": 1.0168299173650859
+          },
+          "driver_year": {
+            "mean": 0.11469769925001799,
+            "rhat": 1.0046509681353157
+          },
+          "driver_team": {
+            "mean": 0.190423143470771,
+            "rhat": 1.015181293889618
+          }
+        },
+        "maximum_scale_rhat": 1.0168299173650859
+      },
+      "cars_2025": [
+        {
+          "year": 2025,
+          "team": "McLaren",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": 0.30902510169159286,
+            "median": 0.3044610209522107,
+            "ci80_low": 0.1097412061494127,
+            "ci80_high": 0.5129807483970975,
+            "ci95_low": 0.026959612087284764,
+            "ci95_high": 0.6417122225641748,
+            "rhat": 1.0179709462910291
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": 277.5833624758124,
+            "median": 273.59820756111003,
+            "ci80_low": 98.71291122402049,
+            "ci80_high": 460.5005241556556,
+            "ci95_low": 24.26038047912181,
+            "ci95_high": 575.6918821658115,
+            "rhat": 1.0179908651335234
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.015401022862613984,
+            "median": 0.0,
+            "ci80_low": 0.0,
+            "ci80_high": 0.05286654245856724,
+            "ci95_low": 0.0,
+            "ci95_high": 0.1876608055932152,
+            "rhat": 1.0163793829224563
+          },
+          "expected_rank": 1.1641666666666666,
+          "p_rank_1": 0.8591666666666666,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Mercedes",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.04876166126222621,
+            "median": -0.05152449005596885,
+            "ci80_low": -0.24536682733686327,
+            "ci80_high": 0.15390288364308125,
+            "ci95_low": -0.3583655216403695,
+            "ci95_high": 0.25429279750279493,
+            "rhat": 1.0306166141233
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -44.006994218141394,
+            "median": -46.38398958240779,
+            "ci80_low": -221.10128983427563,
+            "ci80_high": 138.40606249610428,
+            "ci95_low": -323.10757724793615,
+            "ci95_high": 228.57277246377657,
+            "rhat": 1.03061061729768
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.3731877858164331,
+            "median": 0.3665883013980078,
+            "ci80_low": 0.003092183299510138,
+            "ci80_high": 0.7194461680801526,
+            "ci95_low": 0.0,
+            "ci95_high": 0.9256465104706728,
+            "rhat": 1.027203787921804
+          },
+          "expected_rank": 2.6466666666666665,
+          "p_rank_1": 0.09916666666666667,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Ferrari",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.06540551848417647,
+            "median": -0.0688942471508541,
+            "ci80_low": -0.22743053977364294,
+            "ci80_high": 0.10179471851740884,
+            "ci95_low": -0.3076322034578207,
+            "ci95_high": 0.21390272710839467,
+            "rhat": 1.026023560444949
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -58.96147616943987,
+            "median": -62.02618621988056,
+            "ci80_low": -204.92042419136945,
+            "ci80_high": 91.56863263270672,
+            "ci95_low": -277.29529166492705,
+            "ci95_high": 192.30670621150247,
+            "rhat": 1.0260213780363026
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.3898316430383833,
+            "median": 0.3790332282272204,
+            "ci80_low": 0.11453524219846443,
+            "ci80_high": 0.6698121500539667,
+            "ci95_low": 0.0,
+            "ci95_high": 0.8454024771589691,
+            "rhat": 1.010900110170681
+          },
+          "expected_rank": 2.7775,
+          "p_rank_1": 0.0375,
+          "event_count": 24
+        },
+        {
+          "year": 2025,
+          "team": "Red Bull Racing",
+          "reference_driver": "zero driver + zero driver-year + zero driver-team",
+          "car_pace_advantage_z": {
+            "mean": -0.1948579219451902,
+            "median": -0.19060192460792355,
+            "ci80_low": -0.38626237630735366,
+            "ci80_high": -0.015155094058517803,
+            "ci95_low": -0.4933388883720435,
+            "ci95_high": 0.056614996301921114,
+            "rhat": 1.0217045506529692
+          },
+          "car_pace_advantage_90s_ms": {
+            "mean": -175.63056663774552,
+            "median": -171.70531699384986,
+            "ci80_low": -348.30839789328627,
+            "ci80_high": -13.640618321186187,
+            "ci95_low": -445.1020317582264,
+            "ci95_high": 50.93907338993005,
+            "rhat": 1.0216823278416243
+          },
+          "delta_to_fastest_z": {
+            "mean": 0.5192840464993971,
+            "median": 0.5086392140005831,
+            "ci80_low": 0.2361496504169697,
+            "ci80_high": 0.8217782184366277,
+            "ci95_low": 0.10685851707952186,
+            "ci95_high": 0.9930362450457476,
+            "rhat": 1.0110722137807946
+          },
+          "expected_rank": 3.4116666666666666,
+          "p_rank_1": 0.004166666666666667,
+          "event_count": 24
+        }
+      ],
+      "drivers_2025": [
+        {
+          "year": 2025,
+          "driver": "VER",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.4180019020663854,
+            "median": 0.4135745080811166,
+            "ci80_low": 0.17129355388228407,
+            "ci80_high": 0.6687482880852964,
+            "ci95_low": 0.07140760835706028,
+            "ci95_high": 0.7864742724009667,
+            "rhat": 1.0080401126512324
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 375.25542781195236,
+            "median": 371.44841977532894,
+            "ci80_low": 154.03223713288827,
+            "ci80_high": 599.8654284213048,
+            "ci95_low": 64.2439072320906,
+            "ci95_high": 705.0506898142406,
+            "rhat": 1.008038242265388
+          },
+          "expected_rank": 1.7375,
+          "p_rank_1": 0.6083333333333333,
+          "sample_count": 1066
+        },
+        {
+          "year": 2025,
+          "driver": "NOR",
+          "team": "McLaren",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.16836622717525393,
+            "median": 0.16731951241268003,
+            "ci80_low": -0.06380418911166558,
+            "ci80_high": 0.4104500588748194,
+            "ci95_low": -0.21438458961357978,
+            "ci95_high": 0.5374090011877594,
+            "rhat": 1.022251669710141
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 151.23845970059486,
+            "median": 150.46164986073944,
+            "ci80_low": -57.44209354881165,
+            "ci80_high": 368.6479772211213,
+            "ci95_low": -193.15310381478523,
+            "ci95_high": 482.37077086512215,
+            "rhat": 1.0222713714003895
+          },
+          "expected_rank": 3.549166666666667,
+          "p_rank_1": 0.09083333333333334,
+          "sample_count": 1124
+        },
+        {
+          "year": 2025,
+          "driver": "LEC",
+          "team": "Ferrari",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.14307197692094942,
+            "median": 0.14115111368860286,
+            "ci80_low": -0.08437618978996957,
+            "ci80_high": 0.38017070007026116,
+            "ci95_low": -0.23479716704794548,
+            "ci95_high": 0.4874752982108704,
+            "rhat": 1.030894927647376
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 128.52749664858368,
+            "median": 126.9463861290505,
+            "ci80_low": -75.97061693456321,
+            "ci80_high": 341.50406954479195,
+            "ci95_low": -211.56572896236472,
+            "ci95_high": 437.66015912079257,
+            "rhat": 1.0309004773844588
+          },
+          "expected_rank": 3.595,
+          "p_rank_1": 0.10916666666666666,
+          "sample_count": 1056
+        },
+        {
+          "year": 2025,
+          "driver": "PIA",
+          "team": "McLaren",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.137034463666689,
+            "median": 0.12875380431455702,
+            "ci80_low": -0.133514051836815,
+            "ci80_high": 0.41843633719681694,
+            "ci95_low": -0.2618205921559127,
+            "ci95_high": 0.5793498887350859,
+            "rhat": 1.0082689149965995
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 123.0408184673905,
+            "median": 115.8038567644178,
+            "ci80_low": -120.2428993906031,
+            "ci80_high": 375.80589797679954,
+            "ci95_low": -235.94727969412853,
+            "ci95_high": 519.9074037538821,
+            "rhat": 1.008255285888102
+          },
+          "expected_rank": 3.9208333333333334,
+          "p_rank_1": 0.115,
+          "sample_count": 1086
+        },
+        {
+          "year": 2025,
+          "driver": "RUS",
+          "team": "Mercedes",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": 0.02369827097941889,
+            "median": 0.029240264003107523,
+            "ci80_low": -0.22161071421434456,
+            "ci80_high": 0.2665923318061904,
+            "ci95_low": -0.3600429695063744,
+            "ci95_high": 0.38082448220456216,
+            "rhat": 1.0235057763198936
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": 21.166981933037647,
+            "median": 26.312390208972104,
+            "ci80_low": -199.67080712143854,
+            "ci80_high": 239.61356092280013,
+            "ci95_low": -324.62271266484265,
+            "ci95_high": 342.090238852548,
+            "rhat": 1.023500670387064
+          },
+          "expected_rank": 4.701666666666667,
+          "p_rank_1": 0.04666666666666667,
+          "sample_count": 1108
+        },
+        {
+          "year": 2025,
+          "driver": "HAM",
+          "team": "Ferrari",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.01586857657824788,
+            "median": -0.020545242356180476,
+            "ci80_low": -0.22871344336435517,
+            "ci80_high": 0.19824654228862382,
+            "ci95_low": -0.3202855008310253,
+            "ci95_high": 0.3041531971016945,
+            "rhat": 1.007012061457716
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -14.403494247752414,
+            "median": -18.49261773228232,
+            "ci80_low": -206.0776730337071,
+            "ci80_high": 178.24514721930768,
+            "ci95_low": -288.7190707630102,
+            "ci95_high": 273.322006921554,
+            "rhat": 1.0070162595376702
+          },
+          "expected_rank": 5.2075,
+          "p_rank_1": 0.02,
+          "sample_count": 1053
+        },
+        {
+          "year": 2025,
+          "driver": "ANT",
+          "team": "Mercedes",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.13696733639986491,
+            "median": -0.14189481577726765,
+            "ci80_low": -0.4008180906198087,
+            "ci80_high": 0.11992412881436884,
+            "ci95_low": -0.549889604251015,
+            "ci95_high": 0.2579264189085551,
+            "rhat": 1.0243246423874697
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -123.54183370404294,
+            "median": -127.7959807186476,
+            "ci80_low": -361.4601965667497,
+            "ci80_high": 107.86702300910372,
+            "ci95_low": -496.2638454785229,
+            "ci95_high": 231.8346669800104,
+            "rhat": 1.024304734308379
+          },
+          "expected_rank": 6.260833333333333,
+          "p_rank_1": 0.009166666666666667,
+          "sample_count": 1009
+        },
+        {
+          "year": 2025,
+          "driver": "LAW",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.3517720871751096,
+            "median": -0.34930191774376845,
+            "ci80_low": -0.591502835262337,
+            "ci80_high": -0.10936747721683016,
+            "ci95_low": -0.727179040427943,
+            "ci95_high": -0.006691903917466527,
+            "rhat": 1.007157068779715
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -317.3076840891807,
+            "median": -314.92141904664936,
+            "ci80_low": -533.9301008631103,
+            "ci80_high": -98.48457473089447,
+            "ci95_low": -656.846469384863,
+            "ci95_high": -6.02292441465019,
+            "rhat": 1.007162009393764
+          },
+          "expected_rank": 7.889166666666667,
+          "p_rank_1": 0.0,
+          "sample_count": 50
+        },
+        {
+          "year": 2025,
+          "driver": "TSU",
+          "team": "Red Bull Racing",
+          "reference_car": "four-team equal-weight car + zero driver-team",
+          "driver_pace_advantage_z": {
+            "mean": -0.3855648406554742,
+            "median": -0.3879497569709982,
+            "ci80_low": -0.6092082381846096,
+            "ci80_high": -0.16250409181215864,
+            "ci95_low": -0.7006495634936282,
+            "ci95_high": -0.056677846977485194,
+            "rhat": 1.019589109854876
+          },
+          "driver_pace_advantage_90s_ms": {
+            "mean": -347.80747657289396,
+            "median": -349.83293051450715,
+            "ci80_low": -549.9609171389487,
+            "ci80_high": -146.37258113829228,
+            "ci95_low": -632.7988709426832,
+            "ci95_high": -51.02452134156661,
+            "rhat": 1.0196162730724756
+          },
+          "expected_rank": 8.138333333333334,
+          "p_rank_1": 0.0008333333333333334,
+          "sample_count": 1021
+        }
+      ]
+    }
+  ],
+  "influence_checks": [
+    {
+      "name": "without_ver",
+      "excluded_drivers": [
+        "VER"
+      ],
+      "excluded_driver_event_rows": 23,
+      "base_car_advantage_z": -0.24690620503113242,
+      "reduced_car_advantage_z": -0.5498027911971718,
+      "shift_z": -0.30289658616603937,
+      "reduced_ci95": [
+        -0.8636549372826544,
+        -0.2010267803940343
+      ],
+      "diagnostics": {
+        "chains": 4,
+        "draws_per_chain": 300,
+        "sigma_z": {
+          "mean": 0.26711966841705204,
+          "rhat": 0.9991261763604047
+        },
+        "tau_z": {
+          "team_year": {
+            "mean": 0.45136881552682934,
+            "rhat": 1.011271578410754
+          },
+          "team_circuit": {
+            "mean": 0.12159882621391134,
+            "rhat": 0.9998839867673448
+          },
+          "team_event": {
+            "mean": 0.32606125193473273,
+            "rhat": 0.9998157831582326
+          },
+          "driver": {
+            "mean": 0.2439122256398047,
+            "rhat": 1.0128660946198618
+          },
+          "driver_year": {
+            "mean": 0.11459941765935322,
+            "rhat": 1.0013425930565658
+          },
+          "driver_team": {
+            "mean": 0.0966662045612841,
+            "rhat": 1.0009559022577508
+          }
+        },
+        "maximum_scale_rhat": 1.0128660946198618
+      }
+    },
+    {
+      "name": "without_other_rb_drivers",
+      "excluded_drivers": [
+        "LAW",
+        "TSU"
+      ],
+      "excluded_driver_event_rows": 46,
+      "base_car_advantage_z": -0.24690620503113242,
+      "reduced_car_advantage_z": -0.048541686844499526,
+      "shift_z": 0.1983645181866329,
+      "reduced_ci95": [
+        -0.3691814718293911,
+        0.28703890278501093
+      ],
+      "diagnostics": {
+        "chains": 4,
+        "draws_per_chain": 300,
+        "sigma_z": {
+          "mean": 0.2627644128789143,
+          "rhat": 1.0008745249768394
+        },
+        "tau_z": {
+          "team_year": {
+            "mean": 0.4476096569110864,
+            "rhat": 1.0263364878567476
+          },
+          "team_circuit": {
+            "mean": 0.11973625734022378,
+            "rhat": 1.0048466228666684
+          },
+          "team_event": {
+            "mean": 0.33489878192399075,
+            "rhat": 1.0046455942120154
+          },
+          "driver": {
+            "mean": 0.25176740145972415,
+            "rhat": 1.0215201447607631
+          },
+          "driver_year": {
+            "mean": 0.11487212556327529,
+            "rhat": 1.0021363042054525
+          },
+          "driver_team": {
+            "mean": 0.10974567827156179,
+            "rhat": 1.0232924014445726
+          }
+        },
+        "maximum_scale_rhat": 1.0263364878567476
+      }
+    }
+  ],
+  "identification_contract": {
+    "pure_car": "driver、driver_year、driver_team 全部固定为零参考；比较 team_year + 等赛道 team_circuit + 赛季内 team_event 均值",
+    "pure_driver": "四队等权参考赛车且 driver_team 固定为零；比较 driver + driver_year",
+    "interaction": "driver_team 单独报告，不并入纯车手评分",
+    "uses_teammate_gap_as_scale": false,
+    "uses_results_as_training_label": false,
+    "limitations": [
+      "长期只效力单一车队时 driver 与 driver_team 部分共线。",
+      "team_year 与 team_event 的分配依赖层级尺度先验，必须结合敏感性读。",
+      "当前反事实针对正赛稳健平均配速，不是排位极限、稳定性或积分价值总模型。"
+    ]
+  }
+}

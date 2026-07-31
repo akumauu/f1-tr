@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="f1tr-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="deltadata-reverse-engineered-v2.css?v=20260731-v2">
+    <title>DeltaData clean-air pace 倒推 v2 · F1 TR</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="reference-analysis-lab.html">
+        <span class="brandMark">F1</span>
+        <span>F1 TR <small>参考分析复刻实验室</small></span>
+      </a>
+      <nav aria-label="本地导航">
+        <a href="f1pace-reverse-engineered-v2.html">F1pace v2</a>
+        <a href="track-validation-v3.html">23–25 验证</a>
+        <a aria-current="page" href="deltadata-reverse-engineered-v2.html">DeltaData v2</a>
+        <a href="fdataanalysis-reverse-engineered-v2.html">FDataAnalysis v2</a>
+        <a href="telemetry-workbench.html">Race Dossier</a>
+      </nav>
+      <span id="loadStatus" class="loadStatus">读取冻结产物…</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">REVERSE-ENGINEERED · REFERENCE-BENCHMARKED · V2</p>
+          <h1>clean-air 配速算法倒推</h1>
+          <p class="heroLead">
+            用逐点物理交通、80% clean-air 操作定义和 Huber 条件标准化，
+            自动替代不可获得的人工逐圈复核。视觉层尽量复刻公开 H2H 效果；
+            审计层只发布通过样本、同配方、共同胎龄、赛道阶段与交通平衡门的配对。
+          </p>
+        </div>
+        <aside class="heroSide">
+          <span id="runStatus" class="statusPill">读取中</span>
+          <a href="https://x.com/DeltaData_" target="_blank" rel="noreferrer">原作者 X 主页 ↗</a>
+          <a href="https://mobile.twstalker.com/DeltaData_" target="_blank" rel="noreferrer">公开方法镜像快照 ↗</a>
+          <small>镜像不是权威档案；原图、人物照片、logo 与品牌字体均未复制到产品。</small>
+        </aside>
+      </section>
+
+      <section class="scopeBanner">
+        <strong>证据级别</strong>
+        <span>三场 2026 数值在模型选择时已经见过，属于参考知情反推基准，不是盲测。</span>
+        <span>2025 Abu Dhabi 是真实 pilot；2026 数据不进入 2023–2025 排名。</span>
+      </section>
+
+      <section class="controls" aria-label="视图控制">
+        <label>
+          <span>分析视图</span>
+          <select id="viewSelect">
+            <option value="visual">visual_replication · 方法等价排序</option>
+            <option value="audit">audited_analysis · fail-close 子集</option>
+          </select>
+        </label>
+        <label>
+          <span>排名对象</span>
+          <select id="rankingSelect">
+            <option value="team">车队</option>
+            <option value="driver">车手</option>
+          </select>
+        </label>
+        <p id="viewNote">视觉顺序不等于因果排名；审计视图不会复用视觉全序。</p>
+      </section>
+
+      <section id="metricGrid" class="metricGrid" aria-label="验收指标"></section>
+
+      <section class="panel benchmarkPanel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">REFERENCE DIFFERENCE</p>
+            <h2>公开 Mercedes H2H 数值差</h2>
+          </div>
+          <span class="statusPill warning">REFERENCE-INFORMED</span>
+        </div>
+        <p class="panelIntro">
+          百分比定义为 Antonelli − Russell，负数代表 Antonelli 更快。
+          每一行同时披露样本和审计门；视觉接近不自动意味着可因果解释。
+        </p>
+        <div id="benchmarkCards" class="benchmarkCards"></div>
+        <div class="tableWrap"><table id="benchmarkTable"></table></div>
+      </section>
+
+      <section id="visualPanel">
+        <div class="twoColumn">
+          <article class="panel">
+            <div class="panelHeader">
+              <div>
+                <p class="eyebrow">COMMON-CONDITION PACE</p>
+                <h2 id="rankingTitle">车队方法等价顺序</h2>
+              </div>
+              <span class="minorTag">lower is faster</span>
+            </div>
+            <p class="panelIntro">
+              所有对象投影到相同代表圈条件分布；车队值为两名车手等权均值。
+              缺一名有效车手时不补值。
+            </p>
+            <div id="rankingBars" class="rankingBars"></div>
+          </article>
+          <article class="panel">
+            <div class="panelHeader">
+              <div>
+                <p class="eyebrow">SAMPLE DISCLOSURE</p>
+                <h2>样本与自动复核账本</h2>
+              </div>
+            </div>
+            <div id="sampleSummary" class="sampleSummary"></div>
+            <div class="tableWrap"><table id="sampleTable"></table></div>
+          </article>
+        </div>
+
+        <section class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">TEAMMATE H2H</p>
+              <h2>视觉 H2H 与可比性并列</h2>
+            </div>
+          </div>
+          <div class="tableWrap"><table id="visualPairTable"></table></div>
+        </section>
+      </section>
+
+      <section id="auditPanel" hidden>
+        <section class="panel auditPanel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">AUDITED ANALYSIS</p>
+              <h2>只保留通过门控的同队子集</h2>
+            </div>
+            <span id="auditStatus" class="statusPill warning">audit_only</span>
+          </div>
+          <p class="panelIntro">
+            视觉 H2H 与审计 H2H 是两个字段。门控失败时 audited delta 必须为空，
+            不会因为视觉数值看起来合理而补齐。
+          </p>
+          <div class="tableWrap"><table id="auditPairTable"></table></div>
+        </section>
+      </section>
+
+      <section class="twoColumn">
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">FUEL SENSITIVITY</p>
+              <h2>燃油情景方向稳定性</h2>
+            </div>
+          </div>
+          <p class="panelIntro">
+            `0.032 s/圈` 是公开 2026 口径；v17 low/base/high 是具名压力情景，
+            都不是 2025 阿布扎比真实油量重建。
+          </p>
+          <div class="tableWrap"><table id="fuelTable"></table></div>
+        </article>
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">V1 → V2</p>
+              <h2>过往本地模型差异</h2>
+            </div>
+          </div>
+          <div id="legacySummary" class="legacySummary"></div>
+          <div class="tableWrap"><table id="legacyTable"></table></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">EXCLUSION LEDGER</p>
+            <h2>圈级排除与代表圈去向</h2>
+          </div>
+        </div>
+        <div id="exclusionGrid" class="exclusionGrid"></div>
+      </section>
+
+      <section class="twoColumn">
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">MODEL</p>
+              <h2>Huber 条件模型系数</h2>
+            </div>
+          </div>
+          <p class="panelIntro">
+            系数用于复算和诊断，不代表因果贡献；模型没有用参考图 H2H 数字作训练标签。
+          </p>
+          <div class="tableWrap"><table id="coefficientTable"></table></div>
+        </article>
+        <article class="panel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">METHOD CARD</p>
+              <h2>公开、反推与不可识别</h2>
+            </div>
+          </div>
+          <div class="methodStack">
+            <details open>
+              <summary>公开方法</summary>
+              <ul id="publicMethodList"></ul>
+            </details>
+            <details>
+              <summary>方法等价实现</summary>
+              <ul id="equivalentMethodList"></ul>
+            </details>
+            <details>
+              <summary>不可识别</summary>
+              <ul id="boundaryList"></ul>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <div>
+            <p class="eyebrow">DATA-GAP AUDIT</p>
+            <h2>字段、替代代理与发布规则</h2>
+          </div>
+        </div>
+        <div class="tableWrap"><table id="dataGapTable"></table></div>
+      </section>
+
+      <footer>
+        <span id="identityFooter">身份读取中…</span>
+        <span>真实冻结遥测 · 0 个合成圈 · 与 Race Dossier 真相层隔离</span>
+      </footer>
+    </main>
+
+    <script
+      src="data-page-entry.js?v=20260726-runtime-v1"
+      data-page="deltadata-reverse-engineered-v2.html"
+      data-module="deltadata-reverse-engineered-v2.js?v=20260731-v2"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,323 @@
+{
+  "run_id": "four_team_car_driver_attribution_hungary_2025_v1-20260718T175425",
+  "created_at": "2026-07-18T17:55:08+08:00",
+  "config_hash": "fd472f3a0202decae9b245de811d38e7ebf67feb5da2ab769433dac5bcd4014d",
+  "methodological_status": "exploratory_single_race_m0_m1",
+  "meeting_selection": {
+    "meeting_name": "Hungarian Grand Prix",
+    "drivers": 8,
+    "teams": 4,
+    "clean_laps": 519,
+    "minimum_driver_clean_laps": 64,
+    "maximum_driver_clean_laps": 66,
+    "driver_lap_count_cv": 0.009878534789389683,
+    "balance_score": 63.36777377347906,
+    "complete_four_team_grid": true
+  },
+  "data_identity": {
+    "historical_manifest_path": "research/artifacts/data_manifest.json",
+    "historical_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "historical_file_sha256": "8a2b28213e01faa27552d82c87e229d55fb5d40039af31f192f171cdf41b5dce",
+    "target_manifest_path": "research/artifacts/data_manifest.json",
+    "target_manifest_created_at": "2026-07-18T10:28:37+08:00",
+    "target_file_sha256": "dd3aac308f4c2cbbf33fd61e6ff90c1bf8be0e5a8168348e981242fc87dc6671",
+    "target_source_commit": "f7a5324cae589ecdbfbf15a114b784dec180b1f6"
+  },
+  "external_validation": {
+    "status": "completed_directional_external_validation",
+    "model_input_source": "TracingInsights expanded v4 frozen laps",
+    "openf1": {
+      "independence_note": "OpenF1 未参与模型拟合，仅用于外部圈速代理比较。",
+      "session_key": 9928,
+      "urls": {
+        "sessions": "https://api.openf1.org/v1/sessions?year=2025&country_name=Hungary&session_name=Race",
+        "drivers": "https://api.openf1.org/v1/drivers?session_key=9928",
+        "laps": "https://api.openf1.org/v1/laps?session_key=9928",
+        "stints": "https://api.openf1.org/v1/stints?session_key=9928"
+      },
+      "response_sha256": {
+        "sessions": "dd26f5c412e13acf115b4e2ea2719c78b248a9d8f1628765a3826bf298ed8a96",
+        "drivers": "d9ab3255023bc5e4fd50ba7225aeeaec8eefcd32e8ad20a5ace19741b2d989fe",
+        "laps": "c2dc23034207160eee14210ce7a07d128ca0b47043cb3543fb62ff47308db17f",
+        "stints": "d33afe08c74508ba70da3741d66c9566b829756c0f5b0c136eceff69179132d2"
+      },
+      "row_counts": {
+        "sessions": 1,
+        "drivers": 20,
+        "laps": 1369,
+        "stints": 49
+      },
+      "pace_proxy": {
+        "method": "mean_of_driver_fastest_fraction_medians",
+        "fastest_fraction": 0.25,
+        "drivers": [
+          {
+            "driver_id": "ANT",
+            "team": "Mercedes",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 81.037
+          },
+          {
+            "driver_id": "HAM",
+            "team": "Ferrari",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.642
+          },
+          {
+            "driver_id": "LEC",
+            "team": "Ferrari",
+            "clean_laps": 65,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.904
+          },
+          {
+            "driver_id": "NOR",
+            "team": "McLaren",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.157
+          },
+          {
+            "driver_id": "PIA",
+            "team": "McLaren",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 79.664
+          },
+          {
+            "driver_id": "RUS",
+            "team": "Mercedes",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.237
+          },
+          {
+            "driver_id": "TSU",
+            "team": "Red Bull Racing",
+            "clean_laps": 65,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 81.45
+          },
+          {
+            "driver_id": "VER",
+            "team": "Red Bull Racing",
+            "clean_laps": 66,
+            "fastest_fraction_laps": 17,
+            "fastest_fraction_median_seconds": 80.778
+          }
+        ],
+        "teams": [
+          {
+            "team": "McLaren",
+            "driver_count": 2,
+            "pace_proxy_seconds": 79.9105,
+            "gap_to_fastest_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.637,
+            "gap_to_fastest_ms": 726.5000000000015
+          },
+          {
+            "team": "Ferrari",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.773,
+            "gap_to_fastest_ms": 862.4999999999972
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver_count": 2,
+            "pace_proxy_seconds": 81.114,
+            "gap_to_fastest_ms": 1203.5000000000055
+          }
+        ],
+        "clean_laps": 526
+      },
+      "comparison": {
+        "teams": [
+          "Ferrari",
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "model_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "external_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "spearman_rank_correlation": 1.0,
+        "pairwise_gap_mae_ms": 155.02568367674843
+      }
+    },
+    "fia": {
+      "source_url": "https://www.fia.com/system/files/decision-document/2025_hungarian_grand_prix_-_final_race_classification.pdf",
+      "source_sha256": "7b26f16f0e7431a66c573c49103ce51aaa81c2c8ff9f049480363a4b3a0f9c08",
+      "source_verified_at": "2026-07-18T17:53:41+08:00",
+      "document": "Doc 44 - Final Race Classification",
+      "published_at": "2025-08-03T19:05:00+02:00",
+      "pace_proxy": {
+        "method": "mean_of_two_driver_official_fastest_laps",
+        "teams": [
+          {
+            "team": "McLaren",
+            "driver_count": 2,
+            "pace_proxy_seconds": 79.665,
+            "best_classification": 1,
+            "gap_to_fastest_ms": 0.0
+          },
+          {
+            "team": "Mercedes",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.077,
+            "best_classification": 3,
+            "gap_to_fastest_ms": 411.9999999999919
+          },
+          {
+            "team": "Ferrari",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.231,
+            "best_classification": 4,
+            "gap_to_fastest_ms": 565.9999999999883
+          },
+          {
+            "team": "Red Bull Racing",
+            "driver_count": 2,
+            "pace_proxy_seconds": 80.378,
+            "best_classification": 9,
+            "gap_to_fastest_ms": 712.9999999999939
+          }
+        ],
+        "drivers": [
+          {
+            "driver_id": "NOR",
+            "team": "McLaren",
+            "classification": 1,
+            "laps": 70,
+            "fastest_lap_seconds": 79.918,
+            "fastest_lap_number": 57
+          },
+          {
+            "driver_id": "PIA",
+            "team": "McLaren",
+            "classification": 2,
+            "laps": 70,
+            "fastest_lap_seconds": 79.412,
+            "fastest_lap_number": 56
+          },
+          {
+            "driver_id": "RUS",
+            "team": "Mercedes",
+            "classification": 3,
+            "laps": 70,
+            "fastest_lap_seconds": 79.409,
+            "fastest_lap_number": 45
+          },
+          {
+            "driver_id": "LEC",
+            "team": "Ferrari",
+            "classification": 4,
+            "laps": 70,
+            "fastest_lap_seconds": 80.44,
+            "fastest_lap_number": 47
+          },
+          {
+            "driver_id": "VER",
+            "team": "Red Bull Racing",
+            "classification": 9,
+            "laps": 70,
+            "fastest_lap_seconds": 79.576,
+            "fastest_lap_number": 50
+          },
+          {
+            "driver_id": "ANT",
+            "team": "Mercedes",
+            "classification": 10,
+            "laps": 69,
+            "fastest_lap_seconds": 80.745,
+            "fastest_lap_number": 54
+          },
+          {
+            "driver_id": "HAM",
+            "team": "Ferrari",
+            "classification": 12,
+            "laps": 69,
+            "fastest_lap_seconds": 80.022,
+            "fastest_lap_number": 55
+          },
+          {
+            "driver_id": "TSU",
+            "team": "Red Bull Racing",
+            "classification": 17,
+            "laps": 69,
+            "fastest_lap_seconds": 81.18,
+            "fastest_lap_number": 46
+          }
+        ]
+      },
+      "comparison": {
+        "teams": [
+          "Ferrari",
+          "McLaren",
+          "Mercedes",
+          "Red Bull Racing"
+        ],
+        "model_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "external_order_fast_to_slow": [
+          "McLaren",
+          "Mercedes",
+          "Ferrari",
+          "Red Bull Racing"
+        ],
+        "spearman_rank_correlation": 1.0,
+        "pairwise_gap_mae_ms": 281.4761139576895
+      },
+      "driver_order_concordance": {
+        "matched_teams": 2,
+        "total_teams": 4,
+        "details": [
+          {
+            "team": "Ferrari",
+            "model_faster_driver": "LEC",
+            "official_fastest_lap_driver": "HAM",
+            "concordant": false
+          },
+          {
+            "team": "McLaren",
+            "model_faster_driver": "NOR",
+            "official_fastest_lap_driver": "PIA",
+            "concordant": false
+          },
+          {
+            "team": "Mercedes",
+            "model_faster_driver": "RUS",
+            "official_fastest_lap_driver": "RUS",
+            "concordant": true
+          },
+          {
+            "team": "Red Bull Racing",
+            "model_faster_driver": "VER",
+            "official_fastest_lap_driver": "VER",
+            "concordant": true
+          }
+        ],
+        "limitation": "官方单一最快圈受燃油、轮胎、交通和策略影响，只作方向性核验。"
+      }
+    },
+    "interpretation_limit": "排序或毫秒差一致只支持外部表面效度，不识别因果人车贡献。"
+  }
+}

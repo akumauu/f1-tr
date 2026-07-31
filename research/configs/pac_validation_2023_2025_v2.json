@@ -1,0 +1,65 @@
+{
+  "experiment_name": "conditional_pair_prototype_validation_2023_2025_v2",
+  "protocol_version": 2,
+  "validation_status": "retrospective_method_v2_frozen_before_first_v2_result_run",
+  "protocol_frozen_at": "2026-07-23T20:47:01.5319120+08:00",
+  "offline_only": true,
+  "supersedes_for_method_audit": "research/configs/pac_validation_2023_2025_v1.json",
+  "parent_config": "research/configs/four_team_2023_2025_seasonal_v2.json",
+  "parent_config_sha256": "438548848856f37cc50b55bc46d8419b3a1ec3a42750701a0ad1468e4b9eae48",
+  "post_freeze_event_registry": "research/configs/pac_post_freeze_event_registry_v2.json",
+  "target_contract": {
+    "name": "qualified_driver_event_median_context_residual_then_within_team_pair_gap_z",
+    "minimum_clean_laps_per_driver_event": 5,
+    "minimum_drivers_per_team_event": 2,
+    "higher_is_better": true,
+    "prohibited_fields": [
+      "actual_points",
+      "championship_points",
+      "finish_position",
+      "classification_proxy",
+      "classification_proxy_rank"
+    ]
+  },
+  "rolling_origin": {
+    "minimum_completed_events": 8,
+    "minimum_calibration_event_clusters": 12,
+    "context_blocks": ["compound", "circuit"],
+    "context_numeric": ["lap_fraction", "lap_fraction_sq", "tyre_age", "tyre_age_sq"],
+    "irls_iterations": 3,
+    "huber_k": 1.5,
+    "driver_event_shrinkage": 5.0
+  },
+  "intervals": {
+    "predictive_levels": [0.8, 0.95],
+    "method_name": "event_clustered_rolling_empirical_predictive_interval",
+    "calibration_unit": "meeting_key_cluster_median_oos_pair_gap_residual_from_changing_origin_models",
+    "strict_event_cluster_simultaneous_split_conformal": "NOT_TESTED",
+    "pooled_bootstrap_repetitions": 200,
+    "pooled_bootstrap_seed": 2026072302,
+    "hierarchy": "event_then_driver_then_stint_then_lap",
+    "minimum_driver_events_for_interval": 8
+  },
+  "publication_gates": {
+    "minimum_scored_event_clusters": 30,
+    "minimum_scored_pair_events": 150,
+    "minimum_teams": 8,
+    "minimum_evaluable_transfer_edges": 20,
+    "require_strict_event_cluster_simultaneous_split_conformal": true,
+    "require_full_pipeline_direct_edge_purge": true,
+    "require_transfer_subset_event_block_ci": true,
+    "require_event_equal_paired_baseline_lcb": true,
+    "minimum_transfer_brier_skill_vs_best_baseline": 0.05,
+    "minimum_transfer_log_score_skill_vs_best_baseline": 0.02,
+    "require_complete_benchmark_suite": true,
+    "require_connected_pair_incidence_graph": true,
+    "require_frozen_0_100_mapping_validation": true,
+    "minimum_post_freeze_confirmatory_event_clusters": 16,
+    "minimum_post_freeze_confirmatory_pair_events": 120
+  },
+  "outputs": {
+    "result": "research/records/conditional_pair_prototype_validation_2023_2025_v2.json",
+    "summary": "research/records/conditional_pair_prototype_validation_2023_2025_v2.md"
+  },
+  "freeze_note": "v2 阈值在首次真实 v2 运行前冻结；样本不足或缺失基线/CI 必须 NOT_EVALUABLE/false；PAC 与 OVR 始终不发布。"
+}
